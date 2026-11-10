@@ -3,7 +3,8 @@
 Daftar ini dipelihara bersama. Claude Code mencatat di sini tiap teks sementara yang dipakai karena data belum tersedia.
 
 ## Dari Patrik (data dan keputusan)
-- [ ] Status Purchasing 2.0 (uji coba / sudah dipakai) dan apakah angka ±2 hari → ±30 menit terukur atau estimasi
+- [x] Status Purchasing 2.0 (uji coba) dan angka ±2 hari → ±30 menit (terukur): dikonfirmasi
+- [ ] Purchasing: angka metrik 3 (jumlah permintaan diproses selama uji coba), dasar pengukuran angka ±2 hari → ±30 menit (1 kalimat), dan teks Pembelajaran (draf: "merancang fondasi data yang siap naik ke sistem ERP", belum disetujui)
 - [ ] Data 3 case study lain (asisten pesan + tiket, intelijen brand, agen video): konteks, masalah, solusi, 3 metrik, pembelajaran
 - [ ] Koreksi diagram alur 4 case study (`CONTENT.md` bagian 5)
 - [ ] Detail 5 kartu "Proyek lainnya": status, stack, pilihan L5/L6, nama model AI offline
@@ -32,10 +33,10 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 
 **Halaman case study (M3), data: `content/{id,en}/case-studies.json`**
 - Bagian Konteks (kecuali Purchasing), Masalah, Solusi, dan Pembelajaran untuk case study 02, 03, 04 menampilkan "Isi case study ini sedang disiapkan." (Masalah, Solusi, Pembelajaran) atau disembunyikan (Konteks)
-- Pembelajaran Purchasing tampil teks netral yang sama
-- Metrik 2 dan 3 case study 02 sampai 04 tampil "—"; metrik 3 Purchasing tampil "—"
+- Pembelajaran Purchasing tampil teks netral yang sama (menunggu teks dari Patrik)
+- Metrik 2 dan 3 case study 02 sampai 04 tampil "—"; metrik 3 Purchasing tampil "—" (menunggu angka)
 - Peran dan stack case study 03 dan 04 tidak tampil (tersisa tahun saja)
-- Draf `[KONFIRMASI]` yang tampil apa adanya: peran Purchasing ("Perancang dan pembangun aplikasi"), konteks Purchasing, stack case study 02, dan alur 5 langkah semua case study (tampil di diagram alur penuh)
+- Draf `[KONFIRMASI]` yang tampil apa adanya: stack case study 02 dan alur 5 langkah case study 02, 03, 04 (diagram alur penuh). Peran, konteks, dan alur Purchasing sudah dikonfirmasi Patrik
 - Pengujian Safari dan Firefox untuk Morph Transition belum dilakukan (hanya Chromium)
 
 **Keputusan `[PILIH]` yang saya ambil sementara**

@@ -19,7 +19,7 @@ type Props = {
 export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagline, data, next }: Props) {
   const ui = dict.case;
   const number = String(index + 1).padStart(2, "0");
-  const meta = [data.role, data.year, data.stack.join(", ")].filter(Boolean);
+  const meta = [data.role, data.year, data.status, data.stack.join(", ")].filter(Boolean);
 
   const section = (heading: string, body?: string) => (
     <section className="mt-[var(--section-gap)]">

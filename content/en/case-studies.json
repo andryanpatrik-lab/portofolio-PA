@@ -2,6 +2,7 @@
   "purchasing-digitalization": {
     "role": "Designer and builder",
     "year": "2025",
+    "status": "Pilot",
     "stack": [
       "AppSheet",
       "Google Sheets"
@@ -29,8 +30,7 @@
     "metrics": [
       {
         "value": "~2 days → ~30 minutes",
-        "label": "request-to-order processing time",
-        "estimate": true
+        "label": "request-to-order processing time"
       },
       {
         "value": "4",

@@ -35,6 +35,7 @@ export { site };
 export type CaseStudyData = {
   role?: string;
   year: string;
+  status?: string;
   stack: string[];
   context?: string;
   problem?: string;

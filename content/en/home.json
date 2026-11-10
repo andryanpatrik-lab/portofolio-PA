@@ -34,7 +34,7 @@
         "tagline": "From paper and Excel to one app: requests, approvals, and payments all tracked.",
         "metric": {
           "value": "~2 days → ~30 minutes",
-          "estimate": true
+          "estimate": false
         }
       },
       {

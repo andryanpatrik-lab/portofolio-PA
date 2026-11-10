@@ -72,7 +72,7 @@ Flagship dipilih Patrik (4): digitalisasi pembelian, asisten pesan AI + tiket, i
 |---|---|---|
 | Judul | Digitalisasi pembelian dan approval | Purchasing and approval digitalization |
 | Tagline | Dari kertas dan Excel ke satu aplikasi: permintaan, approval, hingga pembayaran terlacak. | From paper and Excel to one app: requests, approvals, and payments all tracked. |
-| Angka kartu | ±2 hari → ±30 menit (perkiraan) `[KONFIRMASI]` | ~2 days → ~30 minutes (estimate) `[KONFIRMASI]` |
+| Angka kartu | ±2 hari → ±30 menit (terukur, dikonfirmasi Patrik) | ~2 days → ~30 minutes (measured, confirmed by Patrik) |
 
 ### Kartu 02
 | Field | ID | EN |
@@ -167,7 +167,7 @@ Semua node diagram di bawah adalah **draf dari deskripsi singkat**: Patrik mengo
 
 ### 5.1 `purchasing-digitalization`
 
-- **Peran:** `[KONFIRMASI: perancang dan pembangun aplikasi]` / `[KONFIRMASI: designer and builder]`
+- **Peran:** Perancang dan pembangun aplikasi / Designer and builder (dikonfirmasi Patrik)
 - **Tahun:** 2025
 - **Stack:** AppSheet, Google Sheets
 - **Sumber draf:** presentasi internal Patrik di perusahaan sebelumnya. Di sana angka waktu adalah **estimasi**, jadi tampil berlabel "perkiraan" kecuali ada data pengukuran. Tanpa nama perusahaan, screenshot, data, atau nama divisi/vendor.
@@ -184,15 +184,15 @@ Semua node diagram di bawah adalah **draf dari deskripsi singkat**: Patrik mengo
 
 | Bagian | ID | EN |
 |---|---|---|
-| Konteks `[KONFIRMASI]` | Perusahaan konstruksi dengan beberapa divisi yang terlibat dalam proses pembelian barang. | A construction company with several divisions involved in purchasing goods. |
+| Konteks (dikonfirmasi) | Perusahaan konstruksi dengan beberapa divisi yang terlibat dalam proses pembelian barang. | A construction company with several divisions involved in purchasing goods. |
 | Masalah | Pengajuan pembelian berjalan lewat Excel dan kertas. Data tercecer atau ganda, approval lama, tidak ada sinkronisasi antar divisi, dan status dari permintaan hingga pembayaran sulit dilacak maupun diaudit. | Purchase requests ran on Excel and paper. Data was scattered or duplicated, approvals were slow, divisions weren't in sync, and the status from request to payment was hard to track or audit. |
 | Solusi | Satu aplikasi AppSheet yang menyatukan seluruh alur: nomor permintaan otomatis, relasi antar tabel, akses sesuai peran (peminta, approver, purchasing, finance), dan dashboard status real-time, dengan data tersimpan di Google Sheets dan dapat diakses dari HP maupun PC. | One AppSheet app unifying the whole flow: automatic request numbering, relational tables, role-based access (requester, approver, purchasing, finance), and a real-time status dashboard, with data stored in Google Sheets and accessible on phone or desktop. |
-| Metrik 1 | ±2 hari → ±30 menit, waktu proses permintaan ke pesanan (perkiraan) `[KONFIRMASI: ukur atau estimasi]` | ~2 days → ~30 minutes, request-to-order processing time (estimate) `[KONFIRMASI]` |
+| Metrik 1 | ±2 hari → ±30 menit, waktu proses permintaan ke pesanan (terukur, dikonfirmasi Patrik; dasar pengukuran belum dicatat) | ~2 days → ~30 minutes, request-to-order processing time (measured, confirmed by Patrik; basis not yet recorded) |
 | Metrik 2 | 4 peran terhubung dalam satu aplikasi | 4 roles connected in one app |
-| Metrik 3 | `[ISI: jumlah pengguna atau permintaan yang diproses]` | `[ISI]` |
+| Metrik 3 | `[ISI: jumlah permintaan yang diproses selama uji coba]` | `[ISI]` |
 | Pembelajaran | `[ISI, opsi: merancang fondasi data yang siap naik ke sistem ERP]` | `[ISI]` |
 
-Status: `[KONFIRMASI: uji coba / sudah dipakai]`. Jangan tulis "dipakai seluruh divisi" kalau baru uji coba.
+Status: **uji coba (pilot)**, dikonfirmasi Patrik. Jangan tulis "dipakai seluruh divisi".
 
 ---
 

@@ -2,6 +2,7 @@
   "purchasing-digitalization": {
     "role": "Perancang dan pembangun aplikasi",
     "year": "2025",
+    "status": "Uji coba",
     "stack": [
       "AppSheet",
       "Google Sheets"
@@ -29,8 +30,7 @@
     "metrics": [
       {
         "value": "±2 hari → ±30 menit",
-        "label": "waktu proses permintaan ke pesanan",
-        "estimate": true
+        "label": "waktu proses permintaan ke pesanan"
       },
       {
         "value": "4",

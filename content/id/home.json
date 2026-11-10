@@ -34,7 +34,7 @@
         "tagline": "Dari kertas dan Excel ke satu aplikasi: permintaan, approval, hingga pembayaran terlacak.",
         "metric": {
           "value": "±2 hari → ±30 menit",
-          "estimate": true
+          "estimate": false
         }
       },
       {
