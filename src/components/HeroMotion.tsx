@@ -70,7 +70,8 @@ export function HeroMotion() {
       if (nav) tl.fromTo(nav, { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.2);
     });
 
-    document.fonts.ready.then(run, run);
+    if (document.fonts.status === "loaded") run();
+    else document.fonts.ready.then(run, run);
 
     return () => {
       cancelled = true;

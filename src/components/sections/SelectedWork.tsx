@@ -7,6 +7,7 @@ export function SelectedWork({ home, locale }: { home: Home; locale: Locale }) {
   return (
     <section id="work" aria-label={work.label} className="container-page section-gap anchor">
       <Eyebrow>{work.label}</Eyebrow>
+      <h2 className="sr-only">{work.title}</h2>
       <div className="mt-10 flex flex-col gap-6 md:gap-8">
         {work.cards.map((card, i) => (
           <ProjectCard

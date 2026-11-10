@@ -9,9 +9,18 @@
     "label": "02 / POSISI",
     "lead": "Sepuluh tahun di farmasi, otomotif, logistik, dan konstruksi, dengan tanggung jawab penjualan dan P&L, mengajarkan saya bahwa sistem terbaik adalah yang membuat pekerjaan orang lain lebih ringan. Kini saya memadukan pemahaman bisnis itu dengan AI dan otomasi, dari CRM dan dashboard hingga chatbot dan alur data.",
     "metrics": [
-      { "value": "10", "label": "tahun lintas 4 industri" },
-      { "value": "3+", "label": "sistem CRM dan dashboard di industri berbeda" },
-      { "value": "<2%", "label": "tingkat retur pengiriman (RTS) di operasional logistik" }
+      {
+        "value": "10",
+        "label": "tahun lintas 4 industri"
+      },
+      {
+        "value": "3+",
+        "label": "sistem CRM dan dashboard di industri berbeda"
+      },
+      {
+        "value": "<2%",
+        "label": "tingkat retur pengiriman (RTS) di operasional logistik"
+      }
     ]
   },
   "work": {
@@ -23,30 +32,43 @@
         "flowSteps": 5,
         "title": "Digitalisasi pembelian dan approval",
         "tagline": "Dari kertas dan Excel ke satu aplikasi: permintaan, approval, hingga pembayaran terlacak.",
-        "metric": { "value": "±2 hari → ±30 menit", "estimate": true }
+        "metric": {
+          "value": "±2 hari → ±30 menit",
+          "estimate": true
+        }
       },
       {
         "slug": "ai-messaging-ticketing",
         "flowSteps": 5,
         "title": "Asisten pesan AI multi-kanal dengan sistem tiket",
         "tagline": "Satu asisten untuk WhatsApp dan Instagram, dengan tiket yang memantau layanan dan respons.",
-        "metric": { "value": "—", "estimate": false }
+        "metric": {
+          "value": "—",
+          "estimate": false
+        }
       },
       {
         "slug": "brand-intelligence",
         "flowSteps": 5,
         "title": "Intelijen brand dari sudut pandang pelanggan",
         "tagline": "Persepsi brand dari pencarian, media sosial, dan jejak digital dalam satu tampilan.",
-        "metric": { "value": "—", "estimate": false }
+        "metric": {
+          "value": "—",
+          "estimate": false
+        }
       },
       {
         "slug": "ai-video-agent",
         "flowSteps": 5,
         "title": "Agen AI untuk otomasi produksi video",
         "tagline": "Dari brief ke video lewat orkestrasi model AI.",
-        "metric": { "value": "—", "estimate": false }
+        "metric": {
+          "value": "—",
+          "estimate": false
+        }
       }
-    ]
+    ],
+    "title": "Karya terpilih"
   },
   "other": {
     "label": "04 / PROYEK LAINNYA",
@@ -58,35 +80,54 @@
         "id": "inventory-packing",
         "name": "Aplikasi inventori dan packing",
         "summary": "Aplikasi inventori dan packing dengan pembagian workload otomatis antar anggota tim.",
-        "tags": ["Otomasi", "Operasional"],
+        "tags": [
+          "Otomasi",
+          "Operasional"
+        ],
         "status": null
       },
       {
         "id": "internal-automation",
         "name": "Alat otomasi internal",
         "summary": "Sistem scouting kreator berbasis skor prioritas dan bot riset tren konten untuk tim.",
-        "tags": ["n8n", "Google Sheets", "Apps Script"],
+        "tags": [
+          "n8n",
+          "Google Sheets",
+          "Apps Script"
+        ],
         "status": null
       },
       {
         "id": "offline-ai",
         "name": "Eksperimen AI offline dengan model lokal",
         "summary": "Menjalankan model bahasa kecil secara lokal dengan Ollama dan Open WebUI, tanpa bergantung pada layanan cloud.",
-        "tags": ["Ollama", "Open WebUI", "Model lokal"],
+        "tags": [
+          "Ollama",
+          "Open WebUI",
+          "Model lokal"
+        ],
         "status": "Eksperimen (2025)"
       },
       {
         "id": "watch-party",
         "name": "Situs nonton bareng untuk komunitas",
         "summary": "Situs satu file berisi jadwal pertandingan, filter, estimasi biaya, dan papan hasil untuk acara nonton bareng.",
-        "tags": ["HTML", "JavaScript", "Komunitas"],
+        "tags": [
+          "HTML",
+          "JavaScript",
+          "Komunitas"
+        ],
         "status": null
       },
       {
         "id": "survey-dashboard",
         "name": "Dashboard survei evaluasi kegiatan",
         "summary": "Visualisasi hasil survei peserta dengan Chart.js untuk evaluasi kegiatan komunitas.",
-        "tags": ["Chart.js", "Analitik", "Komunitas"],
+        "tags": [
+          "Chart.js",
+          "Analitik",
+          "Komunitas"
+        ],
         "status": null
       }
     ]
@@ -97,7 +138,14 @@
       "Saya memulai dari lapangan: penjualan farmasi, otomotif, operasional logistik, dan distribusi bahan konstruksi. Dari sana saya belajar bahwa masalah bisnis jarang berupa masalah teknologi. Biasanya itu masalah proses.",
       "Perjalanannya berlanjut dari dashboard Excel dan CRM, ke AppSheet dan n8n, hingga kini AI: asisten pesan multi-kanal, agen produksi video, dan aplikasi intelijen brand. Saya bekerja dengan n8n, Google Gemini API, integrasi Telegram, dan Google Apps Script."
     ],
-    "stack": ["n8n", "Google Gemini API", "Telegram Bot API", "Google Apps Script", "Google Sheets", "Apify"],
+    "stack": [
+      "n8n",
+      "Google Gemini API",
+      "Telegram Bot API",
+      "Google Apps Script",
+      "Google Sheets",
+      "Apify"
+    ],
     "downloadCv": "Unduh CV"
   },
   "contact": {

@@ -32,7 +32,12 @@ export default async function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: MOTION_INIT_SCRIPT }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <a href="#main" className="skip-link">
+          {getDictionary(locale).skipLink}
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

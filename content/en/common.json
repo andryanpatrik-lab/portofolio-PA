@@ -27,5 +27,7 @@
     "learning": "Learning",
     "pending": "This case study is being prepared.",
     "estimate": "estimate"
-  }
+  },
+  "skipLink": "Skip to content",
+  "navLabel": "Primary navigation"
 }

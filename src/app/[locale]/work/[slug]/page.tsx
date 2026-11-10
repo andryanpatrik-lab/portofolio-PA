@@ -37,7 +37,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
   return (
     <>
       <RevealOnScroll />
-      <Nav locale={locale} dict={dict} />
+      <Nav locale={locale} dict={dict} pathSuffix={`work/${slug}/`} />
       <CaseStudyLayout
         locale={locale}
         dict={dict}

@@ -30,7 +30,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
-      <main className="page-enter container-page pb-[var(--section-gap)] pt-8">
+      <main id="main" className="page-enter container-page pb-[var(--section-gap)] pt-8">
         <div className="flex items-center justify-between">
           <Link href={`/${locale}/#work`} transitionTypes={["nav-back"]} className="t-label text-text-2 link-underline">
             <span aria-hidden="true">← </span>

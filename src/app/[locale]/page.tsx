@@ -21,9 +21,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <>
       <HeroMotion />
       <RevealOnScroll />
-      <Nav locale={locale} dict={dict} heroReveal />
+      <Nav locale={locale} dict={dict} home />
       <ViewTransition enter="page-in" exit="page-out" default="none">
-      <main className="page-enter">
+      <main id="main" className="page-enter">
         <Hero dict={dict} home={home} />
         <Position home={home} />
         <SelectedWork home={home} locale={locale} />
