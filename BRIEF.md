@@ -38,7 +38,7 @@ Kesan yang dituju: **premium, tenang, presisi, sinematik**. Satu momen "wow" di 
 
 ## 3. Item terbuka (jangan ditebak, tanyakan ke Patrik)
 
-- [ ] Hosting: Vercel Hobby (kebiasaan Patrik, tetapi plan Hobby dibatasi non-komersial) atau Cloudflare Pages / Netlify. **Default sementara: Vercel**, jaga konfigurasi tetap portabel.
+- [x] Hosting: **Netlify** (sudah diputuskan Patrik). Situs Netlify `portofoliopa` sudah terhubung ke repo ini. Jaga konfigurasi tetap portabel.
 - [ ] Nama domain.
 - [ ] Isi final 4 case study (angka dan hasil), lihat `CONTENT.md` bagian `[ISI]`.
 - [ ] Koreksi diagram alur 4 case study (draf dari deskripsi singkat dan dokumen Patrik).

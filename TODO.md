@@ -10,7 +10,7 @@ Daftar ini dipelihara bersama. Claude Code mencatat di sini tiap teks sementara 
 - [ ] Konfirmasi metrik Posisi: 10 tahun, 3+ sistem, <2% RTS
 - [ ] Email, LinkedIn, GitHub, WhatsApp (ya/tidak), foto atau tanpa foto
 - [ ] Berkas CV PDF baru (tanpa nomor telepon)
-- [ ] Keputusan hosting (Vercel Hobby dibatasi non-komersial vs Cloudflare Pages/Netlify) dan nama domain
+- [x] Hosting: Netlify (situs `portofoliopa` sudah terhubung). Masih perlu: nama domain, dan matikan akses SSO tim di Netlify agar situs bisa dibuka publik sebelum tayang
 - [ ] Cek ketentuan layanan platform pihak ketiga sebelum case study agen video tayang
 
 ## Dicatat oleh Claude Code (teks sementara yang dipakai)
