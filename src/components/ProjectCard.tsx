@@ -16,7 +16,7 @@ export function ProjectCard({
   isEstimate: boolean;
 }) {
   return (
-    <article className="project-card rounded-2xl border border-border bg-bg p-6 md:p-12">
+    <article data-reveal className="project-card rounded-2xl border border-border bg-bg p-6 md:p-12">
       <p className="t-label text-accent">{number}</p>
       <h3 className="t-h2 mt-6 max-w-[20ch]">{title}</h3>
       <p className="t-lead mt-6 text-text-2">{tagline}</p>

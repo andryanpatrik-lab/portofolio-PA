@@ -3,7 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import { HERO_PENDING_CLASS, HERO_PLAYED_KEY } from "@/lib/heroInit";
+import { HERO_PENDING_CLASS, HERO_PLAYED_KEY } from "@/lib/motionInit";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -22,10 +22,17 @@ export function HeroMotion() {
     const root = document.documentElement;
     if (!root.classList.contains(HERO_PENDING_CLASS)) return;
 
+    root.classList.add("motion-active");
     let cancelled = false;
+    let started = false;
+    // Safety net: never leave the hero hidden if fonts or the timeline stall.
+    const safety = window.setTimeout(() => {
+      if (!started) root.classList.remove(HERO_PENDING_CLASS);
+    }, 3000);
 
     const run = contextSafe!(() => {
       if (cancelled) return;
+      started = true;
       const title = q("title");
       const glow = q("glow");
       const label = q("label");
@@ -67,6 +74,7 @@ export function HeroMotion() {
 
     return () => {
       cancelled = true;
+      window.clearTimeout(safety);
     };
   }, []);
 

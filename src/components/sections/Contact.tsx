@@ -12,23 +12,25 @@ export function Contact({ home }: { home: Home }) {
 
   return (
     <section id="contact" aria-labelledby="contact-title" className="container-page section-gap anchor pb-[var(--section-gap)]">
-      <Eyebrow>{contact.label}</Eyebrow>
-      <h2 id="contact-title" className="t-h1 mt-8">{contact.title}</h2>
-      <p className="t-lead mt-6 text-text-2">{contact.sub}</p>
-      {site.email ? (
-        <Button href={`mailto:${site.email}`} className="mt-10">{contact.cta}</Button>
-      ) : (
-        <p className="t-caption mt-10">{contact.pending}</p>
-      )}
-      {links.length > 0 && (
-        <ul className="t-label mt-8 flex flex-wrap gap-x-8 gap-y-3 text-text-2">
-          {links.map((l) => (
-            <li key={l.label}>
-              <a href={l.href} rel="noopener noreferrer" className="link-underline">{l.label}</a>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div data-reveal>
+        <Eyebrow>{contact.label}</Eyebrow>
+        <h2 id="contact-title" className="t-h1 mt-8">{contact.title}</h2>
+        <p className="t-lead mt-6 text-text-2">{contact.sub}</p>
+        {site.email ? (
+          <Button href={`mailto:${site.email}`} className="mt-10">{contact.cta}</Button>
+        ) : (
+          <p className="t-caption mt-10">{contact.pending}</p>
+        )}
+        {links.length > 0 && (
+          <ul className="t-label mt-8 flex flex-wrap gap-x-8 gap-y-3 text-text-2">
+            {links.map((l) => (
+              <li key={l.label}>
+                <a href={l.href} rel="noopener noreferrer" className="link-underline">{l.label}</a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </section>
   );
 }

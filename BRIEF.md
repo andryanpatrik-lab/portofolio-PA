@@ -182,20 +182,20 @@ Dua family saja. Format: desktop / mobile.
 
 | Level | Font | Ukuran | Weight | Line-height | Tracking | Dipakai untuk |
 |---|---|---|---|---|---|---|
-| Display | Space Grotesk | 96 / 48px | 600 | 1.0 | -0.03em | Hero |
-| H1 | Space Grotesk | 64 / 40px | 600 | 1.05 | -0.025em | Judul case study, "Mari bicara." |
-| H2 | Space Grotesk | 48 / 32px | 500 | 1.1 | -0.02em | Judul section/kartu |
-| H3 | Space Grotesk | 32 / 24px | 500 | 1.2 | -0.01em | Sub-judul |
+| Display | Space Grotesk | 96 / 48px | 300 | 1.0 | -0.03em | Hero |
+| H1 | Space Grotesk | 64 / 40px | 300 | 1.05 | -0.025em | Judul case study, "Mari bicara." |
+| H2 | Space Grotesk | 48 / 32px | 300 | 1.1 | -0.02em | Judul section/kartu |
+| H3 | Space Grotesk | 32 / 24px | 400 | 1.2 | -0.01em | Sub-judul |
 | H4 | Space Grotesk | 24 / 20px | 500 | 1.3 | 0 | Judul kecil |
 | Lead | Space Grotesk | 20 / 18px | 400 | 1.6 | 0 | Paragraf pembuka |
 | Body | Space Grotesk | 16 / 16px | 400 | 1.6 | 0 | Isi |
 | Caption | Space Grotesk | 14 / 14px | 400 | 1.5 | 0 | Keterangan (muted) |
 | Metric | JetBrains Mono | 64 / 40px | 500 | 1.0 | -0.02em | Angka hasil (emas) |
-| Label | JetBrains Mono | 12 / 12px | 500 | 1.4 | +0.1em, kapital | Eyebrow, tag, nomor section |
+| Label | JetBrains Mono | 12 / 12px | 500 | 1.4 | +0.16em, kapital | Eyebrow, tag, nomor section |
 
 - Ukuran fluid dengan `clamp()` (tanpa loncat di breakpoint).
 - Lebar baris isi maks `65ch`. Isi minimal 16px, label minimal 12px.
-- Jangan pakai weight 700+ di Space Grotesk.
+- Jangan pakai weight 600+ di Space Grotesk. Weight yang dimuat: 300, 400, 500 (judul besar ringan, teks kecil 400-500).
 - Gunakan `font-variant-numeric: tabular-nums` untuk angka.
 
 ## 9. Motion spec
@@ -213,9 +213,10 @@ Hanya animasikan `transform` dan `opacity`. **Dilarang `transition: all`**. Jang
 | Tekan (CTA, kartu) | `scale(0.97)` pada `:active` | 160ms | ease-out | |
 | Morph: kartu → case study | Judul, nomor, visual bergerak (shared element) | 400ms masuk / 280ms keluar | ease-in-out | Keluar lebih cepat dari masuk, bisa diinterupsi |
 | Morph: isi lain | Fade-in setelah morph berjalan | 200ms, mulai 200ms | ease-out | Tidak menunggu morph selesai |
-| Section lain | Fade 200ms saat masuk layar (opsional, sekali saja) | 200ms | ease-out | Hanya opacity |
+| Section lain | Fade + naik 12px saat masuk layar, sekali saja | 280ms | ease-out | Hanya `opacity` dan `transform`; tanpa JS atau saat reduced-motion, konten langsung tampil |
 
 Aturan:
+- Semua keadaan awal tersembunyi (hero dan reveal section) punya pengaman CSS: jika skrip tidak berjalan, konten tampil sendiri setelah 3 detik.
 - Hero hanya diputar **sekali per sesi**. Teks ada di DOM sejak awal (tidak diblokir animasi), agar cepat terbaca dan ramah SEO.
 - `prefers-reduced-motion`: hero langsung ke kondisi akhir, morph diganti crossfade 150ms, hilangkan semua transform.
 - Animasi UI biasa di bawah 300ms, kecuali hero dan morph.

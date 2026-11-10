@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { HeroMotion } from "@/components/HeroMotion";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
@@ -18,6 +19,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <>
       <HeroMotion />
+      <RevealOnScroll />
       <Nav locale={locale} dict={dict} />
       <main>
         <Hero dict={dict} home={home} />
