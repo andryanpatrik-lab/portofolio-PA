@@ -48,5 +48,26 @@ Catatan: aturan proyek "animasi hanya `transform` dan `opacity`" berlaku untuk a
 
 Status pengujian: sudah diuji di Chromium. Safari dan Firefox belum diuji (belum tersedia di lingkungan pengembangan); periksa di perangkat nyata sebelum tayang.
 
+### SEO dan metadata
+- Judul, deskripsi, `canonical`, `hreflang` (`id`, `en`, `x-default`), Open Graph, dan Twitter card dibuat per halaman lewat `src/lib/seo.ts`. `sitemap.xml` dan `robots.txt` dibuat saat build.
+- URL absolut berasal dari `src/lib/site.ts`: variabel `SITE_URL`, lalu `URL` bawaan Netlify.
+- Hanya deploy production (`CONTEXT=production`) yang boleh diindeks. Branch deploy dan deploy preview otomatis `noindex` dan `robots.txt` melarang semua.
+- Gambar OG `public/og.png` dibuat dari `scripts/og.html` (screenshot 1200x630 dengan browser headless, font dari `@fontsource`). Ubah templat, lalu render ulang.
+- Halaman 404 dwibahasa: `src/app/global-not-found.tsx` (memakai `experimental.globalNotFound` karena root layout berada di bawah `[locale]`). Bila flag ini berubah di versi Next berikutnya, Netlify tetap menyajikan `404.html`.
+
 ### Motion lain
 Hero reveal memakai GSAP + SplitText (sekali per sesi), reveal section memakai IntersectionObserver. Semua keadaan awal tersembunyi punya pengaman CSS agar konten tidak pernah tertahan. Detail ada di `CLAUDE.md`.
+
+## Deploy di Netlify
+
+- Build command `npm run build`, publish directory `out`, Node 22 (sudah diatur di `netlify.toml`).
+- Variabel lingkungan: `SITE_URL` berisi alamat final (mis. `https://namadomain.com`, tanpa garis miring di akhir). Ubah variabel lalu deploy ulang, karena nilai dibaca saat build.
+- Redirect `/` berdasarkan bahasa browser, header cache untuk `/_next/static/*`, dan header keamanan dasar ada di `netlify.toml`.
+
+## Sebelum publik
+
+1. Isi `content/site.json` (email, LinkedIn, GitHub, WhatsApp, berkas CV di `public/`). Tombol dan tautan yang kosong otomatis disembunyikan.
+2. Selesaikan konten final (lihat `TODO.md`) dan konten `case-studies.json` serta `home.json`.
+3. Tentukan domain dan isi `SITE_URL`.
+4. Matikan akses SSO tim di Netlify (Site configuration, Access control) agar situs bisa dibuka publik.
+5. Jalankan pemeriksaan akhir di `TODO.md` bagian "Sebelum publik".

@@ -29,5 +29,9 @@
     "estimate": "estimate"
   },
   "skipLink": "Skip to content",
-  "navLabel": "Primary navigation"
+  "navLabel": "Primary navigation",
+  "notFound": {
+    "title": "Page not found",
+    "link": "Back to home"
+  }
 }

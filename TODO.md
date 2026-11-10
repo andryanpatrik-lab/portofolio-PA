@@ -45,7 +45,10 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - Halaman 404 dwibahasa: ditunda ke M6
 
 ## Sebelum publik
-- [ ] Pencarian teks: tidak ada nama perusahaan, klien, kreator
-- [ ] Tidak ada `[ISI` dan `[KONFIRMASI` yang tersisa di tampilan
-- [ ] `gitleaks detect` bersih
-- [ ] Lighthouse, kontras, keyboard, reduced-motion lolos
+- [x] Pencarian teks: tidak ada nama perusahaan, klien, kreator (kode, konten, hasil build, pesan commit; diperiksa di M6, ulangi setelah konten final M4)
+- [x] Tidak ada `[ISI` dan `[KONFIRMASI` yang tersisa di tampilan (diperiksa di M6; teks sementara netral tampil sebagai gantinya, ulangi setelah M4)
+- [x] Pemindaian secret bersih (`secretlint` pada semua berkas yang dilacak, ditambah pencarian pola kunci; `gitleaks` tidak tersedia di lingkungan pengembangan)
+- [x] Lighthouse, kontras, keyboard, reduced-motion lolos (M5; ulangi setelah M4 dan setelah domain aktif)
+- [ ] Atur `SITE_URL` di Netlify setelah domain diputuskan, lalu deploy ulang
+- [ ] Matikan akses SSO tim di Netlify (Access control) sebelum publik
+- [ ] Uji Morph Transition di Safari dan Firefox

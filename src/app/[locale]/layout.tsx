@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { jetbrainsMono, spaceGrotesk } from "../fonts";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
+import { buildMetadata } from "@/lib/seo";
+import { siteUrl } from "@/lib/site";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionInit";
 import "../globals.css";
 
@@ -15,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const { meta } = getDictionary(locale);
-  return { title: meta.title, description: meta.description };
+  return { metadataBase: new URL(siteUrl), ...buildMetadata({ locale, path: "", title: meta.title, description: meta.description }) };
 }
 
 export default async function RootLayout({

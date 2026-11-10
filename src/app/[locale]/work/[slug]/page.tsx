@@ -4,6 +4,7 @@ import { CaseStudyLayout } from "@/components/CaseStudyLayout";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { buildMetadata } from "@/lib/seo";
 import { caseStudySlugs, getCaseStudy, getDictionary, getHome, isLocale, locales } from "@/lib/i18n";
 
 export const dynamicParams = false;
@@ -19,7 +20,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!isLocale(locale)) return {};
   const card = getHome(locale).work.cards.find((c) => c.slug === slug);
   if (!card) return {};
-  return { title: `${card.title} · ${getDictionary(locale).name}`, description: card.tagline };
+  return buildMetadata({
+    locale,
+    path: `work/${slug}/`,
+    title: `${card.title} · ${getDictionary(locale).name}`,
+    description: card.tagline,
+  });
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<Params> }) {
