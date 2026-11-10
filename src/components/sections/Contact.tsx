@@ -11,7 +11,7 @@ export function Contact({ home }: { home: Home }) {
   ].filter((l) => l.href);
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="container-page section-gap anchor pb-[var(--section-gap)]">
+    <section data-cosmos="supernova" id="contact" aria-labelledby="contact-title" className="container-page section-gap anchor pb-[var(--section-gap)]">
       <div data-reveal>
         <Eyebrow>{contact.label}</Eyebrow>
         <h2 id="contact-title" className="t-h1 mt-8">{contact.title}</h2>

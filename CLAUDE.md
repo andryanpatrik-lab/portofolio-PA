@@ -9,10 +9,10 @@ Jika ada konflik antara asumsi Anda dan kedua dokumen itu, ikuti dokumen dan tan
 - Jangan menulis nama perusahaan, klien, atau kreator di mana pun (kode, komentar, nama file, metadata, pesan commit).
 - Jangan menambah fitur di luar bagian "Yang TIDAK boleh dibuat" di `BRIEF.md`.
 - Teks bertanda `[ISI: ...]` atau `[KONFIRMASI]` di `CONTENT.md` jangan diisi sendiri. Tampilkan teks sementara yang netral dan catat di `TODO.md`.
-- Animasi hanya `transform` dan `opacity`. Tidak ada `transition: all`. Hormati `prefers-reduced-motion`.
+- Animasi elemen DOM hanya `transform` dan `opacity`. Tidak ada `transition: all`. Hormati `prefers-reduced-motion`. Kanvas/WebGL (latar ruang angkasa, partikel) diizinkan hanya lewat tingkat kualitas `full`/`lite`/`off` dengan pemantau FPS (lihat BRIEF bagian 9).
 - Efek hover hanya di `@media (hover: hover) and (pointer: fine)`.
 - Tidak ada `.env`, token, atau kunci di repo. Tidak ada backend, database, atau CMS.
-- Tema gelap saja. Maksimal 1 CTA emas per layar.
+- Tema gelap saja (latar ruang angkasa tetap gelap). Maksimal 1 CTA emas per layar.
 
 ## Bahasa
 Berkomunikasi dengan Patrik dalam Bahasa Indonesia. Kode, nama variabel, dan komentar dalam Bahasa Inggris.
@@ -43,4 +43,5 @@ Berkomunikasi dengan Patrik dalam Bahasa Indonesia. Kode, nama variabel, dan kom
 - Case study (M3): rute `src/app/[locale]/work/[slug]/`, data per slug di `content/{id,en}/case-studies.json` (judul dan tagline tetap dari `home.json`), layout di `CaseStudyLayout`. Morph kartu ke halaman memakai `<ViewTransition name="card-{num|title|flow}-<slug>" share="morph" default="none">` di kartu dan halaman; `<Link transitionTypes>` (`nav-forward` / `nav-back`) mengatur durasi (400ms / 280ms) lewat CSS di `globals.css`. Isi lain fade lewat `enter="page-in" exit="page-out"`. Jangan beri nama yang sama pada dua elemen di satu halaman. `RevealOnScroll` hanya memutar reveal pada pemuatan pertama; navigasi klien melepas `reveal-ready` supaya target morph tidak tersembunyi. `Nav` hanya memakai `heroReveal` di beranda. Pengujian morph harus di build produksi, bukan `npm run dev`.
 - Aksesibilitas (M5): `Nav` punya prop `home` (anchor lokal dan hero fade) dan `pathSuffix` (toggle bahasa tetap di halaman yang sama); header membungkus ke dua baris di mobile tanpa JS. Skip link ada di `[locale]/layout.tsx` dan menuju `<main id="main">`. Kartu Selected Work memakai `aria-labelledby` (judul) dan `aria-describedby` (tagline). Header cache dan keamanan diatur di `netlify.toml`.
 - SEO (M6): `buildMetadata()` di `src/lib/seo.ts` membuat metadata per halaman (canonical, hreflang, OG, Twitter); `siteUrl` dan `isProduction` di `src/lib/site.ts` (variabel `SITE_URL`, `URL`, `CONTEXT`). Selain production, situs `noindex`. `sitemap.ts` dan `robots.ts` statis. 404 dwibahasa di `src/app/global-not-found.tsx` (`experimental.globalNotFound`). Gambar OG dibuat ulang dari `scripts/og.html`.
+- Ruang angkasa (M7): `src/components/cosmos/` (`Cosmos.tsx` klien dipasang di `[locale]/layout.tsx` sehingga bertahan antar halaman; `webgl.ts` dimuat dinamis hanya di tingkat `full`; `palettes.ts`). Tingkat dipasang di `<html>` (`cosmos-full|lite|off`) oleh skrip head `motionInit.ts`; pemantau FPS menurunkan resolusi dulu (0.6 ke 0.4), lalu tingkat, disimpan di `sessionStorage` `cosmos-tier`. Section memilih suasana warna lewat `data-cosmos="void|nebula|aurora|ember|supernova"`. `body` transparan agar kanvas (z-index -1) terlihat; warna dasar ada di `html`. `RevealOnScroll` menandai pemuatan pertama dengan counter modul di layout effect (jangan memakai timer).
 - Tipografi: judul besar (Display, H1, H2) weight 300, H3 400, label mono tracking 0.16em. Space Grotesk dimuat 300/400/500, JetBrains Mono 500.

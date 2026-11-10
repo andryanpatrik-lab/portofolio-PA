@@ -5,7 +5,7 @@ import type { Home, Locale } from "@/lib/i18n";
 export function SelectedWork({ home, locale }: { home: Home; locale: Locale }) {
   const { work } = home;
   return (
-    <section id="work" aria-label={work.label} className="container-page section-gap anchor">
+    <section data-cosmos="aurora" id="work" aria-label={work.label} className="container-page section-gap anchor">
       <Eyebrow>{work.label}</Eyebrow>
       <h2 className="sr-only">{work.title}</h2>
       <div className="mt-10 flex flex-col gap-6 md:gap-8">

@@ -20,11 +20,11 @@ Kesan yang dituju: **premium, tenang, presisi, sinematik**. Satu momen "wow" di 
 
 | Area | Keputusan |
 |---|---|
-| Mood | Premium & tenang |
+| Mood | Premium & tenang, bertema luar angkasa (revisi Patrik, M7) |
 | Referensi | Minimal & rapi ala Apple / Linear |
 | Kepadatan | Sedang, seimbang |
 | Tipografi | Space Grotesk (judul + isi), JetBrains Mono (angka metrik, label, kode) |
-| Palet | Charcoal Gold (tema gelap saja, tidak ada mode terang) |
+| Palet | Charcoal Gold di atas latar ruang angkasa; tema gelap saja, tidak ada mode terang. Suasana latar bergeser per section (void, nebula, aurora, ember, supernova), semuanya tetap gelap |
 | Layout | Spacious Editorial (satu fokus per section) |
 | Motion | Cinematic Reveal (hero) + Morph Transition (kartu → case study) |
 | Bahasa | Dwibahasa ID / EN dengan toggle |
@@ -222,6 +222,16 @@ Aturan:
 - Animasi UI biasa di bawah 300ms, kecuali hero dan morph.
 - Elemen masuk memakai ease-out, keluar lebih cepat dari masuk.
 
+### Ruang angkasa (revisi Patrik, M7-M9)
+
+Patrik meminta gerak yang lebih hidup dan bertema luar angkasa (nebula, ledakan, lubang hitam), efek teks "debu bintang", dan warna kontras antar section. Keputusan:
+- **Latar kosmos** (`src/components/cosmos/`): kanvas WebGL (shader nebula + bintang) di desktop; di HP, CSS murni (gradien yang bergeser pelan lewat `transform`/`opacity`).
+- **Tingkat kualitas**: `full` (desktop berkemampuan), `lite` (HP, tablet, perangkat lemah), `off` (reduced-motion atau data saver). Pemantau FPS menurunkan tingkat otomatis dan hasilnya diingat selama sesi. Kanvas berhenti saat tab tersembunyi.
+- **Kontras warna**: tiap section memakai `data-cosmos` untuk suasana warna; semua palet gelap dan lolos kontras teks 4.5:1.
+- **Aturan animasi diperbarui**: elemen DOM tetap hanya `transform` dan `opacity`; kanvas/WebGL diizinkan lewat tingkat kualitas di atas dan harus menghormati `prefers-reduced-motion`.
+- **Tetap dilarang**: scroll hijacking dan section tertahan (pinned), kursor kustom, suara otomatis, mode terang.
+- **Berikutnya**: M8 teks debu bintang dan animasi scroll (mengganti GSAP dengan Motion), M9 lubang hitam, ledakan nebula, kartu 3D saat hover, audit.
+
 ## 10. Komponen
 
 `Nav`, `LangToggle`, `Hero`, `Eyebrow` (label mono + nomor), `Metric` (angka mono emas + keterangan), `ProjectCard` (besar, bisa morph), `OtherProjectCard` (ringkas, tanpa morph; hover hanya border), `CaseStudyLayout`, `FlowDiagram` (diagram alur SVG/HTML dari data), `StackTags`, `ContactBlock`, `Footer`, `Button` (varian: primary emas, ghost).
@@ -276,7 +286,7 @@ type OtherProject = {
 
 ## 13. Yang TIDAK boleh dibuat (guardrails)
 
-Scroll hijacking, parallax berat, cursor kustom, partikel/canvas berat, auto-play suara, animasi di setiap elemen, mode terang, CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
+Scroll hijacking dan section pinned, cursor kustom, auto-play suara, mode terang, animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
 
 ## 14. Urutan build
 

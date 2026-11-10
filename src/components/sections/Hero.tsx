@@ -4,7 +4,7 @@ import type { Dictionary, Home } from "@/lib/i18n";
 
 export function Hero({ dict, home }: { dict: Dictionary; home: Home }) {
   return (
-    <section aria-labelledby="hero-title" className="relative isolate overflow-x-clip pt-16 md:pt-28">
+    <section data-cosmos="void" aria-labelledby="hero-title" className="relative isolate overflow-x-clip pt-16 md:pt-28">
       <div data-hero="glow" aria-hidden="true" className="hero-glow pointer-events-none absolute inset-x-0 -top-32 bottom-0 -z-10" />
       <div className="container-page">
         <div data-hero="label">

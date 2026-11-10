@@ -1,25 +1,30 @@
 "use client";
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
-// True after the first mount. Client-side navigations remount this component; reveals only play on the first load.
-let mountedOnce = false;
+// Number of RevealOnScroll mounts so far. Client-side navigations remount the component;
+// reveals only play on the first one (so morph targets are never left hidden).
+let mounts = 0;
 
 /**
  * Marks [data-reveal] elements as visible once, when they scroll into view.
  * The hidden initial state and the transition live in globals.css (.reveal-ready).
  */
 export function RevealOnScroll() {
+  const counted = useRef(false);
+  const first = useRef(true);
+
   useLayoutEffect(() => {
-    if (mountedOnce) document.documentElement.classList.remove("reveal-ready");
-    const t = window.setTimeout(() => {
-      mountedOnce = true;
-    }, 0);
-    return () => window.clearTimeout(t);
+    if (!counted.current) {
+      counted.current = true;
+      first.current = mounts === 0;
+      mounts++;
+    }
+    if (!first.current) document.documentElement.classList.remove("reveal-ready");
   }, []);
 
   useEffect(() => {
-    if (mountedOnce) return;
+    if (!first.current) return;
     document.documentElement.classList.add("motion-active");
     const items = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     if (!("IntersectionObserver" in window)) {

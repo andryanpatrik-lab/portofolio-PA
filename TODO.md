@@ -53,3 +53,5 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [ ] Atur `SITE_URL` di Netlify setelah domain diputuskan, lalu deploy ulang
 - [ ] Matikan akses SSO tim di Netlify (Access control) sebelum publik
 - [ ] Uji Morph Transition di Safari dan Firefox
+- [ ] Uji latar ruang angkasa di HP nyata (bagus atau patah-patah?) lewat branch deploy, dan di Safari/Firefox desktop
+- [ ] Konfirmasi nama lengkap "Patrik Andryan" di header sudah sesuai

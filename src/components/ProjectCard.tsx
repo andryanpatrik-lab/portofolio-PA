@@ -28,8 +28,6 @@ export function ProjectCard({
     <Link
       href={href}
       transitionTypes={["nav-forward"]}
-      aria-labelledby={`card-title-${slug}`}
-      aria-describedby={`card-tagline-${slug}`}
       className="block rounded-2xl"
     >
       <article data-reveal className="project-card rounded-2xl border border-border bg-bg p-6 md:p-12">
@@ -37,9 +35,9 @@ export function ProjectCard({
           <p className="t-label inline-block text-accent">{number}</p>
         </ViewTransition>
         <ViewTransition name={`card-title-${slug}`} share="morph" default="none">
-          <h3 id={`card-title-${slug}`} className="t-h2 mt-6 max-w-[20ch]">{title}</h3>
+          <h3 className="t-h2 mt-6 max-w-[20ch]">{title}</h3>
         </ViewTransition>
-        <p id={`card-tagline-${slug}`} className="t-lead mt-6 text-text-2">{tagline}</p>
+        <p className="t-lead mt-6 text-text-2">{tagline}</p>
         <ViewTransition name={`card-flow-${slug}`} share="morph" default="none">
           <div className="mt-10 max-w-md">
             <FlowDiagram variant="mini" steps={flowSteps} />

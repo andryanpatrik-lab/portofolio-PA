@@ -24,7 +24,7 @@ export function Nav({
       className="container-page relative z-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 py-6"
     >
       <Link href={`/${locale}/`} className="t-h4 order-1">
-        {dict.name.split(" ")[0]}
+        {dict.name}
       </Link>
       <div className="order-2 sm:order-3">
         <LangToggle locale={locale} ariaLabel={dict.langToggle.ariaLabel} pathSuffix={pathSuffix} />

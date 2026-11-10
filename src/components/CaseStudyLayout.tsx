@@ -19,6 +19,7 @@ type Props = {
 export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagline, data, next }: Props) {
   const ui = dict.case;
   const number = String(index + 1).padStart(2, "0");
+  const cosmos = (["aurora", "nebula", "ember", "supernova"] as const)[index % 4];
   const meta = [data.role, data.year, data.status, data.stack.join(", ")].filter(Boolean);
 
   const section = (heading: string, body?: string) => (
@@ -30,7 +31,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
-      <main id="main" className="page-enter container-page pb-[var(--section-gap)] pt-8">
+      <main id="main" data-cosmos={cosmos} className="page-enter container-page pb-[var(--section-gap)] pt-8">
         <div className="flex items-center justify-between">
           <Link href={`/${locale}/#work`} transitionTypes={["nav-back"]} className="t-label text-text-2 link-underline">
             <span aria-hidden="true">← </span>

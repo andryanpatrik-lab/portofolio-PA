@@ -5,7 +5,7 @@ import type { Home } from "@/lib/i18n";
 export function Position({ home }: { home: Home }) {
   const { position } = home;
   return (
-    <section aria-label={position.label} className="container-page section-gap">
+    <section data-cosmos="nebula" aria-label={position.label} className="container-page section-gap">
       <div data-reveal>
         <Eyebrow>{position.label}</Eyebrow>
         <p className="t-lead mt-8 text-text">{position.lead}</p>

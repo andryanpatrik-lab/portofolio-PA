@@ -4,6 +4,7 @@ import { jetbrainsMono, spaceGrotesk } from "../fonts";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { siteUrl } from "@/lib/site";
+import { Cosmos } from "@/components/cosmos/Cosmos";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionInit";
 import "../globals.css";
 
@@ -38,6 +39,7 @@ export default async function RootLayout({
         <a href="#main" className="skip-link">
           {getDictionary(locale).skipLink}
         </a>
+        <Cosmos />
         {children}
       </body>
     </html>

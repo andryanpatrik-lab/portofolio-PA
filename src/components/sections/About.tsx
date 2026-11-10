@@ -6,7 +6,7 @@ import { site, type Home } from "@/lib/i18n";
 export function About({ home }: { home: Home }) {
   const { about } = home;
   return (
-    <section id="about" aria-label={about.label} className="container-page section-gap anchor">
+    <section data-cosmos="nebula" id="about" aria-label={about.label} className="container-page section-gap anchor">
       <div data-reveal>
         <Eyebrow>{about.label}</Eyebrow>
         <div className="mt-8 space-y-6">
