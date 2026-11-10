@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Dictionary, Locale } from "@/lib/i18n";
 import { LangToggle } from "./LangToggle";
 
-export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Nav({ locale, dict, heroReveal = false }: { locale: Locale; dict: Dictionary; heroReveal?: boolean }) {
   return (
-    <header data-hero="nav" className="container-page relative z-10 flex items-center justify-between py-6">
+    <header data-hero={heroReveal ? "nav" : undefined} className="container-page relative z-10 flex items-center justify-between py-6">
       <Link href={`/${locale}/`} className="t-h4">
         {dict.name.split(" ")[0]}
       </Link>

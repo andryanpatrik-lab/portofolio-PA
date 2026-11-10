@@ -1,13 +1,25 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
+
+// True after the first mount. Client-side navigations remount this component; reveals only play on the first load.
+let mountedOnce = false;
 
 /**
  * Marks [data-reveal] elements as visible once, when they scroll into view.
  * The hidden initial state and the transition live in globals.css (.reveal-ready).
  */
 export function RevealOnScroll() {
+  useLayoutEffect(() => {
+    if (mountedOnce) document.documentElement.classList.remove("reveal-ready");
+    const t = window.setTimeout(() => {
+      mountedOnce = true;
+    }, 0);
+    return () => window.clearTimeout(t);
+  }, []);
+
   useEffect(() => {
+    if (mountedOnce) return;
     document.documentElement.classList.add("motion-active");
     const items = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     if (!("IntersectionObserver" in window)) {

@@ -69,7 +69,7 @@ Semua proyek dikerjakan di perusahaan, dan perusahaan tidak boleh disebut.
 | Konten | Berkas data lokal (MDX atau JSON) per case study dan per locale, tanpa CMS dan tanpa database |
 | Deploy | Repo GitHub, auto-deploy dari `main` |
 
-Morph Transition: pilih View Transitions API atau GSAP Flip, pilih yang paling andal di Chrome, Safari, dan Firefox terbaru, dengan fallback crossfade. Tuliskan alasan pilihan di README.
+Morph Transition: pilih View Transitions API atau GSAP Flip, pilih yang paling andal di Chrome, Safari, dan Firefox terbaru, dengan fallback crossfade. Tuliskan alasan pilihan di README. **Keputusan (M3): View Transitions API lewat `<ViewTransition>` React**, alasan lengkap di `README.md`.
 
 ## 6. Struktur halaman
 

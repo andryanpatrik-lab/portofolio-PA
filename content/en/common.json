@@ -4,11 +4,28 @@
     "description": "Understanding business processes, building automation and AI that make teams' work lighter."
   },
   "name": "Patrik Andryan",
-  "nav": { "work": "Work", "about": "About", "contact": "Contact" },
-  "langToggle": { "ariaLabel": "Switch language" },
+  "nav": {
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "langToggle": {
+    "ariaLabel": "Switch language"
+  },
   "hero": {
     "label": "01 / BUSINESS & AUTOMATION",
     "sub": "Patrik Andryan · Business Systems & Automation Lead"
   },
-  "footer": "© 2026 Patrik Andryan"
+  "footer": "© 2026 Patrik Andryan",
+  "case": {
+    "back": "Back",
+    "next": "Next project",
+    "context": "Context",
+    "problem": "Problem",
+    "solution": "Solution",
+    "results": "Results",
+    "learning": "Learning",
+    "pending": "This case study is being prepared.",
+    "estimate": "estimate"
+  }
 }

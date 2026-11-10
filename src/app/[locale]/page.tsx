@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { HeroMotion } from "@/components/HeroMotion";
 import { Footer } from "@/components/Footer";
@@ -20,15 +21,17 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <>
       <HeroMotion />
       <RevealOnScroll />
-      <Nav locale={locale} dict={dict} />
-      <main>
+      <Nav locale={locale} dict={dict} heroReveal />
+      <ViewTransition enter="page-in" exit="page-out" default="none">
+      <main className="page-enter">
         <Hero dict={dict} home={home} />
         <Position home={home} />
-        <SelectedWork home={home} />
+        <SelectedWork home={home} locale={locale} />
         <OtherWork home={home} />
         <About home={home} />
         <Contact home={home} />
       </main>
+      </ViewTransition>
       <Footer text={dict.footer} />
     </>
   );

@@ -1,0 +1,52 @@
+# Portofolio Patrik Andryan
+
+Website portofolio dwibahasa (ID/EN), tema gelap. Next.js (App Router) dengan static export, di-deploy di Netlify.
+Sumber kebenaran desain dan konten: `BRIEF.md` dan `CONTENT.md`.
+
+## Menjalankan
+
+```bash
+npm install
+npm run dev      # pengembangan
+npm run build    # static export ke out/
+npm start        # sajikan out/ untuk pratinjau build produksi
+npm run lint
+```
+
+Uji transisi antar halaman di build produksi (`npm run build && npm start`), bukan di `npm run dev`: transisi memerlukan halaman yang sudah di-prefetch.
+
+## Struktur singkat
+
+- `src/app/[locale]/` halaman utama dan `work/[slug]/` (case study), locale `id` dan `en`.
+- `content/{id,en}/*.json` semua teks; `content/site.json` tautan kontak dan berkas CV (kosong sampai data tersedia).
+- `src/components/` komponen dan section; `src/lib/` i18n dan skrip inisialisasi motion.
+- `TODO.md` daftar data yang masih ditunggu dan teks sementara yang dipakai.
+
+## Keputusan teknis
+
+### Static export
+Situs sepenuhnya statis (konten berupa berkas lokal, tanpa backend), jadi tidak butuh adapter SSR. Redirect `/` ke `/id/` atau `/en/` dilakukan di `netlify.toml` berdasarkan bahasa browser.
+
+### Morph Transition kartu ke halaman case study: View Transitions API
+Dibandingkan dua pendekatan:
+
+| | View Transitions API (dipilih) | GSAP Flip |
+|---|---|---|
+| Lintas route | Browser mengambil snapshot halaman lama dan baru, otomatis | Perlu serah-terima state antar halaman dan menunggu halaman baru mount; rapuh terhadap navigasi App Router |
+| Biaya | 0 KB JS tambahan (React 19.3 `<ViewTransition>` sudah ada di Next 16) | ±25 KB gzip |
+| Kontrol | Lewat CSS pseudo-element, terbatas | Presisi tinggi |
+| Dukungan | Chromium, Safari, dan Firefox versi terbaru | Semua browser |
+| Kelemahan | Teks saat morph adalah gambar yang diskalakan, jadi sedikit blur di tengah gerakan | Kode lebih banyak, risiko flicker saat route berganti |
+
+Alasan memilih View Transitions: bekerja lintas route tanpa kode serah-terima, tanpa bundle tambahan, dan didukung langsung oleh React di Next. Elemen yang berpindah: nomor kartu, judul, dan diagram alur. Durasi masuk 400ms, kembali 280ms (`ease-in-out`), isi lain fade 200ms mulai 200ms.
+
+Fallback:
+- `prefers-reduced-motion`: tanpa morph, crossfade 150ms.
+- Browser tanpa API: skrip di `<head>` memasang kelas `no-vt` dan halaman fade-in 200ms lewat CSS.
+
+Catatan: aturan proyek "animasi hanya `transform` dan `opacity`" berlaku untuk animasi buatan sendiri. Grup morph milik browser menganimasikan ukuran snapshot, ini pengecualian yang disengaja.
+
+Status pengujian: sudah diuji di Chromium. Safari dan Firefox belum diuji (belum tersedia di lingkungan pengembangan); periksa di perangkat nyata sebelum tayang.
+
+### Motion lain
+Hero reveal memakai GSAP + SplitText (sekali per sesi), reveal section memakai IntersectionObserver. Semua keadaan awal tersembunyi punya pengaman CSS agar konten tidak pernah tertahan. Detail ada di `CLAUDE.md`.

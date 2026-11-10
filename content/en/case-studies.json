@@ -1,0 +1,145 @@
+{
+  "purchasing-digitalization": {
+    "role": "Designer and builder",
+    "year": "2025",
+    "stack": [
+      "AppSheet",
+      "Google Sheets"
+    ],
+    "context": "A construction company with several divisions involved in purchasing goods.",
+    "problem": "Purchase requests ran on Excel and paper. Data was scattered or duplicated, approvals were slow, divisions weren't in sync, and the status from request to payment was hard to track or audit.",
+    "solution": "One AppSheet app unifying the whole flow: automatic request numbering, relational tables, role-based access (requester, approver, purchasing, finance), and a real-time status dashboard, with data stored in Google Sheets and accessible on phone or desktop.",
+    "flow": [
+      {
+        "label": "Requester submits a purchase request"
+      },
+      {
+        "label": "Approver signs off based on role"
+      },
+      {
+        "label": "Purchasing selects supplier and price"
+      },
+      {
+        "label": "Goods received, Finance verifies payment"
+      },
+      {
+        "label": "Dashboard tracks status from request to payment"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "~2 days → ~30 minutes",
+        "label": "request-to-order processing time",
+        "estimate": true
+      },
+      {
+        "value": "4",
+        "label": "roles connected in one app"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  },
+  "ai-messaging-ticketing": {
+    "year": "2026",
+    "stack": [
+      "n8n",
+      "Google Gemini API",
+      "WhatsApp",
+      "Instagram"
+    ],
+    "flow": [
+      {
+        "label": "Incoming message from WhatsApp or Instagram"
+      },
+      {
+        "label": "Workflow orchestration in n8n"
+      },
+      {
+        "label": "Gemini replies using conversation memory"
+      },
+      {
+        "label": "Cases needing a human are escalated into a ticket"
+      },
+      {
+        "label": "Ticketing app tracks customer interactions and team responsiveness"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  },
+  "brand-intelligence": {
+    "year": "2026",
+    "stack": [],
+    "flow": [
+      {
+        "label": "Brand to monitor is defined"
+      },
+      {
+        "label": "Data pulled via API from search (SEO), social media, and digital footprint"
+      },
+      {
+        "label": "Data cleaned and filtered"
+      },
+      {
+        "label": "Brand perception analyzed from the customer's point of view"
+      },
+      {
+        "label": "Results presented in a single view"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  },
+  "ai-video-agent": {
+    "year": "2026",
+    "stack": [],
+    "flow": [
+      {
+        "label": "Content brief submitted"
+      },
+      {
+        "label": "Agent plans script and scenes"
+      },
+      {
+        "label": "Automation runs the workflow on a video-generation platform"
+      },
+      {
+        "label": "AI models called via API to generate assets"
+      },
+      {
+        "label": "Output collected for review"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  }
+}

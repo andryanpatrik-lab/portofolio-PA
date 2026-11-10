@@ -1,8 +1,8 @@
 import { Eyebrow } from "../Eyebrow";
 import { ProjectCard } from "../ProjectCard";
-import type { Home } from "@/lib/i18n";
+import type { Home, Locale } from "@/lib/i18n";
 
-export function SelectedWork({ home }: { home: Home }) {
+export function SelectedWork({ home, locale }: { home: Home; locale: Locale }) {
   const { work } = home;
   return (
     <section id="work" aria-label={work.label} className="container-page section-gap anchor">
@@ -11,6 +11,8 @@ export function SelectedWork({ home }: { home: Home }) {
         {work.cards.map((card, i) => (
           <ProjectCard
             key={card.slug}
+            href={`/${locale}/work/${card.slug}/`}
+            slug={card.slug}
             number={String(i + 1).padStart(2, "0")}
             title={card.title}
             tagline={card.tagline}

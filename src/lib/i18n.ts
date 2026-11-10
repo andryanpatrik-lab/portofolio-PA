@@ -2,6 +2,8 @@ import id from "@content/id/common.json";
 import en from "@content/en/common.json";
 import homeId from "@content/id/home.json";
 import homeEn from "@content/en/home.json";
+import caseId from "@content/id/case-studies.json";
+import caseEn from "@content/en/case-studies.json";
 import site from "@content/site.json";
 
 export const locales = ["id", "en"] as const;
@@ -29,3 +31,23 @@ export function getHome(locale: Locale): Home {
 }
 
 export { site };
+
+export type CaseStudyData = {
+  role?: string;
+  year: string;
+  stack: string[];
+  context?: string;
+  problem?: string;
+  solution?: string;
+  flow: { label: string; note?: string }[];
+  metrics: { value: string; label?: string; estimate?: boolean }[];
+  learning?: string;
+};
+
+const caseStudies: Record<Locale, Record<string, CaseStudyData>> = { id: caseId, en: caseEn };
+
+export const caseStudySlugs: string[] = homeId.work.cards.map((c) => c.slug);
+
+export function getCaseStudy(locale: Locale, slug: string): CaseStudyData | undefined {
+  return caseStudies[locale][slug];
+}

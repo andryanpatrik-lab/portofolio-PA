@@ -1,0 +1,145 @@
+{
+  "purchasing-digitalization": {
+    "role": "Perancang dan pembangun aplikasi",
+    "year": "2025",
+    "stack": [
+      "AppSheet",
+      "Google Sheets"
+    ],
+    "context": "Perusahaan konstruksi dengan beberapa divisi yang terlibat dalam proses pembelian barang.",
+    "problem": "Pengajuan pembelian berjalan lewat Excel dan kertas. Data tercecer atau ganda, approval lama, tidak ada sinkronisasi antar divisi, dan status dari permintaan hingga pembayaran sulit dilacak maupun diaudit.",
+    "solution": "Satu aplikasi AppSheet yang menyatukan seluruh alur: nomor permintaan otomatis, relasi antar tabel, akses sesuai peran (peminta, approver, purchasing, finance), dan dashboard status real-time, dengan data tersimpan di Google Sheets dan dapat diakses dari HP maupun PC.",
+    "flow": [
+      {
+        "label": "Peminta mengajukan permintaan barang"
+      },
+      {
+        "label": "Approver menyetujui sesuai peran"
+      },
+      {
+        "label": "Purchasing menentukan pemasok dan harga"
+      },
+      {
+        "label": "Barang diterima, Finance memverifikasi pembayaran"
+      },
+      {
+        "label": "Dashboard memantau status permintaan hingga pembayaran"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "±2 hari → ±30 menit",
+        "label": "waktu proses permintaan ke pesanan",
+        "estimate": true
+      },
+      {
+        "value": "4",
+        "label": "peran terhubung dalam satu aplikasi"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  },
+  "ai-messaging-ticketing": {
+    "year": "2026",
+    "stack": [
+      "n8n",
+      "Google Gemini API",
+      "WhatsApp",
+      "Instagram"
+    ],
+    "flow": [
+      {
+        "label": "Pesan masuk dari WhatsApp atau Instagram"
+      },
+      {
+        "label": "Orkestrasi alur di n8n"
+      },
+      {
+        "label": "Gemini menjawab dengan memori percakapan"
+      },
+      {
+        "label": "Kasus yang perlu manusia dieskalasi menjadi tiket"
+      },
+      {
+        "label": "Aplikasi tiket memantau interaksi pelanggan dan responsivitas tim"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  },
+  "brand-intelligence": {
+    "year": "2026",
+    "stack": [],
+    "flow": [
+      {
+        "label": "Brand yang dipantau ditentukan"
+      },
+      {
+        "label": "Data diambil via API dari mesin pencari (SEO), media sosial, dan jejak digital"
+      },
+      {
+        "label": "Data dirapikan dan disaring"
+      },
+      {
+        "label": "Persepsi brand dianalisis dari sudut pandang pelanggan"
+      },
+      {
+        "label": "Hasil disajikan dalam satu tampilan"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  },
+  "ai-video-agent": {
+    "year": "2026",
+    "stack": [],
+    "flow": [
+      {
+        "label": "Brief konten dimasukkan"
+      },
+      {
+        "label": "Agen merencanakan skrip dan adegan"
+      },
+      {
+        "label": "Otomasi menjalankan alur di platform pembuatan video"
+      },
+      {
+        "label": "Model AI dipanggil lewat API untuk membuat aset"
+      },
+      {
+        "label": "Hasil dihimpun untuk ditinjau"
+      }
+    ],
+    "metrics": [
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      },
+      {
+        "value": "—"
+      }
+    ]
+  }
+}

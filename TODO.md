@@ -30,6 +30,14 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - Dua paragraf Tentang dan daftar tag stack (n8n, Google Gemini API, Telegram Bot API, Google Apps Script, Google Sheets, Apify)
 - Status kartu L4 "Eksperimen (2025)" dan nama model AI offline (tidak disebut)
 
+**Halaman case study (M3), data: `content/{id,en}/case-studies.json`**
+- Bagian Konteks (kecuali Purchasing), Masalah, Solusi, dan Pembelajaran untuk case study 02, 03, 04 menampilkan "Isi case study ini sedang disiapkan." (Masalah, Solusi, Pembelajaran) atau disembunyikan (Konteks)
+- Pembelajaran Purchasing tampil teks netral yang sama
+- Metrik 2 dan 3 case study 02 sampai 04 tampil "—"; metrik 3 Purchasing tampil "—"
+- Peran dan stack case study 03 dan 04 tidak tampil (tersisa tahun saja)
+- Draf `[KONFIRMASI]` yang tampil apa adanya: peran Purchasing ("Perancang dan pembangun aplikasi"), konteks Purchasing, stack case study 02, dan alur 5 langkah semua case study (tampil di diagram alur penuh)
+- Pengujian Safari dan Firefox untuk Morph Transition belum dilakukan (hanya Chromium)
+
 **Keputusan `[PILIH]` yang saya ambil sementara**
 - Baris paroki di Tentang: dihilangkan
 - Visual Tentang: murni tipografi (tanpa foto)

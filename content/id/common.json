@@ -4,11 +4,28 @@
     "description": "Memahami proses bisnis, membangun otomasi dan AI yang membuat kerja tim lebih ringan."
   },
   "name": "Patrik Andryan",
-  "nav": { "work": "Karya", "about": "Tentang", "contact": "Kontak" },
-  "langToggle": { "ariaLabel": "Ganti bahasa" },
+  "nav": {
+    "work": "Karya",
+    "about": "Tentang",
+    "contact": "Kontak"
+  },
+  "langToggle": {
+    "ariaLabel": "Ganti bahasa"
+  },
   "hero": {
     "label": "01 / BISNIS & OTOMASI",
     "sub": "Patrik Andryan · Business Systems & Automation Lead"
   },
-  "footer": "© 2026 Patrik Andryan"
+  "footer": "© 2026 Patrik Andryan",
+  "case": {
+    "back": "Kembali",
+    "next": "Proyek berikutnya",
+    "context": "Konteks",
+    "problem": "Masalah",
+    "solution": "Solusi",
+    "results": "Hasil",
+    "learning": "Pembelajaran",
+    "pending": "Isi case study ini sedang disiapkan.",
+    "estimate": "perkiraan"
+  }
 }

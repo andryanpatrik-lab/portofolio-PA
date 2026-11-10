@@ -223,3 +223,58 @@ html:not(.motion-active).reveal-ready [data-reveal] { animation: motion-failsafe
   color: var(--text-muted);
 }
 .flow-num-last { left: auto; right: 0; }
+
+/* Flow diagram (full variant): labelled steps for case study pages. Vertical on mobile, horizontal from md. */
+.flow-full { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
+.flow-full-step { position: relative; padding-left: 32px; }
+.flow-full-node {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--accent);
+}
+.flow-full-line {
+  position: absolute;
+  left: 4.5px;
+  top: 22px;
+  bottom: -20px;
+  width: 1px;
+  background: color-mix(in srgb, var(--text-muted) 40%, transparent);
+}
+.flow-full-num { display: block; color: var(--text-muted); }
+.flow-full-label { margin-top: 4px; color: var(--text); }
+@media (min-width: 768px) {
+  .flow-full { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 24px; }
+  .flow-full-step { padding-left: 0; padding-top: 32px; }
+  .flow-full-node { top: 0; }
+  .flow-full-line { left: 18px; right: -16px; top: 4.5px; bottom: auto; width: auto; height: 1px; }
+}
+
+/* Page transitions (M3). The shared elements morph; everything else fades. See README for the choice of API. */
+@keyframes vt-fade-in { from { opacity: 0; } }
+@keyframes vt-fade-out { to { opacity: 0; } }
+
+::view-transition-group(.morph) {
+  animation-duration: 400ms;
+  animation-timing-function: var(--ease-in-out);
+}
+html:active-view-transition-type(nav-back)::view-transition-group(.morph) {
+  animation-duration: 280ms;
+}
+::view-transition-old(.page-out) { animation: 150ms var(--ease-out) both vt-fade-out; }
+::view-transition-new(.page-in) { animation: 200ms var(--ease-out) 200ms both vt-fade-in; }
+
+/* Reduced motion: no morph, plain 150ms crossfade. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(.morph) { animation: none; }
+  ::view-transition-old(.morph) { animation: 150ms linear both vt-fade-out; }
+  ::view-transition-new(.morph) { animation: 150ms linear both vt-fade-in; }
+  ::view-transition-old(.page-out) { animation: 150ms linear both vt-fade-out; }
+  ::view-transition-new(.page-in) { animation: 150ms linear both vt-fade-in; }
+}
+
+/* Browsers without the View Transitions API: crossfade the page in with CSS instead. */
+.no-vt .page-enter { animation: vt-fade-in 200ms var(--ease-out) both; }
