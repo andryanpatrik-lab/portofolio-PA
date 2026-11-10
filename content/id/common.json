@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "Patrik Andryan · Bisnis & Otomasi",
+    "description": "Memahami proses bisnis, membangun otomasi dan AI yang membuat kerja tim lebih ringan."
+  },
+  "name": "Patrik Andryan",
+  "nav": { "work": "Karya", "about": "Tentang", "contact": "Kontak" },
+  "langToggle": { "ariaLabel": "Ganti bahasa" },
+  "hero": {
+    "label": "01 / BISNIS & OTOMASI",
+    "sub": "Patrik Andryan · Business Systems & Automation Lead"
+  },
+  "footer": "© 2026 Patrik Andryan"
+}

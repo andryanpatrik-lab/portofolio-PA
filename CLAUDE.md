@@ -24,6 +24,17 @@ Berkomunikasi dengan Patrik dalam Bahasa Indonesia. Kode, nama variabel, dan kom
 - Setelah M0, lengkapi bagian Perintah di bawah.
 
 ## Perintah
-- Dev: (isi setelah M0)
-- Build: (isi setelah M0)
-- Lint: (isi setelah M0)
+- Dev: `npm run dev`
+- Build: `npm run build` (static export ke `out/`)
+- Lint: `npm run lint`
+- Pratinjau hasil build: `npm start` (menyajikan `out/` dengan `serve`)
+- Tidak ada test runner (belum dibutuhkan sampai M5).
+
+## Arsitektur
+- Next.js 16 App Router, **static export** (`output: 'export'`, `trailingSlash`). Tidak ada middleware atau fitur server. Deploy di Netlify (`netlify.toml`, publish `out`).
+- Route berbasis locale: `src/app/[locale]/` (root layout ada di sini, mengatur `<html lang>`), `generateStaticParams` untuk `id` dan `en`, `dynamicParams = false`. `params` adalah Promise (Next 15+).
+- Redirect `/` ke `/id/` atau `/en/` dilakukan di `netlify.toml` berdasarkan header bahasa, bukan di Next.
+- i18n tanpa library: kamus di `content/{id,en}/*.json`, diakses lewat `getDictionary()` di `src/lib/i18n.ts` (alias `@content/*`). Tipe `Dictionary` diturunkan dari JSON `id`, jadi kunci di `en` harus sama.
+- Design tokens (BRIEF bagian 7-8) ada di `src/app/globals.css` sebagai CSS variables, dipetakan ke tema Tailwind v4 lewat `@theme inline`. Kelas tipografi: `.t-display`, `.t-h1`..`.t-h4`, `.t-lead`, `.t-metric`, `.t-label`.
+- Font self-host: berkas woff2 di `src/fonts/` dimuat lewat `next/font/local` (`src/app/fonts.ts`). Jangan memakai `next/font/google`.
+- GSAP belum diinstal; ditambahkan di M2.

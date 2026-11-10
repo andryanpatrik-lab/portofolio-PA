@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Root: send English browsers to /en/, everyone else to /id/.
+[[redirects]]
+  from = "/"
+  to = "/en/"
+  status = 302
+  force = false
+  conditions = { Language = ["en"] }
+
+[[redirects]]
+  from = "/"
+  to = "/id/"
+  status = 302
+  force = false
