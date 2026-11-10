@@ -120,6 +120,8 @@ body {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -137,6 +139,23 @@ body {
 @media (hover: hover) and (pointer: fine) {
   .project-card:hover, .other-card:hover { border-color: var(--accent-dim); }
   .project-card:hover .card-arrow { transform: translateX(4px); }
+
+  /* Mini flow diagram: gold lights up node by node on card hover (opacity and transform only). */
+  .flow-node-fill {
+    transition: opacity 120ms var(--ease-out), transform 120ms var(--ease-out);
+  }
+  .flow-line-fill {
+    transition: transform 120ms var(--ease-out);
+  }
+  .project-card:hover .flow-node-fill {
+    opacity: 1;
+    transform: none;
+    transition: opacity 200ms var(--ease-out) calc(var(--i) * 120ms), transform 200ms var(--ease-out) calc(var(--i) * 120ms);
+  }
+  .project-card:hover .flow-line-fill {
+    transform: scaleX(1);
+    transition: transform 200ms var(--ease-out) calc(var(--i) * 120ms + 60ms);
+  }
   .btn-ghost:hover { border-color: var(--accent-dim); }
   .btn-primary:hover { background: var(--accent-dim); }
   .link-underline:hover { text-decoration-color: var(--accent); }
@@ -163,3 +182,44 @@ html:not(.motion-active).reveal-ready [data-reveal] { animation: motion-failsafe
 /* CSS-only failsafe: if scripts never start (no .motion-active), hidden content shows itself after 3s.
    Scripts add .motion-active on mount, so normal visitors never hit this path. */
 @keyframes motion-failsafe { to { opacity: 1; transform: none; } }
+
+/* Flow diagram (mini variant). Static by default; hover animation lives in the hover media query above. */
+.flow { display: flex; align-items: center; padding-bottom: 28px; }
+.flow-step { position: relative; display: flex; flex: 1 1 0; align-items: center; }
+.flow-step:last-child { flex: 0 0 auto; }
+.flow-node {
+  position: relative;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 55%, transparent);
+}
+.flow-node-fill {
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  background: var(--accent);
+  opacity: 0;
+  transform: scale(0.95);
+}
+.flow-line {
+  position: relative;
+  flex: 1 1 auto;
+  height: 1px;
+  background: color-mix(in srgb, var(--text-muted) 35%, transparent);
+}
+.flow-line-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.flow-num {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  color: var(--text-muted);
+}
+.flow-num-last { left: auto; right: 0; }

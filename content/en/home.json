@@ -20,24 +20,28 @@
     "cards": [
       {
         "slug": "purchasing-digitalization",
+        "flowSteps": 5,
         "title": "Purchasing and approval digitalization",
         "tagline": "From paper and Excel to one app: requests, approvals, and payments all tracked.",
         "metric": { "value": "~2 days → ~30 minutes", "estimate": true }
       },
       {
         "slug": "ai-messaging-ticketing",
+        "flowSteps": 5,
         "title": "Multi-channel AI messaging assistant with ticketing",
         "tagline": "One assistant for WhatsApp and Instagram, with tickets that track service and response.",
         "metric": { "value": "—", "estimate": false }
       },
       {
         "slug": "brand-intelligence",
+        "flowSteps": 5,
         "title": "Customer-perspective brand intelligence",
         "tagline": "Brand perception from search, social media, and digital footprint in a single view.",
         "metric": { "value": "—", "estimate": false }
       },
       {
         "slug": "ai-video-agent",
+        "flowSteps": 5,
         "title": "AI agent for automated video production",
         "tagline": "From brief to video through AI model orchestration.",
         "metric": { "value": "—", "estimate": false }

@@ -14,6 +14,7 @@ export function SelectedWork({ home }: { home: Home }) {
             number={String(i + 1).padStart(2, "0")}
             title={card.title}
             tagline={card.tagline}
+            flowSteps={card.flowSteps}
             metricValue={card.metric.value}
             estimateLabel={work.estimateLabel}
             isEstimate={card.metric.estimate}

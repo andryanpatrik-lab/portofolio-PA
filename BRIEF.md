@@ -226,7 +226,7 @@ Aturan:
 
 `Nav`, `LangToggle`, `Hero`, `Eyebrow` (label mono + nomor), `Metric` (angka mono emas + keterangan), `ProjectCard` (besar, bisa morph), `OtherProjectCard` (ringkas, tanpa morph; hover hanya border), `CaseStudyLayout`, `FlowDiagram` (diagram alur SVG/HTML dari data), `StackTags`, `ContactBlock`, `Footer`, `Button` (varian: primary emas, ghost).
 
-`FlowDiagram` penting: pekerjaan Patrik sebagian besar "tak terlihat", jadi diagram alur adalah visual utama tiap case study. Data langkah (3-5 node) datang dari `CONTENT.md`.
+`FlowDiagram` penting (varian mini tanpa label sudah dipakai di kartu Selected Work; varian lengkap berlabel dibuat di M3): pekerjaan Patrik sebagian besar "tak terlihat", jadi diagram alur adalah visual utama tiap case study. Data langkah (3-5 node) datang dari `CONTENT.md`.
 
 ## 11. Model konten
 
