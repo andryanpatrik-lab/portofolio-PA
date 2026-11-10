@@ -5,6 +5,8 @@ import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { siteUrl } from "@/lib/site";
 import { Cosmos } from "@/components/cosmos/Cosmos";
+import { ScrollFx } from "@/components/ScrollFx";
+import { DustController } from "@/components/StardustText";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionInit";
 import "../globals.css";
 
@@ -40,6 +42,8 @@ export default async function RootLayout({
           {getDictionary(locale).skipLink}
         </a>
         <Cosmos />
+        <DustController />
+        <ScrollFx />
         {children}
       </body>
     </html>

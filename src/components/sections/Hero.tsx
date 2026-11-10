@@ -10,7 +10,7 @@ export function Hero({ dict, home }: { dict: Dictionary; home: Home }) {
         <div data-hero="label">
           <Eyebrow>{dict.hero.label}</Eyebrow>
         </div>
-        <h1 id="hero-title" data-hero="title" className="t-display mt-8 max-w-[14ch]">
+        <h1 id="hero-title" data-hero="title" data-dust="dissolve" className="t-display mt-8 max-w-[14ch]">
           {home.hero.titleBefore}
           {/* Keyword is drawn in two layers so the white-to-gold shift animates opacity only. */}
           <span className="relative inline-block">

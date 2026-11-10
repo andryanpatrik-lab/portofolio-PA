@@ -230,7 +230,8 @@ Patrik meminta gerak yang lebih hidup dan bertema luar angkasa (nebula, ledakan,
 - **Kontras warna**: tiap section memakai `data-cosmos` untuk suasana warna; semua palet gelap dan lolos kontras teks 4.5:1.
 - **Aturan animasi diperbarui**: elemen DOM tetap hanya `transform` dan `opacity`; kanvas/WebGL diizinkan lewat tingkat kualitas di atas dan harus menghormati `prefers-reduced-motion`.
 - **Tetap dilarang**: scroll hijacking dan section tertahan (pinned), kursor kustom, suara otomatis, mode terang.
-- **Berikutnya**: M8 teks debu bintang dan animasi scroll (mengganti GSAP dengan Motion), M9 lubang hitam, ledakan nebula, kartu 3D saat hover, audit.
+- **Teks debu bintang (M8, selesai)**: judul hero meniup jadi debu mengikuti scroll, judul "Proyek lainnya" dan "Mari bicara." dirakit dari debu saat masuk layar, paragraf utama muncul kata demi kata; GSAP diganti Motion.
+- **Berikutnya (M9)**: lubang hitam, ledakan nebula, kartu 3D saat hover, audit.
 
 ## 10. Komponen
 

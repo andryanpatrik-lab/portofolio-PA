@@ -8,7 +8,7 @@ export function Position({ home }: { home: Home }) {
     <section data-cosmos="nebula" aria-label={position.label} className="container-page section-gap">
       <div data-reveal>
         <Eyebrow>{position.label}</Eyebrow>
-        <p className="t-lead mt-8 text-text">{position.lead}</p>
+        <p data-split className="t-lead mt-8 text-text">{position.lead}</p>
       </div>
       <ul className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
         {position.metrics.map((m) => (
