@@ -206,7 +206,7 @@ Hanya animasikan `transform` dan `opacity`. **Dilarang `transition: all`**. Jang
 |---|---|---|---|---|
 | Hero: latar + glow | Fade-in cahaya emas halus (12%) | 600ms | ease-out | Mulai 0ms |
 | Hero: label | Fade + naik 12px | 400ms | ease-out | Mulai 200ms |
-| Hero: judul Display | Per baris: naik 24px + fade, jeda 80ms | 700ms/baris | ease-out | Mulai 400ms (SplitText) |
+| Hero: judul Display | Satu blok: naik 24px + fade (CSS murni, tanpa menunggu JS agar LCP cepat) | 700ms | ease-out | Mulai 400ms |
 | Hero: kata kunci | Warna → emas | 500ms | ease | Mulai ~1000ms |
 | Hero: CTA + nav | Fade-in | 400ms | ease-out | Mulai 1200ms, total ±1,6 detik |
 | Hover kartu proyek | Border → `--accent-dim`, panah geser 4px | 200ms | ease | **Hanya** `@media (hover: hover) and (pointer: fine)` |

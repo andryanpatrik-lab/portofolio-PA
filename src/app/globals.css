@@ -168,7 +168,12 @@ body {
 .accent-base { opacity: 0; }
 .hero-pending .accent-base { opacity: 1; }
 .hero-pending [data-hero] { opacity: 0; }
-html:not(.motion-active).hero-pending [data-hero] { animation: motion-failsafe 0s 3s forwards; }
+html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { animation: motion-failsafe 0s 3s forwards; }
+
+/* The hero title rises with CSS alone (no JS dependency): 700ms from 400ms. It starts at opacity 0.01 (visually identical to 0)
+   because browsers ignore fully transparent text for LCP and a compositor-only fade never re-triggers it. */
+.hero-pending [data-hero="title"] { animation: hero-title-in 700ms var(--ease-out) 400ms both; }
+@keyframes hero-title-in { from { opacity: 0.01; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 
 /* Section reveal (M2.5): fade + rise 12px, once, only when motion is allowed (see src/lib/motionInit.ts). */
 .reveal-ready [data-reveal] {
