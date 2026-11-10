@@ -4,7 +4,7 @@ import { LangToggle } from "./LangToggle";
 
 export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
-    <header className="container-page flex items-center justify-between py-6">
+    <header data-hero="nav" className="container-page relative z-10 flex items-center justify-between py-6">
       <Link href={`/${locale}/`} className="t-h4">
         {dict.name.split(" ")[0]}
       </Link>

@@ -141,3 +141,11 @@ body {
   .btn-primary:hover { background: var(--accent-dim); }
   .link-underline:hover { text-decoration-color: var(--accent); }
 }
+
+/* Hero reveal: initial hidden state only while the reveal is pending (see src/lib/heroInit.ts). */
+.hero-glow {
+  background: radial-gradient(60% 55% at 28% 22%, var(--accent-glow), transparent 70%);
+}
+.accent-base { opacity: 0; }
+.hero-pending .accent-base { opacity: 1; }
+.hero-pending [data-hero] { opacity: 0; }

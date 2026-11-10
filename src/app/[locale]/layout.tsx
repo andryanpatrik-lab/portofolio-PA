@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { jetbrainsMono, spaceGrotesk } from "../fonts";
 import { getDictionary, isLocale, locales } from "@/lib/i18n";
+import { HERO_INIT_SCRIPT } from "@/lib/heroInit";
 import "../globals.css";
 
 export const dynamicParams = false;
@@ -27,7 +28,10 @@ export default async function RootLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   return (
-    <html lang={locale} className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html lang={locale} className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: HERO_INIT_SCRIPT }} />
+      </head>
       <body>{children}</body>
     </html>
   );
