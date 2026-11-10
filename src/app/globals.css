@@ -70,6 +70,8 @@ html {
 }
 
 body {
+  /* the star-dust canvases extend past the content box; clip them so they never widen the page (mobile layout viewport) */
+  overflow-x: clip;
   /* transparent so the fixed space background (z-index -1) shows through; html carries the base colour */
   background: transparent;
   color: var(--text);

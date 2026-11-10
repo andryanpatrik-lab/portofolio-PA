@@ -17,13 +17,20 @@ const TARGET: Record<Tier, number> = { full: 7000, lite: 2200 };
 function attach(el: HTMLElement, tier: Tier): () => void {
   const mode = el.dataset.dust;
   const dpr = tier === "full" ? Math.min(window.devicePixelRatio || 1, 1.5) : 1;
+  // The canvas only enters the DOM when dust is actually needed. Inserting wide absolute canvases at load made
+  // mobile pages heavy (layout shift and long tasks), so nothing is created until the first scroll/reveal.
   const canvas = document.createElement("canvas");
   canvas.setAttribute("aria-hidden", "true");
   canvas.className = "dust-canvas";
   const host = el.parentElement ?? el;
-  host.classList.add("dust-host");
-  placeCanvas(el, canvas);
-  host.appendChild(canvas);
+  let mounted = false;
+  const mount = () => {
+    if (mounted) return;
+    mounted = true;
+    host.classList.add("dust-host");
+    placeCanvas(el, canvas);
+    host.appendChild(canvas);
+  };
   const ctx = canvas.getContext("2d");
 
   let field: Field | null = null;
@@ -33,6 +40,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
   let visible = true;
   const timers: number[] = [];
 
+  // Building only rasterises into the (detached) canvas; mount() is called when something is drawn.
   const ensureField = () => (field ??= buildField(el, canvas, dpr, TARGET[tier]));
   const cleanups: (() => void)[] = [];
 
@@ -55,6 +63,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
     const f = field;
     const idle = mode === "dissolve" ? el.style.opacity === "" : el.dataset.dustState === "done";
     if (!f || !visible || !idle || document.hidden) return schedulePuff();
+    mount();
     const pf = makePuff(f);
     const t0 = performance.now();
     const frame = (now: number) => {
@@ -90,6 +99,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
         el.dataset.dustState = "done";
         return;
       }
+      mount();
       const t0 = performance.now();
       const frame = (now: number) => {
         if (disposed) return;
@@ -123,6 +133,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
       }
       const f = ensureField();
       if (!f) return;
+      mount();
       el.style.opacity = String(1 - Math.min(p * 25, 1));
       renderDissolve(ctx, f, p, performance.now() / 1000);
     };
@@ -141,7 +152,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
 
     // Build the particle field in an idle moment once the hero has finished, so the first scroll has no hitch.
     const prebuild = window.setInterval(() => {
-      if (heroBusy()) return;
+      if (heroBusy() || performance.now() < 5000) return;
       window.clearInterval(prebuild);
       const idle = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback;
       const go = () => {
