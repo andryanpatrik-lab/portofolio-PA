@@ -1,0 +1,106 @@
+{
+  "hero": {
+    "titleBefore": "Business I understand. ",
+    "accent": "Automation",
+    "titleAfter": " I build.",
+    "cta": "See the work"
+  },
+  "position": {
+    "label": "02 / POSITION",
+    "lead": "Ten years across pharma, automotive, logistics, and construction, with sales and P&L accountability, taught me that the best systems make other people's work lighter. Today I combine that business understanding with AI and automation, from CRMs and dashboards to chatbots and data flows.",
+    "metrics": [
+      { "value": "10", "label": "years across 4 industries" },
+      { "value": "3+", "label": "CRM and dashboard systems across industries" },
+      { "value": "<2%", "label": "return-to-sender rate in logistics operations" }
+    ]
+  },
+  "work": {
+    "label": "03 / SELECTED WORK",
+    "estimateLabel": "estimate",
+    "cards": [
+      {
+        "slug": "purchasing-digitalization",
+        "title": "Purchasing and approval digitalization",
+        "tagline": "From paper and Excel to one app: requests, approvals, and payments all tracked.",
+        "metric": { "value": "~2 days → ~30 minutes", "estimate": true }
+      },
+      {
+        "slug": "ai-messaging-ticketing",
+        "title": "Multi-channel AI messaging assistant with ticketing",
+        "tagline": "One assistant for WhatsApp and Instagram, with tickets that track service and response.",
+        "metric": { "value": "—", "estimate": false }
+      },
+      {
+        "slug": "brand-intelligence",
+        "title": "Customer-perspective brand intelligence",
+        "tagline": "Brand perception from search, social media, and digital footprint in a single view.",
+        "metric": { "value": "—", "estimate": false }
+      },
+      {
+        "slug": "ai-video-agent",
+        "title": "AI agent for automated video production",
+        "tagline": "From brief to video through AI model orchestration.",
+        "metric": { "value": "—", "estimate": false }
+      }
+    ]
+  },
+  "other": {
+    "label": "04 / OTHER WORK",
+    "title": "Other work",
+    "sub": "A few more projects that show my range.",
+    "statusPending": "Being updated",
+    "items": [
+      {
+        "id": "inventory-packing",
+        "name": "Inventory and packing application",
+        "summary": "Inventory and packing application with automatic workload distribution across team members.",
+        "tags": ["Automation", "Operations"],
+        "status": null
+      },
+      {
+        "id": "internal-automation",
+        "name": "Internal automation tools",
+        "summary": "A priority-scored creator-scouting system and a content-trend research bot for teams.",
+        "tags": ["n8n", "Google Sheets", "Apps Script"],
+        "status": null
+      },
+      {
+        "id": "offline-ai",
+        "name": "Offline AI experiment with a local model",
+        "summary": "Running a small language model locally with Ollama and Open WebUI, without relying on cloud services.",
+        "tags": ["Ollama", "Open WebUI", "Local model"],
+        "status": "Experiment (2025)"
+      },
+      {
+        "id": "watch-party",
+        "name": "Community watch-party website",
+        "summary": "A single-file site with match schedule, filters, cost estimator, and results board for a watch-party event.",
+        "tags": ["HTML", "JavaScript", "Community"],
+        "status": null
+      },
+      {
+        "id": "survey-dashboard",
+        "name": "Event survey evaluation dashboard",
+        "summary": "Participant survey results visualized with Chart.js for community event evaluation.",
+        "tags": ["Chart.js", "Analytics", "Community"],
+        "status": null
+      }
+    ]
+  },
+  "about": {
+    "label": "05 / ABOUT",
+    "paragraphs": [
+      "I started on the ground: pharma sales, automotive, logistics operations, and construction-materials distribution. That's where I learned business problems are rarely technology problems. They are usually process problems.",
+      "The path went from Excel dashboards and CRMs, to AppSheet and n8n, and now AI: a multi-channel messaging assistant, a video-production agent, and a brand-intelligence application. I work with n8n, the Google Gemini API, Telegram integrations, and Google Apps Script."
+    ],
+    "stack": ["n8n", "Google Gemini API", "Telegram Bot API", "Google Apps Script", "Google Sheets", "Apify"],
+    "downloadCv": "Download CV"
+  },
+  "contact": {
+    "label": "06 / CONTACT",
+    "title": "Let's talk.",
+    "sub": "Open to roles bridging business and automation, and freelance projects.",
+    "cta": "Get in touch",
+    "pending": "Contact details coming soon."
+  }
+}

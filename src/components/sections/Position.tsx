@@ -1,0 +1,20 @@
+import { Eyebrow } from "../Eyebrow";
+import { Metric } from "../Metric";
+import type { Home } from "@/lib/i18n";
+
+export function Position({ home }: { home: Home }) {
+  const { position } = home;
+  return (
+    <section aria-label={position.label} className="container-page section-gap">
+      <Eyebrow>{position.label}</Eyebrow>
+      <p className="t-lead mt-8 text-text">{position.lead}</p>
+      <ul className="mt-16 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
+        {position.metrics.map((m) => (
+          <li key={m.label}>
+            <Metric value={m.value} label={m.label} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

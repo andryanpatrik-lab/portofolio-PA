@@ -123,3 +123,21 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Section rhythm and anchors */
+.section-gap { padding-top: var(--section-gap); }
+.anchor { scroll-margin-top: 24px; }
+.t-metric-sm { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
+
+.link-underline { text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 6px; }
+
+/* Interaction states. Hover only on real pointers; :active press feedback. */
+.btn-primary:active, .btn-ghost:active { transform: scale(0.97); }
+
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover, .other-card:hover { border-color: var(--accent-dim); }
+  .project-card:hover .card-arrow { transform: translateX(4px); }
+  .btn-ghost:hover { border-color: var(--accent-dim); }
+  .btn-primary:hover { background: var(--accent-dim); }
+  .link-underline:hover { text-decoration-color: var(--accent); }
+}

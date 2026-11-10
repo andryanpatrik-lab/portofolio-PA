@@ -1,19 +1,31 @@
 import { notFound } from "next/navigation";
+import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
-import { getDictionary, isLocale } from "@/lib/i18n";
+import { About } from "@/components/sections/About";
+import { Contact } from "@/components/sections/Contact";
+import { Hero } from "@/components/sections/Hero";
+import { OtherWork } from "@/components/sections/OtherWork";
+import { Position } from "@/components/sections/Position";
+import { SelectedWork } from "@/components/sections/SelectedWork";
+import { getDictionary, getHome, isLocale } from "@/lib/i18n";
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
+  const home = getHome(locale);
   return (
     <>
       <Nav locale={locale} dict={dict} />
-      <main className="container-page py-[var(--section-gap)]">
-        <p className="t-label text-text-muted">{dict.hero.label}</p>
-        <h1 className="t-display mt-6">{dict.name}</h1>
-        <p className="t-lead mt-6 text-text-2">{dict.hero.sub}</p>
+      <main>
+        <Hero dict={dict} home={home} />
+        <Position home={home} />
+        <SelectedWork home={home} />
+        <OtherWork home={home} />
+        <About home={home} />
+        <Contact home={home} />
       </main>
+      <Footer text={dict.footer} />
     </>
   );
 }
