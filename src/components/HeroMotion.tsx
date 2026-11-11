@@ -26,6 +26,8 @@ export function HeroMotion() {
       if (!started) root.classList.remove(HERO_PENDING_CLASS);
     }, 3000);
 
+    const introOn = root.classList.contains("intro-on");
+    let io: IntersectionObserver | null = null;
     const run = () => {
       if (cancelled) return;
       started = true;
@@ -38,20 +40,36 @@ export function HeroMotion() {
       const nav = q("nav");
       const rest = qa("rest");
       const els = [glow, label, gold, nav, ...rest].filter(Boolean) as HTMLElement[];
-      const anims = [
-        glow && animate(glow, { opacity: [0, 1] }, { duration: 0.6, ease: EASE }),
-        label && animate(label, { opacity: [0, 1], transform: ["translateY(12px)", "none"] }, { duration: 0.4, delay: 0.2, ease: EASE }),
-        gold && animate(gold, { opacity: [0, 1] }, { duration: 0.5, delay: 1.0, ease: "easeOut" }),
-        ...rest.map((el) => animate(el, { opacity: [0, 1] }, { duration: 0.4, delay: 1.2, ease: EASE })),
-        nav && animate(nav, { opacity: [0, 1] }, { duration: 0.4, delay: 1.2, ease: EASE }),
-      ].filter(Boolean) as ReturnType<typeof animate>[];
-      Promise.all(anims.map((a) => a.finished)).then(() => {
-        root.classList.remove(HERO_PENDING_CLASS);
-        els.forEach((el) => {
-          el.style.removeProperty("opacity");
-          el.style.removeProperty("transform");
+      const play = (list: (ReturnType<typeof animate> | null)[]) => list.filter(Boolean) as ReturnType<typeof animate>[];
+      // The nav fades in at load; with the entry intro the rest of the hero waits until it comes into view.
+      const navAnim = nav ? animate(nav, { opacity: [0, 1] }, { duration: 0.4, delay: introOn ? 0.3 : 1.2, ease: EASE }) : null;
+      const playHero = () =>
+        play([
+          glow && animate(glow, { opacity: [0, 1] }, { duration: 0.6, ease: EASE }),
+          label && animate(label, { opacity: [0, 1], transform: ["translateY(12px)", "none"] }, { duration: 0.4, delay: 0.2, ease: EASE }),
+          gold && animate(gold, { opacity: [0, 1] }, { duration: 0.5, delay: 1.0, ease: "easeOut" }),
+          ...rest.map((el) => animate(el, { opacity: [0, 1] }, { duration: 0.4, delay: 1.2, ease: EASE })),
+        ]);
+      const finish = (anims: ReturnType<typeof animate>[]) =>
+        Promise.all([...anims, ...(navAnim ? [navAnim] : [])].map((a) => a.finished)).then(() => {
+          root.classList.remove(HERO_PENDING_CLASS);
+          els.forEach((el) => {
+            el.style.removeProperty("opacity");
+            el.style.removeProperty("transform");
+          });
         });
-      });
+      const hero = document.getElementById("hero");
+      if (introOn && hero) {
+        io = new IntersectionObserver(
+          ([e]) => {
+            if (!e.isIntersecting) return;
+            io?.disconnect();
+            finish(playHero());
+          },
+          { rootMargin: "0px 0px -30% 0px" },
+        );
+        io.observe(hero);
+      } else finish(playHero());
     };
 
     if (document.fonts.status === "loaded") run();
@@ -59,6 +77,7 @@ export function HeroMotion() {
 
     return () => {
       cancelled = true;
+      io?.disconnect();
       window.clearTimeout(safety);
     };
   }, []);

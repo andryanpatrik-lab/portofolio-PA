@@ -16,6 +16,10 @@
     "label": "01 / BISNIS & OTOMASI",
     "sub": "Patrik Andryan · Business Systems & Automation Lead"
   },
+  "intro": {
+    "hint": "Gulir untuk masuk",
+    "skip": "Lewati intro"
+  },
   "footer": "© 2026 Patrik Andryan",
   "case": {
     "back": "Kembali",

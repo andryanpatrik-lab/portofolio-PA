@@ -1,0 +1,28 @@
+import type { Dictionary } from "@/lib/i18n";
+
+/**
+ * Cinematic entry (M10): a tall section with one sticky screen. Scrolling flies the camera through a gate
+ * (see IntroFlight). Only rendered visibly when <html> has `intro-on` (see src/lib/motionInit.ts); otherwise
+ * it is display:none and the hero is the first thing on the page. The layers are decorative; the text stays in the DOM.
+ */
+export function Intro({ dict }: { dict: Dictionary }) {
+  return (
+    <div className="intro" data-cosmos="nebula">
+      <div className="intro-stick" data-intro="stick">
+        <div aria-hidden="true" className="intro-layer intro-stars" data-intro="stars" />
+        <div aria-hidden="true" className="intro-layer intro-dust intro-dust-a" data-intro="dust-a" />
+        <div aria-hidden="true" className="intro-layer intro-dust intro-dust-b" data-intro="dust-b" />
+        <div aria-hidden="true" className="intro-portal" data-intro="portal" />
+        <a href="#hero" className="intro-skip t-label" data-intro="skip">
+          {dict.intro.skip}
+        </a>
+        <div className="intro-copy" data-intro="copy">
+          <p className="t-lead text-text-2">{dict.hero.sub}</p>
+          <p className="t-label intro-hint">
+            {dict.intro.hint} <span aria-hidden="true">↓</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

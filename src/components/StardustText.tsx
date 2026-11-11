@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { buildField, clear, makePuff, placeCanvas, renderAssemble, renderDissolve, renderPuff, type Field } from "@/lib/dust";
 
 type Tier = "full" | "lite";
-// Scroll distance (px) over which the hero title evaporates: it starts at the first pixel and is gone after this.
+// Scroll distance (px) over which the hero title evaporates once the hero has reached its resting place.
 const DISSOLVE_DISTANCE = 240;
 const TARGET: Record<Tier, number> = { full: 7000, lite: 2200 };
 
@@ -180,8 +180,12 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
     const request = () => {
       if (!dRaf) dRaf = requestAnimationFrame(apply);
     };
-    const stop = scroll((_progress: number, info: { y: { current: number } }) => {
-      p = Math.min(1, Math.max(0, info.y.current / DISSOLVE_DISTANCE));
+    // Distance is measured from where the hero section sits right under the header (its position without the
+    // entry intro above it), so the title evaporates the same way whether or not the intro played.
+    const sec = el.closest("section") ?? el;
+    const stop = scroll(() => {
+      const rest = document.querySelector("header")?.getBoundingClientRect().height ?? 80;
+      p = Math.min(1, Math.max(0, (rest - sec.getBoundingClientRect().top) / DISSOLVE_DISTANCE));
       request();
     });
     cleanups.push(stop);

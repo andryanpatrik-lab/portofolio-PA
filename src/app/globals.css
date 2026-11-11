@@ -167,6 +167,8 @@ body {
 /* Hero reveal: initial hidden state only while the reveal is pending (see src/lib/heroInit.ts). */
 .hero-glow {
   background: radial-gradient(60% 55% at 28% 22%, var(--accent-glow), transparent 70%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%);
+  mask-image: linear-gradient(to bottom, transparent, #000 22%);
 }
 .accent-base { opacity: 0; }
 .hero-pending .accent-base { opacity: 1; }
@@ -178,6 +180,45 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
 /* Without star dust (off tier) the title rises with CSS; with dust, the dust controller owns its visibility. */
 .hero-pending:not(.dust-ready) [data-hero="title"] { animation: hero-title-in 700ms var(--ease-out) 400ms both; }
 @keyframes hero-title-in { from { opacity: 0.01; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Cinematic entry (M10). Visible only under .intro-on (set by src/lib/motionInit.ts); otherwise the hero is first.
+   The sticky screen is the one allowed pinned section (BRIEF section 9); scrolling stays native. */
+.intro { display: none; }
+.intro-on .intro { display: block; position: relative; height: 260vh; margin-top: -5rem; margin-bottom: -45vh; }
+@media (max-width: 1023px), (pointer: coarse) { .intro-on .intro { height: 190vh; margin-bottom: -35vh; } }
+.intro-stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; place-items: center; pointer-events: none; }
+.intro-stick a { pointer-events: auto; }
+.intro-layer { position: absolute; inset: 0; will-change: transform, opacity; }
+.intro-stars {
+  background-image:
+    radial-gradient(1.6px 1.6px at 20px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 120px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1.4px 1.4px at 160px 70px, #cfe0ff, transparent),
+    radial-gradient(1px 1px at 60px 170px, rgba(255, 235, 200, 0.9), transparent);
+  background-size: 200px 200px;
+  opacity: 0.75;
+}
+.intro-dust { inset: -25% -10%; }
+.intro-dust-a { background: radial-gradient(40% 30% at 28% 62%, rgba(130, 95, 255, 0.2), transparent 72%), radial-gradient(34% 26% at 76% 38%, rgba(255, 190, 90, 0.13), transparent 70%); }
+.intro-dust-b { background: radial-gradient(30% 22% at 70% 70%, rgba(70, 140, 255, 0.16), transparent 72%), radial-gradient(28% 24% at 20% 25%, rgba(220, 90, 190, 0.12), transparent 72%); }
+.cosmos-lite .intro-dust-b { display: none; }
+.intro-portal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(56vmin, 520px);
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  border: 2px solid rgba(255, 200, 110, 0.55);
+  background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0.92), rgba(3, 3, 10, 0.6) 70%, transparent);
+  box-shadow: 0 0 60px rgba(255, 190, 90, 0.25), inset 0 0 60px rgba(255, 190, 90, 0.15);
+  transform: translate3d(-50%, -50%, 0) scale(0.2);
+  will-change: transform, opacity;
+}
+.intro-copy { position: relative; display: grid; justify-items: center; gap: 1.25rem; text-align: center; padding: 0 1.5rem; will-change: transform, opacity; }
+.intro-hint { color: var(--text-muted, var(--text-2)); }
+.intro-skip { position: absolute; top: 5.5rem; left: 50%; transform: translateX(-50%); color: var(--text-2); padding: 0.5rem 1rem; border: 1px solid var(--border, rgba(255, 255, 255, 0.2)); border-radius: 9999px; }
+.intro-skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* Star-dust text (M8, M9). Armed by .dust-ready (any tier but off); text is never hidden for long. */
 .dust-host { position: relative; }

@@ -233,6 +233,7 @@ Patrik meminta gerak yang lebih hidup dan bertema luar angkasa (nebula, ledakan,
 - **Tetap dilarang**: scroll hijacking dan section tertahan (pinned), kursor yang menggantikan kursor asli, suara otomatis, mode terang.
 - **Teks debu bintang (M8, selesai)**: judul hero meniup jadi debu mengikuti scroll, judul "Proyek lainnya" dan "Mari bicara." dirakit dari debu saat masuk layar, semua judul dan paragraf (kecuali judul case study, label, nav, teks kartu) dirakit dari debu saat masuk layar; GSAP diganti Motion.
 - **Lubang hitam (M9, selesai)**: selalu ada di latar, bergeser mengikuti scroll dan condong ke tepi layar. Tingkat full: lensa gravitasi (bintang dan nebula melengkung) + cincin emas miring dengan sisi lebih terang + inti hitam, di shader. Tingkat lite: elemen CSS (cincin berputar pelan, posisi lewat `transform`). Off: tidak ada.
+- **Intro sinematik (M10, disetujui Patrik, terinspirasi intro situs referensi)**: di beranda, sebelum Hero, ada layar sticky 260vh (190vh di HP) yang terikat scroll: bintang membesar (zoom), gerbang cincin emas membesar melewati layar (kamera masuk), lapisan debu bergeser ke atas (dolly), lalu Hero muncul. Hanya `transform` dan `opacity`; scroll tetap native. Aktif sekali per sesi (`intro-seen`), tidak aktif bila reduced-motion, data saver, ada `#hash`, atau bukan beranda; ada tombol Lewati intro. Teks petunjuk dan tombol baru perlu dikonfirmasi Patrik (lihat `TODO.md`).
 - **Berikutnya (M9)**: ledakan nebula saat ganti section, kartu 3D saat hover, audit.
 
 ## 10. Komponen
@@ -289,7 +290,7 @@ type OtherProject = {
 
 ## 13. Yang TIDAK boleh dibuat (guardrails)
 
-Scroll hijacking dan section pinned, kursor kustom selain cahaya pointer yang diizinkan (bagian 9: hanya mouse, kursor asli tetap tampil), auto-play suara, mode terang, animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
+Scroll hijacking dan section pinned (satu pengecualian disetujui Patrik: intro sinematik beranda M10, section sticky yang scroll-nya tetap native, tanpa `preventDefault`, dengan tombol Lewati dan mati di reduced-motion), kursor kustom selain cahaya pointer yang diizinkan (bagian 9: hanya mouse, kursor asli tetap tampil), auto-play suara, mode terang, animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
 
 ## 14. Urutan build
 

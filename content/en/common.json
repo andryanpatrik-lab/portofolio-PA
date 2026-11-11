@@ -16,6 +16,10 @@
     "label": "01 / BUSINESS & AUTOMATION",
     "sub": "Patrik Andryan · Business Systems & Automation Lead"
   },
+  "intro": {
+    "hint": "Scroll to enter",
+    "skip": "Skip intro"
+  },
   "footer": "© 2026 Patrik Andryan",
   "case": {
     "back": "Back",

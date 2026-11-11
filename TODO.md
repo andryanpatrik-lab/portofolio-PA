@@ -57,3 +57,5 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [ ] Nilai kursor cahaya di desktop nyata (kehalusan, ukuran, warna) dan beri tahu bila perlu disesuaikan
 - [ ] Uji latar ruang angkasa di HP nyata (bagus atau patah-patah?) lewat branch deploy, dan di Safari/Firefox desktop
 - [ ] Konfirmasi nama lengkap "Patrik Andryan" di header sudah sesuai
+
+- [ ] Konfirmasi teks intro baru (M10): `intro.hint` ("Gulir untuk masuk" / "Scroll to enter") dan `intro.skip` ("Lewati intro" / "Skip intro") di `content/{id,en}/common.json`. Teks sementara yang netral.
