@@ -21,15 +21,6 @@ export function IntroFlight() {
     const root = document.documentElement;
     const section = document.querySelector<HTMLElement>(".intro");
     if (!section || !root.classList.contains("intro-on")) return;
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem(SEEN_KEY) === "1";
-    } catch {}
-    // Coming back to the home page by client navigation in the same session: no second flight.
-    if (seen && window.scrollY < 4) {
-      root.classList.remove("intro-on");
-      return;
-    }
     const q = (name: string) => section.querySelector<HTMLElement>(`[data-intro="${name}"]`);
     const stick = q("stick");
     const stars = q("stars");
@@ -47,19 +38,23 @@ export function IntroFlight() {
     };
     skip.addEventListener("click", markSeen);
 
+    let finished = false;
     const apply = (p: number) => {
+      // once the flight is over nothing changes any more: skip the style and storage writes for the rest of the page
+      if (finished && p >= 0.98) return;
       stars.style.transform = `scale(${(1 + 2.4 * p * p).toFixed(3)})`;
       stars.style.opacity = String(1 - smooth(p, 0.8, 1));
       dustA.style.transform = `translate3d(0, ${(-35 * p).toFixed(2)}vh, 0) scale(${(1 + 0.4 * p).toFixed(3)})`;
       dustB.style.transform = `translate3d(0, ${(-70 * p).toFixed(2)}vh, 0) scale(${(1 + 0.6 * p).toFixed(3)})`;
-      // the gate grows from small to far larger than the screen: the camera passes through it
-      const s = 0.2 * Math.exp(Math.log(80) * clamp(p / 0.88));
+      // the gate grows from small to larger than the screen (6x its base size is already past every screen edge): the camera passes through it
+      const s = 0.2 * Math.exp(Math.log(30) * clamp(p / 0.88));
       portal.style.transform = `translate3d(-50%, -50%, 0) scale(${s.toFixed(3)})`;
       portal.style.opacity = String(clamp(p / 0.12) * (1 - smooth(p, 0.7, 0.95)));
       copy.style.transform = `translate3d(0, ${(-48 * clamp(p / 0.3)).toFixed(1)}px, 0)`;
       copy.style.opacity = String(1 - clamp(p / 0.28));
       stick.style.opacity = String(1 - smooth(p, 0.86, 1));
       const done = p >= 0.98;
+      finished = done;
       skip.style.visibility = done ? "hidden" : "";
       if (done) markSeen();
     };

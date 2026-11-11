@@ -159,6 +159,8 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
   }
   if (mode === "dissolve") {
     let p = 0;
+    // true once the title is fully dissolved and drawn that way: further scrolling needs no redraw
+    let settled = false;
     // its own frame handle: the intro and puff loops use `raf`, and a stale value there must never block scrolling
     let dRaf = 0;
     cleanups.push(() => cancelAnimationFrame(dRaf));
@@ -171,9 +173,11 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
         if (field) clear(ctx, field);
         return;
       }
+      if (p >= 1 && settled) return;
       const f = ensureField();
       if (!f) return;
       mount();
+      settled = p >= 1;
       el.style.opacity = String(1 - Math.min(p * 8, 1));
       renderDissolve(ctx, f, p, performance.now() / 1000);
     };
@@ -212,6 +216,7 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
       if (Math.abs(w - lastW) < 2) return;
       lastW = w;
       field = null;
+      settled = false;
       request();
     });
     ro.observe(el);

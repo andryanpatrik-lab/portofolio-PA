@@ -210,8 +210,8 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
   aspect-ratio: 1;
   border-radius: 9999px;
   border: 2px solid rgba(255, 200, 110, 0.55);
-  background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0.92), rgba(3, 3, 10, 0.6) 70%, transparent);
-  box-shadow: 0 0 60px rgba(255, 190, 90, 0.25), inset 0 0 60px rgba(255, 190, 90, 0.15);
+  /* the glow is part of the gradient (no box-shadow: its blur would be re-rasterised at a huge scale) */
+  background: radial-gradient(circle closest-side, rgba(0, 0, 0, 0.92), rgba(3, 3, 10, 0.6) 70%, rgba(255, 190, 90, 0.18) 97%, transparent);
   transform: translate3d(-50%, -50%, 0) scale(0.2);
   will-change: transform, opacity;
 }
