@@ -16,7 +16,7 @@ const TARGET: Record<Tier, number> = { full: 7000, lite: 2200 };
  *  - data-dust="dissolve": the text stays visible; scrolling the section away blows it into dust (scroll-driven).
  * On the full tier, a few particles also drift off finished text from time to time.
  */
-function attach(el: HTMLElement, tier: Tier, order: number): () => void {
+function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
   const mode = el.dataset.dust;
   // The hero title also assembles from dust when the page loads, then evaporates on scroll.
   const intro = el.dataset.dustIntro !== undefined;
@@ -29,7 +29,7 @@ function attach(el: HTMLElement, tier: Tier, order: number): () => void {
     return () => {};
   }
   // Text already on (or just below) the screen when the page loads starts at once, one element after another.
-  const immediate = el.getBoundingClientRect().top < window.innerHeight * 1.12;
+  const immediate = order !== null;
   const dpr = tier === "full" ? Math.min(window.devicePixelRatio || 1, 1.5) : 1;
   // The canvas only enters the DOM when dust is actually needed. Inserting wide absolute canvases at load made
   // mobile pages heavy (layout shift and long tasks), so nothing is created until the first scroll/reveal.
@@ -136,7 +136,7 @@ function attach(el: HTMLElement, tier: Tier, order: number): () => void {
       if (immediate) {
         // the hero title goes first, then the rest of the first screen with a small stagger (separate tasks);
         // first-screen text lands quickly (about 1 s) because visitors are waiting for it
-        const delay = order === 0 ? 0 : Math.min(60 + order * 90, 600);
+        const delay = !order ? 0 : Math.min(60 + order * 90, 600);
         document.fonts.ready.then(() => timers.push(window.setTimeout(start, delay)), start);
       } else {
         document.fonts.ready.then(() => (idle ? idle(start, { timeout: 300 }) : start()), start);
@@ -236,7 +236,7 @@ export function DustController() {
     let order = 0;
     const cleanups = Array.from(document.querySelectorAll<HTMLElement>("[data-dust]")).map((el) => {
       const inView = el.getBoundingClientRect().top < window.innerHeight * 1.12;
-      return attach(el, tier, inView ? order++ : 0);
+      return attach(el, tier, inView ? order++ : null);
     });
     return () => cleanups.forEach((c) => c());
   }, [pathname]);

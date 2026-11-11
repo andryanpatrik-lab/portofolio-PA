@@ -8,7 +8,6 @@ import site from "@content/site.json";
 
 export const locales = ["id", "en"] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "id";
 
 export type Dictionary = typeof id;
 

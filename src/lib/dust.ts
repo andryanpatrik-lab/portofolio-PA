@@ -25,8 +25,8 @@ export type Field = {
   colors: [number, number, number][];
 };
 
-export const PAD_X = 240;
-export const PAD_Y = 160;
+const PAD_X = 240;
+const PAD_Y = 160;
 
 const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
 

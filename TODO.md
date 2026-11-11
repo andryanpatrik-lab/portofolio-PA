@@ -50,8 +50,8 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [x] Tidak ada `[ISI` dan `[KONFIRMASI` yang tersisa di tampilan (diperiksa di M6; teks sementara netral tampil sebagai gantinya, ulangi setelah M4)
 - [x] Pemindaian secret bersih (`secretlint` pada semua berkas yang dilacak, ditambah pencarian pola kunci; `gitleaks` tidak tersedia di lingkungan pengembangan)
 - [x] Lighthouse, kontras, keyboard, reduced-motion lolos (M5; ulangi setelah M4 dan setelah domain aktif)
-- [ ] Atur `SITE_URL` di Netlify setelah domain diputuskan, lalu deploy ulang
-- [ ] Matikan akses SSO tim di Netlify (Access control) sebelum publik
+- [ ] Atur `SITE_URL` di Vercel setelah domain diputuskan, lalu deploy ulang
+- [ ] Pastikan Deployment Protection (Vercel) tidak menutup produksi sebelum publik
 - [ ] Uji Morph Transition di Safari dan Firefox
 - [ ] Uji efek debu bintang dan animasi kata di HP nyata dan di Safari/Firefox
 - [ ] Nilai kursor cahaya di desktop nyata (kehalusan, ukuran, warna) dan beri tahu bila perlu disesuaikan

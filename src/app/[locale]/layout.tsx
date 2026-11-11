@@ -6,7 +6,6 @@ import { buildMetadata } from "@/lib/seo";
 import { siteUrl } from "@/lib/site";
 import { Cosmos } from "@/components/cosmos/Cosmos";
 import { CursorGlow } from "@/components/CursorGlow";
-import { ScrollFx } from "@/components/ScrollFx";
 import { DustController } from "@/components/StardustText";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionInit";
 import "../globals.css";
@@ -44,7 +43,6 @@ export default async function RootLayout({
         </a>
         <Cosmos />
         <DustController />
-        <ScrollFx />
         <CursorGlow />
         {children}
       </body>

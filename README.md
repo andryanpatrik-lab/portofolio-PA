@@ -1,6 +1,6 @@
 # Portofolio Patrik Andryan
 
-Website portofolio dwibahasa (ID/EN), tema gelap. Next.js (App Router) dengan static export, di-deploy di Netlify.
+Website portofolio dwibahasa (ID/EN), tema gelap. Next.js (App Router) dengan static export, di-deploy di Vercel (konfigurasi Netlify tetap ada sebagai cadangan).
 Sumber kebenaran desain dan konten: `BRIEF.md` dan `CONTENT.md`.
 
 ## Menjalankan
@@ -50,15 +50,24 @@ Status pengujian: sudah diuji di Chromium. Safari dan Firefox belum diuji (belum
 
 ### SEO dan metadata
 - Judul, deskripsi, `canonical`, `hreflang` (`id`, `en`, `x-default`), Open Graph, dan Twitter card dibuat per halaman lewat `src/lib/seo.ts`. `sitemap.xml` dan `robots.txt` dibuat saat build.
-- URL absolut berasal dari `src/lib/site.ts`: variabel `SITE_URL`, lalu `URL` bawaan Netlify.
+- URL absolut berasal dari `src/lib/site.ts`: variabel `SITE_URL`, lalu `VERCEL_PROJECT_PRODUCTION_URL`, lalu `URL` bawaan Netlify. Hanya build produksi yang boleh diindeks (`VERCEL_ENV` atau `CONTEXT` bernilai `production`); preview otomatis `noindex`.
 - Hanya deploy production (`CONTEXT=production`) yang boleh diindeks. Branch deploy dan deploy preview otomatis `noindex` dan `robots.txt` melarang semua.
 - Gambar OG `public/og.png` dibuat dari `scripts/og.html` (screenshot 1200x630 dengan browser headless, font dari `@fontsource`). Ubah templat, lalu render ulang.
 - Halaman 404 dwibahasa: `src/app/global-not-found.tsx` (memakai `experimental.globalNotFound` karena root layout berada di bawah `[locale]`). Bila flag ini berubah di versi Next berikutnya, Netlify tetap menyajikan `404.html`.
 
 ### Motion lain
-Hero reveal memakai GSAP + SplitText (sekali per sesi), reveal section memakai IntersectionObserver. Semua keadaan awal tersembunyi punya pengaman CSS agar konten tidak pernah tertahan. Detail ada di `CLAUDE.md`.
+Hero reveal memakai Motion (sekali per sesi), reveal section memakai IntersectionObserver. Semua keadaan awal tersembunyi punya pengaman CSS agar konten tidak pernah tertahan. Detail ada di `CLAUDE.md`.
 
-## Deploy di Netlify
+## Deploy di Vercel
+
+1. Impor repo di Vercel (Add New, Project). Preset **Next.js** terdeteksi otomatis; bila tidak, set Output Directory ke `out`.
+2. Environment variable `SITE_URL` berisi alamat final (mis. `https://namadomain.com`, tanpa garis miring di akhir), lalu deploy ulang karena nilai dibaca saat build.
+3. Redirect `/` berdasarkan bahasa browser dan header cache/keamanan ada di `vercel.json`.
+4. Production Branch: pilih branch yang hanya Anda gabung bila sudah siap, supaya tiap push tidak menjadi deploy produksi.
+5. Pastikan Deployment Protection tidak menutup lingkungan Production (Settings, Deployment Protection).
+6. Paket Hobby hanya untuk penggunaan non-komersial; portofolio yang dipakai mencari klien sebaiknya di paket Pro.
+
+## Deploy di Netlify (cadangan)
 
 - Build command `npm run build`, publish directory `out`, Node 22 (sudah diatur di `netlify.toml`).
 - Variabel lingkungan: `SITE_URL` berisi alamat final (mis. `https://namadomain.com`, tanpa garis miring di akhir). Ubah variabel lalu deploy ulang, karena nilai dibaca saat build.
@@ -69,5 +78,5 @@ Hero reveal memakai GSAP + SplitText (sekali per sesi), reveal section memakai I
 1. Isi `content/site.json` (email, LinkedIn, GitHub, WhatsApp, berkas CV di `public/`). Tombol dan tautan yang kosong otomatis disembunyikan.
 2. Selesaikan konten final (lihat `TODO.md`) dan konten `case-studies.json` serta `home.json`.
 3. Tentukan domain dan isi `SITE_URL`.
-4. Matikan akses SSO tim di Netlify (Site configuration, Access control) agar situs bisa dibuka publik.
+4. Pastikan situs produksi tidak dilindungi (Vercel: Deployment Protection; Netlify: Access control) agar bisa dibuka publik.
 5. Jalankan pemeriksaan akhir di `TODO.md` bagian "Sebelum publik".
