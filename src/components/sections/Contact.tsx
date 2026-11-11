@@ -14,8 +14,8 @@ export function Contact({ home }: { home: Home }) {
     <section data-cosmos="supernova" id="contact" aria-labelledby="contact-title" className="container-page section-gap anchor pb-[var(--section-gap)]">
       <div data-reveal>
         <Eyebrow>{contact.label}</Eyebrow>
-        <h2 id="contact-title" data-dust="assemble" data-dust-state="pending" className="t-h1 mt-8">{contact.title}</h2>
-        <p data-dust="assemble" data-dust-state="pending" className="t-lead mt-6 text-text-2">{contact.sub}</p>
+        <h2 id="contact-title" data-dust="assemble" className="t-h1 mt-8">{contact.title}</h2>
+        <p data-dust="assemble" className="t-lead mt-6 text-text-2">{contact.sub}</p>
         {site.email ? (
           <Button href={`mailto:${site.email}`} className="mt-10">{contact.cta}</Button>
         ) : (

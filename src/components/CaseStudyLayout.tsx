@@ -22,7 +22,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
   const cosmos = (["aurora", "nebula", "ember", "supernova"] as const)[index % 4];
   const meta = [data.role, data.year, data.status, data.stack.join(", ")].filter(Boolean);
 
-  const dust = { "data-dust": "assemble", "data-dust-state": "pending" } as const;
+  const dust = { "data-dust": "assemble" } as const;
 
   const section = (heading: string, body?: string) => (
     <section className="mt-[var(--section-gap)]">

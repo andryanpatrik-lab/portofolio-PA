@@ -181,7 +181,6 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
 /* Star-dust text (M8, M9). Armed by .dust-ready (any tier but off); text is never hidden for long. */
 .dust-host { position: relative; }
 .dust-canvas { position: absolute; pointer-events: none; }
-.dust-ready [data-dust="assemble"][data-dust-state="pending"] { opacity: 0; animation: motion-failsafe 0s 3s forwards; }
 .dust-ready [data-dust-state="running"] { opacity: 0; }
 [data-dust-state="done"] { transition: opacity 500ms var(--ease-out); }
 

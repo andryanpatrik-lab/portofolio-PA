@@ -11,7 +11,7 @@ export function About({ home }: { home: Home }) {
         <Eyebrow>{about.label}</Eyebrow>
         <div className="mt-8 space-y-6">
           {about.paragraphs.map((p) => (
-            <p key={p} data-dust="assemble" data-dust-state="pending" className="t-lead text-text-2">{p}</p>
+            <p key={p} data-dust="assemble" className="t-lead text-text-2">{p}</p>
           ))}
         </div>
         <div className="mt-10">
