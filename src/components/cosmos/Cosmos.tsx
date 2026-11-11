@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
+import { holePos } from "./hole";
 import { palettes, type CosmosKey } from "./palettes";
 import type { Renderer } from "./webgl";
 
@@ -18,6 +19,7 @@ const TIER_KEY = "cosmos-tier";
 export function Cosmos() {
   const wrap = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
+  const hole = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const refresh = useRef<() => void>(() => {});
 
@@ -26,6 +28,7 @@ export function Cosmos() {
     let active: CosmosKey | "" = "";
     let renderer: Renderer | null = null;
     let ticking = false;
+    let holeSize = 0;
 
     const setTier = (tier: "full" | "lite" | "off") => {
       html.classList.remove("cosmos-full", "cosmos-lite", "cosmos-off");
@@ -55,6 +58,17 @@ export function Cosmos() {
       });
       if (!key || !KEYS.includes(key)) key = "void";
       renderer?.setScroll(window.scrollY / vh);
+      // Lite tier: the CSS black hole follows the same path as the shader one (transform only).
+      if (hole.current && html.classList.contains("cosmos-lite")) {
+        const w = window.innerWidth;
+        const h = holePos(window.scrollY / vh, w / vh);
+        const size = Math.round(h.r * vh * 4.2);
+        if (size !== holeSize) {
+          holeSize = size;
+          hole.current.style.width = hole.current.style.height = `${size}px`;
+        }
+        hole.current.style.transform = `translate3d(${Math.round(w / 2 + h.x * vh - size / 2)}px, ${Math.round(vh / 2 - h.y * vh - size / 2)}px, 0)`;
+      }
       if (key !== active) {
         active = key;
         if (wrap.current) wrap.current.dataset.active = key;
@@ -127,6 +141,10 @@ export function Cosmos() {
           <span />
           <span />
           <span />
+        </div>
+        <div ref={hole} className="cosmos-hole">
+          <span className="cosmos-hole-ring" />
+          <span className="cosmos-hole-core" />
         </div>
       </div>
       <canvas ref={canvas} aria-hidden="true" className="cosmos-canvas" />

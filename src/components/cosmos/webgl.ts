@@ -1,3 +1,4 @@
+import { holePos } from "./hole";
 import { BASE, type Palette, type Vec3 } from "./palettes";
 
 const VERT = `attribute vec2 aPos; void main(){ gl_Position = vec4(aPos, 0.0, 1.0); }`;
@@ -10,7 +11,7 @@ precision highp float;
 precision mediump float;
 #endif
 uniform vec2 uRes; uniform float uTime; uniform float uScroll;
-uniform vec3 uA; uniform vec3 uB; uniform vec3 uC; uniform vec3 uBase; uniform float uIntensity;
+uniform vec3 uHole; uniform vec3 uA; uniform vec3 uB; uniform vec3 uC; uniform vec3 uBase; uniform float uIntensity;
 
 float hash(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
 float noise(vec2 p){
@@ -59,8 +60,13 @@ vec3 stars(vec2 uv){
 }
 void main(){
   vec2 uv = (gl_FragCoord.xy - 0.5 * uRes) / uRes.y;
+  // Black hole: bend the sky around it (gravitational lens), then draw a dim tilted ring and a dark core.
+  vec2 hd = uv - uHole.xy;
+  float hl = length(hd);
+  float hr = uHole.z;
+  vec2 luv = uv - hd * (hr * hr * 2.2) / (hl * hl + hr * hr * 0.6);
   float t = uTime * 0.02;
-  vec2 p = uv * 1.3 + vec2(0.0, uScroll * 0.25);
+  vec2 p = luv * 1.3 + vec2(0.0, uScroll * 0.25);
   vec2 q = vec2(fbm(p + t), fbm(p + vec2(5.2, 1.3) - t));
   float r = fbm(p + 2.2 * q + vec2(1.7, 9.2) + t * 0.5);
   float d = smoothstep(0.32, 0.95, r);
@@ -69,8 +75,14 @@ void main(){
   vec3 col = uBase + tint * d * uIntensity;
   col = min(col, vec3(0.3));
   col *= 1.0 - 0.45 * dot(uv, uv) * 0.6;
-  col += stars(uv) * 0.9;
+  col += stars(luv) * 0.9;
   col += vec3(0.85, 0.92, 1.0) * (meteor(uv, 0.4, 9.0) + meteor(uv, 0.1, 14.0)) * 0.9;
+  vec2 rd = vec2(hd.x, hd.y * 2.6);
+  float ringD = length(rd) - hr * 1.9;
+  float ring = exp(-ringD * ringD / (hr * hr * 0.05));
+  float dop = 0.55 + 0.45 * cos(atan(rd.y, rd.x) - uTime * 0.25);
+  col += vec3(1.0, 0.72, 0.3) * ring * dop * 0.34;
+  col *= smoothstep(hr * 0.92, hr * 1.04, hl);
   col += (hash(gl_FragCoord.xy + uTime) - 0.5) / 255.0;
   gl_FragColor = vec4(col, 1.0);
 }`;
@@ -121,7 +133,7 @@ export function createRenderer(canvas: HTMLCanvasElement, opts: Options): Render
   gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
   const U = (n: string) => gl.getUniformLocation(prog, n);
-  const uRes = U("uRes"), uTime = U("uTime"), uScroll = U("uScroll");
+  const uHole = U("uHole"), uRes = U("uRes"), uTime = U("uTime"), uScroll = U("uScroll");
   const uA = U("uA"), uB = U("uB"), uC = U("uC"), uBase = U("uBase"), uIntensity = U("uIntensity");
 
   let scale = opts.scale;
@@ -178,6 +190,8 @@ export function createRenderer(canvas: HTMLCanvasElement, opts: Options): Render
     gl.uniform2f(uRes, width, height);
     gl.uniform1f(uTime, (now - t0) / 1000);
     gl.uniform1f(uScroll, scrollV);
+    const h = holePos(scrollV, width / height);
+    gl.uniform3f(uHole, h.x, h.y, h.r);
     gl.uniform3fv(uA, cur.a);
     gl.uniform3fv(uB, cur.b);
     gl.uniform3fv(uC, cur.c);

@@ -232,7 +232,8 @@ Patrik meminta gerak yang lebih hidup dan bertema luar angkasa (nebula, ledakan,
 - **Kursor cahaya (M9, disetujui Patrik)**: titik cahaya emas lembut yang mengikuti pointer dan membesar di atas tautan dan kartu, hanya untuk mouse (`hover: hover` dan `pointer: fine`), kursor asli tetap tampil, mati di layar sentuh dan reduced-motion.
 - **Tetap dilarang**: scroll hijacking dan section tertahan (pinned), kursor yang menggantikan kursor asli, suara otomatis, mode terang.
 - **Teks debu bintang (M8, selesai)**: judul hero meniup jadi debu mengikuti scroll, judul "Proyek lainnya" dan "Mari bicara." dirakit dari debu saat masuk layar, semua judul dan paragraf (kecuali judul case study, label, nav, teks kartu) dirakit dari debu saat masuk layar; GSAP diganti Motion.
-- **Berikutnya (M9)**: lubang hitam, ledakan nebula, kartu 3D saat hover, audit.
+- **Lubang hitam (M9, selesai)**: selalu ada di latar, bergeser mengikuti scroll dan condong ke tepi layar. Tingkat full: lensa gravitasi (bintang dan nebula melengkung) + cincin emas miring dengan sisi lebih terang + inti hitam, di shader. Tingkat lite: elemen CSS (cincin berputar pelan, posisi lewat `transform`). Off: tidak ada.
+- **Berikutnya (M9)**: ledakan nebula saat ganti section, kartu 3D saat hover, audit.
 
 ## 10. Komponen
 
