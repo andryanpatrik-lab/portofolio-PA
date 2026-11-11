@@ -20,9 +20,9 @@ function attach(el: HTMLElement, tier: Tier): () => void {
   const mode = el.dataset.dust;
   // Body-size text (paragraphs) gets a quicker, lighter version; very long text is shown as is.
   const fast = parseFloat(getComputedStyle(el).fontSize) < 28;
-  // Text that is already on screen when the page loads is never hidden or dusted (it would delay LCP and add load
+  // Text that is on screen (or just below it) when the page loads is never hidden or dusted (it would delay LCP and add load
   // work); dust is for text that scrolls into view later. Very long text is shown as is.
-  if (mode === "assemble" && ((el.textContent ?? "").length > 450 || el.getBoundingClientRect().top < window.innerHeight)) {
+  if (mode === "assemble" && ((el.textContent ?? "").length > 450 || el.getBoundingClientRect().top < window.innerHeight * 1.12)) {
     el.dataset.dustState = "done";
     return () => {};
   }
