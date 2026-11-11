@@ -5,6 +5,7 @@ import { getDictionary, isLocale, locales } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { siteUrl } from "@/lib/site";
 import { Cosmos } from "@/components/cosmos/Cosmos";
+import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollFx } from "@/components/ScrollFx";
 import { DustController } from "@/components/StardustText";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionInit";
@@ -44,6 +45,7 @@ export default async function RootLayout({
         <Cosmos />
         <DustController />
         <ScrollFx />
+        <CursorGlow />
         {children}
       </body>
     </html>

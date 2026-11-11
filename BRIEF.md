@@ -229,7 +229,8 @@ Patrik meminta gerak yang lebih hidup dan bertema luar angkasa (nebula, ledakan,
 - **Tingkat kualitas**: `full` (desktop berkemampuan), `lite` (HP, tablet, perangkat lemah), `off` (reduced-motion atau data saver). Pemantau FPS menurunkan tingkat otomatis dan hasilnya diingat selama sesi. Kanvas berhenti saat tab tersembunyi.
 - **Kontras warna**: tiap section memakai `data-cosmos` untuk suasana warna; semua palet gelap dan lolos kontras teks 4.5:1.
 - **Aturan animasi diperbarui**: elemen DOM tetap hanya `transform` dan `opacity`; kanvas/WebGL diizinkan lewat tingkat kualitas di atas dan harus menghormati `prefers-reduced-motion`.
-- **Tetap dilarang**: scroll hijacking dan section tertahan (pinned), kursor kustom, suara otomatis, mode terang.
+- **Kursor cahaya (M9, disetujui Patrik)**: titik cahaya emas lembut yang mengikuti pointer dan membesar di atas tautan dan kartu, hanya untuk mouse (`hover: hover` dan `pointer: fine`), kursor asli tetap tampil, mati di layar sentuh dan reduced-motion.
+- **Tetap dilarang**: scroll hijacking dan section tertahan (pinned), kursor yang menggantikan kursor asli, suara otomatis, mode terang.
 - **Teks debu bintang (M8, selesai)**: judul hero meniup jadi debu mengikuti scroll, judul "Proyek lainnya" dan "Mari bicara." dirakit dari debu saat masuk layar, paragraf utama muncul kata demi kata; GSAP diganti Motion.
 - **Berikutnya (M9)**: lubang hitam, ledakan nebula, kartu 3D saat hover, audit.
 
@@ -287,7 +288,7 @@ type OtherProject = {
 
 ## 13. Yang TIDAK boleh dibuat (guardrails)
 
-Scroll hijacking dan section pinned, cursor kustom, auto-play suara, mode terang, animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
+Scroll hijacking dan section pinned, kursor kustom selain cahaya pointer yang diizinkan (bagian 9: hanya mouse, kursor asli tetap tampil), auto-play suara, mode terang, animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
 
 ## 14. Urutan build
 

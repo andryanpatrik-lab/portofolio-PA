@@ -54,5 +54,6 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [ ] Matikan akses SSO tim di Netlify (Access control) sebelum publik
 - [ ] Uji Morph Transition di Safari dan Firefox
 - [ ] Uji efek debu bintang dan animasi kata di HP nyata dan di Safari/Firefox
+- [ ] Nilai kursor cahaya di desktop nyata (kehalusan, ukuran, warna) dan beri tahu bila perlu disesuaikan
 - [ ] Uji latar ruang angkasa di HP nyata (bagus atau patah-patah?) lewat branch deploy, dan di Safari/Firefox desktop
 - [ ] Konfirmasi nama lengkap "Patrik Andryan" di header sudah sesuai
