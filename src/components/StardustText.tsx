@@ -30,7 +30,8 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
   }
   // Text already on (or just below) the screen when the page loads starts at once, one element after another.
   const immediate = order !== null;
-  const dpr = tier === "full" ? Math.min(window.devicePixelRatio || 1, 1.5) : 1;
+  // small text is transient and light: no extra resolution (smaller canvases, far less raster work)
+  const dpr = tier === "full" && !small ? Math.min(window.devicePixelRatio || 1, 1.5) : 1;
   // The canvas only enters the DOM when dust is actually needed. Inserting wide absolute canvases at load made
   // mobile pages heavy (layout shift and long tasks), so nothing is created until the first scroll/reveal.
   const canvas = document.createElement("canvas");
@@ -42,10 +43,13 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
     if (mounted) return;
     mounted = true;
     host.classList.add("dust-host");
-    placeCanvas(el, canvas);
+    placeCanvas(el, canvas, small);
     host.appendChild(canvas);
   };
-  const ctx = canvas.getContext("2d");
+  // willReadFrequently must be set on the FIRST getContext call (later calls reuse the context and ignore options): without
+  // it the canvas is GPU-backed and the getImageData in buildField stalls on a readback (3 s of blocked main thread per
+  // page in testing, which showed up as a frozen page transition).
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
 
   let field: Field | null = null;
   let disposed = false;
@@ -55,7 +59,7 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
   const timers: number[] = [];
 
   // Building only rasterises into the (detached) canvas; mount() is called when something is drawn.
-  const ensureField = () => (field ??= buildField(el, canvas, dpr, intro ? Math.round(TARGET[tier] * 0.7) : TARGET[tier], paceFast, intro || immediate));
+  const ensureField = () => (field ??= buildField(el, canvas, dpr, intro ? Math.round(TARGET[tier] * 0.7) : TARGET[tier], paceFast, intro || immediate, small));
   const cleanups: (() => void)[] = [];
 
   if (!ctx) {

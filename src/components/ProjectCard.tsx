@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ViewTransition } from "react";
+import { BlackHoleLink } from "./BlackHoleLink";
 import { FlowDiagram } from "./FlowDiagram";
 import { Metric } from "./Metric";
 
@@ -25,11 +25,7 @@ export function ProjectCard({
   isEstimate: boolean;
 }) {
   return (
-    <Link
-      href={href}
-      transitionTypes={["bh-enter"]}
-      className="block rounded-2xl"
-    >
+    <BlackHoleLink href={href} className="block rounded-2xl">
       <article data-reveal className="project-card rounded-2xl border border-border bg-bg p-6 md:p-12">
         <ViewTransition name={`card-num-${slug}`} share="morph" default="none">
           <p className="t-label inline-block text-accent">{number}</p>
@@ -51,6 +47,6 @@ export function ProjectCard({
           <span aria-hidden="true" className="card-arrow inline-block t-h3 text-accent">→</span>
         </div>
       </article>
-    </Link>
+    </BlackHoleLink>
   );
 }

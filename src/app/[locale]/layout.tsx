@@ -44,7 +44,8 @@ export default async function RootLayout({
         <Cosmos />
         <DustController />
         <CursorGlow />
-        {/* Decorative: only shown (and named) during the black-hole page transition, see globals.css */}
+        {/* Decorative: only shown during the black-hole page transition (src/lib/blackHole.ts) */}
+        <div aria-hidden="true" className="bh-curtain" />
         <div aria-hidden="true" className="bh-portal" />
         {children}
       </body>

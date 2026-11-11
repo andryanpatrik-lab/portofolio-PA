@@ -117,6 +117,11 @@ export function Cosmos() {
       else if (!document.hidden) renderer?.start();
     };
     document.addEventListener("visibilitychange", onVisibility);
+    // the black-hole page transition pauses the shader while it runs (see src/lib/blackHole.ts)
+    const onBhStart = () => setLight.current(true);
+    const onBhEnd = () => setLight.current(!!document.querySelector(".light-page"));
+    window.addEventListener("bh-start", onBhStart);
+    window.addEventListener("bh-end", onBhEnd);
     update();
 
     return () => {
@@ -125,6 +130,8 @@ export function Cosmos() {
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("bh-start", onBhStart);
+      window.removeEventListener("bh-end", onBhEnd);
       renderer?.destroy();
     };
   }, []);

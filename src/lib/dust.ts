@@ -27,6 +27,9 @@ export type Field = {
 
 const PAD_X = 240;
 const PAD_Y = 160;
+// Small text (paragraphs, captions) flies in over a short distance, so its canvas is much smaller: big canvases cost a
+// multi-second raster stall when many of them appear at once (seen on the page transition).
+const COMPACT = { left: 110, right: 40, y: 48 };
 
 const clamp01 = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
 
@@ -42,31 +45,59 @@ function effectiveOpacity(from: HTMLElement | null, root: HTMLElement): number {
  * DOM so inserting it never registers as a layout shift. The host is positioned and the canvas is a sibling of `el`
  * (fading the element must not fade the dust).
  */
-export function placeCanvas(el: HTMLElement, canvas: HTMLCanvasElement) {
-  const r = el.getBoundingClientRect();
-  const { padL, padR } = pads(r);
-  canvas.style.left = `${el.offsetLeft - padL}px`;
-  canvas.style.top = `${el.offsetTop - PAD_Y}px`;
+export function placeCanvas(el: HTMLElement, canvas: HTMLCanvasElement, compact = false) {
+  const er = el.getBoundingClientRect();
+  const r = textBox(el);
+  const { padL, padR, padY } = pads(r, compact);
+  canvas.style.left = `${el.offsetLeft + (r.left - er.left) - padL}px`;
+  canvas.style.top = `${el.offsetTop + (r.top - er.top) - padY}px`;
   canvas.style.width = `${r.width + padL + padR}px`;
-  canvas.style.height = `${r.height + PAD_Y * 2}px`;
+  canvas.style.height = `${r.height + padY * 2}px`;
+}
+
+/** Bounding box of the element's actual text (a block heading spans the whole column, its words do not). */
+function textBox(el: HTMLElement): DOMRect {
+  const er = el.getBoundingClientRect();
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  let l = Infinity;
+  let t = Infinity;
+  let r = -Infinity;
+  let b = -Infinity;
+  for (const x of Array.from(range.getClientRects())) {
+    if (x.width < 1 || x.height < 1) continue;
+    l = Math.min(l, x.left);
+    t = Math.min(t, x.top);
+    r = Math.max(r, x.right);
+    b = Math.max(b, x.bottom);
+  }
+  if (l === Infinity) return er;
+  l = Math.max(l, er.left);
+  t = Math.max(t, er.top);
+  r = Math.min(r, er.right);
+  b = Math.min(b, er.bottom);
+  return r > l && b > t ? new DOMRect(l, t, r - l, b - t) : er;
 }
 
 /** Side padding limited to the room left in the viewport, so the canvas can never widen the page (mobile). */
-function pads(r: DOMRect) {
+function pads(r: DOMRect, compact: boolean) {
+  const left = compact ? COMPACT.left : PAD_X;
+  const right = compact ? COMPACT.right : PAD_X;
   return {
-    padL: Math.max(0, Math.min(PAD_X, r.left)),
-    padR: Math.max(0, Math.min(PAD_X, window.innerWidth - r.right)),
+    padL: Math.max(0, Math.min(left, r.left)),
+    padR: Math.max(0, Math.min(right, window.innerWidth - r.right)),
+    padY: compact ? COMPACT.y : PAD_Y,
   };
 }
 
 /** Sizes the canvas around `el` (with padding for flying particles) and samples the element's visible words. */
-export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: number, target: number, fast = false, hero = false): Field | null {
-  const rect = el.getBoundingClientRect();
+export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: number, target: number, fast = false, hero = false, compact = false): Field | null {
+  const rect = textBox(el);
   if (rect.width < 4 || rect.height < 4) return null;
-  const { padL, padR } = pads(rect);
+  const { padL, padR, padY } = pads(rect, compact);
   const cssW = rect.width + padL + padR;
-  const cssH = rect.height + PAD_Y * 2;
-  placeCanvas(el, canvas);
+  const cssH = rect.height + padY * 2;
+  placeCanvas(el, canvas, compact);
   const w = Math.round(cssW * dpr);
   const h = Math.round(cssH * dpr);
   canvas.width = w;
@@ -78,7 +109,7 @@ export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: numb
   ctx.textBaseline = "alphabetic";
 
   const baseLeft = rect.left - padL;
-  const baseTop = rect.top - PAD_Y;
+  const baseTop = rect.top - padY;
   const range = document.createRange();
   const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
@@ -158,8 +189,8 @@ export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: numb
     colors,
   };
   for (let i = 0; i < count; i++) {
-    f.sx[i] = f.tx[i] - (80 + Math.random() * 280) * dpr;
-    f.sy[i] = Math.min(h, Math.max(0, f.ty[i] + (Math.random() - 0.5) * 150 * dpr));
+    f.sx[i] = f.tx[i] - (compact ? 30 + Math.random() * 110 : 80 + Math.random() * 280) * dpr;
+    f.sy[i] = Math.min(h, Math.max(0, f.ty[i] + (Math.random() - 0.5) * (compact ? 70 : 150) * dpr));
     // Paragraphs (fast) assemble in about 1.3 s so reading is not delayed; headings take their time.
     // The hero title lands in about 1 s (it is what visitors wait for), paragraphs in 1.3 s, headings in 2.6 s.
     f.delay[i] = (f.tx[i] / w) * (hero ? 0.28 : fast ? 0.45 : 0.9) + Math.random() * (hero ? 0.12 : fast ? 0.3 : 0.5);

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ViewTransition } from "react";
+import { BlackHoleLink } from "./BlackHoleLink";
 import { FlowDiagram } from "./FlowDiagram";
 import { Metric } from "./Metric";
 import type { CaseStudyData, Dictionary, Locale } from "@/lib/i18n";
@@ -89,12 +90,12 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
         {section(ui.learning, data.learning)}
 
         <nav aria-label={ui.next} className="mt-[var(--section-gap)] border-t border-border pt-10">
-          <Link href={`/${locale}/work/${next.slug}/`} transitionTypes={["bh-enter"]} className="block">
+          <BlackHoleLink href={`/${locale}/work/${next.slug}/`} className="block">
             <span className="t-label text-text-muted">{ui.next}</span>
             <span className="t-h3 mt-3 block max-w-[24ch]">
               {next.title} <span aria-hidden="true" className="text-accent">→</span>
             </span>
-          </Link>
+          </BlackHoleLink>
         </nav>
       </main>
     </ViewTransition>

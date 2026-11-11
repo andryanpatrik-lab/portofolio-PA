@@ -391,39 +391,35 @@ html:active-view-transition-type(nav-back)::view-transition-group(.morph) {
 html:has(.light-page) .cursor-core { background: #3d2a00; box-shadow: 0 0 6px rgba(138, 97, 0, 0.6); }
 html:has(.light-page) .cursor-glow { background: radial-gradient(circle, rgba(138, 97, 0, 0.3) 0%, rgba(138, 97, 0, 0.1) 38%, transparent 70%); }
 
-/* Black-hole page transition (M12): entering a case study. The old page is pulled into a growing hole (zoom + turn),
-   a void follows, then the light page comes out of it. Only transform and opacity. */
+/* Black-hole page transition (M12): entering a case study. Driven by src/lib/blackHole.ts with real elements (not View Transition
+   pseudo-elements, whose paint timing showed the light page before the hole): the old page is pulled into a growing hole,
+   a black curtain covers the swap, then the curtain lifts on the light page. Only transform and opacity. */
+.bh-curtain,
 .bh-portal {
   display: none;
   position: fixed;
+  pointer-events: none;
+}
+.bh-curtain { inset: 0; z-index: 9997; background: #000; opacity: 0; }
+/* Sized to cover the screen at scale 1 and animated from small: scaling a small element up 24x made the browser rasterise a layer
+   of several thousand pixels (a multi-second GPU stall in testing). */
+.bh-portal {
   left: 50%;
   top: 50%;
   z-index: 9998;
-  width: 34vmin;
-  height: 34vmin;
-  margin: -17vmin 0 0 -17vmin;
+  width: 150vmax;
+  height: 150vmax;
+  margin: -75vmax 0 0 -75vmax;
   border-radius: 9999px;
-  pointer-events: none;
-  border: 2px solid rgba(255, 200, 110, 0.7);
-  background: radial-gradient(circle closest-side, #000 0 72%, rgba(255, 190, 90, 0.25) 94%, transparent);
+  opacity: 0;
+  transform: scale(0.04);
+  background: radial-gradient(circle closest-side, #000 0 86%, rgba(255, 190, 90, 0.4) 93%, transparent 100%);
 }
-html:active-view-transition-type(bh-enter) [style*="view-transition-name"] { view-transition-name: none !important; }
-html:active-view-transition-type(bh-enter) .bh-portal { display: block; view-transition-name: bh; }
-html:active-view-transition-type(bh-enter)::view-transition { background: #000; }
-html:active-view-transition-type(bh-enter)::view-transition-group(bh) { animation: none; }
-html:active-view-transition-type(bh-enter)::view-transition-old(bh) { animation: 650ms cubic-bezier(0.55, 0, 0.9, 0.45) both bh-grow; mix-blend-mode: normal; }
-html:active-view-transition-type(bh-enter)::view-transition-new(bh) { animation: 1000ms linear both bh-void; mix-blend-mode: normal; }
-html:active-view-transition-type(bh-enter)::view-transition-old(root) { animation: 650ms cubic-bezier(0.55, 0, 0.9, 0.45) both bh-suck; mix-blend-mode: normal; }
-html:active-view-transition-type(bh-enter)::view-transition-new(root) { animation: 650ms var(--ease-out) 480ms both bh-arrive; mix-blend-mode: normal; }
-@keyframes bh-suck { 0% { transform: scale(1) rotate(0deg); opacity: 1; } 75% { opacity: 1; } 100% { transform: scale(5) rotate(14deg); opacity: 0; } }
-@keyframes bh-grow { 0% { transform: scale(0.1); opacity: 0; } 20% { opacity: 1; } 100% { transform: scale(24); opacity: 1; } }
-@keyframes bh-void { 0% { transform: scale(24); opacity: 0; } 55% { transform: scale(24); opacity: 1; } 100% { transform: scale(24); opacity: 0; } }
-@keyframes bh-arrive { from { transform: scale(0.94); opacity: 0; } to { transform: none; opacity: 1; } }
-@media (prefers-reduced-motion: reduce) {
-  .bh-portal { display: none !important; }
-  html:active-view-transition-type(bh-enter)::view-transition-old(root) { animation: 150ms linear both vt-fade-out; }
-  html:active-view-transition-type(bh-enter)::view-transition-new(root) { animation: 150ms linear both vt-fade-in; }
-}
+.bh-nav .bh-curtain,
+.bh-nav .bh-portal { display: block; }
+/* while it runs: no second click, and the navigation's own View Transition stays invisible */
+.bh-nav body { pointer-events: none; }
+.bh-nav::view-transition { display: none; }
 
 /* Browsers without the View Transitions API: crossfade the page in with CSS instead. */
 .no-vt .page-enter { animation: vt-fade-in 200ms var(--ease-out) both; }
