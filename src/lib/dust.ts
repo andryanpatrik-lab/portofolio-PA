@@ -44,17 +44,27 @@ function effectiveOpacity(from: HTMLElement | null, root: HTMLElement): number {
  */
 export function placeCanvas(el: HTMLElement, canvas: HTMLCanvasElement) {
   const r = el.getBoundingClientRect();
-  canvas.style.left = `${el.offsetLeft - PAD_X}px`;
+  const { padL, padR } = pads(r);
+  canvas.style.left = `${el.offsetLeft - padL}px`;
   canvas.style.top = `${el.offsetTop - PAD_Y}px`;
-  canvas.style.width = `${r.width + PAD_X * 2}px`;
+  canvas.style.width = `${r.width + padL + padR}px`;
   canvas.style.height = `${r.height + PAD_Y * 2}px`;
+}
+
+/** Side padding limited to the room left in the viewport, so the canvas can never widen the page (mobile). */
+function pads(r: DOMRect) {
+  return {
+    padL: Math.max(0, Math.min(PAD_X, r.left)),
+    padR: Math.max(0, Math.min(PAD_X, window.innerWidth - r.right)),
+  };
 }
 
 /** Sizes the canvas around `el` (with padding for flying particles) and samples the element's visible words. */
 export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: number, target: number, fast = false): Field | null {
   const rect = el.getBoundingClientRect();
   if (rect.width < 4 || rect.height < 4) return null;
-  const cssW = rect.width + PAD_X * 2;
+  const { padL, padR } = pads(rect);
+  const cssW = rect.width + padL + padR;
   const cssH = rect.height + PAD_Y * 2;
   placeCanvas(el, canvas);
   const w = Math.round(cssW * dpr);
@@ -67,7 +77,7 @@ export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: numb
   ctx.clearRect(0, 0, cssW, cssH);
   ctx.textBaseline = "alphabetic";
 
-  const baseLeft = rect.left - PAD_X;
+  const baseLeft = rect.left - padL;
   const baseTop = rect.top - PAD_Y;
   const range = document.createRange();
   const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
@@ -79,7 +89,9 @@ export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: numb
     const cs = getComputedStyle(parent);
     ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
     if ("letterSpacing" in ctx) (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = cs.letterSpacing === "normal" ? "0px" : cs.letterSpacing;
-    ctx.fillStyle = cs.color;
+    // The golden keyword is drawn in two layers (see Hero): its dust takes the colour of the gold layer.
+    const gold = parent.classList.contains("accent-base") ? (parent.nextElementSibling as HTMLElement | null) : null;
+    ctx.fillStyle = gold ? getComputedStyle(gold).color : cs.color;
     for (const m of text.matchAll(/\S+/g)) {
       range.setStart(node, m.index ?? 0);
       range.setEnd(node, (m.index ?? 0) + m[0].length);

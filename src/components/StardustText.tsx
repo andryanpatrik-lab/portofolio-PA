@@ -16,16 +16,20 @@ const TARGET: Record<Tier, number> = { full: 7000, lite: 2200 };
  *  - data-dust="dissolve": the text stays visible; scrolling the section away blows it into dust (scroll-driven).
  * On the full tier, a few particles also drift off finished text from time to time.
  */
-function attach(el: HTMLElement, tier: Tier): () => void {
+function attach(el: HTMLElement, tier: Tier, order: number): () => void {
   const mode = el.dataset.dust;
-  // Body-size text (paragraphs) gets a quicker, lighter version; very long text is shown as is.
-  const fast = parseFloat(getComputedStyle(el).fontSize) < 28;
-  // Text that is on screen (or just below it) when the page loads is never hidden or dusted (it would delay LCP and add load
-  // work); dust is for text that scrolls into view later. Very long text is shown as is.
-  if (mode === "assemble" && ((el.textContent ?? "").length > 450 || el.getBoundingClientRect().top < window.innerHeight * 1.12)) {
+  // The hero title also assembles from dust when the page loads, then evaporates on scroll.
+  const intro = el.dataset.dustIntro !== undefined;
+  // Body-size text (paragraphs) is "small": quicker, lighter, and released after use. The hero intro is quick too.
+  const small = parseFloat(getComputedStyle(el).fontSize) < 28;
+  const paceFast = small || intro;
+  // Very long text is shown as is.
+  if (mode === "assemble" && (el.textContent ?? "").length > 450) {
     el.dataset.dustState = "done";
     return () => {};
   }
+  // Text already on (or just below) the screen when the page loads starts at once, one element after another.
+  const immediate = el.getBoundingClientRect().top < window.innerHeight * 1.12;
   const dpr = tier === "full" ? Math.min(window.devicePixelRatio || 1, 1.5) : 1;
   // The canvas only enters the DOM when dust is actually needed. Inserting wide absolute canvases at load made
   // mobile pages heavy (layout shift and long tasks), so nothing is created until the first scroll/reveal.
@@ -51,7 +55,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
   const timers: number[] = [];
 
   // Building only rasterises into the (detached) canvas; mount() is called when something is drawn.
-  const ensureField = () => (field ??= buildField(el, canvas, dpr, TARGET[tier], fast));
+  const ensureField = () => (field ??= buildField(el, canvas, dpr, intro ? Math.round(TARGET[tier] * 0.7) : TARGET[tier], paceFast));
   const cleanups: (() => void)[] = [];
 
   if (!ctx) {
@@ -60,14 +64,14 @@ function attach(el: HTMLElement, tier: Tier): () => void {
     return () => {};
   }
 
-  if (!fast) {
+  if (!small) {
     const visIO = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
     visIO.observe(el);
     cleanups.push(() => visIO.disconnect());
   }
 
   const schedulePuff = () => {
-    if (tier !== "full" || disposed || fast) return;
+    if (tier !== "full" || disposed || small) return;
     puffTimer = window.setTimeout(doPuff, 5000 + 4000 * Math.random());
   };
   const doPuff = () => {
@@ -89,7 +93,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
     raf = requestAnimationFrame(frame);
   };
 
-  if (mode === "assemble") {
+  if (mode === "assemble" || intro) {
     const finish = (f: Field | null) => {
       el.dataset.dustState = "done";
       canvas.style.transition = "opacity 600ms ease-out";
@@ -99,7 +103,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
           if (f && ctx) clear(ctx, f);
           canvas.style.transition = "none";
           canvas.style.opacity = "1";
-          if (fast) {
+          if (small) {
             // Paragraphs are done for good: release the canvas and the particle data.
             canvas.remove();
             canvas.width = 0;
@@ -126,25 +130,38 @@ function attach(el: HTMLElement, tier: Tier): () => void {
       };
       raf = requestAnimationFrame(frame);
     };
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return;
-        io.disconnect();
-        timers.push(window.setTimeout(() => el.dataset.dustState !== "done" && (el.dataset.dustState = "done"), 8000));
-        const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+    const begin = () => {
+      timers.push(window.setTimeout(() => el.dataset.dustState !== "done" && (el.dataset.dustState = "done"), 8000));
+      const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+      if (immediate) {
+        // the hero title goes first, then the rest of the first screen with a small stagger (separate tasks)
+        const delay = order === 0 ? 0 : Math.min(150 + order * 170, 1400);
+        document.fonts.ready.then(() => timers.push(window.setTimeout(start, delay)), start);
+      } else {
         document.fonts.ready.then(() => (idle ? idle(start, { timeout: 300 }) : start()), start);
-      },
-      // start just before the text enters the screen so it is never seen un-dusted
-      { rootMargin: "0px 0px 10% 0px" },
-    );
-    io.observe(el);
-    cleanups.push(() => io.disconnect());
-  } else {
+      }
+    };
+    if (immediate) begin();
+    else {
+      const io = new IntersectionObserver(
+        ([e]) => {
+          if (!e.isIntersecting) return;
+          io.disconnect();
+          begin();
+        },
+        // start just before the text enters the screen so it is never seen un-dusted
+        { rootMargin: "0px 0px 10% 0px" },
+      );
+      io.observe(el);
+      cleanups.push(() => io.disconnect());
+    }
+  }
+  if (mode === "dissolve") {
     let p = 0;
     const heroBusy = () => document.documentElement.classList.contains("hero-pending");
     const apply = () => {
       raf = 0;
-      if (disposed || heroBusy()) return;
+      if (disposed || heroBusy() || el.dataset.dustState === "pending" || el.dataset.dustState === "running") return;
       if (p <= 0.002) {
         el.style.opacity = "";
         if (field) clear(ctx, field);
@@ -212,7 +229,11 @@ export function DustController() {
     const cl = document.documentElement.classList;
     if (cl.contains("cosmos-off")) return;
     const tier: Tier = cl.contains("cosmos-full") ? "full" : "lite";
-    const cleanups = Array.from(document.querySelectorAll<HTMLElement>("[data-dust]")).map((el) => attach(el, tier));
+    let order = 0;
+    const cleanups = Array.from(document.querySelectorAll<HTMLElement>("[data-dust]")).map((el) => {
+      const inView = el.getBoundingClientRect().top < window.innerHeight * 1.12;
+      return attach(el, tier, inView ? order++ : 0);
+    });
     return () => cleanups.forEach((c) => c());
   }, [pathname]);
   return null;
