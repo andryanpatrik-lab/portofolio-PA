@@ -12,7 +12,7 @@ export function LangToggle({ locale, ariaLabel, pathSuffix = "" }: { locale: Loc
             hrefLang={l}
             lang={l}
             aria-current={l === locale ? "true" : undefined}
-            className={l === locale ? "text-accent" : "text-text-muted hover:text-text"}
+            className={`tap ${l === locale ? "text-accent" : "text-text-muted hover:text-text"}`}
           >
             {l.toUpperCase()}
           </Link>

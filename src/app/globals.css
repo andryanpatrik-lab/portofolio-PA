@@ -139,6 +139,9 @@ body {
 .t-metric-unit { font-size: 0.36em; letter-spacing: 0.02em; margin-left: 0.5em; font-weight: 500; }
 .t-metric-sm { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
 
+.tap { position: relative; }
+/* touch target: the visible size stays, the clickable area grows to about 44 px (WCAG 2.5.8) */
+.tap::after { content: ""; position: absolute; inset: -14px -12px; }
 .link-underline { text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 6px; }
 
 /* Interaction states. Hover only on real pointers; :active press feedback. */
@@ -207,11 +210,15 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
   position: absolute;
   z-index: -1;
   top: 0;
-  bottom: -1rem;
+  bottom: 0;
   left: 50%;
   width: 100vw;
   transform: translateX(-50%);
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0));
+  /* nearly opaque: page text scrolling underneath must not show through the menu (phones, tablets) */
+  background: rgba(10, 10, 10, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   pointer-events: none;
 }
 .intro-nav-hidden header[data-nav],
@@ -252,8 +259,20 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
 .intro-copy { position: relative; display: grid; justify-items: center; gap: 1.25rem; text-align: center; padding: 0 1.5rem; will-change: transform, opacity; }
 .intro-welcome { font-size: clamp(1.1rem, 0.95rem + 0.8vw, 1.6rem); font-weight: 400; letter-spacing: 0.28em; line-height: 1.4; color: var(--text); }
 .intro-hint { color: var(--text-muted, var(--text-2)); }
-.intro-skip { position: absolute; top: 5.5rem; left: 50%; transform: translateX(-50%); color: var(--text-2); padding: 0.5rem 1rem; border: 1px solid var(--border, rgba(255, 255, 255, 0.2)); border-radius: 9999px; }
+.intro-skip { position: absolute; top: 5.5rem; left: 50%; transform: translateX(-50%); color: var(--text-2); display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.25rem; border: 1px solid var(--border, rgba(255, 255, 255, 0.2)); border-radius: 9999px; }
 .intro-skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Small screens with the fixed header (entry intro): the hero starts below the two-row header, and on short landscape
+   screens the hero is compact so the call to action stays on the first screen. */
+@media (max-width: 767px) {
+  .intro-on #hero { padding-top: 7.5rem; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .intro-on #hero, #hero { padding-top: 5.5rem; }
+  #hero .t-display { font-size: clamp(2rem, 11vh, 3.25rem); }
+  #hero .t-lead { margin-top: 1.25rem; }
+  #hero a.btn-primary { margin-top: 1.5rem; }
+}
 
 /* Star-dust text (M8, M9). Armed by .dust-ready (any tier but off); text is never hidden for long. */
 .dust-host { position: relative; }

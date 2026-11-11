@@ -25,7 +25,7 @@ export function Contact({ home }: { home: Home }) {
           <ul className="t-label mt-8 flex flex-wrap gap-x-8 gap-y-3 text-text-2">
             {links.map((l) => (
               <li key={l.label}>
-                <a href={l.href} rel="noopener noreferrer" className="link-underline">{l.label}</a>
+                <a href={l.href} rel="noopener noreferrer" className="tap link-underline">{l.label}</a>
               </li>
             ))}
           </ul>

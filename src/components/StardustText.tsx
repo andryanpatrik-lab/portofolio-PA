@@ -192,7 +192,8 @@ function attach(el: HTMLElement, tier: Tier, order: number | null): () => void {
     // entry intro above it), so the title evaporates the same way whether or not the intro played.
     const sec = el.closest("section") ?? el;
     const stop = scroll(() => {
-      const rest = document.querySelector("header")?.getBoundingClientRect().height ?? 80;
+      // with the entry intro the header is fixed and takes no room in the flow: the hero rests at the very top then
+      const rest = document.documentElement.classList.contains("intro-on") ? 0 : (document.querySelector("header")?.getBoundingClientRect().height ?? 80);
       p = Math.min(1, Math.max(0, (rest - sec.getBoundingClientRect().top) / DISSOLVE_DISTANCE));
       request();
     });

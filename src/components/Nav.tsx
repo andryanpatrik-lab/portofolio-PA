@@ -24,7 +24,7 @@ export function Nav({
       data-nav={home ? "" : undefined}
       className="container-page relative z-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 py-6"
     >
-      <Link href={`/${locale}/`} className="t-h4 order-1">
+      <Link href={`/${locale}/`} className="t-h4 tap order-1">
         {dict.name}
       </Link>
       <div className="order-2 sm:order-3">
@@ -32,9 +32,9 @@ export function Nav({
       </div>
       <nav aria-label={dict.navLabel} className="order-3 w-full sm:order-2 sm:ml-auto sm:w-auto">
         <ul className="t-label flex items-center gap-6 text-text-2 sm:gap-8">
-          <li><a href={`${base}#work`}>{dict.nav.work}</a></li>
-          <li><a href={`${base}#about`}>{dict.nav.about}</a></li>
-          <li><a href={`${base}#contact`}>{dict.nav.contact}</a></li>
+          <li><a href={`${base}#work`} className="tap">{dict.nav.work}</a></li>
+          <li><a href={`${base}#about`} className="tap">{dict.nav.about}</a></li>
+          <li><a href={`${base}#contact`} className="tap">{dict.nav.contact}</a></li>
         </ul>
       </nav>
     </header>
