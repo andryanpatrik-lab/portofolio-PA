@@ -157,8 +157,12 @@ export function createRenderer(canvas: HTMLCanvasElement, opts: Options): Render
   let last = 0;
   const t0 = performance.now();
   // The black hole grows in a few seconds after load, so first paint and first interactions are not competing with it.
+  // With the entry intro it stays away until the intro is passed (html.intro-passed), then grows in.
   const HOLE_DELAY = 3;
   const HOLE_GROW = 2.5;
+  const rootCl = document.documentElement.classList;
+  const introGated = rootCl.contains("intro-on");
+  let holeStart = -1;
   let frames = 0;
   let sum = 0;
   let slowCount = 0;
@@ -194,7 +198,8 @@ export function createRenderer(canvas: HTMLCanvasElement, opts: Options): Render
     gl.uniform1f(uTime, (now - t0) / 1000);
     gl.uniform1f(uScroll, scrollV);
     const h = holePos(scrollV, width / height);
-    const g = Math.min(1, Math.max(0, ((now - t0) / 1000 - HOLE_DELAY) / HOLE_GROW));
+    if (holeStart < 0 && (!introGated || rootCl.contains("intro-passed"))) holeStart = introGated ? now + 400 : t0 + HOLE_DELAY * 1000;
+    const g = holeStart < 0 ? 0 : Math.min(1, Math.max(0, (now - holeStart) / 1000 / HOLE_GROW));
     gl.uniform3f(uHole, h.x, h.y, h.r * Math.max(g * g * (3 - 2 * g), 0.02));
     gl.uniform3fv(uA, cur.a);
     gl.uniform3fv(uB, cur.b);

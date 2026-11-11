@@ -184,10 +184,38 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
 /* Cinematic entry (M10). Visible only under .intro-on (set by src/lib/motionInit.ts); otherwise the hero is first.
    The sticky screen is the one allowed pinned section (BRIEF section 9); scrolling stays native. */
 .intro { display: none; }
-.intro-on .intro { display: block; position: relative; height: 260vh; margin-top: -5rem; margin-bottom: -45vh; }
+.intro-on .intro { display: block; position: relative; height: 260vh; margin-bottom: -45vh; }
 @media (max-width: 1023px), (pointer: coarse) { .intro-on .intro { height: 190vh; margin-bottom: -35vh; } }
 .intro-stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; place-items: center; pointer-events: none; }
 .intro-stick a { pointer-events: auto; }
+/* With the entry intro the home header is a fixed bar: it leaves during the flight and returns after it. */
+.intro-on header[data-hero="nav"] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  transition: opacity 360ms var(--ease-out), transform 360ms var(--ease-out), visibility 0s;
+}
+.intro-on header[data-hero="nav"]::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: -1rem;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0));
+  pointer-events: none;
+}
+.intro-nav-hidden header[data-hero="nav"] {
+  opacity: 0;
+  transform: translateY(-14px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out), visibility 0s 240ms;
+}
 .intro-layer { position: absolute; inset: 0; will-change: transform, opacity; }
 .intro-stars {
   background-image:
@@ -449,6 +477,9 @@ html:active-view-transition-type(nav-back)::view-transition-group(.morph) {
 }
 .cosmos-hole { position: absolute; left: 0; top: 0; display: none; will-change: transform; }
 .cosmos-lite .cosmos-hole { display: block; opacity: 0; animation: cosmos-hole-in 2.5s ease-out 3s forwards; }
+/* With the entry intro the hole waits until the intro is passed, then grows in. */
+.intro-on .cosmos-hole { animation-delay: 0.4s; animation-play-state: paused; }
+.intro-on.intro-passed .cosmos-hole { animation-play-state: running; }
 @keyframes cosmos-hole-in { to { opacity: 1; } }
 .cosmos-hole-ring, .cosmos-hole-core { position: absolute; inset: 0; border-radius: 9999px; }
 .cosmos-hole-ring {
