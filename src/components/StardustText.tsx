@@ -55,7 +55,7 @@ function attach(el: HTMLElement, tier: Tier, order: number): () => void {
   const timers: number[] = [];
 
   // Building only rasterises into the (detached) canvas; mount() is called when something is drawn.
-  const ensureField = () => (field ??= buildField(el, canvas, dpr, intro ? Math.round(TARGET[tier] * 0.7) : TARGET[tier], paceFast));
+  const ensureField = () => (field ??= buildField(el, canvas, dpr, intro ? Math.round(TARGET[tier] * 0.7) : TARGET[tier], paceFast, intro || immediate));
   const cleanups: (() => void)[] = [];
 
   if (!ctx) {
@@ -134,8 +134,9 @@ function attach(el: HTMLElement, tier: Tier, order: number): () => void {
       timers.push(window.setTimeout(() => el.dataset.dustState !== "done" && (el.dataset.dustState = "done"), 8000));
       const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
       if (immediate) {
-        // the hero title goes first, then the rest of the first screen with a small stagger (separate tasks)
-        const delay = order === 0 ? 0 : Math.min(150 + order * 170, 1400);
+        // the hero title goes first, then the rest of the first screen with a small stagger (separate tasks);
+        // first-screen text lands quickly (about 1 s) because visitors are waiting for it
+        const delay = order === 0 ? 0 : Math.min(60 + order * 90, 600);
         document.fonts.ready.then(() => timers.push(window.setTimeout(start, delay)), start);
       } else {
         document.fonts.ready.then(() => (idle ? idle(start, { timeout: 300 }) : start()), start);
@@ -158,9 +159,12 @@ function attach(el: HTMLElement, tier: Tier, order: number): () => void {
   }
   if (mode === "dissolve") {
     let p = 0;
+    // its own frame handle: the intro and puff loops use `raf`, and a stale value there must never block scrolling
+    let dRaf = 0;
+    cleanups.push(() => cancelAnimationFrame(dRaf));
     const heroBusy = () => document.documentElement.classList.contains("hero-pending");
     const apply = () => {
-      raf = 0;
+      dRaf = 0;
       if (disposed || heroBusy() || el.dataset.dustState === "pending" || el.dataset.dustState === "running") return;
       if (p <= 0.002) {
         el.style.opacity = "";
@@ -174,7 +178,7 @@ function attach(el: HTMLElement, tier: Tier, order: number): () => void {
       renderDissolve(ctx, f, p, performance.now() / 1000);
     };
     const request = () => {
-      if (!raf) raf = requestAnimationFrame(apply);
+      if (!dRaf) dRaf = requestAnimationFrame(apply);
     };
     const stop = scroll((_progress: number, info: { y: { current: number } }) => {
       p = Math.min(1, Math.max(0, info.y.current / DISSOLVE_DISTANCE));

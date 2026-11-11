@@ -60,7 +60,7 @@ function pads(r: DOMRect) {
 }
 
 /** Sizes the canvas around `el` (with padding for flying particles) and samples the element's visible words. */
-export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: number, target: number, fast = false): Field | null {
+export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: number, target: number, fast = false, hero = false): Field | null {
   const rect = el.getBoundingClientRect();
   if (rect.width < 4 || rect.height < 4) return null;
   const { padL, padR } = pads(rect);
@@ -161,8 +161,9 @@ export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: numb
     f.sx[i] = f.tx[i] - (80 + Math.random() * 280) * dpr;
     f.sy[i] = Math.min(h, Math.max(0, f.ty[i] + (Math.random() - 0.5) * 150 * dpr));
     // Paragraphs (fast) assemble in about 1.3 s so reading is not delayed; headings take their time.
-    f.delay[i] = (f.tx[i] / w) * (fast ? 0.45 : 0.9) + Math.random() * (fast ? 0.3 : 0.5);
-    f.flight[i] = fast ? 0.6 + Math.random() * 0.4 : 1.1 + Math.random() * 0.8;
+    // The hero title lands in about 1 s (it is what visitors wait for), paragraphs in 1.3 s, headings in 2.6 s.
+    f.delay[i] = (f.tx[i] / w) * (hero ? 0.28 : fast ? 0.45 : 0.9) + Math.random() * (hero ? 0.12 : fast ? 0.3 : 0.5);
+    f.flight[i] = hero ? 0.45 + Math.random() * 0.35 : fast ? 0.6 + Math.random() * 0.4 : 1.1 + Math.random() * 0.8;
     f.seed[i] = Math.random() * Math.PI * 2;
     f.order[i] = (f.tx[i] / w) * 0.6 + Math.random() * 0.4;
     f.drift[i] = (180 + Math.random() * 700) * dpr;
