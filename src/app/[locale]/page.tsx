@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
+import { BlackHoleArrive } from "@/components/BlackHoleArrive";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { IntroFlight } from "@/components/IntroFlight";
 import { HeroMotion } from "@/components/HeroMotion";
@@ -23,6 +24,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <>
       <HeroMotion />
       <IntroFlight />
+      <BlackHoleArrive />
       <RevealOnScroll />
       <Nav locale={locale} dict={dict} home />
       <ViewTransition enter="page-in" exit="page-out" default="none">

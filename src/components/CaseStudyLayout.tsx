@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ViewTransition } from "react";
+import { BackLink } from "./BackLink";
 import { BlackHoleLink } from "./BlackHoleLink";
 import { FlowDiagram } from "./FlowDiagram";
 import { Metric } from "./Metric";
@@ -37,10 +37,10 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
     <ViewTransition enter="page-in" exit="page-out" default="none">
       <main id="main" data-cosmos={cosmos} className="page-enter container-page pb-[var(--section-gap)] pt-8">
         <div className="flex items-center justify-between">
-          <Link href={`/${locale}/#work`} transitionTypes={["nav-back"]} className="t-label text-text-2 link-underline">
+          <BackLink href={`/${locale}/#work`} className="t-label text-text-2 link-underline">
             <span aria-hidden="true">← </span>
             {ui.back}
-          </Link>
+          </BackLink>
           <p className="t-label text-text-muted">
             <ViewTransition name={`card-num-${slug}`} share="morph" default="none">
               <span className="inline-block text-accent">{number}</span>

@@ -452,6 +452,9 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 }
 .bh-nav .bh-curtain,
 .bh-nav .bh-portal { display: block; }
+/* leaving a case study: the same elements, in light */
+.bh-white .bh-curtain { background: #fafaf9; }
+.bh-white .bh-portal { background: radial-gradient(circle closest-side, #fafaf9 0 86%, rgba(234, 179, 8, 0.55) 93%, transparent 100%); }
 /* while it runs: no second click, and the navigation's own View Transition stays invisible */
 .bh-nav body { pointer-events: none; }
 .bh-nav::view-transition { display: none; }
