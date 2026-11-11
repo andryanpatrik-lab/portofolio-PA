@@ -64,7 +64,7 @@ void main(){
   vec2 hd = uv - uHole.xy;
   float hl = length(hd);
   float hr = uHole.z;
-  vec2 luv = uv - hd * (hr * hr * 2.2) / (hl * hl + hr * hr * 0.6);
+  vec2 luv = uv - hd * (hr * hr * 2.2) / (hl * hl + hr * hr * 0.6 + 0.00001);
   float t = uTime * 0.02;
   vec2 p = luv * 1.3 + vec2(0.0, uScroll * 0.25);
   vec2 q = vec2(fbm(p + t), fbm(p + vec2(5.2, 1.3) - t));
@@ -156,6 +156,9 @@ export function createRenderer(canvas: HTMLCanvasElement, opts: Options): Render
   let running = false;
   let last = 0;
   const t0 = performance.now();
+  // The black hole grows in a few seconds after load, so first paint and first interactions are not competing with it.
+  const HOLE_DELAY = 3;
+  const HOLE_GROW = 2.5;
   let frames = 0;
   let sum = 0;
   let slowCount = 0;
@@ -191,7 +194,8 @@ export function createRenderer(canvas: HTMLCanvasElement, opts: Options): Render
     gl.uniform1f(uTime, (now - t0) / 1000);
     gl.uniform1f(uScroll, scrollV);
     const h = holePos(scrollV, width / height);
-    gl.uniform3f(uHole, h.x, h.y, h.r);
+    const g = Math.min(1, Math.max(0, ((now - t0) / 1000 - HOLE_DELAY) / HOLE_GROW));
+    gl.uniform3f(uHole, h.x, h.y, h.r * Math.max(g * g * (3 - 2 * g), 0.02));
     gl.uniform3fv(uA, cur.a);
     gl.uniform3fv(uB, cur.b);
     gl.uniform3fv(uC, cur.c);

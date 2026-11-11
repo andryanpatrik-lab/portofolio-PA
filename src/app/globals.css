@@ -407,7 +407,8 @@ html:active-view-transition-type(nav-back)::view-transition-group(.morph) {
   to { opacity: 0.95; }
 }
 .cosmos-hole { position: absolute; left: 0; top: 0; display: none; will-change: transform; }
-.cosmos-lite .cosmos-hole { display: block; }
+.cosmos-lite .cosmos-hole { display: block; opacity: 0; animation: cosmos-hole-in 2.5s ease-out 3s forwards; }
+@keyframes cosmos-hole-in { to { opacity: 1; } }
 .cosmos-hole-ring, .cosmos-hole-core { position: absolute; inset: 0; border-radius: 9999px; }
 .cosmos-hole-ring {
   background: conic-gradient(from 0deg, rgba(255, 190, 90, 0.04), rgba(255, 200, 110, 0.34), rgba(255, 190, 90, 0.04), rgba(255, 190, 90, 0.04));
