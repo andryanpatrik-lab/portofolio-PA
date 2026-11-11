@@ -15,7 +15,7 @@ export function Contact({ home }: { home: Home }) {
       <div data-reveal>
         <Eyebrow>{contact.label}</Eyebrow>
         <h2 id="contact-title" data-dust="assemble" data-dust-state="pending" className="t-h1 mt-8">{contact.title}</h2>
-        <p data-split className="t-lead mt-6 text-text-2">{contact.sub}</p>
+        <p data-dust="assemble" data-dust-state="pending" className="t-lead mt-6 text-text-2">{contact.sub}</p>
         {site.email ? (
           <Button href={`mailto:${site.email}`} className="mt-10">{contact.cta}</Button>
         ) : (

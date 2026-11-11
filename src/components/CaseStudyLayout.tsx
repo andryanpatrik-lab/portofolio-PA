@@ -22,10 +22,12 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
   const cosmos = (["aurora", "nebula", "ember", "supernova"] as const)[index % 4];
   const meta = [data.role, data.year, data.status, data.stack.join(", ")].filter(Boolean);
 
+  const dust = { "data-dust": "assemble", "data-dust-state": "pending" } as const;
+
   const section = (heading: string, body?: string) => (
     <section className="mt-[var(--section-gap)]">
-      <h2 className="t-h3">{heading}</h2>
-      <p className={`t-lead mt-6 ${body ? "text-text-2" : "text-text-muted"}`}>{body ?? ui.pending}</p>
+      <h2 {...dust} className="t-h3">{heading}</h2>
+      <p {...dust} className={`t-lead mt-6 ${body ? "text-text-2" : "text-text-muted"}`}>{body ?? ui.pending}</p>
     </section>
   );
 
@@ -49,22 +51,22 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           <ViewTransition name={`card-title-${slug}`} share="morph" default="none">
             <h1 className="t-h1 max-w-[18ch]">{title}</h1>
           </ViewTransition>
-          <p className="t-lead mt-6 text-text-2">{tagline}</p>
+          <p {...dust} className="t-lead mt-6 text-text-2">{tagline}</p>
           {meta.length > 0 && <p className="t-label mt-6 text-text-muted">{meta.join(" · ")}</p>}
         </header>
 
         {data.context && (
           <section className="mt-[var(--section-gap)]">
-            <h2 className="t-h3">{ui.context}</h2>
-            <p className="t-lead mt-6 text-text-2">{data.context}</p>
+            <h2 {...dust} className="t-h3">{ui.context}</h2>
+            <p {...dust} className="t-lead mt-6 text-text-2">{data.context}</p>
           </section>
         )}
 
         {section(ui.problem, data.problem)}
 
         <section className="mt-[var(--section-gap)]">
-          <h2 className="t-h3">{ui.solution}</h2>
-          <p className={`t-lead mt-6 ${data.solution ? "text-text-2" : "text-text-muted"}`}>{data.solution ?? ui.pending}</p>
+          <h2 {...dust} className="t-h3">{ui.solution}</h2>
+          <p {...dust} className={`t-lead mt-6 ${data.solution ? "text-text-2" : "text-text-muted"}`}>{data.solution ?? ui.pending}</p>
           <ViewTransition name={`card-flow-${slug}`} share="morph" default="none">
             <div className="mt-12">
               <FlowDiagram variant="full" steps={data.flow} />
@@ -73,7 +75,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
         </section>
 
         <section className="mt-[var(--section-gap)]">
-          <h2 className="t-h3">{ui.results}</h2>
+          <h2 {...dust} className="t-h3">{ui.results}</h2>
           <ul className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
             {data.metrics.map((m, i) => (
               <li key={i}>

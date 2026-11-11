@@ -18,6 +18,12 @@ const TARGET: Record<Tier, number> = { full: 7000, lite: 2200 };
  */
 function attach(el: HTMLElement, tier: Tier): () => void {
   const mode = el.dataset.dust;
+  // Body-size text (paragraphs) gets a quicker, lighter version; very long text is shown as is.
+  const fast = parseFloat(getComputedStyle(el).fontSize) < 28;
+  if (mode === "assemble" && (el.textContent ?? "").length > 450) {
+    el.dataset.dustState = "done";
+    return () => {};
+  }
   const dpr = tier === "full" ? Math.min(window.devicePixelRatio || 1, 1.5) : 1;
   // The canvas only enters the DOM when dust is actually needed. Inserting wide absolute canvases at load made
   // mobile pages heavy (layout shift and long tasks), so nothing is created until the first scroll/reveal.
@@ -43,7 +49,7 @@ function attach(el: HTMLElement, tier: Tier): () => void {
   const timers: number[] = [];
 
   // Building only rasterises into the (detached) canvas; mount() is called when something is drawn.
-  const ensureField = () => (field ??= buildField(el, canvas, dpr, TARGET[tier]));
+  const ensureField = () => (field ??= buildField(el, canvas, dpr, TARGET[tier], fast));
   const cleanups: (() => void)[] = [];
 
   if (!ctx) {
@@ -52,12 +58,14 @@ function attach(el: HTMLElement, tier: Tier): () => void {
     return () => {};
   }
 
-  const visIO = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
-  visIO.observe(el);
-  cleanups.push(() => visIO.disconnect());
+  if (!fast) {
+    const visIO = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
+    visIO.observe(el);
+    cleanups.push(() => visIO.disconnect());
+  }
 
   const schedulePuff = () => {
-    if (tier !== "full" || disposed) return;
+    if (tier !== "full" || disposed || fast) return;
     puffTimer = window.setTimeout(doPuff, 5000 + 4000 * Math.random());
   };
   const doPuff = () => {
@@ -89,7 +97,12 @@ function attach(el: HTMLElement, tier: Tier): () => void {
           if (f && ctx) clear(ctx, f);
           canvas.style.transition = "none";
           canvas.style.opacity = "1";
-          schedulePuff();
+          if (fast) {
+            // Paragraphs are done for good: release the canvas and the particle data.
+            canvas.remove();
+            canvas.width = 0;
+            field = null;
+          } else schedulePuff();
         }, 650),
       );
     };
@@ -116,7 +129,8 @@ function attach(el: HTMLElement, tier: Tier): () => void {
         if (!e.isIntersecting) return;
         io.disconnect();
         timers.push(window.setTimeout(() => el.dataset.dustState !== "done" && (el.dataset.dustState = "done"), 8000));
-        document.fonts.ready.then(start, start);
+        const idle = (window as Window & { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number }).requestIdleCallback;
+        document.fonts.ready.then(() => (idle ? idle(start, { timeout: 300 }) : start()), start);
       },
       { rootMargin: "0px 0px -5% 0px" },
     );

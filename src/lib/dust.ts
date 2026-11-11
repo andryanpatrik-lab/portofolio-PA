@@ -51,7 +51,7 @@ export function placeCanvas(el: HTMLElement, canvas: HTMLCanvasElement) {
 }
 
 /** Sizes the canvas around `el` (with padding for flying particles) and samples the element's visible words. */
-export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: number, target: number): Field | null {
+export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: number, target: number, fast = false): Field | null {
   const rect = el.getBoundingClientRect();
   if (rect.width < 4 || rect.height < 4) return null;
   const cssW = rect.width + PAD_X * 2;
@@ -148,8 +148,9 @@ export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: numb
   for (let i = 0; i < count; i++) {
     f.sx[i] = f.tx[i] - (80 + Math.random() * 280) * dpr;
     f.sy[i] = Math.min(h, Math.max(0, f.ty[i] + (Math.random() - 0.5) * 150 * dpr));
-    f.delay[i] = (f.tx[i] / w) * 0.9 + Math.random() * 0.5;
-    f.flight[i] = 1.1 + Math.random() * 0.8;
+    // Paragraphs (fast) assemble in about 1.3 s so reading is not delayed; headings take their time.
+    f.delay[i] = (f.tx[i] / w) * (fast ? 0.45 : 0.9) + Math.random() * (fast ? 0.3 : 0.5);
+    f.flight[i] = fast ? 0.6 + Math.random() * 0.4 : 1.1 + Math.random() * 0.8;
     f.seed[i] = Math.random() * Math.PI * 2;
     f.order[i] = (f.tx[i] / w) * 0.6 + Math.random() * 0.4;
     f.drift[i] = (180 + Math.random() * 700) * dpr;
