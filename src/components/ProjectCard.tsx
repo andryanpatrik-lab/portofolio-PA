@@ -27,7 +27,7 @@ export function ProjectCard({
   return (
     <Link
       href={href}
-      transitionTypes={["nav-forward"]}
+      transitionTypes={["bh-enter"]}
       className="block rounded-2xl"
     >
       <article data-reveal className="project-card rounded-2xl border border-border bg-bg p-6 md:p-12">

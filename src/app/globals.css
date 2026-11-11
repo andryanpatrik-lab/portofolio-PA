@@ -194,7 +194,7 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
 .intro-stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; place-items: center; pointer-events: none; }
 .intro-stick a { pointer-events: auto; }
 /* With the entry intro the home header is a fixed bar: it leaves during the flight and returns after it. */
-.intro-on header[data-hero="nav"] {
+.intro-on header[data-nav] {
   position: fixed;
   top: 0;
   left: 0;
@@ -202,7 +202,7 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
   z-index: 30;
   transition: opacity 360ms var(--ease-out), transform 360ms var(--ease-out), visibility 0s;
 }
-.intro-on header[data-hero="nav"]::before {
+.intro-on header[data-nav]::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -214,7 +214,8 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
   background: linear-gradient(to bottom, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0));
   pointer-events: none;
 }
-.intro-nav-hidden header[data-hero="nav"] {
+.intro-nav-hidden header[data-nav],
+.intro-on:not(.intro-passed) header[data-nav] {
   opacity: 0;
   transform: translateY(-14px);
   visibility: hidden;
@@ -249,6 +250,7 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
   will-change: transform, opacity;
 }
 .intro-copy { position: relative; display: grid; justify-items: center; gap: 1.25rem; text-align: center; padding: 0 1.5rem; will-change: transform, opacity; }
+.intro-welcome { font-size: clamp(1.1rem, 0.95rem + 0.8vw, 1.6rem); font-weight: 400; letter-spacing: 0.28em; line-height: 1.4; color: var(--text); }
 .intro-hint { color: var(--text-muted, var(--text-2)); }
 .intro-skip { position: absolute; top: 5.5rem; left: 50%; transform: translateX(-50%); color: var(--text-2); padding: 0.5rem 1rem; border: 1px solid var(--border, rgba(255, 255, 255, 0.2)); border-radius: 9999px; }
 .intro-skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -364,6 +366,63 @@ html:active-view-transition-type(nav-back)::view-transition-group(.morph) {
   ::view-transition-new(.morph) { animation: 150ms linear both vt-fade-in; }
   ::view-transition-old(.page-out) { animation: 150ms linear both vt-fade-out; }
   ::view-transition-new(.page-in) { animation: 150ms linear both vt-fade-in; }
+}
+
+/* Light pages (M12): case studies. Approved by Patrik, replacing the former dark-only rule for these pages. The wrapper re-scopes
+   the tokens, so utilities (text-text, bg-bg, border-border, text-accent) follow. Gold is darkened for contrast on white. */
+.light-page {
+  --bg-deep: #fafaf9;
+  --bg: #ffffff;
+  --surface: #f5f5f4;
+  --border: #d6d3d1;
+  --text: #1c1917;
+  --text-2: #44403c;
+  --text-muted: #57534e;
+  --accent: #8a6100;
+  --accent-dim: #6b4a00;
+  --accent-glow: rgba(138, 97, 0, 0.1);
+  color-scheme: light;
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg-deep);
+  color: var(--text);
+}
+/* the cursor glow stays readable on white */
+html:has(.light-page) .cursor-core { background: #3d2a00; box-shadow: 0 0 6px rgba(138, 97, 0, 0.6); }
+html:has(.light-page) .cursor-glow { background: radial-gradient(circle, rgba(138, 97, 0, 0.3) 0%, rgba(138, 97, 0, 0.1) 38%, transparent 70%); }
+
+/* Black-hole page transition (M12): entering a case study. The old page is pulled into a growing hole (zoom + turn),
+   a void follows, then the light page comes out of it. Only transform and opacity. */
+.bh-portal {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 9998;
+  width: 34vmin;
+  height: 34vmin;
+  margin: -17vmin 0 0 -17vmin;
+  border-radius: 9999px;
+  pointer-events: none;
+  border: 2px solid rgba(255, 200, 110, 0.7);
+  background: radial-gradient(circle closest-side, #000 0 72%, rgba(255, 190, 90, 0.25) 94%, transparent);
+}
+html:active-view-transition-type(bh-enter) [style*="view-transition-name"] { view-transition-name: none !important; }
+html:active-view-transition-type(bh-enter) .bh-portal { display: block; view-transition-name: bh; }
+html:active-view-transition-type(bh-enter)::view-transition { background: #000; }
+html:active-view-transition-type(bh-enter)::view-transition-group(bh) { animation: none; }
+html:active-view-transition-type(bh-enter)::view-transition-old(bh) { animation: 650ms cubic-bezier(0.55, 0, 0.9, 0.45) both bh-grow; mix-blend-mode: normal; }
+html:active-view-transition-type(bh-enter)::view-transition-new(bh) { animation: 1000ms linear both bh-void; mix-blend-mode: normal; }
+html:active-view-transition-type(bh-enter)::view-transition-old(root) { animation: 650ms cubic-bezier(0.55, 0, 0.9, 0.45) both bh-suck; mix-blend-mode: normal; }
+html:active-view-transition-type(bh-enter)::view-transition-new(root) { animation: 650ms var(--ease-out) 480ms both bh-arrive; mix-blend-mode: normal; }
+@keyframes bh-suck { 0% { transform: scale(1) rotate(0deg); opacity: 1; } 75% { opacity: 1; } 100% { transform: scale(5) rotate(14deg); opacity: 0; } }
+@keyframes bh-grow { 0% { transform: scale(0.1); opacity: 0; } 20% { opacity: 1; } 100% { transform: scale(24); opacity: 1; } }
+@keyframes bh-void { 0% { transform: scale(24); opacity: 0; } 55% { transform: scale(24); opacity: 1; } 100% { transform: scale(24); opacity: 0; } }
+@keyframes bh-arrive { from { transform: scale(0.94); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .bh-portal { display: none !important; }
+  html:active-view-transition-type(bh-enter)::view-transition-old(root) { animation: 150ms linear both vt-fade-out; }
+  html:active-view-transition-type(bh-enter)::view-transition-new(root) { animation: 150ms linear both vt-fade-in; }
 }
 
 /* Browsers without the View Transitions API: crossfade the page in with CSS instead. */

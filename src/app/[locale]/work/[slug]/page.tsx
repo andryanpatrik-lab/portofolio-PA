@@ -41,7 +41,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
   const dict = getDictionary(locale);
 
   return (
-    <>
+    // Case studies are the light pages (M12): the wrapper re-scopes the colour tokens (see .light-page in globals.css).
+    <div className="light-page">
       <RevealOnScroll />
       <Nav locale={locale} dict={dict} pathSuffix={`work/${slug}/`} />
       <CaseStudyLayout
@@ -56,6 +57,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
         next={{ slug: nextCard.slug, title: nextCard.title }}
       />
       <Footer text={dict.footer} />
-    </>
+    </div>
   );
 }

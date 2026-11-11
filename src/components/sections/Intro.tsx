@@ -17,6 +17,9 @@ export function Intro({ dict }: { dict: Dictionary }) {
           {dict.intro.skip}
         </a>
         <div className="intro-copy" data-intro="copy">
+          <p data-dust="assemble" data-dust-state="pending" className="intro-welcome">
+            {dict.intro.welcome}
+          </p>
           {/* the same line is the hero subtitle: hidden from assistive tech here so it is not read twice */}
           <p aria-hidden="true" className="t-lead text-text-2">{dict.hero.sub}</p>
           <p className="t-label intro-hint">

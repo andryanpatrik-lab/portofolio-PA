@@ -27,6 +27,8 @@ export function HeroMotion() {
     }, 3000);
 
     const introOn = root.classList.contains("intro-on");
+    // With the entry intro the header is driven by the intro (hidden, then faded in by CSS), not by this sequence.
+    if (introOn) q("nav")?.removeAttribute("data-hero");
     let io: IntersectionObserver | null = null;
     const run = () => {
       if (cancelled) return;

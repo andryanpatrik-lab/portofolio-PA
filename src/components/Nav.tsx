@@ -21,6 +21,7 @@ export function Nav({
   return (
     <header
       data-hero={home ? "nav" : undefined}
+      data-nav={home ? "" : undefined}
       className="container-page relative z-10 flex flex-wrap items-center justify-between gap-x-8 gap-y-3 py-6"
     >
       <Link href={`/${locale}/`} className="t-h4 order-1">

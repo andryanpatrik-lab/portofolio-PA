@@ -44,6 +44,8 @@ export default async function RootLayout({
         <Cosmos />
         <DustController />
         <CursorGlow />
+        {/* Decorative: only shown (and named) during the black-hole page transition, see globals.css */}
+        <div aria-hidden="true" className="bh-portal" />
         {children}
       </body>
     </html>

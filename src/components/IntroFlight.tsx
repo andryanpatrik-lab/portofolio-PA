@@ -53,8 +53,8 @@ export function IntroFlight() {
       copy.style.transform = `translate3d(0, ${(-48 * clamp(p / 0.3)).toFixed(1)}px, 0)`;
       copy.style.opacity = String(1 - clamp(p / 0.28));
       stick.style.opacity = String(1 - smooth(p, 0.86, 1));
-      // The header leaves while the camera flies and comes back (fade and slide, see globals.css) once the hero is reached.
-      root.classList.toggle("intro-nav-hidden", p > 0.12 && p < 0.9);
+      // No header during the intro: it comes in (fade and slide, see globals.css) once the hero is reached.
+      root.classList.toggle("intro-nav-hidden", p < 0.9);
       if (p >= 0.9) root.classList.add("intro-passed");
       const done = p >= 0.98;
       finished = done;

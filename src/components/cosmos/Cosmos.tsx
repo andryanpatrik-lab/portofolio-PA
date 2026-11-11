@@ -22,6 +22,7 @@ export function Cosmos() {
   const hole = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const refresh = useRef<() => void>(() => {});
+  const setLight = useRef<(on: boolean) => void>(() => {});
 
   useEffect(() => {
     const html = document.documentElement;
@@ -29,6 +30,8 @@ export function Cosmos() {
     let renderer: Renderer | null = null;
     let ticking = false;
     let holeSize = 0;
+    // Light pages (case studies) cover the background completely: the shader is paused there.
+    let light = false;
 
     const setTier = (tier: "full" | "lite" | "off") => {
       html.classList.remove("cosmos-full", "cosmos-lite", "cosmos-off");
@@ -102,12 +105,17 @@ export function Cosmos() {
       });
       if (!renderer) return downgrade("lite");
       update();
-      renderer.start();
+      if (!light) renderer.start();
     };
     const idle = (window as Window & { requestIdleCallback?: (cb: () => void) => number }).requestIdleCallback;
     const startId = idle ? idle(startWebGL) : window.setTimeout(startWebGL, 400);
 
-    const onVisibility = () => (document.hidden ? renderer?.stop() : renderer?.start());
+    const onVisibility = () => (document.hidden || light ? renderer?.stop() : renderer?.start());
+    setLight.current = (on) => {
+      light = on;
+      if (on) renderer?.stop();
+      else if (!document.hidden) renderer?.start();
+    };
     document.addEventListener("visibilitychange", onVisibility);
     update();
 
@@ -123,7 +131,10 @@ export function Cosmos() {
 
   // A route change swaps the sections on the page: re-evaluate which mood applies.
   useEffect(() => {
-    const id = requestAnimationFrame(() => refresh.current());
+    const id = requestAnimationFrame(() => {
+      setLight.current(!!document.querySelector(".light-page"));
+      refresh.current();
+    });
     return () => cancelAnimationFrame(id);
   }, [pathname]);
 
