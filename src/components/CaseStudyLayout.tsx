@@ -25,8 +25,9 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
   const dust = { "data-dust": "assemble", "data-dust-state": "pending" } as const;
 
-  const section = (heading: string, body?: string) => (
-    <section className="mt-[var(--section-gap)]">
+  // Each section picks a colour mood for the light background (the section under the viewport centre decides, see Cosmos).
+  const section = (heading: string, mood: string, body?: string) => (
+    <section data-cosmos={mood} className="mt-[var(--section-gap)]">
       <h2 {...dust} className="t-h3">{heading}</h2>
       <p {...dust} className={`t-lead mt-6 ${body ? "text-text-2" : "text-text-muted"}`}>{body ?? ui.pending}</p>
     </section>
@@ -57,15 +58,15 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
         </header>
 
         {data.context && (
-          <section className="mt-[var(--section-gap)]">
+          <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
             <h2 {...dust} className="t-h3">{ui.context}</h2>
             <p {...dust} className="t-lead mt-6 text-text-2">{data.context}</p>
           </section>
         )}
 
-        {section(ui.problem, data.problem)}
+        {section(ui.problem, "ember", data.problem)}
 
-        <section className="mt-[var(--section-gap)]">
+        <section data-cosmos="nebula" className="mt-[var(--section-gap)]">
           <h2 {...dust} className="t-h3">{ui.solution}</h2>
           <p {...dust} className={`t-lead mt-6 ${data.solution ? "text-text-2" : "text-text-muted"}`}>{data.solution ?? ui.pending}</p>
           <ViewTransition name={`card-flow-${slug}`} share="morph" default="none">
@@ -75,7 +76,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           </ViewTransition>
         </section>
 
-        <section className="mt-[var(--section-gap)]">
+        <section data-cosmos="supernova" className="mt-[var(--section-gap)]">
           <h2 {...dust} className="t-h3">{ui.results}</h2>
           <ul className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
             {data.metrics.map((m, i) => (
@@ -87,7 +88,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           </ul>
         </section>
 
-        {section(ui.learning, data.learning)}
+        {section(ui.learning, "void", data.learning)}
 
         <nav aria-label={ui.next} className="mt-[var(--section-gap)] border-t border-border pt-10">
           <BlackHoleLink href={`/${locale}/work/${next.slug}/`} className="block">

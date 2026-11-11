@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlackHoleArrive } from "@/components/BlackHoleArrive";
+import { LightMotes } from "@/components/LightMotes";
 import { CaseStudyLayout } from "@/components/CaseStudyLayout";
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
@@ -45,6 +46,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
     // Case studies are the light pages (M12): the wrapper re-scopes the colour tokens (see .light-page in globals.css).
     <div className="light-page">
       <BlackHoleArrive />
+      <LightMotes />
       <RevealOnScroll />
       <Nav locale={locale} dict={dict} pathSuffix={`work/${slug}/`} />
       <CaseStudyLayout

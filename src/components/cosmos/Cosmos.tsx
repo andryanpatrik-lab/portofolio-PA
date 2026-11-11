@@ -18,6 +18,7 @@ const TIER_KEY = "cosmos-tier";
  */
 export function Cosmos() {
   const wrap = useRef<HTMLDivElement>(null);
+  const lightWrap = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const hole = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -51,11 +52,14 @@ export function Cosmos() {
       const vh = window.innerHeight;
       let key: CosmosKey | "" = "";
       let best = Infinity;
+      let bestH = Infinity;
       document.querySelectorAll<HTMLElement>("[data-cosmos]").forEach((el) => {
         const r = el.getBoundingClientRect();
         const dist = r.top <= vh / 2 && r.bottom >= vh / 2 ? 0 : Math.min(Math.abs(r.top - vh / 2), Math.abs(r.bottom - vh / 2));
-        if (dist < best) {
+        // the innermost section wins a tie (a page wrapper and the section inside it can both contain the screen centre)
+        if (dist < best || (dist === best && r.height < bestH)) {
           best = dist;
+          bestH = r.height;
           key = el.dataset.cosmos as CosmosKey;
         }
       });
@@ -75,6 +79,7 @@ export function Cosmos() {
       if (key !== active) {
         active = key;
         if (wrap.current) wrap.current.dataset.active = key;
+        if (lightWrap.current) lightWrap.current.dataset.active = key;
         renderer?.setTarget(palettes[key]);
       }
     };
@@ -166,6 +171,16 @@ export function Cosmos() {
         </div>
       </div>
       <canvas ref={canvas} aria-hidden="true" className="cosmos-canvas" />
+      {/* Light pages (case studies): pastel orbs drifting in two groups, one mood per section (see globals.css) */}
+      <div ref={lightWrap} aria-hidden="true" data-active="void" className="cosmos-light-wrap">
+        {(["a", "b"] as const).map((g) => (
+          <div key={g} className={`lp-group lp-group-${g}`}>
+            {KEYS.map((k) => (
+              <div key={k} className={`lp lp-${k}-${g}`} />
+            ))}
+          </div>
+        ))}
+      </div>
     </>
   );
 }
