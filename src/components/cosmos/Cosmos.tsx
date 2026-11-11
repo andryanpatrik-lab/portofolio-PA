@@ -121,6 +121,12 @@ export function Cosmos() {
             <div key={k} className={`cosmos-p cosmos-p-${k}`} />
           ))}
           <div className="cosmos-stars" />
+          <div className="cosmos-stars cosmos-stars-b" />
+        </div>
+        <div className="cosmos-meteors">
+          <span />
+          <span />
+          <span />
         </div>
       </div>
       <canvas ref={canvas} aria-hidden="true" className="cosmos-canvas" />

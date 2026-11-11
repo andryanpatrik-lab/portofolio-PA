@@ -22,6 +22,24 @@ float fbm(vec2 p){
   for (int i = 0; i < 4; i++) { v += a * noise(p); p = m * p; a *= 0.5; }
   return v;
 }
+// A shooting star: a bright head with a fading trail crossing the upper sky now and then.
+float meteor(vec2 uv, float offset, float period){
+  float t = uTime / period + offset;
+  float id = floor(t);
+  float q = fract(t) / 0.3; // active during the first 30% of each cycle
+  if (q > 1.0) return 0.0;
+  float r1 = hash(vec2(id, offset * 7.1));
+  float r2 = hash(vec2(id * 1.7, offset * 3.3));
+  vec2 dir = normalize(vec2(1.0, -0.62));
+  vec2 head = vec2(mix(-0.95, 0.35, r1), mix(0.12, 0.5, r2)) + dir * q * 1.35;
+  vec2 d = uv - head;
+  float along = dot(d, dir);
+  float perp = length(d - dir * along);
+  float trail = step(-0.3, along) * step(along, 0.0) * (1.0 + along / 0.3);
+  float body = smoothstep(0.0045, 0.0, perp) * trail;
+  float tip = smoothstep(0.012, 0.0, length(d));
+  return (body + tip) * smoothstep(0.0, 0.1, q) * smoothstep(1.0, 0.75, q);
+}
 vec3 stars(vec2 uv){
   vec3 s = vec3(0.0);
   for (int i = 0; i < 3; i++) {
@@ -33,8 +51,8 @@ vec3 stars(vec2 uv){
     float h = hash(id + fi * 13.7);
     vec2 off = (vec2(hash(id + 3.1), hash(id + 7.7)) - 0.5) * 0.6;
     float d = length(f - off);
-    float tw = 0.65 + 0.35 * sin(uTime * (0.8 + h * 2.0) + h * 60.0);
-    float b = smoothstep(0.06 - 0.012 * fi, 0.0, d) * tw * step(0.965, h);
+    float tw = 0.35 + 0.65 * sin(uTime * (0.9 + h * 2.4) + h * 60.0);
+    float b = smoothstep(0.06 - 0.012 * fi, 0.0, d) * max(tw, 0.0) * step(0.96, h);
     s += mix(vec3(0.8, 0.9, 1.0), vec3(1.0, 0.9, 0.75), hash(id + 9.2)) * b * (0.9 - 0.2 * fi);
   }
   return s;
@@ -51,7 +69,8 @@ void main(){
   vec3 col = uBase + tint * d * uIntensity;
   col = min(col, vec3(0.3));
   col *= 1.0 - 0.45 * dot(uv, uv) * 0.6;
-  col += stars(uv) * 0.85;
+  col += stars(uv) * 0.9;
+  col += vec3(0.85, 0.92, 1.0) * (meteor(uv, 0.4, 9.0) + meteor(uv, 0.1, 14.0)) * 0.9;
   col += (hash(gl_FragCoord.xy + uTime) - 0.5) / 255.0;
   gl_FragColor = vec4(col, 1.0);
 }`;

@@ -152,8 +152,8 @@ export function buildField(el: HTMLElement, canvas: HTMLCanvasElement, dpr: numb
     f.flight[i] = 1.1 + Math.random() * 0.8;
     f.seed[i] = Math.random() * Math.PI * 2;
     f.order[i] = (f.tx[i] / w) * 0.6 + Math.random() * 0.4;
-    f.drift[i] = (120 + Math.random() * 520) * dpr;
-    f.rise[i] = (20 + Math.random() * 220) * dpr;
+    f.drift[i] = (180 + Math.random() * 700) * dpr;
+    f.rise[i] = (30 + Math.random() * 280) * dpr;
   }
   return f;
 }
@@ -210,10 +210,10 @@ export function renderDissolve(ctx: CanvasRenderingContext2D, f: Field, p: numbe
   const b = buckets(f);
   const wob = 14 * f.dpr;
   for (let i = 0; i < f.count; i++) {
-    const s = clamp01((p - f.order[i] * 0.55) / 0.45);
+    const s = clamp01((p - f.order[i] * 0.4) / 0.35);
     if (s >= 0.98) continue;
-    const x = f.tx[i] + f.drift[i] * s ** 1.6 + Math.sin(f.seed[i] + 2.5 * t) * wob * s;
-    const y = f.ty[i] - f.rise[i] * s ** 1.4 + Math.cos(f.seed[i] * 1.3 + 2 * t) * wob * s;
+    const x = f.tx[i] + f.drift[i] * s ** 1.25 + Math.sin(f.seed[i] + 2.5 * t) * wob * s;
+    const y = f.ty[i] - f.rise[i] * s ** 1.15 + Math.cos(f.seed[i] * 1.3 + 2 * t) * wob * s;
     b.px[f.ci[i] * LEVELS + level(1 - s ** 1.2)].push(x, y);
   }
   flush(ctx, f, b);

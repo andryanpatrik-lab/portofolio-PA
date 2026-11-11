@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { buildField, clear, makePuff, placeCanvas, renderAssemble, renderDissolve, renderPuff, type Field } from "@/lib/dust";
 
 type Tier = "full" | "lite";
+// Scroll distance (px) over which the hero title evaporates: it starts at the first pixel and is gone after this.
+const DISSOLVE_DISTANCE = 240;
 const TARGET: Record<Tier, number> = { full: 7000, lite: 2200 };
 
 /**
@@ -134,20 +136,16 @@ function attach(el: HTMLElement, tier: Tier): () => void {
       const f = ensureField();
       if (!f) return;
       mount();
-      el.style.opacity = String(1 - Math.min(p * 25, 1));
+      el.style.opacity = String(1 - Math.min(p * 8, 1));
       renderDissolve(ctx, f, p, performance.now() / 1000);
     };
     const request = () => {
       if (!raf) raf = requestAnimationFrame(apply);
     };
-    const section = el.closest("section") ?? el.parentElement ?? el;
-    const stop = scroll(
-      (progress: number) => {
-        p = progress;
-        request();
-      },
-      { target: section, offset: ["start start", "end start"] },
-    );
+    const stop = scroll((_progress: number, info: { y: { current: number } }) => {
+      p = Math.min(1, Math.max(0, info.y.current / DISSOLVE_DISTANCE));
+      request();
+    });
     cleanups.push(stop);
 
     // Build the particle field in an idle moment once the hero has finished, so the first scroll has no hitch.
