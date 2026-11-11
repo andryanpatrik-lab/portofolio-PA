@@ -58,7 +58,7 @@ Metrik (3):
 
 | # | Nilai | Keterangan ID | Keterangan EN |
 |---|---|---|---|
-| 1 | 10 `[KONFIRMASI]` | tahun lintas 4 industri | years across 4 industries |
+| 1 | 10 `[KONFIRMASI]` + satuan "tahun" / "years" di samping angka (permintaan Patrik, M11) | lintas 4 industri | across 4 industries |
 | 2 | 3+ `[KONFIRMASI: jumlah termasuk sistem di perusahaan saat ini]` | sistem CRM dan dashboard di industri berbeda | CRM and dashboard systems across industries |
 | 3 | <2% | tingkat retur pengiriman (RTS) di operasional logistik | return-to-sender rate in logistics operations |
 

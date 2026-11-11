@@ -11,14 +11,17 @@
     "metrics": [
       {
         "value": "10",
-        "label": "years across 4 industries"
+        "unit": "years",
+        "label": "across 4 industries"
       },
       {
         "value": "3+",
+        "unit": "",
         "label": "CRM and dashboard systems across industries"
       },
       {
         "value": "<2%",
+        "unit": "",
         "label": "return-to-sender rate in logistics operations"
       }
     ]

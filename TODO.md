@@ -59,3 +59,4 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [ ] Konfirmasi nama lengkap "Patrik Andryan" di header sudah sesuai
 
 - [ ] Konfirmasi teks intro baru (M10): `intro.hint` ("Gulir untuk masuk" / "Scroll to enter") dan `intro.skip` ("Lewati intro" / "Skip intro") di `content/{id,en}/common.json`. Teks sementara yang netral.
+- [ ] Konfirmasi metrik 1 (M11): angka "10" dengan satuan di samping angka ("10 years" / "10 tahun") dan keterangan "across 4 industries" / "lintas 4 industri".

@@ -132,6 +132,11 @@ body {
 /* Section rhythm and anchors */
 .section-gap { padding-top: var(--section-gap); }
 .anchor { scroll-margin-top: 24px; }
+.odo { display: inline-flex; align-items: baseline; }
+.odo-col { display: inline-block; height: 1em; width: calc(1ch - 0.02em); overflow: hidden; vertical-align: bottom; }
+.odo-strip { display: block; will-change: transform; }
+.odo-row { display: block; height: 1em; line-height: 1; }
+.t-metric-unit { font-size: 0.36em; letter-spacing: 0.02em; margin-left: 0.5em; font-weight: 500; }
 .t-metric-sm { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); }
 
 .link-underline { text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 6px; }

@@ -11,14 +11,17 @@
     "metrics": [
       {
         "value": "10",
-        "label": "tahun lintas 4 industri"
+        "unit": "tahun",
+        "label": "lintas 4 industri"
       },
       {
         "value": "3+",
+        "unit": "",
         "label": "sistem CRM dan dashboard di industri berbeda"
       },
       {
         "value": "<2%",
+        "unit": "",
         "label": "tingkat retur pengiriman (RTS) di operasional logistik"
       }
     ]
