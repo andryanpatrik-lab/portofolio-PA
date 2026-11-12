@@ -313,10 +313,10 @@ Visual: foto profil (dipilih Patrik, M18). Berkas `public/img/profile.jpg`; alt:
 | CTA (emas) | Hubungi saya | Get in touch |
 
 Tautan:
-- Email: `[ISI]`
+- Email: andryanpatrik@gmail.com (dipilih Patrik, M21)
 - LinkedIn: `[ISI]`
-- GitHub: `[ISI]`
-- WhatsApp: `[PILIH: cantumkan | tidak]`
+- GitHub: https://github.com/andryanpatrik-lab (dipilih Patrik, M21)
+- WhatsApp: dicantumkan (keputusan Patrik, M21): tombol ghost "Chat via WhatsApp" membuka `wa.me/<nomor>` dengan pesan pembuka `contact.whatsappText` `[KONFIRMASI]`. Nomor `[ISI]` di `content/site.json` `whatsapp`; tombol tersembunyi sampai terisi.
 
 ## 7.1 Berkas CV
 

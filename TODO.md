@@ -9,7 +9,7 @@ Daftar ini dipelihara bersama. Claude Code mencatat di sini tiap teks sementara 
 - [ ] Koreksi diagram alur 4 case study (`CONTENT.md` bagian 5)
 - [ ] Detail 5 kartu "Proyek lainnya": status, stack, pilihan L5/L6, nama model AI offline
 - [ ] Konfirmasi metrik Posisi: 10 tahun, 3+ sistem, <2% RTS
-- [ ] Email, LinkedIn, GitHub, WhatsApp (ya/tidak)
+- [x] Email dan GitHub terisi (M21). [ ] Nomor WhatsApp (format 628..., tombol tersembunyi sampai terisi; pakai nomor yang siap diterima publik) dan URL LinkedIn
 - [ ] Berkas CV PDF baru (tanpa nomor telepon)
 - [x] Hosting: Netlify (situs `portofoliopa` sudah terhubung). Masih perlu: nama domain, dan matikan akses SSO tim di Netlify agar situs bisa dibuka publik sebelum tayang
 - [ ] Cek ketentuan layanan platform pihak ketiga sebelum case study agen video tayang
@@ -24,6 +24,7 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - Tag stack `[ISI]` pada kartu L1 dibuang (tersisa 2 tag)
 - Email, LinkedIn, GitHub, WhatsApp kosong: tautan tidak tampil, tombol "Hubungi saya" disembunyikan dan diganti teks "Informasi kontak segera tersedia"
 - Blok baru case study (M20, draf `[KONFIRMASI]`): "Struktur sistem" (angka dari dokumentasi database Patrik per 10 Nov 2026: kartu 02 = 38 tabel/39 fungsi/48 kebijakan akses; kartu 03 = 14/27/3 peran; kartu 04 = 40/160/79) dan "Workflow yang dibangun" di kartu 04 (2 workflow n8n ditulis ulang generik). Perlu dikonfirmasi Patrik sebelum tayang
+- Pesan pembuka WhatsApp `contact.whatsappText` (draf `[KONFIRMASI]`); email dan nomor tampil di HTML publik dan bisa dikumpulkan bot spam
 - Tombol "Unduh CV" disembunyikan sampai `cvFile` di `content/site.json` terisi (PDF baru tanpa nomor telepon)
 
 **Draf `[KONFIRMASI]` yang tampil apa adanya (perlu disetujui)**
