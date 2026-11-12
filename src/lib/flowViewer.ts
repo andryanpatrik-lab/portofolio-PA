@@ -152,6 +152,8 @@ export class FlowViewer {
   private W = 0;
   private H = 0;
   private fitK = 0.1;
+  /** True while the camera flies to the first step on Play: the pulse waits so it never runs ahead off-screen. */
+  private holdPulse = false;
   private tween: { from: Cam; to: Cam; t: number; dur: number } | null = null;
   private follow = true;
   private scenarioIndex = 0;
@@ -431,6 +433,7 @@ export class FlowViewer {
         moved = Math.max(moved, Math.abs(dx) + Math.abs(dy));
         if (moved > 4) {
           this.tween = null;
+    this.holdPulse = false;
           this.stopFollow();
           this.setCam({ ...this.cam, x: drag.cam.x + dx, y: drag.cam.y + dy });
           this.root.classList.add("is-dragging");
@@ -507,8 +510,13 @@ export class FlowViewer {
     tip.style.transform = `translate(${Math.min(x + 14, this.W - 260)}px, ${Math.min(y + 16, this.H - 90)}px)`;
   }
 
+  /**
+   * Re-reads the layout. The camera is only reset to "fit" when the viewer itself was resized (or on first build); a change in
+   * the caption height alone (every step has different text) must never move the camera, or playback would jerk out and back.
+   */
   private measure(first = false) {
     const rect = this.root.getBoundingClientRect();
+    const resized = rect.width !== this.W || rect.height !== this.H;
     this.W = rect.width;
     this.H = rect.height;
     let bottom = 0;
@@ -521,7 +529,7 @@ export class FlowViewer {
     this.navEl.style.top = `${this.scenTop}px`;
     const fit = this.fitCam();
     this.fitK = fit.k;
-    if (first || !this.userMoved) this.setCam(fit);
+    if (first || (resized && !this.userMoved && !this.playing && !this.tween)) this.setCam(fit);
   }
 
   private insets() {
@@ -628,6 +636,7 @@ export class FlowViewer {
     const wy = (py - this.cam.y) / this.cam.k;
     this.userMoved = true;
     this.tween = null;
+    this.holdPulse = false;
     this.setCam({ k: nk, x: px - wx * nk, y: py - wy * nk });
   }
 
@@ -718,6 +727,7 @@ export class FlowViewer {
     this.curNode = -1;
     this.ui.slider.max = String(this.maxPos);
     this.renderPos();
+    this.measure();
     this.userMoved = false;
     this.flyToFit();
     this.syncPlayUi();
@@ -733,7 +743,10 @@ export class FlowViewer {
     this.playing = true;
     this.syncPlayUi();
     const start = this.nodeAt(0);
-    if (this.follow && start) this.flyTo(this.camToCenter(start.x, start.y, 0.85), 0.8);
+    if (this.follow && start) {
+      this.holdPulse = true;
+      this.flyTo(this.camToCenter(start.x, start.y, 0.85), 0.8);
+    }
     this.ensureLoop();
   }
 
@@ -877,7 +890,7 @@ export class FlowViewer {
   private tick = (now: number) => {
     const dt = clamp((now - this.last) / 1000, 0, 0.05);
     this.last = now;
-    if (this.playing) {
+    if (this.playing && !(this.holdPulse && this.tween)) {
       this.pos = clamp(this.pos + (dt * this.speed) / 0.84, 0, this.maxPos);
       this.renderPos();
       if (this.pos >= this.maxPos) this.finish();
@@ -887,7 +900,10 @@ export class FlowViewer {
       tw.t = Math.min(1, tw.t + dt / tw.dur);
       const e = easeInOut(tw.t);
       this.setCam({ x: tw.from.x + (tw.to.x - tw.from.x) * e, y: tw.from.y + (tw.to.y - tw.from.y) * e, k: tw.from.k + (tw.to.k - tw.from.k) * e });
-      if (tw.t >= 1) this.tween = null;
+      if (tw.t >= 1) {
+        this.tween = null;
+    this.holdPulse = false;
+      }
     } else if (this.follow && this.playing) {
       const p = this.pulsePoint();
       if (p) {
