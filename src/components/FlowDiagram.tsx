@@ -16,8 +16,14 @@ export function FlowDiagram(props: Props) {
       <ol className="flow-full" data-flow-anim style={{ "--n": steps.length } as CSSProperties}>
         {steps.map((step, i) => (
           <li key={step.label} className="flow-full-step" style={{ "--i": i } as CSSProperties}>
-            <span aria-hidden="true" className="flow-full-node" />
-            {i < steps.length - 1 && <span aria-hidden="true" className="flow-full-line" />}
+            <span aria-hidden="true" className="flow-full-node">
+              <span className="flow-full-node-fill" />
+            </span>
+            {i < steps.length - 1 && (
+              <span aria-hidden="true" className="flow-full-line">
+                <span className="flow-full-line-fill" />
+              </span>
+            )}
             <span className="flow-full-num t-label" aria-hidden="true">
               {String(i + 1).padStart(2, "0")}
             </span>
