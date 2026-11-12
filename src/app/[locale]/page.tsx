@@ -33,7 +33,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <Hero dict={dict} home={home} />
         <Position home={home} />
         <SelectedWork home={home} locale={locale} />
-        <OtherWork home={home} />
+        <OtherWork home={home} locale={locale} />
         <About home={home} />
         <Contact home={home} />
       </main>

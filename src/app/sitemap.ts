@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { caseStudySlugs, locales } from "@/lib/i18n";
+import { caseStudySlugs, locales, otherProjectIds } from "@/lib/i18n";
 import { siteUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["", ...caseStudySlugs.map((slug) => `work/${slug}/`), "flows/"];
+  const paths = ["", ...caseStudySlugs.map((slug) => `work/${slug}/`), ...otherProjectIds.map((id) => `projects/${id}/`), "flows/"];
   return paths.flatMap((path) =>
     locales.map((locale) => ({
       url: `${siteUrl}/${locale}/${path}`,

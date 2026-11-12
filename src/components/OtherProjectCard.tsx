@@ -13,7 +13,9 @@ export function OtherProjectCard({
 }) {
   return (
     <article className="other-card flex h-full flex-col rounded-xl border border-border bg-bg p-6">
-      <h3 className="t-h4">{name}</h3>
+      <h3 className="t-h4">
+        {name} <span aria-hidden="true" className="text-accent">→</span>
+      </h3>
       <p className="mt-3 text-text-2">{summary}</p>
       <div className="mt-auto pt-6">
         <StackTags items={tags} />

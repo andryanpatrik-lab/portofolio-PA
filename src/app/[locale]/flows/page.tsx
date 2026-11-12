@@ -31,7 +31,7 @@ export default async function FlowsPage({ params }: { params: Promise<Params> })
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
   const home = getHome(locale);
-  const groups = flowGroupSlugs(locale).map((id) => ({ id, title: home.work.cards.find((c) => c.slug === id)?.title ?? id }));
+  const groups = flowGroupSlugs(locale).map((id) => ({ id, title: home.work.cards.find((c) => c.slug === id)?.title ?? home.other.items.find((i) => i.id === id)?.name ?? id }));
 
   return (
     <div className="light-page">

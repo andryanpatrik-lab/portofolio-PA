@@ -1,0 +1,147 @@
+{
+  "inventory-packing": {
+    "role": "Designer and builder",
+    "year": "2023",
+    "status": "In use",
+    "stack": [
+      "PostgreSQL",
+      "Multi-tenant",
+      "CSV/Excel import"
+    ],
+    "context": "An online sales team with several packers and customer-service staff processes daily orders from two marketplaces.",
+    "problem": "Orders, stock, and packing were managed in many spreadsheets: separate tabs per packer, packing recaps, and stock notes built by hand. It was hard to see which goods to prepare that day, which SKUs were running low, and who was working on which order.",
+    "solution": "A multi-tenant inventory platform. Orders arrive through a marketplace API or a CSV/Excel import, the system builds the day's goods requirement and splits orders across packers, and each packer receives a digital packing sheet on their phone. Stock drops automatically when packing is confirmed through a mutation log that is never edited, stock status (safe, careful, use up, empty) is calculated automatically, and each seller's data is isolated with row-level security.",
+    "flow": [
+      {
+        "label": "Orders arrive by API or file import"
+      },
+      {
+        "label": "System totals the goods needed and assigns packers"
+      },
+      {
+        "label": "Packer receives the packing sheet on a phone"
+      },
+      {
+        "label": "Packer confirms packing is done"
+      },
+      {
+        "label": "Stock drops automatically, report updates"
+      }
+    ],
+    "system": [
+      {
+        "value": "19",
+        "label": "tables"
+      },
+      {
+        "value": "5",
+        "label": "domains"
+      },
+      {
+        "value": "4",
+        "label": "roles"
+      },
+      {
+        "value": "2",
+        "label": "packing types"
+      }
+    ],
+    "metrics": []
+  },
+  "internal-automation": {
+    "year": "",
+    "stack": [
+      "n8n",
+      "Google Sheets",
+      "Apps Script"
+    ],
+    "solution": "A priority-scored creator-scouting system and a content-trend research bot for teams.",
+    "flow": [],
+    "metrics": []
+  },
+  "content-partner-platform": {
+    "role": "Designer and builder",
+    "year": "2026",
+    "stack": [
+      "Next.js",
+      "PostgreSQL",
+      "n8n"
+    ],
+    "context": "A team that manages marketplace affiliate creators needs one place for products, tutorial material, and the webinar schedule.",
+    "solution": "A role-based web app with three modules: products, tutorials (with learning-progress tracking), and a webinar schedule (with attendance records). Two-layer login: internal accounts through OAuth and creators through an ID and password, with row-level security for three roles. Two n8n workflows fetch product images automatically and send a daily webinar reminder.",
+    "flow": [
+      {
+        "label": "Admin adds a product"
+      },
+      {
+        "label": "Workflow fetches the product image automatically"
+      },
+      {
+        "label": "Content manager builds tutorials and webinars"
+      },
+      {
+        "label": "Creator signs in and follows tutorials"
+      },
+      {
+        "label": "Webinar reminder goes out every day"
+      }
+    ],
+    "system": [
+      {
+        "value": "9",
+        "label": "tables"
+      },
+      {
+        "value": "22",
+        "label": "access policies"
+      },
+      {
+        "value": "3",
+        "label": "roles"
+      },
+      {
+        "value": "13",
+        "label": "pages"
+      },
+      {
+        "value": "2",
+        "label": "n8n workflows"
+      }
+    ],
+    "metrics": []
+  },
+  "offline-ai": {
+    "year": "2025",
+    "status": "Experiment",
+    "stack": [
+      "Ollama",
+      "Open WebUI",
+      "Local model"
+    ],
+    "solution": "Running a small language model locally with Ollama and Open WebUI, without relying on cloud services.",
+    "flow": [],
+    "metrics": []
+  },
+  "watch-party": {
+    "year": "",
+    "stack": [
+      "HTML",
+      "JavaScript",
+      "Community"
+    ],
+    "solution": "A single-file site with match schedule, filters, cost estimator, and results board for a watch-party event.",
+    "flow": [],
+    "metrics": []
+  },
+  "survey-dashboard": {
+    "year": "",
+    "stack": [
+      "Chart.js",
+      "Analytics",
+      "Community"
+    ],
+    "solution": "Participant survey results visualized with Chart.js for community event evaluation.",
+    "flow": [],
+    "metrics": []
+  }
+}

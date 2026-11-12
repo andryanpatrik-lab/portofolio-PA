@@ -300,3 +300,15 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 ### 5.zy Penampil alur (M29-M30, draf `[KONFIRMASI]`)
 Teks ada di `content/{id,en}/flows.json` (`ui`, judul alur, nama langkah, tahap, skenario) dan `common.json` (`case.explore*`). Struktur (posisi, sambungan, jalur) di `content/flows/*.json`. Nama layanan pihak ketiga diganti istilah umum (API pesan, database, cache); nama kanal umum boleh. Terjemahan Inggris adalah hasil saya dan perlu dicek Patrik.
 Setiap kartu punya penampil: 01 (1 alur ilustratif berlabel), 02 (8 alur), 03 (7 alur prototipe arsip), 04 (1 alur sistem, disusun dari dokumentasi dan kode). Label per alur ada di `flows.json` `badge`. Kanvas n8n dan unduhan kerangka (M26-M28) dihapus.
+
+### 4c. Halaman detail "Proyek lainnya" (M37, draf `[KONFIRMASI]`)
+Data di `content/{id,en}/other-projects.json` (per `id`), alur proyek 1 di `content/flows/invpack.json`. Semuanya generik: tanpa nama brand toko, staf, platform tim, atau marketplace.
+| Proyek | Sumber | Isi |
+|---|---|---|
+| L1 Inventori dan packing | 3 dokumen (prototipe, dokumentasi teknis v1.0, kertas packing) | Konteks, masalah (spreadsheet terpisah), solusi, alur 5 langkah, struktur (19 tabel, 5 domain, 4 peran, 2 tipe packing), alur interaktif 21 langkah (label "Disusun dari dokumentasi teknis"). Status "Dipakai" (kata Patrik: dipakai di platform tim dengan model lebih baru, mekanisme sama). Angka prototipe (87 order, Rp 18,2 jt) adalah data contoh dan TIDAK dipakai. Hasil nyata menunggu Excel. |
+| L2 Alat otomasi internal | hanya kartu | Satu bagian "Yang dibuat" (kalimat kartu). `[ISI]` bahan. |
+| L3 Platform mitra konten | zip repo (README, migrasi, 2 workflow n8n) | Konteks, solusi, alur 5 langkah, struktur: 9 tabel, 22 kebijakan akses, 3 peran, 13 halaman, 2 workflow n8n. |
+| L4 AI offline lokal | catatan 4b | Satu bagian, tanpa klaim hasil. |
+| L5 Nonton bareng, L6 Dashboard survei | hanya kartu | Satu bagian "Yang dibuat". `[ISI]` bahan. |
+Bagian tanpa data tidak dirender (tidak ada teks "sedang disiapkan").
+

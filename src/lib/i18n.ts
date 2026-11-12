@@ -4,6 +4,8 @@ import homeId from "@content/id/home.json";
 import homeEn from "@content/en/home.json";
 import caseId from "@content/id/case-studies.json";
 import caseEn from "@content/en/case-studies.json";
+import otherId from "@content/id/other-projects.json";
+import otherEn from "@content/en/other-projects.json";
 import site from "@content/site.json";
 
 export const locales = ["id", "en"] as const;
@@ -51,4 +53,16 @@ export const caseStudySlugs: string[] = homeId.work.cards.map((c) => c.slug);
 
 export function getCaseStudy(locale: Locale, slug: string): CaseStudyData | undefined {
   return caseStudies[locale][slug];
+}
+
+// "Other work" detail pages reuse the case study data shape; most fields are optional there.
+const otherProjects: Record<Locale, Record<string, CaseStudyData>> = {
+  id: otherId as unknown as Record<string, CaseStudyData>,
+  en: otherEn as unknown as Record<string, CaseStudyData>,
+};
+
+export const otherProjectIds: string[] = homeId.other.items.map((item) => item.id);
+
+export function getOtherProject(locale: Locale, id: string): CaseStudyData | undefined {
+  return otherProjects[locale][id];
 }

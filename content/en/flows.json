@@ -1207,6 +1207,80 @@
      "desc": "The agent does not claim a job until the browser and editor tab are ready."
     }
    ]
+  },
+  "invpack": {
+   "title": "From incoming order to updated stock",
+   "desc": "Orders arrive through an API or a file import, are assigned to packers, confirmed on a digital packing sheet, and then stock and reports update automatically.",
+   "badge": "Built from the technical documentation (v1.0 design), not an export of the system.",
+   "steps": 21,
+   "stageCount": 4,
+   "names": [
+    "Order arrives",
+    "Pull orders through the marketplace API",
+    "Import a CSV or Excel file",
+    "Order already recorded?",
+    "Ignore: duplicate order",
+    "Save the order and its items",
+    "Total the goods needed today",
+    "Enough stock for the total?",
+    "Low-stock warning to the admin",
+    "Assign orders to packers",
+    "Packer receives the packing sheet on a phone",
+    "Packer prepares the goods",
+    "Packer taps “Packing done”",
+    "Product with separate packaging?",
+    "Reduce component stock per the BOM",
+    "Reduce product stock",
+    "Record the stock mutation (append-only log)",
+    "Mark the order done",
+    "Recalculate stock status (safe to empty)",
+    "Update the gross revenue report",
+    "Done"
+   ],
+   "stages": [
+    {
+     "short": "Incoming order",
+     "title": "Incoming order and duplicate check",
+     "desc": "Orders are pulled through the API or imported from a file, then checked so they are never recorded twice."
+    },
+    {
+     "short": "Assignment",
+     "title": "Totals and assignment",
+     "desc": "The system totals the day's goods needed, warns when stock is short, and assigns orders to packers."
+    },
+    {
+     "short": "Packing",
+     "title": "Packing on a phone",
+     "desc": "The packer receives a digital packing sheet, prepares the goods, then taps done."
+    },
+    {
+     "short": "Stock and reports",
+     "title": "Stock and reports",
+     "desc": "Stock drops through the mutation log, stock status is recalculated, and the gross revenue report updates."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Order from the API, smooth run",
+     "desc": "An order is pulled through the API until stock and report update."
+    },
+    {
+     "title": "CSV or Excel import",
+     "desc": "Orders come in from a marketplace export file, then follow the same flow."
+    },
+    {
+     "title": "Product with separate packaging",
+     "desc": "Confirming reduces product stock and packaging component stock per the BOM."
+    },
+    {
+     "title": "Duplicate order ignored",
+     "desc": "An order that is already recorded is not processed twice."
+    },
+    {
+     "title": "Low stock",
+     "desc": "The total finds stock short, the admin is warned, and the flow continues."
+    }
+   ]
   }
  },
  "groups": {
@@ -1234,6 +1308,9 @@
   ],
   "purchasing-digitalization": [
    "purchasing"
+  ],
+  "inventory-packing": [
+   "invpack"
   ]
  }
 }

@@ -5,7 +5,8 @@ export type FlowSlug =
   | "purchasing"
   | "whatsapp" | "igfb" | "staff" | "resolve" | "health" | "daily" | "weekly" | "error"
   | "kwgen" | "kwappr" | "kwfb" | "tiktok" | "comments" | "metrics" | "youtube"
-  | "vsystem";
+  | "vsystem"
+  | "invpack";
 
 export type FlowUi = ViewerLabels & {
   hint: string;
@@ -51,6 +52,7 @@ const structures: Record<FlowSlug, () => Promise<FlowStructure>> = {
   metrics: () => load(import("@content/flows/metrics.json")),
   youtube: () => load(import("@content/flows/youtube.json")),
   vsystem: () => load(import("@content/flows/vsystem.json")),
+  invpack: () => load(import("@content/flows/invpack.json")),
 };
 
 export const loadFlowsDict = (locale: Locale) => dicts[locale]();

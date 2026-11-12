@@ -50,7 +50,8 @@
     "explore": "Jelajahi alur",
     "exploreNote": "Pilih alur dan skenario, lalu tekan Putar untuk menelusuri langkahnya satu per satu. Nama layanan diganti istilah umum. Label di bawah judul menjelaskan asal tiap alur.",
     "exploreTitle": "Penjelajah alur",
-    "exploreDesc": "Alur kerja yang dibangun, bisa digeser dan diputar."
+    "exploreDesc": "Alur kerja yang dibangun, bisa digeser dan diputar.",
+    "built": "Yang dibuat"
   },
   "skipLink": "Lewati ke konten",
   "navLabel": "Navigasi utama",

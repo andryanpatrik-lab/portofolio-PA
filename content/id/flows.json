@@ -1207,6 +1207,80 @@
      "desc": "Agen tidak mengambil job sampai browser dan tab editor siap."
     }
    ]
+  },
+  "invpack": {
+   "title": "Dari order masuk sampai stok terbarui",
+   "desc": "Order masuk lewat API atau impor file, dibagi ke packer, dikonfirmasi lewat kertas packing digital, lalu stok dan laporan terbarui otomatis.",
+   "badge": "Disusun dari dokumentasi teknis (rancangan v1.0), bukan ekspor sistem.",
+   "steps": 21,
+   "stageCount": 4,
+   "names": [
+    "Order masuk",
+    "Tarik order lewat API marketplace",
+    "Impor file CSV atau Excel",
+    "Order sudah tercatat?",
+    "Abaikan: order ganda",
+    "Simpan order dan itemnya",
+    "Rekap kebutuhan barang hari ini",
+    "Stok cukup untuk rekap?",
+    "Peringatan stok kritis ke admin",
+    "Bagi order ke packer",
+    "Packer menerima kertas packing di HP",
+    "Packer menyiapkan barang",
+    "Packer menekan “Selesai packing”",
+    "Produk dengan kemasan terpisah?",
+    "Kurangi stok komponen sesuai BOM",
+    "Kurangi stok produk",
+    "Catat mutasi stok (log tambah-saja)",
+    "Tandai order selesai",
+    "Hitung status stok (aman sampai kosong)",
+    "Perbarui laporan omset kasar",
+    "Selesai"
+   ],
+   "stages": [
+    {
+     "short": "Order masuk",
+     "title": "Order masuk dan cek ganda",
+     "desc": "Order ditarik lewat API atau diimpor dari file, lalu dicek agar tidak tercatat dua kali."
+    },
+    {
+     "short": "Penugasan",
+     "title": "Rekap dan penugasan",
+     "desc": "Sistem menjumlah kebutuhan barang hari itu, memberi peringatan bila stok kurang, dan membagi order ke packer."
+    },
+    {
+     "short": "Packing",
+     "title": "Packing di HP",
+     "desc": "Packer menerima kertas packing digital, menyiapkan barang, lalu menekan selesai."
+    },
+    {
+     "short": "Stok dan laporan",
+     "title": "Stok dan laporan",
+     "desc": "Stok berkurang lewat log mutasi, status stok dihitung ulang, dan laporan omset kasar diperbarui."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Order dari API, lancar",
+     "desc": "Order ditarik lewat API sampai stok dan laporan terbarui."
+    },
+    {
+     "title": "Impor file CSV atau Excel",
+     "desc": "Order masuk dari file ekspor marketplace, lalu mengikuti alur yang sama."
+    },
+    {
+     "title": "Produk dengan kemasan terpisah",
+     "desc": "Konfirmasi mengurangi stok produk dan stok komponen kemasan sesuai BOM."
+    },
+    {
+     "title": "Order ganda diabaikan",
+     "desc": "Order yang sudah tercatat tidak diproses dua kali."
+    },
+    {
+     "title": "Stok kritis",
+     "desc": "Rekap menemukan stok kurang, admin diberi peringatan, lalu alur berlanjut."
+    }
+   ]
   }
  },
  "groups": {
@@ -1234,6 +1308,9 @@
   ],
   "purchasing-digitalization": [
    "purchasing"
+  ],
+  "inventory-packing": [
+   "invpack"
   ]
  }
 }

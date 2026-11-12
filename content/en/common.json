@@ -50,7 +50,8 @@
     "explore": "Explore the flows",
     "exploreNote": "Pick a flow and a scenario, then press Play to follow its steps one by one. Service names are replaced with generic terms. The label under each title says where the flow comes from.",
     "exploreTitle": "Flow explorer",
-    "exploreDesc": "The workflows I built, pannable and playable."
+    "exploreDesc": "The workflows I built, pannable and playable.",
+    "built": "What was built"
   },
   "skipLink": "Skip to content",
   "navLabel": "Primary navigation",

@@ -1,0 +1,147 @@
+{
+  "inventory-packing": {
+    "role": "Perancang dan pembangun",
+    "year": "2023",
+    "status": "Dipakai",
+    "stack": [
+      "PostgreSQL",
+      "Multi-tenant",
+      "Impor CSV/Excel"
+    ],
+    "context": "Tim penjualan online dengan beberapa packer dan CS memproses order harian dari dua marketplace.",
+    "problem": "Order, stok, dan packing dikelola di banyak spreadsheet: tab terpisah per packer, rekap packing, dan catatan stok yang disusun manual. Sulit melihat barang apa yang harus disiapkan hari itu, SKU mana yang menipis, dan siapa mengerjakan order apa.",
+    "solution": "Platform inventori multi-tenant. Order masuk lewat API marketplace atau impor CSV/Excel, sistem menyusun rekap kebutuhan barang dan membagi order ke packer, lalu packer menerima kertas packing digital di HP. Stok berkurang otomatis saat packing dikonfirmasi lewat log mutasi yang tidak pernah diedit, status stok (aman, hati-hati, habiskan, kosong) dihitung otomatis, dan data tiap penjual terisolasi dengan row-level security.",
+    "flow": [
+      {
+        "label": "Order masuk lewat API atau impor file"
+      },
+      {
+        "label": "Sistem rekap kebutuhan barang dan bagi ke packer"
+      },
+      {
+        "label": "Packer menerima kertas packing di HP"
+      },
+      {
+        "label": "Packer konfirmasi selesai packing"
+      },
+      {
+        "label": "Stok berkurang otomatis, laporan terbarui"
+      }
+    ],
+    "system": [
+      {
+        "value": "19",
+        "label": "tabel"
+      },
+      {
+        "value": "5",
+        "label": "domain"
+      },
+      {
+        "value": "4",
+        "label": "peran"
+      },
+      {
+        "value": "2",
+        "label": "tipe packing"
+      }
+    ],
+    "metrics": []
+  },
+  "internal-automation": {
+    "year": "",
+    "stack": [
+      "n8n",
+      "Google Sheets",
+      "Apps Script"
+    ],
+    "solution": "Sistem scouting kreator berbasis skor prioritas dan bot riset tren konten untuk tim.",
+    "flow": [],
+    "metrics": []
+  },
+  "content-partner-platform": {
+    "role": "Perancang dan pembangun",
+    "year": "2026",
+    "stack": [
+      "Next.js",
+      "PostgreSQL",
+      "n8n"
+    ],
+    "context": "Tim yang mengelola creator afiliasi marketplace membutuhkan satu tempat untuk produk, materi tutorial, dan jadwal webinar.",
+    "solution": "Aplikasi web berbasis peran dengan tiga modul: produk, tutorial (dengan pelacakan progres belajar), dan jadwal webinar (dengan catatan kehadiran). Login dua lapis: akun internal lewat OAuth dan creator lewat ID dan kata sandi, dengan row-level security untuk tiga peran. Dua workflow n8n mengambil gambar produk secara otomatis dan mengirim pengingat webinar harian.",
+    "flow": [
+      {
+        "label": "Admin menambah produk"
+      },
+      {
+        "label": "Workflow mengambil gambar produk otomatis"
+      },
+      {
+        "label": "Content manager menyusun tutorial dan webinar"
+      },
+      {
+        "label": "Creator masuk dan mengikuti tutorial"
+      },
+      {
+        "label": "Pengingat webinar terkirim tiap hari"
+      }
+    ],
+    "system": [
+      {
+        "value": "9",
+        "label": "tabel"
+      },
+      {
+        "value": "22",
+        "label": "kebijakan akses"
+      },
+      {
+        "value": "3",
+        "label": "peran"
+      },
+      {
+        "value": "13",
+        "label": "halaman"
+      },
+      {
+        "value": "2",
+        "label": "workflow n8n"
+      }
+    ],
+    "metrics": []
+  },
+  "offline-ai": {
+    "year": "2025",
+    "status": "Eksperimen",
+    "stack": [
+      "Ollama",
+      "Open WebUI",
+      "Model lokal"
+    ],
+    "solution": "Menjalankan model bahasa kecil secara lokal dengan Ollama dan Open WebUI, tanpa bergantung pada layanan cloud.",
+    "flow": [],
+    "metrics": []
+  },
+  "watch-party": {
+    "year": "",
+    "stack": [
+      "HTML",
+      "JavaScript",
+      "Komunitas"
+    ],
+    "solution": "Situs satu file berisi jadwal pertandingan, filter, estimasi biaya, dan papan hasil untuk acara nonton bareng.",
+    "flow": [],
+    "metrics": []
+  },
+  "survey-dashboard": {
+    "year": "",
+    "stack": [
+      "Chart.js",
+      "Analitik",
+      "Komunitas"
+    ],
+    "solution": "Visualisasi hasil survei peserta dengan Chart.js untuk evaluasi kegiatan komunitas.",
+    "flow": [],
+    "metrics": []
+  }
+}

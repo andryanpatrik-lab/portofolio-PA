@@ -31,7 +31,7 @@ Kesan yang dituju: **premium, tenang, presisi, sinematik**. Satu momen "wow" di 
 | Animasi lib | GSAP (gratis, termasuk plugin ScrollTrigger, SplitText, Flip) |
 | Morph | **Masuk MVP**, tiap case study adalah halaman terpisah |
 | Case study | 4 flagship, **semuanya dianonimkan**: (1) digitalisasi pembelian dan approval, (2) asisten pesan AI multi-kanal + tiket, (3) intelijen brand, (4) agen AI produksi video |
-| Proyek lain | MVP: section "Proyek lainnya", maks 6 kartu ringkas (tanpa halaman terpisah dan tanpa Morph) |
+| Proyek lain | Section "Proyek lainnya", maks 6 kartu; sejak M37 tiap kartu membuka halaman detail `projects/<id>` (tanpa Morph, transisi lubang hitam) |
 | Positioning | Hybrid Business + Automation, headline "Business Systems & Automation Lead" |
 | Judul hero | "Bisnis yang saya pahami, otomasi yang saya bangun." / "Business I understand. Automation I build." |
 | CV di website | Versi baru AI & Automation, **tanpa nomor telepon** (PDF dari Patrik), tombol "Unduh CV" |
@@ -43,7 +43,7 @@ Kesan yang dituju: **premium, tenang, presisi, sinematik**. Satu momen "wow" di 
 - [ ] Isi final 4 case study (angka dan hasil), lihat `CONTENT.md` bagian `[ISI]`.
 - [ ] Koreksi diagram alur 4 case study (draf dari deskripsi singkat dan dokumen Patrik).
 - [ ] Case study agen video: Patrik memastikan kepatuhan pada ketentuan layanan platform pihak ketiga; jangan sebut nama platform.
-- [ ] Detail 6 kartu "Proyek lainnya" ada di `CONTENT.md` bagian 4b. v2: halaman case study untuk proyek-proyek tersebut.
+- [x] Detail 6 kartu "Proyek lainnya" ada di `CONTENT.md` bagian 4b; halaman detail dibuat di M37.
 - [ ] Kontak: email, LinkedIn, GitHub, dan apakah WhatsApp dicantumkan.
 - [ ] Foto profil atau murni tipografi.
 - [ ] Berkas CV PDF baru dari Patrik (tanpa telepon). Tombol "Unduh CV" memakai file ini. Sampai tersedia, tombol disembunyikan.
@@ -297,7 +297,7 @@ type OtherProject = {
 
 ## 13. Yang TIDAK boleh dibuat (guardrails)
 
-Scroll hijacking dan section pinned (satu pengecualian disetujui Patrik: intro sinematik beranda M10, section sticky yang scroll-nya tetap native, tanpa `preventDefault`, dengan tombol Lewati dan mati di reduced-motion), kursor kustom selain cahaya pointer yang diizinkan (bagian 9: hanya mouse, kursor asli tetap tampil), auto-play suara (satu pengecualian disetujui Patrik, M17: musik latar yang baru mulai pada interaksi pertama pengunjung, dengan tombol musik yang selalu terlihat dan bisa dimatikan permanen), mode terang (satu pengecualian disetujui Patrik, M12: halaman studi kasus berlatar terang dan beranda tetap gelap), animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
+Scroll hijacking dan section pinned (satu pengecualian disetujui Patrik: intro sinematik beranda M10, section sticky yang scroll-nya tetap native, tanpa `preventDefault`, dengan tombol Lewati dan mati di reduced-motion), kursor kustom selain cahaya pointer yang diizinkan (bagian 9: hanya mouse, kursor asli tetap tampil), auto-play suara (satu pengecualian disetujui Patrik, M17: musik latar yang baru mulai pada interaksi pertama pengunjung, dengan tombol musik yang selalu terlihat dan bisa dimatikan permanen), mode terang (satu pengecualian disetujui Patrik, M12: halaman studi kasus berlatar terang dan beranda tetap gelap), animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2; **dicabut atas keputusan Patrik, M37**: kini ada halaman detail `projects/<id>`), arsip semua proyek (v2), bagian repo showcase (v2).
 
 > Catatan M29 (disetujui Patrik): penampil alur interaktif (SVG, geser dan zoom, denyut menyusuri jalur skenario) di keempat kartu dan halaman `/flows/`. Syarat animasi: tidak ada putar otomatis (mulai hanya saat Putar ditekan), mati total bila `motion-off` atau reduced-motion (langkah manual tetap jalan), selalu ada Jeda, dan roda mouse tidak menangkap scroll halaman versi sematan. Denyut dan kamera dianimasikan lewat atribut SVG di dalam satu kanvas SVG (pengecualian seperti kanvas partikel); elemen DOM tetap hanya `transform`/`opacity`.
 
