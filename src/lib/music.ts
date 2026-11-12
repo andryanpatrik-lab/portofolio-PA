@@ -12,6 +12,7 @@ let src = "";
 let audio: HTMLAudioElement | null = null;
 let on = false;
 let raf = 0;
+let fadeTimer = 0;
 let armed = false;
 let firstGesture: ((e: Event) => void) | null = null;
 
@@ -24,15 +25,25 @@ function fadeTo(target: number, ms: number, done?: () => void) {
   const a = audio;
   if (!a) return;
   cancelAnimationFrame(raf);
+  window.clearTimeout(fadeTimer);
   const from = a.volume;
   const t0 = performance.now();
+  let finished = false;
+  const finish = () => {
+    if (finished) return;
+    finished = true;
+    a.volume = Math.max(0, Math.min(1, target));
+    done?.();
+  };
   const step = (now: number) => {
     const k = Math.min(1, (now - t0) / ms);
     a.volume = Math.max(0, Math.min(1, from + (target - from) * k));
     if (k < 1) raf = requestAnimationFrame(step);
-    else done?.();
+    else finish();
   };
   raf = requestAnimationFrame(step);
+  // a busy or throttled page may starve requestAnimationFrame: the fade must still end on time
+  fadeTimer = window.setTimeout(finish, ms + 150);
 }
 
 async function start(): Promise<boolean> {
