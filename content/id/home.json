@@ -31,15 +31,15 @@
     "estimateLabel": "perkiraan",
     "cards": [
       {
-        "slug": "purchasing-digitalization",
+        "slug": "ai-video-agent",
         "flowSteps": 5,
-        "title": "Digitalisasi pembelian dan approval",
-        "tagline": "Dari kertas dan Excel ke satu aplikasi: permintaan, approval, hingga pembayaran terlacak.",
+        "title": "Agen AI untuk otomasi produksi video",
+        "tagline": "Dari produk dan karakter ke video jadi: perencanaan, gambar, klip, suara, dan finishing dalam satu jalur antrean.",
         "metric": {
-          "value": "±2 hari → ±30 menit",
+          "value": "43 video · 86% berhasil",
           "estimate": false,
           "scope": false,
-          "label": ""
+          "label": "video terunduh dan job berhasil, 15 Okt sampai 12 Nov 2026"
         }
       },
       {
@@ -67,15 +67,15 @@
         }
       },
       {
-        "slug": "ai-video-agent",
+        "slug": "purchasing-digitalization",
         "flowSteps": 5,
-        "title": "Agen AI untuk otomasi produksi video",
-        "tagline": "Dari produk dan karakter ke video jadi: perencanaan, gambar, klip, suara, dan finishing dalam satu jalur antrean.",
+        "title": "Digitalisasi pembelian dan approval",
+        "tagline": "Dari kertas dan Excel ke satu aplikasi: permintaan, approval, hingga pembayaran terlacak.",
         "metric": {
-          "value": "43 video · 86% berhasil",
+          "value": "±2 hari → ±30 menit",
           "estimate": false,
           "scope": false,
-          "label": "video terunduh dan job berhasil, 15 Okt sampai 12 Nov 2026"
+          "label": ""
         }
       }
     ],

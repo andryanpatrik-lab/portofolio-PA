@@ -1210,8 +1210,8 @@
   }
  },
  "groups": {
-  "purchasing-digitalization": [
-   "purchasing"
+  "ai-video-agent": [
+   "vsystem"
   ],
   "ai-messaging-ticketing": [
    "whatsapp",
@@ -1232,8 +1232,8 @@
    "metrics",
    "youtube"
   ],
-  "ai-video-agent": [
-   "vsystem"
+  "purchasing-digitalization": [
+   "purchasing"
   ]
  }
 }
