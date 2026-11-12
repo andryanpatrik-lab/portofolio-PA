@@ -2,14 +2,17 @@
 
 import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { getTheme, isMotionOff, setMotionOff, setMotionOn, setTheme, systemWantsReducedMotion, type Theme } from "@/lib/prefs";
+import { isMusicOn, musicAvailable, toggleMusic } from "@/lib/music";
 import type { Dictionary } from "@/lib/i18n";
 
 const subscribe = (cb: () => void) => {
   window.addEventListener("pref-theme", cb);
   window.addEventListener("pref-motion-off", cb);
+  window.addEventListener("music-change", cb);
   return () => {
     window.removeEventListener("pref-theme", cb);
     window.removeEventListener("pref-motion-off", cb);
+    window.removeEventListener("music-change", cb);
   };
 };
 
@@ -28,6 +31,9 @@ export function DisplayControls({ text }: { text: Dictionary["display"] }) {
   const motionOff = useSyncExternalStore(subscribe, isMotionOff, () => false);
   const theme = useSyncExternalStore(subscribe, getTheme, () => "" as Theme);
   const system = useSyncExternalStore(subscribe, systemWantsReducedMotion, () => false);
+  // the music button only exists when a music file is configured (content/site.json)
+  const musicReady = useSyncExternalStore(subscribe, musicAvailable, () => false);
+  const music = useSyncExternalStore(subscribe, isMusicOn, () => false);
   const [open, setOpen] = useState(false);
   // the controls can appear twice (header and entry intro): ids and radio names must be unique
   const uid = useId();
@@ -93,6 +99,29 @@ export function DisplayControls({ text }: { text: Dictionary["display"] }) {
           <path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" />
         </svg>
       </button>
+      {musicReady && (
+        <button
+          type="button"
+          className="dc-btn"
+          data-music-toggle=""
+          aria-pressed={music}
+          aria-label={music ? text.musicOff : text.musicOn}
+          title={music ? text.musicOff : text.musicOn}
+          onClick={toggleMusic}
+        >
+          {music ? (
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor">
+              <path d="M4 9v6h4l5 4V5L8 9z" />
+              <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor">
+              <path d="M4 9v6h4l5 4V5L8 9z" />
+              <path d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          )}
+        </button>
+      )}
       {open && (
         <fieldset id={`dc-panel-${uid}`} className="dc-panel">
           <legend className="t-label dc-legend">{text.colors}</legend>

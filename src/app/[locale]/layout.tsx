@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { jetbrainsMono, spaceGrotesk } from "../fonts";
-import { getDictionary, isLocale, locales } from "@/lib/i18n";
+import { getDictionary, isLocale, locales, site } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 import { siteUrl } from "@/lib/site";
 import { BackTransition } from "@/components/BackTransition";
 import { Cosmos } from "@/components/cosmos/Cosmos";
 import { CursorGlow } from "@/components/CursorGlow";
+import { MusicPlayer } from "@/components/MusicPlayer";
 import { DustController } from "@/components/StardustText";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionInit";
 import "../globals.css";
@@ -46,6 +47,7 @@ export default async function RootLayout({
         <DustController />
         <CursorGlow />
         <BackTransition />
+        <MusicPlayer src={site.music} />
         {/* Decorative: only shown during the black-hole page transition (src/lib/blackHole.ts) */}
         <div aria-hidden="true" className="bh-curtain" />
         <div aria-hidden="true" className="bh-portal" />

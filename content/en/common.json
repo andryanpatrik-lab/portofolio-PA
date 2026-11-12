@@ -25,6 +25,8 @@
     "themeDefault": "Default",
     "themeDark": "Dark",
     "themeGrey": "Light grey",
+    "musicOn": "Turn music on",
+    "musicOff": "Turn music off",
     "themeCream": "Cream"
   },
   "intro": {

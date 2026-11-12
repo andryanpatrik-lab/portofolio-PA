@@ -63,3 +63,5 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [x] Konfirmasi teks sapaan intro (M12) (disetujui Patrik): `intro.welcome` EN "WELCOME TO MY PORTFOLIO", ID "SELAMAT DATANG DI PORTOFOLIO SAYA" (terjemahan sementara).
 - [ ] Tinjau tampilan terang halaman studi kasus (M12) di perangkat sungguhan, termasuk kontras teks emas gelap.
 - [ ] Konfirmasi teks panel Tampilan (M16): `display.*` di `content/{id,en}/common.json` (Matikan/Hidupkan animasi, Warna halaman, Bawaan, Gelap, Abu-abu muda, Krem). Teks sementara yang netral.
+- [ ] Musik latar (M17): Patrik menyediakan berkas MP3 sekitar 3 menit (lisensi jelas, nama berkas tanpa nama kreator), taruh di `public/audio/` dan isi `content/site.json` `music` (mis. `"/audio/musik.mp3"`). Disarankan 128 kbps (sekitar 3 MB) dan sambungan awal-akhir yang mulus karena diulang.
+- [ ] Konfirmasi teks tombol musik (M17): `display.musicOn` / `display.musicOff` ("Hidupkan musik" / "Matikan musik").
