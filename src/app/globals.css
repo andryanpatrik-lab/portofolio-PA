@@ -483,6 +483,41 @@ html.theme-dark:has(.light-page) .cursor-glow { background: radial-gradient(circ
 .dc-opt:has(input:checked) .dc-chip { outline: 2px solid var(--accent); outline-offset: 2px; }
 .dc-opt:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
 
+/* Floating music bar (M17): bottom-left, a dark pill with fixed colours so it reads on every page and theme */
+.music-bar {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 14px 0 4px;
+  border-radius: 9999px;
+  color: #fafaf9;
+  background: rgba(12, 10, 9, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+}
+.music-btn { position: relative; display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 9999px; color: #eab308; }
+.music-btn::after { content: ""; position: absolute; inset: -4px; }
+@media (hover: hover) and (pointer: fine) { .music-btn:hover { background: rgba(255, 255, 255, 0.1); } }
+.music-eq { display: inline-flex; height: 16px; align-items: flex-end; gap: 2px; }
+.music-eq i { display: block; width: 3px; height: 100%; border-radius: 2px; background: #eab308; transform: scaleY(0.25); transform-origin: bottom; }
+.music-eq.is-playing i { animation: music-eq 900ms ease-in-out infinite alternate; }
+.music-eq.is-playing i:nth-child(2) { animation-delay: -300ms; animation-duration: 700ms; }
+.music-eq.is-playing i:nth-child(3) { animation-delay: -600ms; animation-duration: 1100ms; }
+.music-eq.is-playing i:nth-child(4) { animation-delay: -150ms; animation-duration: 800ms; }
+@keyframes music-eq { from { transform: scaleY(0.2); } to { transform: scaleY(1); } }
+.music-label { color: rgba(250, 250, 249, 0.8); }
+@media (max-width: 420px) { .music-label { display: none; } .music-bar { padding-right: 12px; } }
+/* nothing moves under "animations off", and the bar hides during the page transitions */
+html.motion-off .music-eq i { transform: scaleY(0.6); }
+.bh-nav .music-bar { visibility: hidden; }
+
 /* "Matikan animasi": nothing moves any more (the head script and prefs.ts also drop the effect classes) */
 html.motion-off *, html.motion-off *::before, html.motion-off *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 html.motion-off .cursor-glow, html.motion-off .cursor-core { display: none !important; }

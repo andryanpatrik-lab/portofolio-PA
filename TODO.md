@@ -64,4 +64,4 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [ ] Tinjau tampilan terang halaman studi kasus (M12) di perangkat sungguhan, termasuk kontras teks emas gelap.
 - [ ] Konfirmasi teks panel Tampilan (M16): `display.*` di `content/{id,en}/common.json` (Matikan/Hidupkan animasi, Warna halaman, Bawaan, Gelap, Abu-abu muda, Krem). Teks sementara yang netral.
 - [x] Musik latar (M17): berkas dipasang di `public/audio/ambient.mp3` (utuh 4:41, 128 kbps, metadata dihapus, fade 1,5 detik di awal dan 3 detik di akhir agar ulangan halus). Lisensi lagu adalah tanggung jawab Patrik (keputusan Patrik). Semula: Patrik menyediakan berkas MP3 sekitar 3 menit (lisensi jelas, nama berkas tanpa nama kreator), taruh di `public/audio/` dan isi `content/site.json` `music` (mis. `"/audio/musik.mp3"`). Disarankan 128 kbps (sekitar 3 MB) dan sambungan awal-akhir yang mulus karena diulang.
-- [ ] Konfirmasi teks tombol musik (M17): `display.musicOn` / `display.musicOff` ("Hidupkan musik" / "Matikan musik").
+- [ ] Konfirmasi teks tombol musik (M17): `display.music` ("Musik"), `display.musicOn` / `display.musicOff` ("Hidupkan musik" / "Matikan musik").

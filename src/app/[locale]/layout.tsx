@@ -7,6 +7,7 @@ import { siteUrl } from "@/lib/site";
 import { BackTransition } from "@/components/BackTransition";
 import { Cosmos } from "@/components/cosmos/Cosmos";
 import { CursorGlow } from "@/components/CursorGlow";
+import { MusicBar } from "@/components/MusicBar";
 import { MusicPlayer } from "@/components/MusicPlayer";
 import { DustController } from "@/components/StardustText";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionInit";
@@ -48,6 +49,7 @@ export default async function RootLayout({
         <CursorGlow />
         <BackTransition />
         <MusicPlayer src={site.music} />
+        <MusicBar label={getDictionary(locale).display.music} on={getDictionary(locale).display.musicOn} off={getDictionary(locale).display.musicOff} />
         {/* Decorative: only shown during the black-hole page transition (src/lib/blackHole.ts) */}
         <div aria-hidden="true" className="bh-curtain" />
         <div aria-hidden="true" className="bh-portal" />
