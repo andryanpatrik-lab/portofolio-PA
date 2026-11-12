@@ -101,11 +101,11 @@
       {
         "id": "internal-automation",
         "name": "Internal automation tools",
-        "summary": "A priority-scored creator-scouting system and a content-trend research bot for teams.",
+        "summary": "A video-performance analytics dashboard for creators: the team pastes links, n8n automation fetches metrics and comments, and the results are filtered, exported, and analysed.",
         "tags": [
+          "Next.js",
           "n8n",
-          "Google Sheets",
-          "Apps Script"
+          "PostgreSQL"
         ],
         "status": null
       },

@@ -852,8 +852,8 @@
    "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
   },
   "metrics": {
-   "title": "Pemantau metrik TikTok",
-   "desc": "Menerima daftar tautan, memprosesnya per 25, menghitung engagement, dan menyimpan metrik.",
+   "title": "Pengambil metrik video",
+   "desc": "Menerima daftar tautan video, memprosesnya per 25, mengambil metrik, menghitung engagement rate, lalu menyimpan hasil dan mencatat kegagalan.",
    "steps": 17,
    "stageCount": 1,
    "names": [
@@ -892,7 +892,7 @@
      "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Simpan catatan error” dalam 10 langkah."
     }
    ],
-   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+   "badge": "Struktur dari ekspor workflow yang dijalankan sistem ini; nama langkah disederhanakan dan nama layanan diganti istilah umum."
   },
   "tiktok": {
    "title": "Pengumpul TikTok",
@@ -1303,7 +1303,6 @@
    "kwfb",
    "tiktok",
    "comments",
-   "metrics",
    "youtube"
   ],
   "purchasing-digitalization": [
@@ -1311,6 +1310,9 @@
   ],
   "inventory-packing": [
    "invpack"
+  ],
+  "internal-automation": [
+   "metrics"
   ]
  }
 }

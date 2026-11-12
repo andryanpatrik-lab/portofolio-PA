@@ -101,11 +101,11 @@
       {
         "id": "internal-automation",
         "name": "Alat otomasi internal",
-        "summary": "Sistem scouting kreator berbasis skor prioritas dan bot riset tren konten untuk tim.",
+        "summary": "Dashboard analitik performa video creator: tim menempel tautan, otomasi n8n mengambil metrik dan komentar, lalu hasilnya difilter, diekspor, dan dianalisis.",
         "tags": [
+          "Next.js",
           "n8n",
-          "Google Sheets",
-          "Apps Script"
+          "PostgreSQL"
         ],
         "status": null
       },

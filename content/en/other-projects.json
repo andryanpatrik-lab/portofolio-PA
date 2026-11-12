@@ -53,15 +53,62 @@
     "metrics": []
   },
   "internal-automation": {
-    "year": "",
+    "role": "Designer and builder",
+    "year": "2026",
     "stack": [
+      "Next.js",
       "n8n",
-      "Google Sheets",
-      "Apps Script"
+      "PostgreSQL"
     ],
-    "solution": "A priority-scored creator-scouting system and a content-trend research bot for teams.",
-    "flow": [],
-    "metrics": []
+    "context": "A creator agency tracks the performance of TikTok videos from partner creators. Before this, an automated workflow wrote the results to Google Sheets.",
+    "problem": "Video performance was tracked in a spreadsheet filled by a workflow, with no dedicated view to filter by creator or month, read comments, group by campaign, or limit access between team members.",
+    "solution": "The internal team pastes up to 50 video links per submission. The app stores them under a campaign and a batch, then calls an n8n workflow that splits the links into groups of 25, fetches the metrics through a third-party scraper, computes the engagement rate, and writes the result to the database. Progress shows live with an estimated finish time, and videos that fail (private or deleted) are logged per batch. The dashboard offers a table that can be searched, filtered, sorted, and exported to CSV, a comments panel, a trend chart, and five prompt templates for AI analysis. Two-level access (super admin and admin) is protected in layers through row-level security, middleware, and column-level grants.",
+    "flow": [
+      {
+        "label": "Team pastes video links (max 50)"
+      },
+      {
+        "label": "App stores them under a campaign and batch"
+      },
+      {
+        "label": "n8n workflow fetches metrics for each video"
+      },
+      {
+        "label": "Results and errors are logged, progress shows live"
+      },
+      {
+        "label": "Team filters, exports, and analyses with AI"
+      }
+    ],
+    "system": [
+      {
+        "value": "6",
+        "label": "tables",
+        "note": "where data is stored: campaigns, batches, videos, comments, errors, and team profiles"
+      },
+      {
+        "value": "4",
+        "label": "views",
+        "note": "ready-made aggregate views in the database for batch and campaign summaries"
+      },
+      {
+        "value": "2",
+        "label": "n8n workflows",
+        "note": "automations that fetch video metrics and comments"
+      },
+      {
+        "value": "13",
+        "label": "API endpoints",
+        "note": "server entry points the app calls"
+      },
+      {
+        "value": "2",
+        "label": "roles",
+        "note": "super admin and admin, with an account-slot limit per role"
+      }
+    ],
+    "metrics": [],
+    "learning": "Access protection should be layered: a leftover page file once became a way around the role check at the application layer. So the restriction is also set in the database (row-level security) and in column-level grants, not only in the app."
   },
   "content-partner-platform": {
     "role": "Designer and builder",

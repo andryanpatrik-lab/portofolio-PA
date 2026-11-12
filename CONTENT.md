@@ -306,7 +306,7 @@ Data di `content/{id,en}/other-projects.json` (per `id`), alur proyek 1 di `cont
 | Proyek | Sumber | Isi |
 |---|---|---|
 | L1 Inventori dan packing | 3 dokumen (prototipe, dokumentasi teknis v1.0, kertas packing) | Konteks, masalah (spreadsheet terpisah), solusi, alur 5 langkah, struktur (19 tabel, 5 domain, 4 peran, 2 tipe packing), alur interaktif 21 langkah (label "Disusun dari dokumentasi teknis"). Status "Dipakai" (kata Patrik: dipakai di platform tim dengan model lebih baru, mekanisme sama). Angka prototipe (87 order, Rp 18,2 jt) adalah data contoh dan TIDAK dipakai. Hasil nyata menunggu Excel. |
-| L2 Alat otomasi internal | hanya kartu | Satu bagian "Yang dibuat" (kalimat kartu). `[ISI]` bahan. |
+| L2 Alat otomasi internal | dokumentasi teknis (HTML v2.0) dan repo dashboard analitik video creator (M40) | Dashboard analitik performa video creator: tempel tautan, workflow n8n mengambil metrik dan komentar, tabel yang bisa difilter dan diekspor CSV, 5 templat prompt AI, akses dua tingkat berlapis. Konteks, masalah (inferensi), solusi, alur 5 langkah, struktur (6 tabel, 4 view, 2 workflow n8n, 13 endpoint API, 2 peran), Pembelajaran (celah berkas halaman tertinggal, dari dokumentasi), alur interaktif metrik (dari ekspor workflow). Menggantikan deskripsi lama "scouting kreator berbasis skor prioritas dan bot riset tren". |
 | L3 Platform mitra konten | zip repo (README, migrasi, 2 workflow n8n) | Konteks, solusi, alur 5 langkah, struktur: 9 tabel, 22 kebijakan akses, 3 peran, 13 halaman, 2 workflow n8n. |
 | L4 AI offline lokal | catatan 4b | Satu bagian, tanpa klaim hasil. |
 | L5 Nonton bareng, L6 Dashboard survei | hanya kartu | Satu bagian "Yang dibuat". `[ISI]` bahan. |

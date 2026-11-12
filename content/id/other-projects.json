@@ -53,15 +53,62 @@
     "metrics": []
   },
   "internal-automation": {
-    "year": "",
+    "role": "Perancang dan pembangun",
+    "year": "2026",
     "stack": [
+      "Next.js",
       "n8n",
-      "Google Sheets",
-      "Apps Script"
+      "PostgreSQL"
     ],
-    "solution": "Sistem scouting kreator berbasis skor prioritas dan bot riset tren konten untuk tim.",
-    "flow": [],
-    "metrics": []
+    "context": "Sebuah agensi creator memantau performa video TikTok dari creator partner. Sebelumnya workflow otomatis menulis hasilnya ke Google Sheets.",
+    "problem": "Performa video dipantau lewat spreadsheet yang diisi workflow, tanpa tampilan khusus untuk menyaring per creator atau bulan, melihat komentar, mengelompokkan per kampanye, atau membatasi akses antar anggota tim.",
+    "solution": "Tim internal menempel sampai 50 tautan video per kiriman. Aplikasi menyimpannya ke dalam campaign dan batch, lalu memanggil workflow n8n yang memecah tautan menjadi kelompok 25, mengambil metrik lewat scraper pihak ketiga, menghitung engagement rate, dan menulis hasilnya ke database. Progres tampil langsung dengan perkiraan waktu selesai, dan video yang gagal (privat atau dihapus) dicatat per batch. Dashboard menyediakan tabel yang bisa dicari, difilter, diurutkan, dan diekspor ke CSV, panel komentar, grafik tren, serta lima templat prompt untuk analisis AI. Akses dua tingkat (super admin dan admin) dijaga berlapis lewat row-level security, middleware, dan hak akses per kolom.",
+    "flow": [
+      {
+        "label": "Tim menempel tautan video (maks 50)"
+      },
+      {
+        "label": "Aplikasi menyimpan ke campaign dan batch"
+      },
+      {
+        "label": "Workflow n8n mengambil metrik tiap video"
+      },
+      {
+        "label": "Hasil dan error tercatat, progres tampil langsung"
+      },
+      {
+        "label": "Tim memfilter, mengekspor, dan menganalisis dengan AI"
+      }
+    ],
+    "system": [
+      {
+        "value": "6",
+        "label": "tabel",
+        "note": "tempat data disimpan: campaign, batch, video, komentar, error, dan profil tim"
+      },
+      {
+        "value": "4",
+        "label": "view",
+        "note": "tampilan agregat siap pakai di database untuk ringkasan batch dan campaign"
+      },
+      {
+        "value": "2",
+        "label": "workflow n8n",
+        "note": "alur otomatis untuk mengambil metrik dan komentar video"
+      },
+      {
+        "value": "13",
+        "label": "endpoint API",
+        "note": "titik akses server yang dipanggil aplikasi"
+      },
+      {
+        "value": "2",
+        "label": "peran",
+        "note": "super admin dan admin, dengan batas slot akun per peran"
+      }
+    ],
+    "metrics": [],
+    "learning": "Perlindungan akses sebaiknya berlapis: pernah ada berkas halaman lama yang tertinggal dan menjadi celah melewati pemeriksaan peran di lapisan aplikasi. Karena itu pembatasan juga dipasang di database (row-level security) dan di hak akses per kolom, bukan hanya di aplikasi."
   },
   "content-partner-platform": {
     "role": "Perancang dan pembangun",

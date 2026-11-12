@@ -852,8 +852,8 @@
    "badge": "Early data-collection prototype (archived). Sentiment scoring and the dashboard live in the web app, not in this flow. Function inferred from step names."
   },
   "metrics": {
-   "title": "TikTok metrics scraper",
-   "desc": "Receives a list of links, processes them in batches of 25, computes engagement, and stores the metrics.",
+   "title": "Video metrics fetcher",
+   "desc": "Receives a list of video links, processes them in groups of 25, fetches the metrics, computes the engagement rate, then stores the result and logs failures.",
    "steps": 17,
    "stageCount": 1,
    "names": [
@@ -892,7 +892,7 @@
      "desc": "From “Request from another app” to “Save the error log”, 10 steps."
     }
    ],
-   "badge": "Early data-collection prototype (archived). Sentiment scoring and the dashboard live in the web app, not in this flow. Function inferred from step names."
+   "badge": "Structure taken from the exported workflow this system runs; step names are simplified and service names replaced with generic terms."
   },
   "tiktok": {
    "title": "TikTok collector",
@@ -1303,7 +1303,6 @@
    "kwfb",
    "tiktok",
    "comments",
-   "metrics",
    "youtube"
   ],
   "purchasing-digitalization": [
@@ -1311,6 +1310,9 @@
   ],
   "inventory-packing": [
    "invpack"
+  ],
+  "internal-automation": [
+   "metrics"
   ]
  }
 }
