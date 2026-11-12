@@ -9,7 +9,7 @@ Daftar ini dipelihara bersama. Claude Code mencatat di sini tiap teks sementara 
 - [ ] Koreksi diagram alur 4 case study (`CONTENT.md` bagian 5)
 - [ ] Detail 5 kartu "Proyek lainnya": status, stack, pilihan L5/L6, nama model AI offline
 - [ ] Konfirmasi metrik Posisi: 10 tahun, 3+ sistem, <2% RTS
-- [ ] Email, LinkedIn, GitHub, WhatsApp (ya/tidak), foto atau tanpa foto
+- [ ] Email, LinkedIn, GitHub, WhatsApp (ya/tidak)
 - [ ] Berkas CV PDF baru (tanpa nomor telepon)
 - [x] Hosting: Netlify (situs `portofoliopa` sudah terhubung). Masih perlu: nama domain, dan matikan akses SSO tim di Netlify agar situs bisa dibuka publik sebelum tayang
 - [ ] Cek ketentuan layanan platform pihak ketiga sebelum case study agen video tayang
@@ -41,7 +41,7 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 
 **Keputusan `[PILIH]` yang saya ambil sementara**
 - Baris paroki di Tentang: dihilangkan
-- Visual Tentang: murni tipografi (tanpa foto)
+- Visual Tentang: foto profil (M18); teks alt `about.photoAlt` perlu dikonfirmasi. Foto sumber memuat tanda bintang kecil (watermark alat) di pojok kanan bawah: Patrik memutuskan dipotong atau diganti foto asli
 - Kartu L5 dan L6: keduanya tampil (total 5 kartu)
 - Halaman 404 dwibahasa: ditunda ke M6
 

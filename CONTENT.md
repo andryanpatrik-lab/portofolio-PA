@@ -296,7 +296,7 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 
 **Tag stack** (label mono): `n8n` · `Google Gemini API` · `Telegram Bot API` · `Google Apps Script` · `Google Sheets` · `Apify` `[KONFIRMASI daftar, tambahkan/kurangi]`
 
-Visual: `[PILIH: foto profil | murni tipografi]`
+Visual: foto profil (dipilih Patrik, M18). Berkas `public/img/profile.jpg`; alt: ID "Potret Patrik Andryan duduk di kursi lipat, berjaket denim, menoleh ke samping" / EN "Portrait of Patrik Andryan seated on a folding chair in a denim jacket, looking to the side" `[KONFIRMASI]`.
 
 ## 7. Kontak
 
@@ -330,7 +330,7 @@ Tautan:
 - [ ] Detail 6 kartu "Proyek lainnya": status, stack, proyek perusahaan sebelumnya yang dimaksud, definisi "AI offline", pilihan L5/L6
 - [ ] Cek ketentuan layanan platform pihak ketiga sebelum case study agen video tayang
 - [ ] Putuskan baris opsional di Tentang
-- [ ] Foto atau tanpa foto
+- [x] Foto: dipakai di section Tentang (M18)
 - [ ] Kontak dan tautan
 - [ ] Berkas CV PDF baru "Business Systems & Automation Lead", tanpa nomor telepon
 - [ ] Cek akhir: pencarian teks untuk memastikan tidak ada nama perusahaan/klien/kreator
