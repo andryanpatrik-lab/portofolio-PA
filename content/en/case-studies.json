@@ -79,6 +79,18 @@
     ],
     "system": [
       {
+        "value": "15",
+        "label": "active workflows"
+      },
+      {
+        "value": "±2,000",
+        "label": "nodes"
+      },
+      {
+        "value": "3",
+        "label": "messaging channels"
+      },
+      {
         "value": "38",
         "label": "tables"
       },
@@ -89,6 +101,155 @@
       {
         "value": "48",
         "label": "access policies"
+      }
+    ],
+    "workflows": [
+      {
+        "name": "Customer message intake and reply",
+        "trigger": "Incoming-message webhook",
+        "summary": "Runs every message through guard rails before the AI answers or escalates it to staff.",
+        "flow": [
+          {
+            "label": "Validate the message and check duplicates"
+          },
+          {
+            "label": "Skip internal accounts"
+          },
+          {
+            "label": "Merge rapid-fire messages and rate-limit"
+          },
+          {
+            "label": "Read customer data and settings"
+          },
+          {
+            "label": "Classify intent"
+          },
+          {
+            "label": "Answer or escalate to staff"
+          },
+          {
+            "label": "Typing delay, then send"
+          }
+        ]
+      },
+      {
+        "name": "Staff commands and resolve requests",
+        "trigger": "Message from staff",
+        "summary": "Staff manage tickets straight from chat, with approval for bulk resolution.",
+        "flow": [
+          {
+            "label": "Verify the staff member"
+          },
+          {
+            "label": "Read the command"
+          },
+          {
+            "label": "Show the ticket menu"
+          },
+          {
+            "label": "Request resolve and notify the approver"
+          },
+          {
+            "label": "Approver decides"
+          },
+          {
+            "label": "Notify the requester and update tickets"
+          }
+        ]
+      },
+      {
+        "name": "Daily report with AI analysis",
+        "trigger": "Schedule, every morning at 09:00",
+        "summary": "Summarises yesterday's conversations into a report sent automatically to recipients.",
+        "flow": [
+          {
+            "label": "Daily schedule"
+          },
+          {
+            "label": "Compute metrics and comparison"
+          },
+          {
+            "label": "Count customer intents"
+          },
+          {
+            "label": "Fetch transcripts and run AI analysis"
+          },
+          {
+            "label": "Compose and store the report"
+          },
+          {
+            "label": "Send to recipients"
+          }
+        ]
+      },
+      {
+        "name": "Health monitor",
+        "trigger": "Schedule, every 15 minutes",
+        "summary": "Watches workflows and messaging sessions, and raises an alert only when something new breaks.",
+        "flow": [
+          {
+            "label": "15-minute schedule"
+          },
+          {
+            "label": "List failed executions"
+          },
+          {
+            "label": "Check workflows and messaging session"
+          },
+          {
+            "label": "Compare with earlier alerts"
+          },
+          {
+            "label": "Decide on an alert"
+          },
+          {
+            "label": "Store and send the alert"
+          }
+        ]
+      },
+      {
+        "name": "Bot on/off control from chat",
+        "trigger": "Command from an operator",
+        "summary": "An operator switches the bot on, off, or checks its status through chat, with every action logged.",
+        "flow": [
+          {
+            "label": "Receive the command"
+          },
+          {
+            "label": "Verify permission"
+          },
+          {
+            "label": "Choose on, off, or status"
+          },
+          {
+            "label": "Run through the workflow API"
+          },
+          {
+            "label": "Log the result and reply"
+          }
+        ]
+      },
+      {
+        "name": "Knowledge base ingestion",
+        "trigger": "Run manually",
+        "summary": "Turns the knowledge table into a searchable base the bot uses to answer.",
+        "flow": [
+          {
+            "label": "Read the knowledge table"
+          },
+          {
+            "label": "Prepare batches"
+          },
+          {
+            "label": "Generate embeddings"
+          },
+          {
+            "label": "Store in the vector store"
+          },
+          {
+            "label": "Result summary"
+          }
+        ]
       }
     ]
   },

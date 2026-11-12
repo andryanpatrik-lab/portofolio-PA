@@ -298,6 +298,8 @@ type OtherProject = {
 
 Scroll hijacking dan section pinned (satu pengecualian disetujui Patrik: intro sinematik beranda M10, section sticky yang scroll-nya tetap native, tanpa `preventDefault`, dengan tombol Lewati dan mati di reduced-motion), kursor kustom selain cahaya pointer yang diizinkan (bagian 9: hanya mouse, kursor asli tetap tampil), auto-play suara (satu pengecualian disetujui Patrik, M17: musik latar yang baru mulai pada interaksi pertama pengunjung, dengan tombol musik yang selalu terlihat dan bisa dimatikan permanen), mode terang (satu pengecualian disetujui Patrik, M12: halaman studi kasus berlatar terang dan beranda tetap gelap), animasi di setiap elemen DOM tanpa tingkat kualitas (partikel dan canvas/WebGL kini diizinkan hanya lewat tingkat kualitas, lihat bagian 9), CMS, backend/database, kolom komentar, blog (v2), halaman case study untuk "Proyek lainnya" (v2), arsip semua proyek (v2), bagian repo showcase (v2).
 
+> Catatan M22 (disetujui Patrik): blok "Cara saya membangun" (4 poin dan 3 angka skala) ditambahkan di section Tentang, berbasis bahan workflow n8n. Bukan section baru dengan navigasi sendiri; isinya generik, tanpa nama perusahaan, brand, atau sistem.
+
 ## 14. Urutan build
 
 | Milestone | Isi |

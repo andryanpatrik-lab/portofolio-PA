@@ -150,7 +150,40 @@
       "Apify"
     ],
     "photoAlt": "Potret Patrik Andryan duduk di kursi lipat, berjaket denim, menoleh ke samping",
-    "downloadCv": "Unduh CV"
+    "downloadCv": "Unduh CV",
+    "practicesTitle": "Cara saya membangun",
+    "practices": [
+      {
+        "title": "Berkembang bertahap",
+        "text": "Bot pelanggan melewati lebih dari 15 versi, dari berbasis spreadsheet ke database dan cache."
+      },
+      {
+        "title": "Pagar pengaman",
+        "text": "Cek duplikat, penggabungan pesan beruntun, batas laju, penyaring akun internal, dan jeda mengetik agar balasan terasa manusiawi."
+      },
+      {
+        "title": "Bisa dipantau",
+        "text": "Notifikasi error, pemantau kesehatan tiap 15 menit, dan laporan harian dengan analisis AI."
+      },
+      {
+        "title": "Operasi aman",
+        "text": "Bot bisa dinyalakan atau dimatikan dari chat oleh orang berwenang, dengan log setiap aksi."
+      }
+    ],
+    "scale": [
+      {
+        "value": "26",
+        "label": "workflow aktif"
+      },
+      {
+        "value": "±2.700",
+        "label": "node otomasi"
+      },
+      {
+        "value": "3",
+        "label": "kanal pesan"
+      }
+    ]
   },
   "contact": {
     "label": "06 / KONTAK",

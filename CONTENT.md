@@ -289,6 +289,10 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 - **Struktur sistem** (kartu 02, 03, 04): hanya jumlah dari dokumentasi database Patrik (tabel, fungsi, kebijakan akses, peran). Tanpa nama tabel, data, atau volume.
 - **Workflow yang dibangun** (kartu 04): 2 workflow n8n generik (pengambilan gambar produk otomatis, 6 langkah; pengingat harian, 4 langkah). Tanpa nama workflow asli, perusahaan, atau platform.
 
+### 5.y Kartu 02, bahan workflow (M22, draf `[KONFIRMASI]`)
+
+6 workflow generik (penerimaan dan jawaban pesan, perintah staf dan resolve, laporan harian AI, pemantau kesehatan, kendali hidup/mati dari chat, pengisian basis pengetahuan) ditulis dari urutan node file ekspor workflow Patrik; angka sistem kartu 02: 15 workflow aktif, ±2.000 node, 3 kanal pesan, 38 tabel, 39 fungsi, 48 kebijakan akses. Alur ditulis dari struktur, bukan dari menjalankan workflow.
+
 ## 6. Tentang
 
 | Field | ID | EN |
@@ -300,6 +304,8 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 | Tombol CV | Unduh CV | Download CV |
 
 **Tag stack** (label mono): `n8n` · `Google Gemini API` · `Telegram Bot API` · `Google Apps Script` · `Google Sheets` · `Apify` `[KONFIRMASI daftar, tambahkan/kurangi]`
+
+**Blok "Cara saya membangun" (M22, draf `[KONFIRMASI]`)**: 4 poin (berkembang bertahap, pagar pengaman, bisa dipantau, operasi aman) dan angka skala 26 workflow aktif, ±2.700 node, 3 kanal pesan (angka disetujui Patrik; fakta cakupan, bukan hasil bisnis).
 
 Visual: foto profil (dipilih Patrik, M18). Berkas `public/img/profile.jpg`; alt: ID "Potret Patrik Andryan duduk di kursi lipat, berjaket denim, menoleh ke samping" / EN "Portrait of Patrik Andryan seated on a folding chair in a denim jacket, looking to the side" `[KONFIRMASI]`.
 

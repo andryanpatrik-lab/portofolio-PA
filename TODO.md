@@ -25,6 +25,8 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - Email, LinkedIn, GitHub, WhatsApp kosong: tautan tidak tampil, tombol "Hubungi saya" disembunyikan dan diganti teks "Informasi kontak segera tersedia"
 - Blok baru case study (M20, draf `[KONFIRMASI]`): "Struktur sistem" (angka dari dokumentasi database Patrik per 10 Nov 2026: kartu 02 = 38 tabel/39 fungsi/48 kebijakan akses; kartu 03 = 14/27/3 peran; kartu 04 = 40/160/79) dan "Workflow yang dibangun" di kartu 04 (2 workflow n8n ditulis ulang generik). Perlu dikonfirmasi Patrik sebelum tayang
 - Pesan pembuka WhatsApp: ID disetujui Patrik; terjemahan EN "Hello, I would like to talk further with you." perlu dikonfirmasi; email dan nomor tampil di HTML publik dan bisa dikumpulkan bot spam
+- Blok baru M22 (draf `[KONFIRMASI]`): 6 workflow kartu 02, angka 15 workflow aktif/±2.000 node/3 kanal (hitungan dari file ekspor per 11 Nov 2026), dan blok "Cara saya membangun" di Tentang. Patrik cek bahwa ringkasan alur sesuai kenyataan
+- Keamanan: file JSON workflow memuat token bot, JWT, nomor telepon, dan ID chat yang tertanam; ganti (rotate) token yang pernah berada di repo saat masih publik. Jangan pernah mempublikasikan JSON mentah
 - Tombol "Unduh CV" disembunyikan sampai `cvFile` di `content/site.json` terisi (PDF baru tanpa nomor telepon)
 
 **Draf `[KONFIRMASI]` yang tampil apa adanya (perlu disetujui)**

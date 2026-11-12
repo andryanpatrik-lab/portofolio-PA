@@ -79,6 +79,18 @@
     ],
     "system": [
       {
+        "value": "15",
+        "label": "workflow aktif"
+      },
+      {
+        "value": "±2.000",
+        "label": "node"
+      },
+      {
+        "value": "3",
+        "label": "kanal pesan"
+      },
+      {
         "value": "38",
         "label": "tabel"
       },
@@ -89,6 +101,155 @@
       {
         "value": "48",
         "label": "kebijakan akses"
+      }
+    ],
+    "workflows": [
+      {
+        "name": "Penerimaan dan jawaban pesan pelanggan",
+        "trigger": "Webhook pesan masuk",
+        "summary": "Memproses tiap pesan dengan pagar pengaman sebelum dijawab oleh AI atau dieskalasi ke staf.",
+        "flow": [
+          {
+            "label": "Validasi pesan dan cek duplikat"
+          },
+          {
+            "label": "Lewati akun internal"
+          },
+          {
+            "label": "Gabung pesan beruntun dan batasi laju"
+          },
+          {
+            "label": "Baca data pelanggan dan pengaturan"
+          },
+          {
+            "label": "Klasifikasi maksud"
+          },
+          {
+            "label": "Jawab atau eskalasi ke staf"
+          },
+          {
+            "label": "Jeda mengetik lalu kirim"
+          }
+        ]
+      },
+      {
+        "name": "Perintah staf dan permintaan resolve",
+        "trigger": "Pesan dari staf",
+        "summary": "Staf mengelola tiket langsung dari chat, dengan persetujuan untuk penyelesaian massal.",
+        "flow": [
+          {
+            "label": "Verifikasi staf"
+          },
+          {
+            "label": "Baca perintah"
+          },
+          {
+            "label": "Tampilkan menu tiket"
+          },
+          {
+            "label": "Ajukan resolve dan beri tahu penyetuju"
+          },
+          {
+            "label": "Keputusan penyetuju"
+          },
+          {
+            "label": "Beri tahu pemohon dan perbarui tiket"
+          }
+        ]
+      },
+      {
+        "name": "Laporan harian dengan analisis AI",
+        "trigger": "Jadwal tiap pagi pukul 09.00",
+        "summary": "Merangkum percakapan kemarin menjadi laporan yang dikirim otomatis ke penerima.",
+        "flow": [
+          {
+            "label": "Jadwal harian"
+          },
+          {
+            "label": "Hitung metrik dan pembanding"
+          },
+          {
+            "label": "Hitung maksud pelanggan"
+          },
+          {
+            "label": "Ambil transkrip dan analisis AI"
+          },
+          {
+            "label": "Susun dan simpan laporan"
+          },
+          {
+            "label": "Kirim ke penerima"
+          }
+        ]
+      },
+      {
+        "name": "Pemantau kesehatan",
+        "trigger": "Jadwal tiap 15 menit",
+        "summary": "Mengawasi workflow dan sesi pesan, lalu memberi peringatan hanya bila ada yang baru bermasalah.",
+        "flow": [
+          {
+            "label": "Jadwal 15 menit"
+          },
+          {
+            "label": "Daftar eksekusi gagal"
+          },
+          {
+            "label": "Periksa workflow dan sesi pesan"
+          },
+          {
+            "label": "Bandingkan dengan peringatan sebelumnya"
+          },
+          {
+            "label": "Putuskan peringatan"
+          },
+          {
+            "label": "Simpan dan kirim peringatan"
+          }
+        ]
+      },
+      {
+        "name": "Kendali hidup/mati bot dari chat",
+        "trigger": "Perintah dari pengelola",
+        "summary": "Pengelola menyalakan, mematikan, atau memeriksa status bot lewat chat, dengan log tiap aksi.",
+        "flow": [
+          {
+            "label": "Terima perintah"
+          },
+          {
+            "label": "Verifikasi izin"
+          },
+          {
+            "label": "Pilih nyala, mati, atau status"
+          },
+          {
+            "label": "Jalankan lewat API workflow"
+          },
+          {
+            "label": "Catat hasil dan balas"
+          }
+        ]
+      },
+      {
+        "name": "Pengisian basis pengetahuan",
+        "trigger": "Dijalankan manual",
+        "summary": "Mengubah tabel pengetahuan menjadi basis pencarian yang dipakai bot untuk menjawab.",
+        "flow": [
+          {
+            "label": "Baca tabel pengetahuan"
+          },
+          {
+            "label": "Susun batch"
+          },
+          {
+            "label": "Buat embedding"
+          },
+          {
+            "label": "Simpan ke penyimpanan vektor"
+          },
+          {
+            "label": "Ringkasan hasil"
+          }
+        ]
       }
     ]
   },

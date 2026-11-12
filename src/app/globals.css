@@ -856,3 +856,7 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .wf-summary::after { content: "+"; position: absolute; right: 0; top: 0; color: var(--accent); font-size: 1.5rem; line-height: 1; }
 .wf-item[open] > .wf-summary::after { content: "\2212"; }
 .wf-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 6px; }
+
+/* About: "how I build" practices (M22). Static; fades in with the section's [data-reveal]. */
+.practice-grid { display: grid; gap: 2rem; list-style: none; padding: 0; }
+@media (min-width: 768px) { .practice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 4rem; } }

@@ -1,5 +1,6 @@
 import { Button } from "../Button";
 import { Eyebrow } from "../Eyebrow";
+import { Metric } from "../Metric";
 import { StackTags } from "../StackTags";
 import { site, type Home } from "@/lib/i18n";
 
@@ -27,6 +28,24 @@ export function About({ home }: { home: Home }) {
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element -- static export, image is already web-sized */}
           <img src="/img/profile.jpg" width={853} height={1280} alt={about.photoAlt} loading="lazy" decoding="async" className="about-photo" />
+        </div>
+        <div className="mt-[var(--section-gap)]">
+          <h3 className="t-h3">{about.practicesTitle}</h3>
+          <ul className="practice-grid mt-10">
+            {about.practices.map((pr) => (
+              <li key={pr.title}>
+                <p className="t-h4">{pr.title}</p>
+                <p className="mt-3 text-text-2">{pr.text}</p>
+              </li>
+            ))}
+          </ul>
+          <ul className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+            {about.scale.map((m) => (
+              <li key={m.label}>
+                <Metric value={m.value} label={m.label} size="sm" />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
