@@ -314,9 +314,9 @@ Visual: foto profil (dipilih Patrik, M18). Berkas `public/img/profile.jpg`; alt:
 
 Tautan:
 - Email: andryanpatrik@gmail.com (dipilih Patrik, M21)
-- LinkedIn: `[ISI]`
+- LinkedIn: https://www.linkedin.com/in/andryan-patrik/ (dari Patrik, M21)
 - GitHub: https://github.com/andryanpatrik-lab (dipilih Patrik, M21)
-- WhatsApp: dicantumkan (keputusan Patrik, M21): tombol ghost "Chat via WhatsApp" membuka `wa.me/<nomor>` dengan pesan pembuka `contact.whatsappText` `[KONFIRMASI]`. Nomor `[ISI]` di `content/site.json` `whatsapp`; tombol tersembunyi sampai terisi.
+- WhatsApp: dicantumkan (keputusan Patrik, M21): tombol ghost "Chat via WhatsApp" membuka `wa.me/<nomor>` dengan pesan pembuka `contact.whatsappText` `[KONFIRMASI]`. Nomor dari Patrik (M21) di `content/site.json` `whatsapp`. Pesan ID dari Patrik: "Halo saya ingin berbicara lebih lanjut dengan anda."; EN terjemahan draf.
 
 ## 7.1 Berkas CV
 
