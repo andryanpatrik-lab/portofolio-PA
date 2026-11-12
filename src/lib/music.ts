@@ -13,6 +13,7 @@ let audio: HTMLAudioElement | null = null;
 let on = false;
 let raf = 0;
 let armed = false;
+let firstGesture: ((e: Event) => void) | null = null;
 
 const emit = () => window.dispatchEvent(new Event("music-change"));
 
@@ -39,7 +40,7 @@ async function start(): Promise<boolean> {
   if (!audio) {
     audio = new Audio(src);
     audio.loop = true;
-    audio.preload = "auto";
+    audio.preload = "none"; // play() loads it when (and only when) playback is allowed
     audio.volume = 0;
   }
   try {
@@ -74,19 +75,34 @@ export function toggleMusic() {
   else void start();
 }
 
+function disarm() {
+  if (firstGesture) START_EVENTS.forEach((n) => document.removeEventListener(n, firstGesture as EventListener, true));
+  firstGesture = null;
+  armed = false;
+}
+
 function arm() {
   if (armed) return;
   armed = true;
-  const first = (e: Event) => {
+  firstGesture = (e: Event) => {
     // the music button handles its own click
     if ((e.target as Element | null)?.closest?.("[data-music-toggle]")) return;
-    START_EVENTS.forEach((n) => document.removeEventListener(n, first, true));
-    armed = false;
+    disarm();
     void start().then((ok) => {
       if (!ok) arm();
     });
   };
-  START_EVENTS.forEach((n) => document.addEventListener(n, first, true));
+  START_EVENTS.forEach((n) => document.addEventListener(n, firstGesture as EventListener, true));
+}
+
+/**
+ * A quiet attempt right after the page has loaded: it only succeeds where the browser allows sound without a gesture
+ * (returning visitors with high engagement in Chrome, sites the visitor allowed). Everyone else keeps the first-gesture start.
+ */
+function tryAutoplay() {
+  void start().then((ok) => {
+    if (ok) disarm();
+  });
 }
 
 let initialised = false;
@@ -101,7 +117,12 @@ export function initMusic(file: string) {
   try {
     optedOut = localStorage.getItem(KEY) === "off";
   } catch {}
-  if (!optedOut) arm();
+  if (!optedOut) {
+    arm();
+    const attempt = () => window.setTimeout(tryAutoplay, 1500);
+    if (document.readyState === "complete") attempt();
+    else window.addEventListener("load", attempt, { once: true });
+  }
   document.addEventListener("visibilitychange", () => {
     if (!audio || !on) return;
     if (document.hidden) audio.pause();
