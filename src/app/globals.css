@@ -390,23 +390,23 @@ html:active-view-transition-type(nav-back)::view-transition-group(.morph) {
 /* Light pages (M12): case studies. Approved by Patrik, replacing the former dark-only rule for these pages. The wrapper re-scopes
    the tokens, so utilities (text-text, bg-bg, border-border, text-accent) follow. Gold is darkened for contrast on white. */
 .light-page {
-  --bg-deep: #fafaf9;
-  --bg: #ffffff;
-  --surface: #f5f5f4;
-  --border: #d6d3d1;
+  --bg-deep: #e9e8e6; /* light grey page colour (softer than white) */
+  --bg: #f3f2f0;
+  --surface: #dedcda;
+  --border: #c4c1bd;
   --text: #1c1917;
   --text-2: #44403c;
   --text-muted: #57534e;
-  --accent: #8a6100;
-  --accent-dim: #6b4a00;
-  --accent-glow: rgba(138, 97, 0, 0.1);
+  --accent: #7a5600; /* dark gold: 5.4:1 on the grey */
+  --accent-dim: #5e4200;
+  --accent-glow: rgba(122, 86, 0, 0.1);
   color-scheme: light;
   position: relative;
   min-height: 100vh;
   color: var(--text);
 }
 /* the page colour lives on <html> so the light background layers (z-index -1) show through the wrapper */
-html:has(.light-page) { background: #fafaf9; color-scheme: light; }
+html:has(.light-page) { background: #e9e8e6; color-scheme: light; }
 html:has(.light-page) .cosmos-canvas,
 html:has(.light-page) .cosmos-lite-wrap { display: none !important; }
 /* the cursor glow stays readable on white */
@@ -472,8 +472,8 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .bh-nav .bh-curtain,
 .bh-nav .bh-portal { display: block; }
 /* leaving a case study: the same elements, in light */
-.bh-white .bh-curtain { background: #fafaf9; }
-.bh-white .bh-portal { background: radial-gradient(circle closest-side, #fafaf9 0 86%, rgba(234, 179, 8, 0.55) 93%, transparent 100%); }
+.bh-white .bh-curtain { background: #e9e8e6; }
+.bh-white .bh-portal { background: radial-gradient(circle closest-side, #e9e8e6 0 86%, rgba(234, 179, 8, 0.55) 93%, transparent 100%); }
 /* while it runs: no second click, and the navigation's own View Transition stays invisible */
 .bh-nav body { pointer-events: none; }
 .bh-nav::view-transition { display: none; }
