@@ -1025,3 +1025,26 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .fv-text-desc { margin: 8px 0 0; color: var(--text-2); }
 .fv-text-stages { margin: 12px 0 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.5; color: var(--text-2); }
 .fv-text-stages strong { font-weight: 500; color: var(--text); }
+
+/* System structure spec sheet: hairline dividers come from a 1px gap over the border colour. */
+.sys-sheet {
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--border);
+  list-style: none;
+  padding: 0;
+}
+.sys-cell { background: var(--bg); padding: 22px 22px 24px; }
+.sys-num {
+  font-family: var(--font-mono);
+  font-size: clamp(2.25rem, 1.8rem + 1.6vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.sys-label { margin-top: 14px; color: var(--text-2); }
+.sys-note { margin-top: 8px; max-width: 30ch; }

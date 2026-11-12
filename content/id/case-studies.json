@@ -83,27 +83,33 @@
     "system": [
       {
         "value": "28",
-        "label": "workflow aktif"
+        "label": "workflow aktif",
+        "note": "alur otomatis yang sedang berjalan"
       },
       {
         "value": "337",
-        "label": "node di 8 workflow inti"
+        "label": "node di 8 workflow inti",
+        "note": "langkah-langkah di delapan alur utama"
       },
       {
         "value": "38",
-        "label": "tabel"
+        "label": "tabel",
+        "note": "tempat data disimpan, saling terhubung lewat relasi"
       },
       {
         "value": "41",
-        "label": "fungsi"
+        "label": "fungsi",
+        "note": "logika bisnis yang berjalan di dalam database"
       },
       {
         "value": "14",
-        "label": "trigger"
+        "label": "trigger",
+        "note": "reaksi otomatis di database saat data berubah"
       },
       {
         "value": "48",
-        "label": "kebijakan akses"
+        "label": "kebijakan akses",
+        "note": "aturan siapa boleh membaca atau menulis tiap data"
       }
     ],
     "context": "Asisten pesan yang melayani pelanggan di WhatsApp, Instagram, dan Facebook, dengan tiket eskalasi yang diarahkan ke sebuah tim.",
@@ -151,15 +157,18 @@
     "system": [
       {
         "value": "14",
-        "label": "tabel"
+        "label": "tabel",
+        "note": "tempat data disimpan, saling terhubung lewat relasi"
       },
       {
         "value": "27",
-        "label": "kebijakan akses"
+        "label": "kebijakan akses",
+        "note": "aturan siapa boleh membaca atau menulis tiap data"
       },
       {
         "value": "3",
-        "label": "peran pengguna"
+        "label": "peran pengguna",
+        "note": "jenis akun dengan hak akses berbeda"
       }
     ],
     "context": "Layanan pemantauan brand untuk klien yang ingin tahu bagaimana pelanggan membicarakan brand mereka dan bagaimana posisinya terhadap kompetitor.",
@@ -209,27 +218,33 @@
     "system": [
       {
         "value": "41",
-        "label": "tabel"
+        "label": "tabel",
+        "note": "tempat data disimpan, saling terhubung lewat relasi"
       },
       {
         "value": "162",
-        "label": "fungsi"
+        "label": "fungsi",
+        "note": "logika bisnis yang berjalan di dalam database"
       },
       {
         "value": "82",
-        "label": "kebijakan akses"
+        "label": "kebijakan akses",
+        "note": "aturan siapa boleh membaca atau menulis tiap data"
       },
       {
         "value": "14",
-        "label": "fungsi serverless"
+        "label": "fungsi serverless",
+        "note": "layanan kecil yang berjalan sesuai kebutuhan, tanpa server sendiri"
       },
       {
         "value": "7",
-        "label": "pelaksana tugas di agen"
+        "label": "pelaksana tugas di agen",
+        "note": "jenis pekerjaan yang dijalankan agen secara mandiri"
       },
       {
         "value": "70",
-        "label": "berkas migrasi"
+        "label": "berkas migrasi",
+        "note": "riwayat perubahan database, satu berkas per perubahan"
       }
     ],
     "context": "Sistem produksi video produk pendek bergaya konten pengguna untuk sebuah tim: staf menyiapkan karakter dan produk di aplikasi web, lalu video dibuat oleh agen di laptop produksi atau oleh model video lewat API.",

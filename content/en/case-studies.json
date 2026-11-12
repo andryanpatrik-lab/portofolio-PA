@@ -83,27 +83,33 @@
     "system": [
       {
         "value": "28",
-        "label": "active workflows"
+        "label": "active workflows",
+        "note": "automations running right now"
       },
       {
         "value": "337",
-        "label": "nodes in 8 core workflows"
+        "label": "nodes in 8 core workflows",
+        "note": "steps across the eight main flows"
       },
       {
         "value": "38",
-        "label": "tables"
+        "label": "tables",
+        "note": "where data is stored, connected through relations"
       },
       {
         "value": "41",
-        "label": "functions"
+        "label": "functions",
+        "note": "business logic that runs inside the database"
       },
       {
         "value": "14",
-        "label": "triggers"
+        "label": "triggers",
+        "note": "automatic reactions in the database when data changes"
       },
       {
         "value": "48",
-        "label": "access policies"
+        "label": "access policies",
+        "note": "rules for who may read or write each piece of data"
       }
     ],
     "context": "A messaging assistant serving customers on WhatsApp, Instagram, and Facebook, with escalation tickets routed to a team.",
@@ -151,15 +157,18 @@
     "system": [
       {
         "value": "14",
-        "label": "tables"
+        "label": "tables",
+        "note": "where data is stored, connected through relations"
       },
       {
         "value": "27",
-        "label": "access policies"
+        "label": "access policies",
+        "note": "rules for who may read or write each piece of data"
       },
       {
         "value": "3",
-        "label": "user roles"
+        "label": "user roles",
+        "note": "account types with different permissions"
       }
     ],
     "context": "A brand-monitoring service for clients who want to know how customers talk about their brand and how it compares with competitors.",
@@ -209,27 +218,33 @@
     "system": [
       {
         "value": "41",
-        "label": "tables"
+        "label": "tables",
+        "note": "where data is stored, connected through relations"
       },
       {
         "value": "162",
-        "label": "functions"
+        "label": "functions",
+        "note": "business logic that runs inside the database"
       },
       {
         "value": "82",
-        "label": "access policies"
+        "label": "access policies",
+        "note": "rules for who may read or write each piece of data"
       },
       {
         "value": "14",
-        "label": "serverless functions"
+        "label": "serverless functions",
+        "note": "small on-demand services that need no server of their own"
       },
       {
         "value": "7",
-        "label": "task runners in the agent"
+        "label": "task runners in the agent",
+        "note": "kinds of work the agent carries out on its own"
       },
       {
         "value": "70",
-        "label": "migration files"
+        "label": "migration files",
+        "note": "history of database changes, one file per change"
       }
     ],
     "context": "A production system for short, user-generated-content-style product videos for a team: staff prepare characters and products in a web app, and videos are produced by an agent on a production laptop or by a video model through an API.",

@@ -44,7 +44,7 @@ export type CaseStudyData = {
   flow: { label: string; note?: string }[];
   metrics: { value: string; label?: string; estimate?: boolean }[];
   learning?: string;
-  system?: { value: string; label: string }[];
+  system?: { value: string; label: string; note?: string }[];
 };
 
 const caseStudies: Record<Locale, Record<string, CaseStudyData>> = { id: caseId, en: caseEn };

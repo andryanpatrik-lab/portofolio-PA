@@ -5,6 +5,7 @@ import { FlowAnimOnScroll } from "./FlowAnimOnScroll";
 import { FlowDiagram } from "./FlowDiagram";
 import { FlowExplorer } from "./FlowExplorer";
 import { Metric } from "./Metric";
+import { SystemSheet } from "./SystemSheet";
 import { getFlowLabels, getFlowSummaries } from "@/lib/flowSummaries";
 import type { CaseStudyData, Dictionary, Locale } from "@/lib/i18n";
 
@@ -119,13 +120,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
         {data.system && data.system.length > 0 && (
           <section data-cosmos="nebula" className="mt-[var(--section-gap)]">
             <h2 {...dust} className="t-h3">{ui.system}</h2>
-            <ul className={`mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 ${data.system.length === 4 ? "lg:grid-cols-4" : data.system.length === 5 ? "lg:grid-cols-5" : ""}`}>
-              {data.system.map((m) => (
-                <li key={m.label}>
-                  <Metric value={m.value} label={m.label} size="sm" />
-                </li>
-              ))}
-            </ul>
+            <SystemSheet items={data.system} />
           </section>
         )}
 

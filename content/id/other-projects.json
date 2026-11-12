@@ -31,19 +31,23 @@
     "system": [
       {
         "value": "19",
-        "label": "tabel"
+        "label": "tabel",
+        "note": "tempat data disimpan, saling terhubung lewat relasi"
       },
       {
         "value": "5",
-        "label": "domain"
+        "label": "domain",
+        "note": "area fungsi yang dipisahkan satu sama lain"
       },
       {
         "value": "4",
-        "label": "peran"
+        "label": "peran",
+        "note": "jenis akun dengan hak akses berbeda"
       },
       {
         "value": "2",
-        "label": "tipe packing"
+        "label": "tipe packing",
+        "note": "cara stok berkurang: barang siap kirim, atau produk dengan kemasan terpisah"
       }
     ],
     "metrics": []
@@ -89,23 +93,28 @@
     "system": [
       {
         "value": "9",
-        "label": "tabel"
+        "label": "tabel",
+        "note": "tempat data disimpan, saling terhubung lewat relasi"
       },
       {
         "value": "22",
-        "label": "kebijakan akses"
+        "label": "kebijakan akses",
+        "note": "aturan siapa boleh membaca atau menulis tiap data"
       },
       {
         "value": "3",
-        "label": "peran"
+        "label": "peran",
+        "note": "jenis akun dengan hak akses berbeda"
       },
       {
         "value": "13",
-        "label": "halaman"
+        "label": "halaman",
+        "note": "layar aplikasi yang bisa dibuka pengguna"
       },
       {
         "value": "2",
-        "label": "workflow n8n"
+        "label": "workflow n8n",
+        "note": "alur otomatis untuk gambar produk dan pengingat"
       }
     ],
     "metrics": []

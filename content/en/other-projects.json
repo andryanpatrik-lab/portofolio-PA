@@ -31,19 +31,23 @@
     "system": [
       {
         "value": "19",
-        "label": "tables"
+        "label": "tables",
+        "note": "where data is stored, connected through relations"
       },
       {
         "value": "5",
-        "label": "domains"
+        "label": "domains",
+        "note": "separate functional areas"
       },
       {
         "value": "4",
-        "label": "roles"
+        "label": "roles",
+        "note": "account types with different permissions"
       },
       {
         "value": "2",
-        "label": "packing types"
+        "label": "packing types",
+        "note": "how stock drops: ready-to-ship, or product with separate packaging"
       }
     ],
     "metrics": []
@@ -89,23 +93,28 @@
     "system": [
       {
         "value": "9",
-        "label": "tables"
+        "label": "tables",
+        "note": "where data is stored, connected through relations"
       },
       {
         "value": "22",
-        "label": "access policies"
+        "label": "access policies",
+        "note": "rules for who may read or write each piece of data"
       },
       {
         "value": "3",
-        "label": "roles"
+        "label": "roles",
+        "note": "account types with different permissions"
       },
       {
         "value": "13",
-        "label": "pages"
+        "label": "pages",
+        "note": "app screens a user can open"
       },
       {
         "value": "2",
-        "label": "n8n workflows"
+        "label": "n8n workflows",
+        "note": "automations for product images and reminders"
       }
     ],
     "metrics": []
