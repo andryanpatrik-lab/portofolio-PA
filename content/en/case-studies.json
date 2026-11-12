@@ -194,15 +194,16 @@
     "metrics": [
       {
         "value": "43 videos",
-        "label": "videos downloaded from 58 jobs (15 Oct to 12 Nov 2026)"
+        "label": "videos downloaded from 58 jobs (15 Oct to 12 Nov 2026); a smooth 20-second video takes ~7 minutes"
       },
       {
         "value": "86%",
         "label": "jobs succeeded among finished ones (43 of 50)"
       },
       {
-        "value": "2.5 min",
-        "label": "median from job start to downloaded video (some jobs take far longer)"
+        "value": "Rp 5.7k",
+        "label": "estimated production cost of one 20-second 360p video with narration (credits and AI, no fixed costs)",
+        "estimate": true
       }
     ],
     "system": [

@@ -194,15 +194,16 @@
     "metrics": [
       {
         "value": "43 video",
-        "label": "video terunduh dari 58 job (15 Okt sampai 12 Nov 2026)"
+        "label": "video terunduh dari 58 job (15 Okt sampai 12 Nov 2026); video 20 detik yang lancar jadi dalam ±7 menit"
       },
       {
         "value": "86%",
         "label": "job berhasil dari yang sudah berakhir (43 dari 50)"
       },
       {
-        "value": "2,5 mnt",
-        "label": "median dari job dimulai sampai video terunduh (sebagian job jauh lebih lama)"
+        "value": "Rp 5,7 rb",
+        "label": "perkiraan biaya produksi satu video 20 detik, 360p, dengan narasi (kredit dan AI, tanpa biaya tetap)",
+        "estimate": true
       }
     ],
     "system": [
