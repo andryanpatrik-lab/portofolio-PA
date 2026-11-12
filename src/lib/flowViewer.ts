@@ -20,6 +20,8 @@ export type FlowStructure = {
 export type FlowTexts = {
   title: string;
   desc: string;
+  /** Where the flow comes from (illustration, early version, ...). Shown under the title. */
+  badge?: string;
   steps: number;
   stageCount: number;
   names: string[];
@@ -275,6 +277,7 @@ export class FlowViewer {
     const titleBox = htmlEl("div", "fv-titlebox", "", left);
     htmlEl("h2", "", text.title, titleBox);
     htmlEl("p", "", labels.steps.replace("{n}", String(text.steps)).replace("{s}", String(text.stageCount)), titleBox);
+    if (text.badge) htmlEl("p", "fv-badge", text.badge, titleBox);
     const tools = htmlEl("div", "fv-tools", "", head);
     const zoom = htmlEl("div", "fv-seg fv-zoom", "", tools);
     const out = htmlEl("button", "", "−", zoom);

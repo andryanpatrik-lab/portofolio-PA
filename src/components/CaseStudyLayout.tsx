@@ -1,13 +1,10 @@
 import { ViewTransition } from "react";
 import { BackLink } from "./BackLink";
 import { BlackHoleLink } from "./BlackHoleLink";
-import { Button } from "./Button";
 import { FlowDiagram } from "./FlowDiagram";
-import { N8nCanvas } from "./N8nCanvas";
 import { FlowExplorer } from "./FlowExplorer";
 import { Metric } from "./Metric";
 import { getFlowLabels, getFlowSummaries } from "@/lib/flowSummaries";
-import { n8nSkeletons } from "@/lib/n8nSkeletons";
 import type { CaseStudyData, Dictionary, Locale } from "@/lib/i18n";
 
 type Props = {
@@ -28,6 +25,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
   const cosmos = (["aurora", "nebula", "ember", "supernova"] as const)[index % 4];
   const meta = [data.role, data.year, data.status, data.stack.join(", ")].filter(Boolean);
 
+  const flows = getFlowSummaries(locale, slug);
   const dust = { "data-dust": "assemble", "data-dust-state": "pending" } as const;
 
   // Each section picks a colour mood for the light background (the section under the viewport centre decides, see Cosmos).
@@ -62,28 +60,12 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           {meta.length > 0 && <p className="t-label mt-6 text-text-muted">{meta.join(" · ")}</p>}
         </header>
 
-        {data.overview && n8nSkeletons[data.overview.file] && (
+        {flows.length > 0 && (
           <section data-cosmos="nebula" className="mt-12 md:mt-16">
-            <h2 {...dust} className="t-h3">{ui.overview}</h2>
-            <p className="t-label mt-4 text-text-muted">{ui.canvas}: {data.overview.caption}</p>
-            <div className="mt-6">
-              <N8nCanvas data={n8nSkeletons[data.overview.file]} label={`${ui.canvas}: ${data.overview.caption}`} hint={ui.scrollHint} />
-            </div>
-            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
-              <Button variant="ghost" href={`/n8n/${data.overview.file}.json`} download>
-                {ui.downloadSkeleton}
-              </Button>
-              <span className="t-caption">{ui.overviewNote}</span>
-            </div>
-          </section>
-        )}
-
-        {data.explorer && (
-          <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
             <h2 {...dust} className="t-h3">{ui.explore}</h2>
             <p {...dust} className="t-lead mt-6 max-w-[60ch] text-text-2">{ui.exploreNote}</p>
             <div className="mt-10">
-              <FlowExplorer locale={locale} summaries={getFlowSummaries(locale)} labels={getFlowLabels(locale)} fullHref={`/${locale}/flows/`} />
+              <FlowExplorer locale={locale} summaries={flows} labels={getFlowLabels(locale)} fullHref={`/${locale}/flows/#alur=${flows[0].slug}`} />
             </div>
           </section>
         )}
@@ -106,46 +88,6 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
             </div>
           </ViewTransition>
         </section>
-
-        {data.workflows && data.workflows.length > 0 && (
-          <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
-            <h2 {...dust} className="t-h3">{ui.workflows}</h2>
-            <ul className="mt-10 space-y-4">
-              {data.workflows.map((w) => (
-                <li key={w.name} className="wf-li">
-                  <details className="wf-item rounded-xl border border-border p-5 md:p-6">
-                    <summary className="wf-summary">
-                      <span className="t-h4 block">{w.name}</span>
-                      <span className="t-label mt-2 block text-text-muted">{ui.trigger}: {w.trigger}</span>
-                    </summary>
-                    <p className="mt-6 text-text-2">{w.summary}</p>
-                    <div className="mt-8">
-                      <FlowDiagram variant="full" steps={w.flow} />
-                    </div>
-                    {w.canvases?.map((c) => {
-                      const skeleton = n8nSkeletons[c.file];
-                      if (!skeleton) return null;
-                      return (
-                        <div key={c.file} className="mt-10">
-                          <p className="t-label text-text-muted">{ui.canvas}: {c.caption}</p>
-                          <div className="mt-4">
-                            <N8nCanvas data={skeleton} label={`${ui.canvas}: ${c.caption}`} hint={ui.scrollHint} />
-                          </div>
-                          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
-                            <Button variant="ghost" href={`/n8n/${c.file}.json`} download>
-                              {ui.downloadSkeleton}
-                            </Button>
-                            <span className="t-caption">{ui.skeletonNote}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </details>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
 
         {data.system && data.system.length > 0 && (
           <section data-cosmos="nebula" className="mt-[var(--section-gap)]">

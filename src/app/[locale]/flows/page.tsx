@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { LightMotes } from "@/components/LightMotes";
 import { Nav } from "@/components/Nav";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
-import { getFlowLabels, getFlowSummaries } from "@/lib/flowSummaries";
+import { flowGroupSlugs, getAllFlowSummaries, getFlowLabels } from "@/lib/flowSummaries";
 import { getDictionary, getHome, isLocale, locales } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo";
 
@@ -31,7 +31,7 @@ export default async function FlowsPage({ params }: { params: Promise<Params> })
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
   const home = getHome(locale);
-  const card = home.work.cards.find((c) => c.slug === "ai-messaging-ticketing") ?? home.work.cards[1];
+  const groups = flowGroupSlugs(locale).map((id) => ({ id, title: home.work.cards.find((c) => c.slug === id)?.title ?? id }));
 
   return (
     <div className="light-page">
@@ -40,14 +40,14 @@ export default async function FlowsPage({ params }: { params: Promise<Params> })
       <RevealOnScroll />
       <Nav locale={locale} dict={dict} pathSuffix="flows/" />
       <main id="main" data-cosmos="aurora" className="container-page pb-[var(--section-gap)] pt-8">
-        <BackLink href={`/${locale}/work/${card.slug}/`} className="t-label tap text-text-2 link-underline">
+        <BackLink href={`/${locale}/#work`} className="t-label tap text-text-2 link-underline">
           <span aria-hidden="true">← </span>
           {dict.case.back}
         </BackLink>
         <h1 className="t-h2 mt-8">{dict.case.exploreTitle}</h1>
         <p className="t-lead mt-4 max-w-[60ch] text-text-2">{dict.case.exploreNote}</p>
         <div className="mt-10">
-          <FlowExplorer locale={locale} summaries={getFlowSummaries(locale)} labels={getFlowLabels(locale)} full />
+          <FlowExplorer locale={locale} summaries={getAllFlowSummaries(locale)} groups={groups} labels={getFlowLabels(locale)} full />
         </div>
       </main>
       <Footer text={dict.footer} />

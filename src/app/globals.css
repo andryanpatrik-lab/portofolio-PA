@@ -850,13 +850,6 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
   100% { opacity: 0; scale: 1.05; }
 }
 
-/* Case study workflow list (M20): native <details>, no animation. */
-.wf-summary { cursor: pointer; list-style: none; position: relative; padding-right: 2rem; }
-.wf-summary::-webkit-details-marker { display: none; }
-.wf-summary::after { content: "+"; position: absolute; right: 0; top: 0; color: var(--accent); font-size: 1.5rem; line-height: 1; }
-.wf-item[open] > .wf-summary::after { content: "\2212"; }
-.wf-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 6px; }
-
 /* About: "how I build" practices (M22). Static; fades in with the section's [data-reveal]. */
 .practice-grid { display: grid; gap: 2rem; list-style: none; padding: 0; }
 @media (min-width: 768px) { .practice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 4rem; } }
@@ -874,102 +867,6 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
   border: 1px solid color-mix(in srgb, var(--border) 45%, transparent);
   pointer-events: none;
 }
-
-/* Workflow cards get the same charge-up and burst as the home cards (M19), only while closed. */
-.wf-li { --shake: 0.6; }
-.wf-item { position: relative; }
-.wf-item::before, .wf-item::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; }
-.wf-item::before { background: var(--accent); }
-.wf-item::after { border: 2px solid var(--accent); }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  html:not(.motion-off):not(.cosmos-off) .wf-li:hover > .wf-item:not([open]) { animation: card-charge 1700ms linear both; }
-  html:not(.motion-off):not(.cosmos-off) .wf-li:hover > .wf-item:not([open])::before { animation: card-flash 1700ms linear both; }
-  html:not(.motion-off):not(.cosmos-off) .wf-li:hover > .wf-item:not([open])::after { animation: card-ring 1700ms linear both; }
-}
-
-/* n8n canvas imitation (M26, M28): dotted grid, rounded square nodes with an icon and the name underneath, ports, curved
-   arrows. Static, scrolls sideways inside its own frame, no animation. Icons are drawn for this site, not n8n artwork. */
-.n8n-scroll {
-  overflow-x: auto;
-  max-width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--bg-deep, var(--bg)) 80%, transparent);
-}
-.n8n-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.n8n-canvas {
-  position: relative;
-  background-image: radial-gradient(circle, color-mix(in srgb, var(--text) 22%, transparent) 1px, transparent 1.5px);
-  background-size: 16px 16px;
-}
-.n8n-edges { position: absolute; inset: 0; pointer-events: none; }
-.n8n-edges path { stroke: var(--text-muted); stroke-width: 1.5; opacity: 0.8; }
-.n8n-edges path.n8n-arrow { fill: var(--text-muted); stroke: none; opacity: 0.95; }
-.n8n-tag {
-  position: absolute;
-  font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: 0.625rem;
-  line-height: 1;
-  color: var(--text-muted);
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
-  padding: 2px 4px;
-  border-radius: 4px;
-}
-.n8n-node { position: absolute; --k: var(--text-muted); }
-.n8n-k-trigger { --k: var(--accent); }
-.n8n-k-code { --k: #bd5a43; }
-.n8n-k-http { --k: #7a5cc2; }
-.n8n-k-db { --k: #3f78b5; }
-.n8n-k-if { --k: #3f9a63; }
-.n8n-k-reply { --k: #2f8f93; }
-.n8n-box {
-  position: relative;
-  display: grid;
-  place-items: center;
-  color: var(--k);
-  background: var(--bg);
-  border: 1.5px solid color-mix(in srgb, var(--k) 55%, var(--border));
-  border-radius: 14px;
-}
-.n8n-box-trigger { border-radius: 36px 14px 14px 36px; }
-.n8n-bolt { position: absolute; left: -19px; top: 50%; transform: translateY(-50%); fill: var(--accent); }
-.n8n-port {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 1.5px solid var(--text-muted);
-}
-.n8n-port-l { left: -5px; }
-.n8n-port-r { right: -5px; }
-.n8n-name {
-  position: absolute;
-  top: 78px;
-  left: -34px;
-  width: 140px;
-  text-align: center;
-  font-size: 0.75rem;
-  line-height: 1.2;
-  color: var(--text);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.n8n-kind {
-  position: absolute;
-  top: 78px;
-  left: -34px;
-  width: 140px;
-  margin-top: 33px;
-  text-align: center;
-  font-size: 0.625rem;
-  line-height: 1.2;
-  color: var(--text-muted);
-}
-.n8n-hint { margin-top: 0.5rem; }
-@media (min-width: 1200px) { .n8n-hint { display: none; } }
 
 /* ---- Flow explorer (M29): interactive workflow viewer. Colours come from the site tokens, so every theme works. ---- */
 .fv-shell { max-width: 100%; }
@@ -1000,7 +897,6 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .fv-hint { margin-top: 10px; }
 .fv-host { position: relative; height: 640px; max-height: 80svh; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: color-mix(in srgb, var(--bg-deep, var(--bg)) 80%, transparent); }
 .fv-shell-full .fv-host { height: calc(100svh - 15rem); min-height: 520px; max-height: none; }
-@media (max-width: 700px) { .fv-host { height: 600px; } }
 
 .fv {
   background-image: radial-gradient(circle, color-mix(in srgb, var(--text) 18%, transparent) 1px, transparent 1.6px);
@@ -1080,7 +976,6 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .fv-cap-sub b { font-weight: 500; color: var(--text); }
 .fv-cap-foot { margin-top: 6px; font-size: 0.8125rem; color: var(--accent); }
 .fv-note { margin-top: 6px; font-size: 0.75rem; color: var(--text-muted); }
-@media (max-width: 700px) { .fv-caption { max-width: none; } .fv-cap-sub { display: none; } }
 
 .fv-transport { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .fv-play { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--text); border-radius: 999px; background: var(--text); color: var(--bg); font-size: 0.875rem; }
@@ -1100,3 +995,15 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .fv-tip strong { display: block; font-weight: 500; color: var(--text); }
 .fv-tip span { color: var(--text-muted); }
 @media (pointer: coarse) { .fv-seg button, .fv-chip, .fv-follow, .fv-play, .fv-flow-chip { min-height: 44px; } }
+.fv-badge { margin: 4px 0 0; max-width: 60ch; font-size: 0.75rem; line-height: 1.4; color: var(--accent); }
+.fv-mobile { display: none; }
+@media (max-width: 699px) {
+  .fv-desktop { display: none; }
+  .fv-mobile { display: block; }
+}
+.fv-text-list { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+.fv-text-item { padding: 16px; border: 1px solid var(--border); border-radius: 12px; background: color-mix(in srgb, var(--bg) 70%, transparent); }
+.fv-text-badge { margin-top: 6px; color: var(--accent); }
+.fv-text-desc { margin: 8px 0 0; color: var(--text-2); }
+.fv-text-stages { margin: 12px 0 0; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.5; color: var(--text-2); }
+.fv-text-stages strong { font-weight: 500; color: var(--text); }

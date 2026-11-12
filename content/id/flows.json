@@ -33,15 +33,9 @@
    "stop": "Titik berhenti",
    "message": "Kirim pesan / balasan",
    "subflow": "Panggil alur lain"
-  }
+  },
+  "mobileNote": "Diagram interaktif lebih jelas di tablet atau desktop. Ringkasan alur:"
  },
- "order": [
-  "whatsapp",
-  "staff",
-  "health",
-  "daily",
-  "error"
- ],
  "flows": {
   "whatsapp": {
    "title": "Perjalanan satu pesan WhatsApp",
@@ -495,6 +489,837 @@
      "desc": "Berjalan dari alur yang gagal sampai notifikasi terkirim."
     }
    ]
+  },
+  "igfb": {
+   "title": "Perjalanan satu pesan Instagram dan Facebook",
+   "desc": "Pesan lewat DM dicek, dikenali maksudnya (kata kunci, AI sebagai cadangan), dijawab, dan diteruskan ke staf bila perlu.",
+   "steps": 104,
+   "stageCount": 9,
+   "names": [
+    "Pesan masuk dari Instagram / Facebook",
+    "Baca isi pesan",
+    "Beri tahu platform: pesan diterima",
+    "Pesan valid?",
+    "Arahkan: pesan atau komentar",
+    "Berhenti: pesan tidak valid",
+    "Cek apakah pesan sudah diproses",
+    "Alur komentar (belum dibuat)",
+    "Pesan sudah diproses?",
+    "Tandai pesan sudah diproses",
+    "Pulihkan isi pesan",
+    "Baca daftar akun internal",
+    "Cek akun internal",
+    "Pengirim akun internal?",
+    "Berhenti: pesan dari staf",
+    "Tunggu pelanggan selesai mengetik",
+    "Pulihkan isi pesan",
+    "Hitung pesan identik",
+    "Cek pesan identik",
+    "Hitung jumlah pesan pengirim",
+    "Cek terlalu banyak pesan",
+    "Berhenti: pesan ganda atau terlalu sering",
+    "Catat waktu pesan terbaru",
+    "Pesan ganda atau terlalu sering?",
+    "Pulihkan isi pesan",
+    "Baca riwayat pelanggan",
+    "Baca pengaturan bot",
+    "Baca aturan penerima tiket",
+    "Cek status percakapan",
+    "Cek permintaan di luar menu",
+    "Di luar menu?",
+    "Minta kembali?",
+    "Nama pengguna sudah diketahui?",
+    "Ambil nama pengguna",
+    "Baca nama pengguna",
+    "Ada kampanye menunggu?",
+    "Baca detail kampanye",
+    "Cocokkan kampanye dan cek masa berlaku",
+    "Kampanye kedaluwarsa?",
+    "Cek apakah sudah mengikuti akun",
+    "Baca hasil cek",
+    "Sudah mengikuti?",
+    "Kirim pemberitahuan kedaluwarsa",
+    "Kirim isi kampanye",
+    "Siapkan hapus penanda (kedaluwarsa)",
+    "Siapkan hapus penanda (terkirim)",
+    "Tulis buku kontak (hapus penanda, kedaluwarsa)",
+    "Tulis buku kontak (hapus penanda, terkirim)",
+    "Ajak pelanggan mengikuti akun",
+    "Pulihkan data setelah hapus penanda (kedaluwarsa)",
+    "Pulihkan data setelah hapus penanda (terkirim)",
+    "Pulihkan data setelah ajakan mengikuti",
+    "Arahkan menurut tahap percakapan",
+    "Kenali maksud pesan dari kata kunci",
+    "Maksud pesan sudah jelas?",
+    "AI menebak maksud pesan",
+    "Cek tiket yang masih terbuka",
+    "Kembali ke menu",
+    "Sambut pelanggan baru",
+    "Susun balasan menu utama",
+    "Baca hasil AI dan susun balasan",
+    "Tangani pilihan platform creator",
+    "Tangani tahap: TikTok menanyakan WhatsApp",
+    "Tangani tahap: TikTok menanyakan live",
+    "Tangani tahap: toko online menanyakan WhatsApp",
+    "Tangani tahap: toko online menanyakan fokus jualan",
+    "Tangani tahap: toko online menanyakan data pajak",
+    "Tangani tahap: YouTube menanyakan WhatsApp",
+    "Tangani menu seller",
+    "Tangani tahap: layanan live menanyakan WhatsApp",
+    "Tangani percakapan yang menunggu staf",
+    "Tangani tahap: penjual menanyakan platform toko",
+    "Tangani tahap: penjual menanyakan WhatsApp",
+    "Perlu ditangani staf?",
+    "Ambil jumlah pengikut",
+    "Pulihkan data setelah hitung pengikut",
+    "Ambil statistik akun",
+    "Baca statistik akun",
+    "Ambil giliran staf",
+    "Tentukan staf penerima",
+    "Simpan giliran staf",
+    "Pulihkan data setelah giliran diatur",
+    "Baca daftar staf",
+    "Susun tiket",
+    "Simpan tiket",
+    "Pulihkan data setelah tiket ditulis",
+    "Bagi ke tiap staf",
+    "Kirim WhatsApp ke staf",
+    "Gabungkan kembali",
+    "Susun balasan penutup",
+    "Pelanggan baru?",
+    "Simpan pelanggan baru",
+    "Perbarui riwayat pelanggan",
+    "Pulihkan data setelah simpan kontak",
+    "Catat keputusan bot",
+    "Pulihkan data setelah catat keputusan",
+    "Catat pesan pelanggan",
+    "Pulihkan data setelah catat pesan pelanggan",
+    "Catat balasan bot",
+    "Pulihkan data setelah catat balasan bot",
+    "Tampilkan “sedang mengetik”",
+    "Pulihkan data setelah efek mengetik",
+    "Efek mengetik",
+    "Kirim balasan ke pelanggan"
+   ],
+   "stages": [
+    {
+     "short": "Pesan masuk",
+     "title": "Pesan masuk",
+     "desc": "Instagram atau Facebook mengirim pesan; bot memastikan isinya valid dan membedakan pesan dari komentar."
+    },
+    {
+     "short": "Cek ganda",
+     "title": "Cek ganda dan akun internal",
+     "desc": "Bot memastikan pesan belum diproses dan bukan dari akun internal."
+    },
+    {
+     "short": "Tunggu dan batas",
+     "title": "Menunggu dan membatasi pesan",
+     "desc": "Pesan beruntun digabung dan pengirim yang terlalu sering mengirim diabaikan."
+    },
+    {
+     "short": "Baca riwayat",
+     "title": "Membaca riwayat dan pengaturan",
+     "desc": "Bot membaca riwayat pelanggan, pengaturan, dan aturan penerima tiket."
+    },
+    {
+     "short": "Kampanye",
+     "title": "Kampanye dan ajakan mengikuti akun",
+     "desc": "Jika ada kampanye menunggu, bot mengecek masa berlaku dan apakah pelanggan sudah mengikuti akun."
+    },
+    {
+     "short": "Menyusun jawaban",
+     "title": "Menentukan jawaban",
+     "desc": "Bot mengarahkan pesan menurut tahap percakapan; maksud pesan dikenali dari kata kunci dan AI sebagai cadangan."
+    },
+    {
+     "short": "Kabari staf",
+     "title": "Kabari staf bila perlu",
+     "desc": "Jika perlu, bot membuat tiket, memilih staf penerima, dan mengirim notifikasi."
+    },
+    {
+     "short": "Simpan dan catat",
+     "title": "Simpan dan catat",
+     "desc": "Riwayat pelanggan, keputusan bot, dan isi percakapan dicatat."
+    },
+    {
+     "short": "Balas pelanggan",
+     "title": "Balas pelanggan",
+     "desc": "Bot menampilkan “sedang mengetik”, menunggu sebentar, lalu mengirim balasan."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Pesan biasa dijawab bot",
+     "desc": "Pesan lolos pemeriksaan, maksudnya dikenali dari kata kunci, lalu dijawab."
+    },
+    {
+     "title": "Pesan ganda",
+     "desc": "Pesan yang sama dikenali dan bot langsung berhenti."
+    },
+    {
+     "title": "Pesan dari akun internal",
+     "desc": "Akun milik tim tidak dijawab oleh bot."
+    },
+    {
+     "title": "AI membantu mengenali maksud",
+     "desc": "Jika kata kunci tidak cukup jelas, AI menebak maksud pesan sebelum bot menjawab."
+    },
+    {
+     "title": "Diteruskan ke staf",
+     "desc": "Tiket dibuat, staf dikabari, lalu pelanggan menerima balasan penutup."
+    },
+    {
+     "title": "Kampanye dan ajakan mengikuti",
+     "desc": "Bot mengecek apakah pelanggan sudah mengikuti akun sebelum mengirim isi kampanye."
+    },
+    {
+     "title": "Terlalu sering mengirim",
+     "desc": "Pengirim yang mengirim terlalu banyak pesan dalam waktu singkat diabaikan."
+    }
+   ]
+  },
+  "resolve": {
+   "title": "Pemberitahuan permintaan resolve",
+   "desc": "Mengabari penyetuju saat staf mengajukan penyelesaian tiket dari halaman web.",
+   "steps": 7,
+   "stageCount": 1,
+   "names": [
+    "Permintaan masuk dari aplikasi lain",
+    "Kunci akses valid?",
+    "Baca pengaturan penerima",
+    "Tolak: tidak berwenang",
+    "Susun pemberitahuan permintaan resolve",
+    "Kirim pemberitahuan permintaan resolve",
+    "Beri jawaban ke pemanggil"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Seluruh alur",
+     "desc": "7 langkah, dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Beri jawaban ke pemanggil",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil” dalam 6 langkah."
+    },
+    {
+     "title": "Jalur 2: Tolak: tidak berwenang",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Tolak: tidak berwenang” dalam 3 langkah."
+    }
+   ]
+  },
+  "weekly": {
+   "title": "Laporan mingguan percakapan",
+   "desc": "Tiap Senin: tren sepekan dibanding pekan sebelumnya, dikirim ke penerima laporan.",
+   "steps": 6,
+   "stageCount": 1,
+   "names": [
+    "Jadwal berjalan",
+    "Tentukan minggu",
+    "Hitung angka mingguan",
+    "Baca pengaturan penerima",
+    "Susun laporan mingguan",
+    "Kirim laporan mingguan"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Seluruh alur",
+     "desc": "6 langkah, dari “Jadwal berjalan” sampai “Kirim laporan mingguan”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Kirim laporan mingguan",
+     "desc": "Dari “Jadwal berjalan” sampai “Kirim laporan mingguan” dalam 6 langkah."
+    }
+   ]
+  },
+  "vbackend": {
+   "title": "Backend pembuat video AI (versi awal)",
+   "desc": "Beberapa pintu masuk untuk membuat staf, karakter, rencana adegan, klip, dan video.",
+   "steps": 68,
+   "stageCount": 2,
+   "names": [
+    "Permintaan masuk dari aplikasi lain",
+    "Permintaan masuk dari aplikasi lain",
+    "Permintaan masuk dari aplikasi lain",
+    "Permintaan masuk dari aplikasi lain",
+    "Permintaan masuk dari aplikasi lain",
+    "Permintaan masuk dari aplikasi lain",
+    "Permintaan masuk dari aplikasi lain",
+    "Cek kunci akses: buat staf",
+    "Cek kunci akses: buat gambar gabungan",
+    "Cek kunci akses: buat rencana frame",
+    "Cek kunci akses: buat klip frame",
+    "Cek kunci akses: produksi video",
+    "Cek kunci akses: buat karakter",
+    "Cek kunci akses: pratinjau suara",
+    "Buat akun pengguna",
+    "Tolak: tidak berwenang",
+    "Ambil tugas video",
+    "Tolak: tidak berwenang",
+    "Ambil tugas (rencana frame)",
+    "Tolak: tidak berwenang",
+    "Ambil frame",
+    "Tolak: tidak berwenang",
+    "Ambil semua frame yang disetujui",
+    "Tolak: tidak berwenang",
+    "Ambil karakter",
+    "Tolak: tidak berwenang",
+    "Buat pratinjau suara",
+    "Tolak: tidak berwenang",
+    "Buat profil pengguna",
+    "Ambil foto karakter",
+    "Buat rencana frame (AI)",
+    "Ambil tugas (klip frame)",
+    "Susun daftar tautan klip",
+    "Susun prompt karakter",
+    "Beri jawaban ke pemanggil",
+    "Beri jawaban ke pemanggil",
+    "Buat tautan sementara foto karakter",
+    "Baca JSON rencana frame",
+    "Buat suara dari teks",
+    "Jalankan penggabung video",
+    "Buat gambar karakter",
+    "Ambil produk",
+    "Simpan rencana frame",
+    "Urai data audio",
+    "Ambil ID proses",
+    "Unduh foto karakter",
+    "Buat gambar gabungan",
+    "Beri jawaban ke pemanggil",
+    "Unggah audio ke penyimpanan",
+    "Tunggu 20 detik",
+    "Unggah foto ke penyimpanan",
+    "Simpan tautan gambar gabungan",
+    "Simpan tautan audio",
+    "Cek status penggabungan",
+    "Simpan data foto karakter",
+    "Perbarui karakter",
+    "Beri jawaban ke pemanggil",
+    "Buat video",
+    "Penggabungan selesai?",
+    "Beri jawaban ke pemanggil",
+    "Ambil ID tugas",
+    "Simpan video akhir",
+    "Tunggu 15 detik",
+    "Beri jawaban ke pemanggil",
+    "Cek status video",
+    "Sudah selesai?",
+    "Simpan tautan klip",
+    "Beri jawaban ke pemanggil"
+   ],
+   "stages": [
+    {
+     "short": "Bagian 1",
+     "title": "Bagian 1",
+     "desc": "35 langkah, dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil”."
+    },
+    {
+     "short": "Bagian 2",
+     "title": "Bagian 2",
+     "desc": "33 langkah, dari “Beri jawaban ke pemanggil” sampai “Beri jawaban ke pemanggil”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Beri jawaban ke pemanggil (lewat Cek kunci akses: buat staf)",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil” dalam 5 langkah."
+    },
+    {
+     "title": "Jalur 2: Tolak: tidak berwenang (lewat Cek kunci akses: buat staf)",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Tolak: tidak berwenang” dalam 3 langkah."
+    },
+    {
+     "title": "Jalur 3: Beri jawaban ke pemanggil (lewat Cek kunci akses: buat gambar gabungan)",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil” dalam 9 langkah."
+    },
+    {
+     "title": "Jalur 4: Tolak: tidak berwenang (lewat Cek kunci akses: buat gambar gabungan)",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Tolak: tidak berwenang” dalam 3 langkah."
+    },
+    {
+     "title": "Jalur 5: Beri jawaban ke pemanggil (lewat Cek kunci akses: buat rencana frame)",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil” dalam 7 langkah."
+    },
+    {
+     "title": "Jalur 6: Tolak: tidak berwenang (lewat Cek kunci akses: buat rencana frame)",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Tolak: tidak berwenang” dalam 3 langkah."
+    }
+   ],
+   "badge": "Versi awal, sebelum antrean tugas v2. Fungsi diduga dari nama langkah."
+  },
+  "vbot": {
+   "title": "Bot pembuat video karakter (versi awal)",
+   "desc": "Bot Telegram yang mengenali maksud pesan lalu membuat video karakter.",
+   "steps": 39,
+   "stageCount": 3,
+   "names": [
+    "Pesan Telegram masuk",
+    "Pengaturan bot",
+    "Ambil isi pesan",
+    "Arahkan menurut maksud",
+    "Baca perintah video",
+    "Ambil karakter terbaru",
+    "Cek karakter aktif",
+    "Ambil foto karakter",
+    "Ditemukan?",
+    "Buat tautan sementara foto",
+    "Karakter ditemukan?",
+    "Siapkan tautan foto",
+    "Buat karakter baru (otomatis)",
+    "Buat suara dari teks (TTS)",
+    "Gabungkan karakter",
+    "Ambil tautan audio",
+    "Unduh foto",
+    "Buat video sinkron bibir",
+    "Ambil ID tugas video",
+    "Unggah ke penyimpanan",
+    "Simpan catatan foto",
+    "Tunggu 20 detik",
+    "Hitung foto baru",
+    "Tutup karakter lama",
+    "Simpan jenis bidikan tertunda",
+    "Simpan ekspresi tertunda",
+    "Cek status pembuatan video",
+    "Perbarui jumlah foto",
+    "Buat karakter baru (manual)",
+    "Jawab tombol (bidikan)",
+    "Jawab tombol (ekspresi)",
+    "Sudah selesai?",
+    "Susun balasan: foto",
+    "Susun balasan: karakter baru",
+    "Susun balasan: label foto",
+    "Susun balasan: tombol ekspresi",
+    "Susun balasan: konfirmasi label",
+    "Susun balasan: video selesai",
+    "Kirim balasan"
+   ],
+   "stages": [
+    {
+     "short": "Bagian 1",
+     "title": "Bagian 1",
+     "desc": "12 langkah, dari “Pesan Telegram masuk” sampai “Siapkan tautan foto”."
+    },
+    {
+     "short": "Bagian 2",
+     "title": "Bagian 2",
+     "desc": "15 langkah, dari “Buat karakter baru (otomatis)” sampai “Cek status pembuatan video”."
+    },
+    {
+     "short": "Bagian 3",
+     "title": "Bagian 3",
+     "desc": "12 langkah, dari “Perbarui jumlah foto” sampai “Kirim balasan”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Kirim balasan",
+     "desc": "Dari “Pesan Telegram masuk” sampai “Kirim balasan” dalam 6 langkah."
+    }
+   ],
+   "badge": "Versi awal, sebelum antrean tugas v2. Fungsi diduga dari nama langkah."
+  },
+  "youtube": {
+   "title": "Pengumpul YouTube",
+   "desc": "Mencari video berdasarkan kata kunci, mengambil detail dan komentar, lalu menyimpannya.",
+   "steps": 24,
+   "stageCount": 2,
+   "names": [
+    "Dijalankan manual",
+    "Input uji",
+    "Dipanggil oleh alur lain",
+    "Rapikan data masuk",
+    "Ambil kata kunci berikutnya",
+    "Cari video",
+    "Ambil detail video",
+    "Ambil ID video",
+    "Rapikan data post",
+    "Mulai penghitung proses",
+    "Siapkan pembaruan kata kunci",
+    "Ulangi per video (untuk komentar)",
+    "Perbarui pemakaian kata kunci",
+    "Target tercapai?",
+    "Ringkasan",
+    "Simpan ke catatan proses",
+    "Ambil komentar",
+    "Kirim hasil",
+    "Rapikan komentar",
+    "Ada komentar?",
+    "Simpan post ke database",
+    "Pecah komentar",
+    "Simpan komentar ke database",
+    "Tambah penghitung"
+   ],
+   "stages": [
+    {
+     "short": "Bagian 1",
+     "title": "Bagian 1",
+     "desc": "11 langkah, dari “Dijalankan manual” sampai “Siapkan pembaruan kata kunci”."
+    },
+    {
+     "short": "Bagian 2",
+     "title": "Bagian 2",
+     "desc": "13 langkah, dari “Ulangi per video (untuk komentar)” sampai “Tambah penghitung”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Kirim hasil (lewat Input uji)",
+     "desc": "Dari “Dijalankan manual” sampai “Kirim hasil” dalam 13 langkah."
+    },
+    {
+     "title": "Jalur 2: Perbarui pemakaian kata kunci (lewat Input uji)",
+     "desc": "Dari “Dijalankan manual” sampai “Perbarui pemakaian kata kunci” dalam 7 langkah."
+    },
+    {
+     "title": "Jalur 3: Kirim hasil (lewat Rapikan data masuk)",
+     "desc": "Dari “Dipanggil oleh alur lain” sampai “Kirim hasil” dalam 12 langkah."
+    },
+    {
+     "title": "Jalur 4: Perbarui pemakaian kata kunci (lewat Rapikan data masuk)",
+     "desc": "Dari “Dipanggil oleh alur lain” sampai “Perbarui pemakaian kata kunci” dalam 6 langkah."
+    }
+   ],
+   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+  },
+  "comments": {
+   "title": "Pengumpul komentar TikTok",
+   "desc": "Mengulang tiap post teratas, memanggil layanan pengambil komentar, lalu menyimpan komentar mentah.",
+   "steps": 19,
+   "stageCount": 2,
+   "names": [
+    "Dijalankan manual",
+    "Dipanggil oleh alur lain",
+    "Input uji",
+    "Rapikan data masuk",
+    "Cari post teratas",
+    "Urutkan dan potong",
+    "Mulai penghitung proses",
+    "Ulangi per video",
+    "Ringkasan",
+    "Target tercapai?",
+    "Simpan ke catatan proses",
+    "Susun tautan TikTok",
+    "Kirim hasil",
+    "Panggil layanan pengambil komentar",
+    "Ambil komentar dari hasil",
+    "Ada komentar?",
+    "Pecah komentar",
+    "Simpan komentar mentah",
+    "Tambah penghitung"
+   ],
+   "stages": [
+    {
+     "short": "Bagian 1",
+     "title": "Bagian 1",
+     "desc": "10 langkah, dari “Dijalankan manual” sampai “Target tercapai?”."
+    },
+    {
+     "short": "Bagian 2",
+     "title": "Bagian 2",
+     "desc": "9 langkah, dari “Simpan ke catatan proses” sampai “Tambah penghitung”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Kirim hasil (lewat Input uji)",
+     "desc": "Dari “Dijalankan manual” sampai “Kirim hasil” dalam 10 langkah."
+    },
+    {
+     "title": "Jalur 2: Kirim hasil (lewat Rapikan data masuk)",
+     "desc": "Dari “Dipanggil oleh alur lain” sampai “Kirim hasil” dalam 9 langkah."
+    }
+   ],
+   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+  },
+  "metrics": {
+   "title": "Pemantau metrik TikTok",
+   "desc": "Menerima daftar tautan, memprosesnya per 25, menghitung engagement, dan menyimpan metrik.",
+   "steps": 17,
+   "stageCount": 1,
+   "names": [
+    "Permintaan masuk dari aplikasi lain",
+    "Ambil isi permintaan",
+    "Pecah daftar tautan",
+    "Bagi per 25",
+    "Tandai tugas selesai",
+    "Kumpulkan tautan per kelompok",
+    "Hitung ukuran kelompok",
+    "Siapkan daftar tautan",
+    "Tambah kemajuan",
+    "Jalankan pengambil data TikTok",
+    "Jeda antar kelompok",
+    "Ada error?",
+    "Susun catatan error",
+    "Petakan metrik",
+    "Simpan catatan error",
+    "Hitung bulan dan engagement",
+    "Simpan data video"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Seluruh alur",
+     "desc": "17 langkah, dari “Permintaan masuk dari aplikasi lain” sampai “Simpan data video”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Simpan data video",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Simpan data video” dalam 11 langkah."
+    },
+    {
+     "title": "Jalur 2: Simpan catatan error",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Simpan catatan error” dalam 10 langkah."
+    }
+   ],
+   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+  },
+  "tiktok": {
+   "title": "Pengumpul TikTok",
+   "desc": "Mengambil kata kunci berikutnya, mencari post, menyimpannya, dan memperbarui pemakaian kata kunci.",
+   "steps": 14,
+   "stageCount": 1,
+   "names": [
+    "Dijalankan manual",
+    "Dipanggil oleh alur lain",
+    "Input uji",
+    "Rapikan data masuk",
+    "Ambil kata kunci berikutnya",
+    "Jalankan pengambil data TikTok (cadangan)",
+    "Siapkan pembaruan kata kunci",
+    "Rapikan data post",
+    "Simpan post ke database (kumpulan)",
+    "Perbarui pemakaian kata kunci",
+    "Ringkasan",
+    "Simpan ke catatan proses",
+    "Kirim hasil",
+    "Panggil alur lain"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Seluruh alur",
+     "desc": "14 langkah, dari “Dijalankan manual” sampai “Panggil alur lain”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Panggil alur lain (lewat Input uji)",
+     "desc": "Dari “Dijalankan manual” sampai “Panggil alur lain” dalam 11 langkah."
+    },
+    {
+     "title": "Jalur 2: Perbarui pemakaian kata kunci (lewat Input uji)",
+     "desc": "Dari “Dijalankan manual” sampai “Perbarui pemakaian kata kunci” dalam 7 langkah."
+    },
+    {
+     "title": "Jalur 3: Panggil alur lain (lewat Rapikan data masuk)",
+     "desc": "Dari “Dipanggil oleh alur lain” sampai “Panggil alur lain” dalam 10 langkah."
+    },
+    {
+     "title": "Jalur 4: Perbarui pemakaian kata kunci (lewat Rapikan data masuk)",
+     "desc": "Dari “Dipanggil oleh alur lain” sampai “Perbarui pemakaian kata kunci” dalam 6 langkah."
+    }
+   ],
+   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+  },
+  "kwfb": {
+   "title": "Umpan balik kata kunci",
+   "desc": "Menerima balasan tim lewat Telegram, memeriksa formatnya, lalu menyimpan kata kunci yang disetujui.",
+   "steps": 11,
+   "stageCount": 1,
+   "names": [
+    "Pesan Telegram masuk",
+    "Chat benar?",
+    "Ambil tinjauan tertunda",
+    "Baca umpan balik",
+    "Format valid?",
+    "Simpan kata kunci pencarian",
+    "Kirim pesan teks",
+    "Siapkan pembaruan tinjauan",
+    "Perbarui status tinjauan",
+    "Kirim konfirmasi",
+    "Panggil alur lain"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Seluruh alur",
+     "desc": "11 langkah, dari “Pesan Telegram masuk” sampai “Panggil alur lain”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Panggil alur lain",
+     "desc": "Dari “Pesan Telegram masuk” sampai “Panggil alur lain” dalam 9 langkah."
+    },
+    {
+     "title": "Jalur 2: Kirim pesan teks",
+     "desc": "Dari “Pesan Telegram masuk” sampai “Kirim pesan teks” dalam 6 langkah."
+    }
+   ],
+   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+  },
+  "kwappr": {
+   "title": "Persetujuan kata kunci",
+   "desc": "Tim menyetujui usulan kata kunci lewat Telegram, lalu kata kunci masuk ke daftar pencarian.",
+   "steps": 11,
+   "stageCount": 1,
+   "names": [
+    "Pesan Telegram masuk",
+    "Baca pesan",
+    "Lewati?",
+    "Ambil tinjauan tertunda",
+    "Siapkan persetujuan",
+    "Ambil platform brand",
+    "Pecah jadi kata kunci pencarian",
+    "Masukkan kata kunci pencarian",
+    "Kumpulkan hasil",
+    "Tandai tinjauan kata kunci disetujui",
+    "Konfirmasi lewat Telegram"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Seluruh alur",
+     "desc": "11 langkah, dari “Pesan Telegram masuk” sampai “Konfirmasi lewat Telegram”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Konfirmasi lewat Telegram",
+     "desc": "Dari “Pesan Telegram masuk” sampai “Konfirmasi lewat Telegram” dalam 11 langkah."
+    }
+   ],
+   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+  },
+  "kwgen": {
+   "title": "Usul kata kunci",
+   "desc": "AI mengusulkan kata kunci pencarian untuk tiap platform brand dan menyimpannya untuk ditinjau.",
+   "steps": 8,
+   "stageCount": 1,
+   "names": [
+    "Permintaan masuk dari aplikasi lain",
+    "Rapikan data masuk",
+    "AI membuat kata kunci",
+    "Baca dan pecah kata kunci",
+    "Siapkan data tinjauan",
+    "Simpan tinjauan kata kunci",
+    "Ringkasan",
+    "Kirim hasil"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Seluruh alur",
+     "desc": "8 langkah, dari “Permintaan masuk dari aplikasi lain” sampai “Kirim hasil”."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Jalur 1: Kirim hasil",
+     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Kirim hasil” dalam 8 langkah."
+    }
+   ],
+   "badge": "Prototipe awal pengumpul data (arsip). Penilaian sentimen dan dasbor ada di aplikasi web, bukan di alur ini. Fungsi diduga dari nama langkah."
+  },
+  "purchasing": {
+   "title": "Dari permintaan sampai lunas",
+   "desc": "Satu permintaan barang melewati peminta, approver, purchasing, dan finance, lalu terpantau di dashboard.",
+   "steps": 15,
+   "stageCount": 5,
+   "names": [
+    "Peminta mengisi permintaan barang",
+    "Nomor permintaan dibuat otomatis",
+    "Permintaan tersimpan, status “Diajukan”",
+    "Approver sesuai peran menyetujui?",
+    "Peminta dikabari: ditolak",
+    "Selesai: permintaan ditolak",
+    "Purchasing menentukan pemasok dan harga",
+    "Pesanan ke pemasok dicatat",
+    "Menunggu barang diterima",
+    "Penerimaan barang dicatat",
+    "Pembayaran terverifikasi?",
+    "Finance mencatat pembayaran",
+    "Dashboard memperbarui status",
+    "Selesai: permintaan lunas",
+    "Ditahan sampai dikoreksi"
+   ],
+   "stages": [
+    {
+     "short": "Peminta",
+     "title": "Peminta",
+     "desc": "Peminta mengajukan permintaan barang; nomor permintaan dibuat otomatis."
+    },
+    {
+     "short": "Approver",
+     "title": "Approver",
+     "desc": "Approver sesuai peran menyetujui atau menolak."
+    },
+    {
+     "short": "Purchasing",
+     "title": "Purchasing",
+     "desc": "Purchasing menentukan pemasok dan harga, lalu menunggu barang."
+    },
+    {
+     "short": "Finance",
+     "title": "Finance",
+     "desc": "Barang diterima, lalu Finance memverifikasi dan mencatat pembayaran."
+    },
+    {
+     "short": "Dashboard",
+     "title": "Dashboard",
+     "desc": "Dashboard memantau status dari permintaan sampai pembayaran."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Disetujui sampai lunas",
+     "desc": "Permintaan melewati semua peran sampai pembayaran tercatat."
+    },
+    {
+     "title": "Ditolak approver",
+     "desc": "Permintaan ditolak dan peminta dikabari."
+    },
+    {
+     "title": "Pembayaran ditahan",
+     "desc": "Pembayaran belum terverifikasi, jadi permintaan ditahan sampai dikoreksi."
+    }
+   ],
+   "badge": "Ilustrasi proses, bukan ekspor sistem. Disusun dari uraian studi kasus ini."
   }
+ },
+ "groups": {
+  "purchasing-digitalization": [
+   "purchasing"
+  ],
+  "ai-messaging-ticketing": [
+   "whatsapp",
+   "igfb",
+   "staff",
+   "resolve",
+   "health",
+   "daily",
+   "weekly",
+   "error"
+  ],
+  "brand-intelligence": [
+   "kwgen",
+   "kwappr",
+   "kwfb",
+   "tiktok",
+   "comments",
+   "metrics",
+   "youtube"
+  ],
+  "ai-video-agent": [
+   "vbackend",
+   "vbot"
+  ]
  }
 }

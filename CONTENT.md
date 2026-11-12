@@ -297,66 +297,6 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 
 6 workflow generik (penerimaan dan jawaban pesan, perintah staf dan resolve, laporan harian AI, pemantau kesehatan, kendali hidup/mati dari chat, pengisian basis pengetahuan) ditulis dari urutan node file ekspor workflow Patrik; angka sistem kartu 02: 15 workflow aktif, ±2.000 node, 3 kanal pesan, 38 tabel, 39 fungsi, 48 kebijakan akses. Alur ditulis dari struktur, bukan dari menjalankan workflow.
 
-### 5.z Kanvas n8n dan kerangka unduhan (M26, draf `[KONFIRMASI]`)
-
-Empat workflow kartu 02 (laporan harian 13 node, pemantau kesehatan 25 node, pemberi tahu error 5 node, notifikasi peninjauan webhook 7 node) tampil sebagai kanvas n8n tiruan dan bisa diunduh sebagai kerangka `.json` di `public/n8n/`. Kerangka hanya memuat jenis node, posisi, koneksi, dan nama generik; tanpa parameter, kode, kredensial, atau alamat. Patrik menyatakan berhak menampilkan struktur ini.
-
-### 5.zz Workflow contoh di bawah judul (M27, draf `[KONFIRMASI]`)
-
-Halaman kartu 02 menampilkan "Ringkasan workflow": kerangka ilustratif asisten pesan dari awal sampai akhir (12 node, dirancang ulang secara generik, bukan ekspor workflow produksi) tepat di bawah panel judul, dengan unduhan `.json` dan label "Contoh ilustrasi: disederhanakan, bukan ekspor workflow produksi". Empat kerangka turunan ekspor (M26) tetap ada di dalam card workflow.
-
-## 6. Tentang
-
-| Field | ID | EN |
-|---|---|---|
-| Label | 05 / TENTANG | 05 / ABOUT |
-| Paragraf 1 `[KONFIRMASI]` | Saya memulai dari lapangan: penjualan farmasi, otomotif, operasional logistik, dan distribusi bahan konstruksi. Dari sana saya belajar bahwa masalah bisnis jarang berupa masalah teknologi. Biasanya itu masalah proses. | I started on the ground: pharma sales, automotive, logistics operations, and construction-materials distribution. That's where I learned business problems are rarely technology problems. They are usually process problems. |
-| Paragraf 2 `[KONFIRMASI]` | Perjalanannya berlanjut dari dashboard Excel dan CRM, ke AppSheet dan n8n, hingga kini AI: asisten pesan multi-kanal, agen produksi video, dan aplikasi intelijen brand. Saya bekerja dengan n8n, Google Gemini API, integrasi Telegram, dan Google Apps Script. | The path went from Excel dashboards and CRMs, to AppSheet and n8n, and now AI: a multi-channel messaging assistant, a video-production agent, and a brand-intelligence application. I work with n8n, the Google Gemini API, Telegram integrations, and Google Apps Script. |
-| Baris opsional | `[PILIH: tampilkan atau hapus]` Di luar pekerjaan, saya aktif dalam kegiatan kepemudaan di paroki. | `[PILIH: keep or remove]` Outside work, I'm active in youth activities at my parish. |
-| Tombol CV | Unduh CV | Download CV |
-
-**Tag stack** (label mono): `n8n` · `Google Gemini API` · `Telegram Bot API` · `Google Apps Script` · `Google Sheets` · `Apify` `[KONFIRMASI daftar, tambahkan/kurangi]`
-
-**Blok "Cara saya membangun" (M22, draf `[KONFIRMASI]`)**: 4 poin (berkembang bertahap, pagar pengaman, bisa dipantau, operasi aman) dan angka skala 26 workflow aktif, ±2.700 node, 3 kanal pesan (angka disetujui Patrik; fakta cakupan, bukan hasil bisnis).
-
-Visual: foto profil (dipilih Patrik, M18). Berkas `public/img/profile.jpg`; alt: ID "Potret Patrik Andryan duduk di kursi lipat, berjaket denim, menoleh ke samping" / EN "Portrait of Patrik Andryan seated on a folding chair in a denim jacket, looking to the side" `[KONFIRMASI]`.
-
-## 7. Kontak
-
-| Field | ID | EN |
-|---|---|---|
-| Label | 06 / KONTAK | 06 / CONTACT |
-| Judul | Mari bicara. | Let's talk. |
-| Sub | Terbuka untuk peran yang menjembatani bisnis dan otomasi, serta proyek freelance. | Open to roles bridging business and automation, and freelance projects. |
-| CTA (emas) | Hubungi saya | Get in touch |
-
-Tautan:
-- Email: andryanpatrik@gmail.com (dipilih Patrik, M21)
-- LinkedIn: https://www.linkedin.com/in/andryan-patrik/ (dari Patrik, M21)
-- GitHub: https://github.com/andryanpatrik-lab (dipilih Patrik, M21)
-- WhatsApp: dicantumkan (keputusan Patrik, M21): tombol ghost "Chat via WhatsApp" membuka `wa.me/<nomor>` dengan pesan pembuka `contact.whatsappText` `[KONFIRMASI]`. Nomor dari Patrik (M21) di `content/site.json` `whatsapp`. Pesan ID dari Patrik: "Halo saya ingin berbicara lebih lanjut dengan anda."; EN terjemahan draf.
-
-## 7.1 Berkas CV
-
-- Nama file: `CV_Patrik_Andryan_Business-Automation.pdf` (tanpa nomor telepon; kontak hanya email dan tautan profesional).
-- Headline CV: Business Systems & Automation Lead.
-- Deskripsi proyek di CV tetap generik (tanpa nama internal, data, atau rumus), konsisten dengan website.
-
-## 8. Daftar TODO konten (untuk Patrik)
-
-- [ ] Data entri perusahaan saat ini untuk CV baru (jabatan, tanggal mulai, angka) dan tanggal berakhir di perusahaan sebelumnya
-- [ ] Konfirmasi 3 metrik Posisi (10 tahun, 3+ sistem, <2% RTS)
-- [ ] Tagline dan angka 4 kartu
-- [ ] Isi 4 case study (konteks, masalah, solusi, 3 metrik, pembelajaran), ID dan EN
-- [ ] Koreksi diagram alur 4 case study (3 ditulis dari deskripsi singkat, 1 dari dokumen Purchasing 2.0)
-- [ ] Konfirmasi status Purchasing 2.0 (uji coba/dipakai) dan apakah angka ±2 hari → ±30 menit terukur atau estimasi
-- [ ] Detail 6 kartu "Proyek lainnya": status, stack, proyek perusahaan sebelumnya yang dimaksud, definisi "AI offline", pilihan L5/L6
-- [ ] Cek ketentuan layanan platform pihak ketiga sebelum case study agen video tayang
-- [ ] Putuskan baris opsional di Tentang
-- [x] Foto: dipakai di section Tentang (M18)
-- [ ] Kontak dan tautan
-- [ ] Berkas CV PDF baru "Business Systems & Automation Lead", tanpa nomor telepon
-- [ ] Cek akhir: pencarian teks untuk memastikan tidak ada nama perusahaan/klien/kreator
-
-### 5.zy Penampil alur (M29, draf `[KONFIRMASI]`)
+### 5.zy Penampil alur (M29-M30, draf `[KONFIRMASI]`)
 Teks ada di `content/{id,en}/flows.json` (`ui`, judul alur, nama langkah, tahap, skenario) dan `common.json` (`case.explore*`). Struktur (posisi, sambungan, jalur) di `content/flows/*.json`. Nama layanan pihak ketiga diganti istilah umum (API pesan, database, cache); nama kanal umum boleh. Terjemahan Inggris adalah hasil saya dan perlu dicek Patrik.
+Setiap kartu punya penampil: 01 (1 alur ilustratif berlabel), 02 (8 alur), 03 (7 alur prototipe arsip), 04 (2 alur versi awal). Label per alur ada di `flows.json` `badge`. Kanvas n8n dan unduhan kerangka (M26-M28) dihapus.
