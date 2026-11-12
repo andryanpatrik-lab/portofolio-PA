@@ -15,6 +15,7 @@ export function ProjectCard({
   isEstimate,
   scopeLabel,
   isScope,
+  metricLabel,
 }: {
   href: string;
   slug: string;
@@ -27,6 +28,7 @@ export function ProjectCard({
   isEstimate: boolean;
   scopeLabel: string;
   isScope: boolean;
+  metricLabel: string;
 }) {
   return (
     <BlackHoleLink href={href} className="card-link block rounded-2xl">
@@ -47,7 +49,7 @@ export function ProjectCard({
           <div>
             <Metric value={metricValue} size="sm" />
             {isEstimate && <p className="t-label mt-2 text-text-muted">{estimateLabel}</p>}
-            {isScope && !isEstimate && <p className="t-label mt-2 text-text-muted">{scopeLabel}</p>}
+            {!isEstimate && (metricLabel || isScope) && <p className="t-label mt-2 text-text-muted">{metricLabel || scopeLabel}</p>}
           </div>
           <span aria-hidden="true" className="card-arrow inline-block t-h3 text-accent">→</span>
         </div>

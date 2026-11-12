@@ -38,18 +38,20 @@
         "metric": {
           "value": "~2 days → ~30 minutes",
           "estimate": false,
-          "scope": false
+          "scope": false,
+          "label": ""
         }
       },
       {
         "slug": "ai-messaging-ticketing",
         "flowSteps": 5,
         "title": "Multi-channel AI messaging assistant with ticketing",
-        "tagline": "One assistant for WhatsApp, Telegram, and Instagram, with tickets that track service and response.",
+        "tagline": "One assistant for WhatsApp, Instagram, and Facebook, with tickets that track service and response.",
         "metric": {
-          "value": "3 channels · 1 ticket queue",
+          "value": "23 sec first reply",
           "estimate": false,
-          "scope": true
+          "scope": false,
+          "label": "median, WhatsApp, incl. typing delay"
         }
       },
       {
@@ -60,7 +62,8 @@
         "metric": {
           "value": "3 platforms · 1 dashboard",
           "estimate": false,
-          "scope": true
+          "scope": true,
+          "label": ""
         }
       },
       {
@@ -69,9 +72,10 @@
         "title": "AI agent for automated video production",
         "tagline": "From product and character to a finished video: planning, images, clips, voice, and finishing in one queued pipeline.",
         "metric": {
-          "value": "5 task queues · 1 agent",
+          "value": "7 queues · 13 stages",
           "estimate": false,
-          "scope": true
+          "scope": true,
+          "label": ""
         }
       }
     ],
@@ -171,11 +175,11 @@
     "practices": [
       {
         "title": "Grows in steps",
-        "text": "The customer bot went through more than 15 versions, from spreadsheet-backed to database and cache."
+        "text": "The messaging bot was rebuilt in phases and moved from spreadsheet-backed state to a relational database and cache."
       },
       {
         "title": "Guard rails",
-        "text": "Duplicate checks, merging of rapid-fire messages, rate limits, an internal-account filter, and typing delays so replies feel human."
+        "text": "Duplicate checks, merging of rapid-fire messages, rate limits, an internal-account filter, spam screening, and typing delays so replies feel human."
       },
       {
         "title": "Observable",
@@ -183,17 +187,17 @@
       },
       {
         "title": "Safe operations",
-        "text": "The bot can be switched on or off from chat by authorised people, with every action logged."
+        "text": "Workflows can be switched on or off from a web page by authorised people, with every action logged."
       }
     ],
     "scale": [
       {
-        "value": "26",
+        "value": "28",
         "label": "active workflows"
       },
       {
-        "value": "±2,700",
-        "label": "automation nodes"
+        "value": "337",
+        "label": "nodes in core workflows"
       },
       {
         "value": "3",

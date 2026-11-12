@@ -51,51 +51,55 @@
     ],
     "flow": [
       {
-        "label": "Message arrives on any channel"
+        "label": "Message arrives on WhatsApp, Instagram, or Facebook"
       },
       {
-        "label": "Guard rails filter duplicates, internal accounts, and floods"
+        "label": "Filters: duplicates, internal accounts, spam, and rapid-fire bursts"
       },
       {
-        "label": "AI classifies intent and replies from the knowledge base"
+        "label": "Per-customer state machine: numbered menu, AI only as fallback"
       },
       {
-        "label": "Cases needing a human become tickets"
+        "label": "Escalation ticket created and routed to staff"
       },
       {
-        "label": "Staff resolve tickets while reports and health alerts run in the background"
+        "label": "Monitoring: AI daily report and health monitor"
       }
     ],
     "metrics": [
       {
-        "value": "3",
-        "label": "channels served by one assistant"
+        "value": "23 sec",
+        "label": "median first bot reply on WhatsApp (includes deliberate typing delay)"
       },
       {
-        "value": "15 min",
-        "label": "automatic health-check interval"
+        "value": "82%",
+        "label": "of conversations past the entry gate end as a structured ticket"
       },
       {
-        "value": "Daily",
-        "label": "AI-analysed customer report"
+        "value": "4.54/5",
+        "label": "average rating from the 27% of customers who answered"
       }
     ],
     "system": [
       {
-        "value": "15",
+        "value": "28",
         "label": "active workflows"
       },
       {
-        "value": "±2,000",
-        "label": "nodes"
+        "value": "337",
+        "label": "nodes in 8 core workflows"
       },
       {
         "value": "38",
         "label": "tables"
       },
       {
-        "value": "39",
+        "value": "41",
         "label": "functions"
+      },
+      {
+        "value": "14",
+        "label": "triggers"
       },
       {
         "value": "48",
@@ -106,13 +110,13 @@
       {
         "name": "Customer message intake and reply",
         "trigger": "Incoming-message webhook",
-        "summary": "Runs every message through guard rails before the AI answers or escalates it to staff.",
+        "summary": "Runs every message through guard rails before the state machine answers or escalates it to staff.",
         "flow": [
           {
             "label": "Validate the message and check duplicates"
           },
           {
-            "label": "Skip internal accounts"
+            "label": "Skip internal accounts and screen spam"
           },
           {
             "label": "Merge rapid-fire messages and rate-limit"
@@ -121,20 +125,17 @@
             "label": "Read customer data and settings"
           },
           {
-            "label": "Classify intent"
+            "label": "State machine replies, AI only as classification fallback"
           },
           {
-            "label": "Answer or escalate to staff"
-          },
-          {
-            "label": "Typing delay, then send"
+            "label": "Escalate to staff if needed, typing delay, send"
           }
         ]
       },
       {
-        "name": "Staff commands and resolve requests",
+        "name": "Staff commands and tickets from chat",
         "trigger": "Message from staff",
-        "summary": "Staff manage tickets straight from chat, with approval for bulk resolution.",
+        "summary": "Staff view and handle tickets straight from chat.",
         "flow": [
           {
             "label": "Verify the staff member"
@@ -146,13 +147,10 @@
             "label": "Show the ticket menu"
           },
           {
-            "label": "Request resolve and notify the approver"
+            "label": "Update the ticket"
           },
           {
-            "label": "Approver decides"
-          },
-          {
-            "label": "Notify the requester and update tickets"
+            "label": "Notify the people involved"
           }
         ]
       },
@@ -207,53 +205,54 @@
         ]
       },
       {
-        "name": "Bot on/off control from chat",
-        "trigger": "Command from an operator",
-        "summary": "An operator switches the bot on, off, or checks its status through chat, with every action logged.",
+        "name": "Bot on/off control from the web app",
+        "trigger": "Operator action in the web app",
+        "summary": "Operators switch workflows on or off from the Bot Status page, with every action logged.",
         "flow": [
           {
-            "label": "Receive the command"
+            "label": "Open the Bot Status page"
           },
           {
-            "label": "Verify permission"
+            "label": "See each workflow's status"
           },
           {
-            "label": "Choose on, off, or status"
+            "label": "Choose on or off"
           },
           {
             "label": "Run through the workflow API"
           },
           {
-            "label": "Log the result and reply"
+            "label": "Log the action"
           }
         ]
       },
       {
-        "name": "Knowledge base ingestion",
-        "trigger": "Run manually",
-        "summary": "Turns the knowledge table into a searchable base the bot uses to answer.",
+        "name": "Spam screening and review",
+        "trigger": "A new customer's first message",
+        "summary": "A new customer's message is classified by AI; suspected spam goes to quarantine for staff review.",
         "flow": [
           {
-            "label": "Read the knowledge table"
+            "label": "Classify the message with AI"
           },
           {
-            "label": "Prepare batches"
+            "label": "Quarantine if suspected spam"
           },
           {
-            "label": "Generate embeddings"
+            "label": "Notify staff"
           },
           {
-            "label": "Store in the vector store"
+            "label": "Staff confirm or clear"
           },
           {
-            "label": "Result summary"
+            "label": "Cleared contacts receive a welcome"
           }
         ]
       }
     ],
-    "context": "A customer-service team handling a high volume of messages across several channels.",
-    "problem": "Messages arrived on several channels at once. Repeated questions consumed staff time, urgent issues were easy to miss, and no one had a single view of response times or open tickets.",
-    "solution": "An AI assistant answers on WhatsApp, Telegram, and Instagram/Facebook and escalates to staff as tickets when it should not answer. Staff manage tickets from chat or a monitoring web app, with resolve approvals, a daily AI-analysed report, and a health monitor watching every workflow."
+    "context": "A messaging assistant serving prospective partners and sellers on WhatsApp, Instagram, and Facebook, with escalation tickets routed to a customer-service team.",
+    "problem": "Messages arrive from several channels in free form, while the team only needs structured data from qualified prospects. The team also needs to see which tickets pile up and who owns them, and the bot needs guard rails so it does not answer spam or loop with other automated services.",
+    "solution": "A per-customer state machine stored in the database: entry gate, numbered menu, data collection, then a ticket whose recipients come from database configuration. AI is used in a limited way (fallback intent classification, spam screening, a daily report). A web app shows chats, tickets, and workflow controls with per-owner access.",
+    "learning": "Guard rails against other automated services must exist from day one: one non-human contact once triggered about 640 replies before it was blocked. Metrics also need to be recorded from the start, because the SLA column was never filled, so SLA compliance can only be approximated from the age of open tickets. Keeping recipient and routing configuration in the database means operational changes do not require editing workflows."
   },
   "brand-intelligence": {
     "year": "2026",
@@ -314,39 +313,40 @@
   "ai-video-agent": {
     "year": "2026",
     "stack": [
-      "n8n",
+      "Web app",
+      "Task queues",
       "AI models",
-      "Task queues"
+      "Browser agent"
     ],
     "flow": [
       {
-        "label": "Staff define the character and product"
+        "label": "Prepare character and product"
       },
       {
-        "label": "AI analyses the product and plans the storyboard"
+        "label": "Build storyboard and video JSON"
       },
       {
-        "label": "Images and clips are generated, with retries and cost logged"
+        "label": "Approve, then submit to the queue"
       },
       {
-        "label": "Voice, on-screen text, ambience, and upscale are added"
+        "label": "Agent or video model renders"
       },
       {
-        "label": "The finished video is collected for review"
+        "label": "Merge, voice, text, final cut"
       }
     ],
     "metrics": [
       {
-        "value": "5",
-        "label": "task queues with retries"
+        "value": "7 queues",
+        "label": "task queue types, each with its own claim"
       },
       {
-        "value": "Per run",
-        "label": "cost logged for every generation"
+        "value": "13 stages",
+        "label": "production stages, character to finishing"
       },
       {
-        "value": "Per job",
-        "label": "AI model chosen for each job"
+        "value": "2,300+",
+        "label": "automated tests passing (scope, run 12 Nov 2026)"
       }
     ],
     "system": [
@@ -361,57 +361,23 @@
       {
         "value": "79",
         "label": "access policies"
-      }
-    ],
-    "workflows": [
-      {
-        "name": "Automatic product image fetch",
-        "trigger": "Webhook when a new product is added",
-        "summary": "Pulls the main image from a product link, stores it, and updates the product record without manual input.",
-        "flow": [
-          {
-            "label": "Receive new product"
-          },
-          {
-            "label": "Open the link and extract the main image"
-          },
-          {
-            "label": "Check the image is valid",
-            "note": "If not valid: flagged for manual handling"
-          },
-          {
-            "label": "Download the image"
-          },
-          {
-            "label": "Store in file storage"
-          },
-          {
-            "label": "Update the product record"
-          }
-        ]
       },
       {
-        "name": "Daily reminder",
-        "trigger": "Schedule, every day at 08:00",
-        "summary": "Sends an automatic reminder about today's agenda to eligible recipients.",
-        "flow": [
-          {
-            "label": "Daily schedule at 08:00"
-          },
-          {
-            "label": "Fetch today's agenda"
-          },
-          {
-            "label": "Fetch eligible recipients"
-          },
-          {
-            "label": "Send the reminder"
-          }
-        ]
+        "value": "14",
+        "label": "serverless functions"
+      },
+      {
+        "value": "7",
+        "label": "task runners in the agent"
+      },
+      {
+        "value": "70",
+        "label": "migration files"
       }
     ],
-    "context": "A content team producing short product videos at volume.",
-    "problem": "Each video meant a manual chain: choosing a character and product, writing the script, generating images and clips, adding voice and text, and checking the result. It was slow, inconsistent between videos, and hard to cost.",
-    "solution": "A web app where staff define characters and products, and a production agent picks up jobs from a queue. AI models plan the storyboard, generate images and clips, add voice and on-screen text, mix ambience, and upscale. Every job logs its events, retries, and cost per run, and the model choice is configurable."
+    "context": "A production system for short, user-generated-content-style product videos for a working team: staff prepare characters and products in a web app, and videos are produced by an agent on a production laptop or by a video model through an API.",
+    "problem": "The first prototype called automation workflows straight from the browser, step by step, with no queue, no central approval, and no cost tracking. Producing videos at volume with a consistent character, safe product claims, and controlled spend was not possible that way.",
+    "solution": "Work is stored as a queue in the database. Staff build a panel plan, storyboard, and video JSON, then approve; the database refuses to submit when safety conditions are missing. The agent claims tasks with row locking, stops and reports when a human is needed, and retries with backoff. Later stages (clip merging, voice, on-screen text, ambient sound, upscaling) run as their own task queues, and the cost of each process is recorded.",
+    "learning": "Safety rules that live only in the interface are not enough, so approval and submit conditions are enforced in the database. Third-party services have limits (activity flags, quotas, model version retirements), so the agent stops and reports rather than pushing through, with random pacing and bounded retries. Many recent changes were verified against test doubles, so proving them on the real services is the next piece of work."
   }
 }

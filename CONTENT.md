@@ -159,6 +159,8 @@ Catatan:
 
 > **Pembaruan M24 (draf `[KONFIRMASI]`, generik, dari bahan repo proyek, kode, dokumentasi database, dan workflow Patrik):** tagline, angka cakupan (bukan hasil bisnis, berlabel "cakupan"), konteks, masalah, solusi, alur 5 langkah, dan 3 angka hasil untuk kartu 02, 03, 04 ada di `content/{id,en}/home.json` dan `case-studies.json`. Kartu "Proyek lainnya": baris "Segera diperbarui" dihapus (status hanya tampil bila dikonfirmasi) dan ditambah kartu L7 "Platform manajemen mitra konten". Kartu 01 tidak diubah; angka ketiga "—" disembunyikan. Pembelajaran (learning) tidak diisi dan bagiannya disembunyikan.
 
+> **Pembaruan M25 (draf `[KONFIRMASI]`, dari hasil analisis database dan repo Patrik per 12 Nov 2026):** kartu 02 memakai angka hasil terukur (median respons pertama WhatsApp 23 detik termasuk jeda mengetik yang disengaja; 82% percakapan yang lolos gerbang masuk berakhir jadi tiket; rating 4,54/5 dari 27% pelanggan yang menjawab) dan struktur sistem langsung (28 workflow aktif, 337 node di 8 workflow inti, 38 tabel, 41 fungsi, 14 trigger, 48 kebijakan akses). Kanal asisten: WhatsApp, Instagram, Facebook (Telegram adalah bot onboarding terpisah, tidak termasuk). Kartu 04 hanya angka cakupan (7 antrean, 13 tahap, 2.300+ tes lulus) karena data produksi belum bisa diakses. Koreksi dari M22/M24: Telegram dihapus dari kartu 02, workflow "basis pengetahuan" dan klaim persetujuan resolve dihapus, kendali hidup/mati kini "dari halaman web", angka skala Tentang kini 28 workflow aktif dan 337 node inti.
+
 ## 5. Case study
 
 Struktur tiap halaman: **Konteks → Masalah → Solusi (diagram alur) → Hasil (3 metrik) → Pembelajaran**.

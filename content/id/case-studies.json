@@ -51,51 +51,55 @@
     ],
     "flow": [
       {
-        "label": "Pesan masuk dari kanal mana pun"
+        "label": "Pesan masuk dari WhatsApp, Instagram, atau Facebook"
       },
       {
-        "label": "Pagar pengaman menyaring pesan ganda, akun internal, dan banjir pesan"
+        "label": "Penyaring: duplikat, akun internal, spam, dan pesan beruntun"
       },
       {
-        "label": "AI mengklasifikasi maksud dan menjawab dari basis pengetahuan"
+        "label": "Mesin status per pelanggan: menu angka, AI hanya cadangan"
       },
       {
-        "label": "Kasus yang butuh manusia menjadi tiket"
+        "label": "Tiket eskalasi dibuat dan diarahkan ke staf"
       },
       {
-        "label": "Staf menyelesaikan tiket, sementara laporan dan peringatan kesehatan berjalan di latar"
+        "label": "Pemantauan: laporan harian AI dan pemantau kesehatan"
       }
     ],
     "metrics": [
       {
-        "value": "3",
-        "label": "kanal dilayani satu asisten"
+        "value": "23 detik",
+        "label": "median respons pertama bot di WhatsApp (termasuk jeda mengetik yang disengaja)"
       },
       {
-        "value": "15 mnt",
-        "label": "interval pemeriksaan kesehatan otomatis"
+        "value": "82%",
+        "label": "percakapan yang lolos gerbang masuk berakhir jadi tiket terstruktur"
       },
       {
-        "value": "Harian",
-        "label": "laporan pelanggan dengan analisis AI"
+        "value": "4,54/5",
+        "label": "rata-rata rating dari 27% pelanggan yang menjawab"
       }
     ],
     "system": [
       {
-        "value": "15",
+        "value": "28",
         "label": "workflow aktif"
       },
       {
-        "value": "±2.000",
-        "label": "node"
+        "value": "337",
+        "label": "node di 8 workflow inti"
       },
       {
         "value": "38",
         "label": "tabel"
       },
       {
-        "value": "39",
+        "value": "41",
         "label": "fungsi"
+      },
+      {
+        "value": "14",
+        "label": "trigger"
       },
       {
         "value": "48",
@@ -106,13 +110,13 @@
       {
         "name": "Penerimaan dan jawaban pesan pelanggan",
         "trigger": "Webhook pesan masuk",
-        "summary": "Memproses tiap pesan dengan pagar pengaman sebelum dijawab oleh AI atau dieskalasi ke staf.",
+        "summary": "Memproses tiap pesan dengan pagar pengaman sebelum dijawab mesin status atau dieskalasi ke staf.",
         "flow": [
           {
             "label": "Validasi pesan dan cek duplikat"
           },
           {
-            "label": "Lewati akun internal"
+            "label": "Lewati akun internal dan saring spam"
           },
           {
             "label": "Gabung pesan beruntun dan batasi laju"
@@ -121,20 +125,17 @@
             "label": "Baca data pelanggan dan pengaturan"
           },
           {
-            "label": "Klasifikasi maksud"
+            "label": "Mesin status menjawab, AI hanya cadangan klasifikasi"
           },
           {
-            "label": "Jawab atau eskalasi ke staf"
-          },
-          {
-            "label": "Jeda mengetik lalu kirim"
+            "label": "Eskalasi ke staf bila perlu, jeda mengetik, kirim"
           }
         ]
       },
       {
-        "name": "Perintah staf dan permintaan resolve",
+        "name": "Perintah staf dan tiket dari chat",
         "trigger": "Pesan dari staf",
-        "summary": "Staf mengelola tiket langsung dari chat, dengan persetujuan untuk penyelesaian massal.",
+        "summary": "Staf melihat dan menangani tiket langsung dari chat.",
         "flow": [
           {
             "label": "Verifikasi staf"
@@ -146,13 +147,10 @@
             "label": "Tampilkan menu tiket"
           },
           {
-            "label": "Ajukan resolve dan beri tahu penyetuju"
+            "label": "Perbarui tiket"
           },
           {
-            "label": "Keputusan penyetuju"
-          },
-          {
-            "label": "Beri tahu pemohon dan perbarui tiket"
+            "label": "Beri tahu pihak terkait"
           }
         ]
       },
@@ -207,53 +205,54 @@
         ]
       },
       {
-        "name": "Kendali hidup/mati bot dari chat",
-        "trigger": "Perintah dari pengelola",
-        "summary": "Pengelola menyalakan, mematikan, atau memeriksa status bot lewat chat, dengan log tiap aksi.",
+        "name": "Kendali hidup/mati dari halaman web",
+        "trigger": "Aksi pengelola di aplikasi web",
+        "summary": "Pengelola menyalakan atau mematikan workflow dari halaman Status Bot, dengan log tiap aksi.",
         "flow": [
           {
-            "label": "Terima perintah"
+            "label": "Buka halaman Status Bot"
           },
           {
-            "label": "Verifikasi izin"
+            "label": "Lihat status tiap workflow"
           },
           {
-            "label": "Pilih nyala, mati, atau status"
+            "label": "Pilih nyala atau mati"
           },
           {
             "label": "Jalankan lewat API workflow"
           },
           {
-            "label": "Catat hasil dan balas"
+            "label": "Catat aksi"
           }
         ]
       },
       {
-        "name": "Pengisian basis pengetahuan",
-        "trigger": "Dijalankan manual",
-        "summary": "Mengubah tabel pengetahuan menjadi basis pencarian yang dipakai bot untuk menjawab.",
+        "name": "Penyaringan dan peninjauan spam",
+        "trigger": "Pesan pertama pelanggan baru",
+        "summary": "Pesan pelanggan baru diklasifikasi AI; yang mencurigakan masuk karantina untuk ditinjau staf.",
         "flow": [
           {
-            "label": "Baca tabel pengetahuan"
+            "label": "Klasifikasi isi pesan dengan AI"
           },
           {
-            "label": "Susun batch"
+            "label": "Karantina bila dicurigai spam"
           },
           {
-            "label": "Buat embedding"
+            "label": "Beri tahu staf"
           },
           {
-            "label": "Simpan ke penyimpanan vektor"
+            "label": "Staf mengonfirmasi atau membebaskan"
           },
           {
-            "label": "Ringkasan hasil"
+            "label": "Kontak yang dibebaskan menerima sambutan"
           }
         ]
       }
     ],
-    "context": "Tim layanan pelanggan yang menangani pesan dalam jumlah besar di beberapa kanal.",
-    "problem": "Pesan masuk di beberapa kanal sekaligus. Pertanyaan berulang menyita waktu staf, masalah mendesak mudah terlewat, dan tidak ada satu tampilan untuk waktu respons maupun tiket yang masih terbuka.",
-    "solution": "Asisten AI menjawab di WhatsApp, Telegram, dan Instagram/Facebook, lalu mengeskalasi ke staf sebagai tiket bila tidak semestinya menjawab. Staf mengelola tiket dari chat atau aplikasi web pemantau, lengkap dengan persetujuan resolve, laporan harian yang dianalisis AI, dan pemantau kesehatan untuk seluruh workflow."
+    "context": "Asisten pesan yang melayani calon mitra dan penjual di WhatsApp, Instagram, dan Facebook, dengan tiket eskalasi yang diarahkan ke tim layanan pelanggan.",
+    "problem": "Pesan masuk dari beberapa kanal dengan format bebas, sementara tim hanya membutuhkan data terstruktur dari calon yang memenuhi syarat. Tim juga perlu tahu tiket mana yang menumpuk dan siapa penanggung jawabnya, dan bot membutuhkan pagar pengaman agar tidak menjawab spam atau berputar dengan layanan otomatis lain.",
+    "solution": "Mesin status per pelanggan yang disimpan di database: gerbang masuk, menu angka, pengumpulan data, lalu tiket dengan penerima dari konfigurasi database. AI dipakai terbatas (cadangan klasifikasi niat, penyaring spam, laporan harian). Aplikasi web menampilkan chat, tiket, dan kendali workflow dengan akses per pemilik.",
+    "learning": "Pagar pengaman terhadap layanan otomatis lain harus ada sejak awal: satu kontak non-manusia sempat memicu sekitar 640 balasan sebelum diblokir. Metrik juga perlu dicatat sejak awal, karena kolom SLA tidak pernah terisi sehingga kepatuhan SLA hanya bisa didekati lewat umur tiket terbuka. Menaruh konfigurasi penerima dan routing di database membuat perubahan operasional tidak perlu menyentuh workflow."
   },
   "brand-intelligence": {
     "year": "2026",
@@ -314,39 +313,40 @@
   "ai-video-agent": {
     "year": "2026",
     "stack": [
-      "n8n",
+      "Aplikasi web",
+      "Antrean tugas",
       "Model AI",
-      "Antrean tugas"
+      "Agen peramban"
     ],
     "flow": [
       {
-        "label": "Staf mendefinisikan karakter dan produk"
+        "label": "Siapkan karakter dan produk"
       },
       {
-        "label": "AI menganalisis produk dan merencanakan storyboard"
+        "label": "Susun storyboard dan JSON video"
       },
       {
-        "label": "Gambar dan klip dibuat, dengan percobaan ulang dan biaya tercatat"
+        "label": "Setujui, lalu kirim ke antrean"
       },
       {
-        "label": "Suara, teks di layar, suasana, dan peningkatan resolusi ditambahkan"
+        "label": "Agen atau model video membuat video"
       },
       {
-        "label": "Video jadi dikumpulkan untuk ditinjau"
+        "label": "Gabung, suara, teks, hasil akhir"
       }
     ],
     "metrics": [
       {
-        "value": "5",
-        "label": "antrean tugas dengan percobaan ulang"
+        "value": "7 antrean",
+        "label": "jenis antrean tugas, masing-masing dengan klaim sendiri"
       },
       {
-        "value": "Per run",
-        "label": "biaya tercatat untuk setiap pembuatan"
+        "value": "13 tahap",
+        "label": "tahap produksi dari karakter sampai penyelesaian"
       },
       {
-        "value": "Per job",
-        "label": "model AI dipilih untuk tiap pekerjaan"
+        "value": "2.300+",
+        "label": "tes otomatis yang lulus (cakupan, dijalankan 12 Nov 2026)"
       }
     ],
     "system": [
@@ -361,57 +361,23 @@
       {
         "value": "79",
         "label": "kebijakan akses"
-      }
-    ],
-    "workflows": [
-      {
-        "name": "Pengambilan gambar produk otomatis",
-        "trigger": "Webhook saat produk baru ditambahkan",
-        "summary": "Mengambil gambar utama dari tautan produk, menyimpannya, dan memperbarui data produk tanpa input manual.",
-        "flow": [
-          {
-            "label": "Terima produk baru"
-          },
-          {
-            "label": "Buka tautan dan ambil gambar utama"
-          },
-          {
-            "label": "Periksa gambar valid",
-            "note": "Jika tidak valid: ditandai untuk ditangani manual"
-          },
-          {
-            "label": "Unduh gambar"
-          },
-          {
-            "label": "Simpan ke penyimpanan file"
-          },
-          {
-            "label": "Perbarui data produk"
-          }
-        ]
       },
       {
-        "name": "Pengingat harian",
-        "trigger": "Jadwal tiap hari pukul 08.00",
-        "summary": "Mengirim pengingat otomatis tentang agenda hari ini kepada penerima yang berhak.",
-        "flow": [
-          {
-            "label": "Jadwal harian pukul 08.00"
-          },
-          {
-            "label": "Ambil agenda hari ini"
-          },
-          {
-            "label": "Ambil penerima yang berhak"
-          },
-          {
-            "label": "Kirim pengingat"
-          }
-        ]
+        "value": "14",
+        "label": "fungsi serverless"
+      },
+      {
+        "value": "7",
+        "label": "pelaksana tugas di agen"
+      },
+      {
+        "value": "70",
+        "label": "berkas migrasi"
       }
     ],
-    "context": "Tim konten yang memproduksi video produk pendek dalam jumlah besar.",
-    "problem": "Tiap video berarti rantai kerja manual: memilih karakter dan produk, menulis naskah, membuat gambar dan klip, menambah suara dan teks, lalu memeriksa hasilnya. Lambat, tidak konsisten antar video, dan sulit dihitung biayanya.",
-    "solution": "Aplikasi web tempat staf mendefinisikan karakter dan produk, dan agen produksi mengambil pekerjaan dari antrean. Model AI merencanakan storyboard, membuat gambar dan klip, menambah suara dan teks di layar, mencampur suasana, dan menaikkan resolusi. Setiap pekerjaan mencatat kejadian, percobaan ulang, dan biaya per proses, dan pilihan model bisa diatur."
+    "context": "Sistem produksi video produk pendek bergaya konten pengguna untuk sebuah tim kerja: staf menyiapkan karakter dan produk di aplikasi web, lalu video dibuat oleh agen di laptop produksi atau oleh model video lewat API.",
+    "problem": "Prototipe awal memanggil alur otomasi langsung dari browser, langkah demi langkah, tanpa antrean, tanpa persetujuan terpusat, dan tanpa catatan biaya. Membuat video dalam jumlah banyak dengan karakter yang konsisten, klaim produk yang aman, dan biaya yang terkendali tidak bisa diatur dengan cara itu.",
+    "solution": "Pekerjaan disimpan sebagai antrean di database. Staf menyusun rencana panel, storyboard, dan JSON video, lalu menyetujui; database menolak pengiriman bila syarat keselamatan tidak lengkap. Agen mengambil tugas dengan penguncian baris, berhenti dan melapor saat butuh manusia, dan mencoba ulang dengan jeda. Tahap lanjutan (penggabungan klip, suara, teks di layar, suara latar, peningkatan resolusi) berjalan sebagai antrean tugas sendiri, dan biaya tiap proses dicatat.",
+    "learning": "Aturan keselamatan yang hanya ada di antarmuka tidak cukup, jadi persetujuan dan syarat kirim ditegakkan di database. Layanan pihak ketiga punya batas (penandaan aktivitas, kuota, penghentian versi model), sehingga agen berhenti dan melapor, bukan menembus, dengan jeda acak dan percobaan ulang terbatas. Banyak perubahan baru diuji dengan tiruan, jadi pembuktian pada layanan asli adalah pekerjaan berikutnya."
   }
 }

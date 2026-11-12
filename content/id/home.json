@@ -38,18 +38,20 @@
         "metric": {
           "value": "±2 hari → ±30 menit",
           "estimate": false,
-          "scope": false
+          "scope": false,
+          "label": ""
         }
       },
       {
         "slug": "ai-messaging-ticketing",
         "flowSteps": 5,
         "title": "Asisten pesan AI multi-kanal dengan sistem tiket",
-        "tagline": "Satu asisten untuk WhatsApp, Telegram, dan Instagram, dengan tiket yang memantau layanan dan respons.",
+        "tagline": "Satu asisten untuk WhatsApp, Instagram, dan Facebook, dengan tiket yang memantau layanan dan respons.",
         "metric": {
-          "value": "3 kanal · 1 antrean tiket",
+          "value": "23 detik respons pertama",
           "estimate": false,
-          "scope": true
+          "scope": false,
+          "label": "median, WhatsApp, termasuk jeda mengetik"
         }
       },
       {
@@ -60,7 +62,8 @@
         "metric": {
           "value": "3 platform · 1 dashboard",
           "estimate": false,
-          "scope": true
+          "scope": true,
+          "label": ""
         }
       },
       {
@@ -69,9 +72,10 @@
         "title": "Agen AI untuk otomasi produksi video",
         "tagline": "Dari produk dan karakter ke video jadi: perencanaan, gambar, klip, suara, dan finishing dalam satu jalur antrean.",
         "metric": {
-          "value": "5 antrean tugas · 1 agen",
+          "value": "7 antrean · 13 tahap",
           "estimate": false,
-          "scope": true
+          "scope": true,
+          "label": ""
         }
       }
     ],
@@ -171,11 +175,11 @@
     "practices": [
       {
         "title": "Berkembang bertahap",
-        "text": "Bot pelanggan melewati lebih dari 15 versi, dari berbasis spreadsheet ke database dan cache."
+        "text": "Bot pesan dibangun ulang bertahap dan berpindah dari status berbasis spreadsheet ke database relasional dan cache."
       },
       {
         "title": "Pagar pengaman",
-        "text": "Cek duplikat, penggabungan pesan beruntun, batas laju, penyaring akun internal, dan jeda mengetik agar balasan terasa manusiawi."
+        "text": "Cek duplikat, penggabungan pesan beruntun, batas laju, penyaring akun internal, penyaring spam, dan jeda mengetik agar balasan terasa manusiawi."
       },
       {
         "title": "Bisa dipantau",
@@ -183,17 +187,17 @@
       },
       {
         "title": "Operasi aman",
-        "text": "Bot bisa dinyalakan atau dimatikan dari chat oleh orang berwenang, dengan log setiap aksi."
+        "text": "Workflow bisa dinyalakan atau dimatikan dari halaman web oleh orang berwenang, dengan log setiap aksi."
       }
     ],
     "scale": [
       {
-        "value": "26",
+        "value": "28",
         "label": "workflow aktif"
       },
       {
-        "value": "±2.700",
-        "label": "node otomasi"
+        "value": "337",
+        "label": "node di workflow inti"
       },
       {
         "value": "3",
