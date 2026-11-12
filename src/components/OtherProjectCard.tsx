@@ -9,7 +9,7 @@ export function OtherProjectCard({
   name: string;
   summary: string;
   tags: string[];
-  status: string;
+  status?: string | null;
 }) {
   return (
     <article className="other-card flex h-full flex-col rounded-xl border border-border bg-bg p-6">
@@ -17,7 +17,7 @@ export function OtherProjectCard({
       <p className="mt-3 text-text-2">{summary}</p>
       <div className="mt-auto pt-6">
         <StackTags items={tags} />
-        <p className="t-caption mt-3">{status}</p>
+        {status && <p className="t-caption mt-3">{status}</p>}
       </div>
     </article>
   );

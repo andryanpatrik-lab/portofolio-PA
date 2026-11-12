@@ -37,41 +37,46 @@
         "tagline": "From paper and Excel to one app: requests, approvals, and payments all tracked.",
         "metric": {
           "value": "~2 days → ~30 minutes",
-          "estimate": false
+          "estimate": false,
+          "scope": false
         }
       },
       {
         "slug": "ai-messaging-ticketing",
         "flowSteps": 5,
         "title": "Multi-channel AI messaging assistant with ticketing",
-        "tagline": "One assistant for WhatsApp and Instagram, with tickets that track service and response.",
+        "tagline": "One assistant for WhatsApp, Telegram, and Instagram, with tickets that track service and response.",
         "metric": {
-          "value": "—",
-          "estimate": false
+          "value": "3 channels · 1 ticket queue",
+          "estimate": false,
+          "scope": true
         }
       },
       {
         "slug": "brand-intelligence",
         "flowSteps": 5,
         "title": "Customer-perspective brand intelligence",
-        "tagline": "Brand perception from search, social media, and digital footprint in a single view.",
+        "tagline": "From social media to one dashboard: sentiment, competitor share of voice, and crisis alerts for each brand.",
         "metric": {
-          "value": "—",
-          "estimate": false
+          "value": "3 platforms · 1 dashboard",
+          "estimate": false,
+          "scope": true
         }
       },
       {
         "slug": "ai-video-agent",
         "flowSteps": 5,
         "title": "AI agent for automated video production",
-        "tagline": "From brief to video through AI model orchestration.",
+        "tagline": "From product and character to a finished video: planning, images, clips, voice, and finishing in one queued pipeline.",
         "metric": {
-          "value": "—",
-          "estimate": false
+          "value": "5 task queues · 1 agent",
+          "estimate": false,
+          "scope": true
         }
       }
     ],
-    "title": "Selected work"
+    "title": "Selected work",
+    "scopeLabel": "scope"
   },
   "other": {
     "label": "04 / OTHER WORK",
@@ -97,6 +102,17 @@
           "n8n",
           "Google Sheets",
           "Apps Script"
+        ],
+        "status": null
+      },
+      {
+        "id": "content-partner-platform",
+        "name": "Content-partner management platform",
+        "summary": "A role-based web app for managing products, tutorials, and webinar schedules, with n8n automations for product images and daily reminders.",
+        "tags": [
+          "Next.js",
+          "n8n",
+          "Role-based access"
         ],
         "status": null
       },

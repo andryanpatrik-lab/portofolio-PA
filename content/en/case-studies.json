@@ -51,30 +51,33 @@
     ],
     "flow": [
       {
-        "label": "Incoming message from WhatsApp or Instagram"
+        "label": "Message arrives on any channel"
       },
       {
-        "label": "Workflow orchestration in n8n"
+        "label": "Guard rails filter duplicates, internal accounts, and floods"
       },
       {
-        "label": "Gemini replies using conversation memory"
+        "label": "AI classifies intent and replies from the knowledge base"
       },
       {
-        "label": "Cases needing a human are escalated into a ticket"
+        "label": "Cases needing a human become tickets"
       },
       {
-        "label": "Ticketing app tracks customer interactions and team responsiveness"
+        "label": "Staff resolve tickets while reports and health alerts run in the background"
       }
     ],
     "metrics": [
       {
-        "value": "—"
+        "value": "3",
+        "label": "channels served by one assistant"
       },
       {
-        "value": "—"
+        "value": "15 min",
+        "label": "automatic health-check interval"
       },
       {
-        "value": "—"
+        "value": "Daily",
+        "label": "AI-analysed customer report"
       }
     ],
     "system": [
@@ -85,10 +88,6 @@
       {
         "value": "±2,000",
         "label": "nodes"
-      },
-      {
-        "value": "3",
-        "label": "messaging channels"
       },
       {
         "value": "38",
@@ -251,37 +250,47 @@
           }
         ]
       }
-    ]
+    ],
+    "context": "A customer-service team handling a high volume of messages across several channels.",
+    "problem": "Messages arrived on several channels at once. Repeated questions consumed staff time, urgent issues were easy to miss, and no one had a single view of response times or open tickets.",
+    "solution": "An AI assistant answers on WhatsApp, Telegram, and Instagram/Facebook and escalates to staff as tickets when it should not answer. Staff manage tickets from chat or a monitoring web app, with resolve approvals, a daily AI-analysed report, and a health monitor watching every workflow."
   },
   "brand-intelligence": {
     "year": "2026",
-    "stack": [],
+    "stack": [
+      "n8n",
+      "Web dashboard",
+      "Role-based access"
+    ],
     "flow": [
       {
-        "label": "Brand to monitor is defined"
+        "label": "Define the brand, competitors, and alert thresholds"
       },
       {
-        "label": "Data pulled via API from search (SEO), social media, and digital footprint"
+        "label": "Propose and approve search keywords"
       },
       {
-        "label": "Data cleaned and filtered"
+        "label": "Collect posts and comments from social platforms"
       },
       {
-        "label": "Brand perception analyzed from the customer's point of view"
+        "label": "Score sentiment and compare competitors"
       },
       {
-        "label": "Results presented in a single view"
+        "label": "Flag anomalies, then publish digests and reports"
       }
     ],
     "metrics": [
       {
-        "value": "—"
+        "value": "3",
+        "label": "social platforms monitored"
       },
       {
-        "value": "—"
+        "value": "Per brand",
+        "label": "data isolation for each client"
       },
       {
-        "value": "—"
+        "value": "Daily",
+        "label": "digest plus period report"
       }
     ],
     "system": [
@@ -297,37 +306,47 @@
         "value": "3",
         "label": "user roles"
       }
-    ]
+    ],
+    "context": "A brand-monitoring service for clients who want to know how customers talk about their brand and how it compares with competitors.",
+    "problem": "Brand conversations were scattered across platforms and read by hand. A sudden complaint or a rising competitor took too long to spot, and every client needed their own view of the data.",
+    "solution": "A web dashboard that collects posts and comments from social platforms for each brand, scores sentiment, compares competitors by share of voice, flags crisis and opportunity anomalies, and compiles daily digests and period reports. Keyword proposals go through an approval step, and three user roles see only their own brands."
   },
   "ai-video-agent": {
     "year": "2026",
-    "stack": [],
+    "stack": [
+      "n8n",
+      "AI models",
+      "Task queues"
+    ],
     "flow": [
       {
-        "label": "Content brief submitted"
+        "label": "Staff define the character and product"
       },
       {
-        "label": "Agent plans script and scenes"
+        "label": "AI analyses the product and plans the storyboard"
       },
       {
-        "label": "Automation runs the workflow on a video-generation platform"
+        "label": "Images and clips are generated, with retries and cost logged"
       },
       {
-        "label": "AI models called via API to generate assets"
+        "label": "Voice, on-screen text, ambience, and upscale are added"
       },
       {
-        "label": "Output collected for review"
+        "label": "The finished video is collected for review"
       }
     ],
     "metrics": [
       {
-        "value": "—"
+        "value": "5",
+        "label": "task queues with retries"
       },
       {
-        "value": "—"
+        "value": "Per run",
+        "label": "cost logged for every generation"
       },
       {
-        "value": "—"
+        "value": "Per job",
+        "label": "AI model chosen for each job"
       }
     ],
     "system": [
@@ -390,6 +409,9 @@
           }
         ]
       }
-    ]
+    ],
+    "context": "A content team producing short product videos at volume.",
+    "problem": "Each video meant a manual chain: choosing a character and product, writing the script, generating images and clips, adding voice and text, and checking the result. It was slow, inconsistent between videos, and hard to cost.",
+    "solution": "A web app where staff define characters and products, and a production agent picks up jobs from a queue. AI models plan the storyboard, generate images and clips, add voice and on-screen text, mix ambience, and upscale. Every job logs its events, retries, and cost per run, and the model choice is configurable."
   }
 }

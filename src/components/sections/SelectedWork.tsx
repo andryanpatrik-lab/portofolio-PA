@@ -21,6 +21,8 @@ export function SelectedWork({ home, locale }: { home: Home; locale: Locale }) {
             metricValue={card.metric.value}
             estimateLabel={work.estimateLabel}
             isEstimate={card.metric.estimate}
+            scopeLabel={work.scopeLabel}
+            isScope={card.metric.scope}
           />
         ))}
       </div>

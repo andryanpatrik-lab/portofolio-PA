@@ -114,8 +114,8 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
         <section data-cosmos="supernova" className="mt-[var(--section-gap)]">
           <h2 {...dust} className="t-h3">{ui.results}</h2>
           <ul className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
-            {data.metrics.map((m, i) => (
-              <li key={i}>
+            {data.metrics.filter((m) => m.value !== "—").map((m, i) => (
+              <li key={i} className={m.value.length > 12 ? "sm:col-span-3" : undefined}>
                 <Metric value={m.value} label={m.label} />
                 {m.estimate && <p className="t-label mt-2 text-text-muted">{ui.estimate}</p>}
               </li>
@@ -123,7 +123,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           </ul>
         </section>
 
-        {section(ui.learning, "void", data.learning)}
+        {data.learning && section(ui.learning, "void", data.learning)}
 
         <nav aria-label={ui.next} className="mt-[var(--section-gap)] border-t border-border pt-10">
           <BlackHoleLink href={`/${locale}/work/${next.slug}/`} className="block">

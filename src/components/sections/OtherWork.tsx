@@ -18,7 +18,7 @@ export function OtherWork({ home }: { home: Home }) {
               name={item.name}
               summary={item.summary}
               tags={item.tags}
-              status={item.status ?? other.statusPending}
+              status={item.status}
             />
           </li>
         ))}

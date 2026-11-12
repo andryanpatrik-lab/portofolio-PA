@@ -157,6 +157,8 @@ Catatan:
 - **Pipeline video UGC di n8n (2025):** dinyatakan milik perusahaan saat ini, jadi diperlakukan sama dengan case study agen video (anonim, tanpa nama platform). Bukan kartu terpisah. Menjadi riwayat pengembangan agen video bila Patrik ingin menyebutnya.
 - **Presentasi "Agen AI" untuk perusahaan konstruksi (2025):** konsep dan advokasi, bukan sistem yang dibangun. Cocok untuk narasi di Tentang atau CV, bukan kartu proyek.
 
+> **Pembaruan M24 (draf `[KONFIRMASI]`, generik, dari bahan repo proyek, kode, dokumentasi database, dan workflow Patrik):** tagline, angka cakupan (bukan hasil bisnis, berlabel "cakupan"), konteks, masalah, solusi, alur 5 langkah, dan 3 angka hasil untuk kartu 02, 03, 04 ada di `content/{id,en}/home.json` dan `case-studies.json`. Kartu "Proyek lainnya": baris "Segera diperbarui" dihapus (status hanya tampil bila dikonfirmasi) dan ditambah kartu L7 "Platform manajemen mitra konten". Kartu 01 tidak diubah; angka ketiga "—" disembunyikan. Pembelajaran (learning) tidak diisi dan bagiannya disembunyikan.
+
 ## 5. Case study
 
 Struktur tiap halaman: **Konteks → Masalah → Solusi (diagram alur) → Hasil (3 metrik) → Pembelajaran**.

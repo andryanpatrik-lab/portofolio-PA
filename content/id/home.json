@@ -37,41 +37,46 @@
         "tagline": "Dari kertas dan Excel ke satu aplikasi: permintaan, approval, hingga pembayaran terlacak.",
         "metric": {
           "value": "±2 hari → ±30 menit",
-          "estimate": false
+          "estimate": false,
+          "scope": false
         }
       },
       {
         "slug": "ai-messaging-ticketing",
         "flowSteps": 5,
         "title": "Asisten pesan AI multi-kanal dengan sistem tiket",
-        "tagline": "Satu asisten untuk WhatsApp dan Instagram, dengan tiket yang memantau layanan dan respons.",
+        "tagline": "Satu asisten untuk WhatsApp, Telegram, dan Instagram, dengan tiket yang memantau layanan dan respons.",
         "metric": {
-          "value": "—",
-          "estimate": false
+          "value": "3 kanal · 1 antrean tiket",
+          "estimate": false,
+          "scope": true
         }
       },
       {
         "slug": "brand-intelligence",
         "flowSteps": 5,
         "title": "Intelijen brand dari sudut pandang pelanggan",
-        "tagline": "Persepsi brand dari pencarian, media sosial, dan jejak digital dalam satu tampilan.",
+        "tagline": "Dari media sosial ke satu dashboard: sentimen, share of voice kompetitor, dan peringatan krisis untuk tiap brand.",
         "metric": {
-          "value": "—",
-          "estimate": false
+          "value": "3 platform · 1 dashboard",
+          "estimate": false,
+          "scope": true
         }
       },
       {
         "slug": "ai-video-agent",
         "flowSteps": 5,
         "title": "Agen AI untuk otomasi produksi video",
-        "tagline": "Dari brief ke video lewat orkestrasi model AI.",
+        "tagline": "Dari produk dan karakter ke video jadi: perencanaan, gambar, klip, suara, dan finishing dalam satu jalur antrean.",
         "metric": {
-          "value": "—",
-          "estimate": false
+          "value": "5 antrean tugas · 1 agen",
+          "estimate": false,
+          "scope": true
         }
       }
     ],
-    "title": "Karya terpilih"
+    "title": "Karya terpilih",
+    "scopeLabel": "cakupan"
   },
   "other": {
     "label": "04 / PROYEK LAINNYA",
@@ -97,6 +102,17 @@
           "n8n",
           "Google Sheets",
           "Apps Script"
+        ],
+        "status": null
+      },
+      {
+        "id": "content-partner-platform",
+        "name": "Platform manajemen mitra konten",
+        "summary": "Aplikasi web berbasis peran untuk mengelola produk, tutorial, dan jadwal webinar, dengan otomasi n8n untuk gambar produk dan pengingat harian.",
+        "tags": [
+          "Next.js",
+          "n8n",
+          "Akses berbasis peran"
         ],
         "status": null
       },

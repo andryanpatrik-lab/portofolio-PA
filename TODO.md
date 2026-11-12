@@ -27,6 +27,7 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - Pesan pembuka WhatsApp: ID disetujui Patrik; terjemahan EN "Hello, I would like to talk further with you." perlu dikonfirmasi; email dan nomor tampil di HTML publik dan bisa dikumpulkan bot spam
 - Blok baru M22 (draf `[KONFIRMASI]`): 6 workflow kartu 02, angka 15 workflow aktif/±2.000 node/3 kanal (hitungan dari file ekspor per 11 Nov 2026), dan blok "Cara saya membangun" di Tentang. Patrik cek bahwa ringkasan alur sesuai kenyataan
 - Keamanan: file JSON workflow memuat token bot, JWT, nomor telepon, dan ID chat yang tertanam; ganti (rotate) token yang pernah berada di repo saat masih publik. Jangan pernah mempublikasikan JSON mentah
+- Pembaruan kartu M24 (draf `[KONFIRMASI]`): konteks, masalah, solusi, alur, dan angka cakupan kartu 02–04; kartu baru L7 di Proyek lainnya. Patrik cek bahwa deskripsi ("tim layanan pelanggan", "tim konten", "layanan pemantauan brand") sesuai kenyataan, dan kirim angka hasil nyata bila ada
 - Tombol "Unduh CV" disembunyikan sampai `cvFile` di `content/site.json` terisi (PDF baru tanpa nomor telepon)
 
 **Draf `[KONFIRMASI]` yang tampil apa adanya (perlu disetujui)**

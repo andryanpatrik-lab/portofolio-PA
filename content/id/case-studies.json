@@ -51,30 +51,33 @@
     ],
     "flow": [
       {
-        "label": "Pesan masuk dari WhatsApp atau Instagram"
+        "label": "Pesan masuk dari kanal mana pun"
       },
       {
-        "label": "Orkestrasi alur di n8n"
+        "label": "Pagar pengaman menyaring pesan ganda, akun internal, dan banjir pesan"
       },
       {
-        "label": "Gemini menjawab dengan memori percakapan"
+        "label": "AI mengklasifikasi maksud dan menjawab dari basis pengetahuan"
       },
       {
-        "label": "Kasus yang perlu manusia dieskalasi menjadi tiket"
+        "label": "Kasus yang butuh manusia menjadi tiket"
       },
       {
-        "label": "Aplikasi tiket memantau interaksi pelanggan dan responsivitas tim"
+        "label": "Staf menyelesaikan tiket, sementara laporan dan peringatan kesehatan berjalan di latar"
       }
     ],
     "metrics": [
       {
-        "value": "—"
+        "value": "3",
+        "label": "kanal dilayani satu asisten"
       },
       {
-        "value": "—"
+        "value": "15 mnt",
+        "label": "interval pemeriksaan kesehatan otomatis"
       },
       {
-        "value": "—"
+        "value": "Harian",
+        "label": "laporan pelanggan dengan analisis AI"
       }
     ],
     "system": [
@@ -85,10 +88,6 @@
       {
         "value": "±2.000",
         "label": "node"
-      },
-      {
-        "value": "3",
-        "label": "kanal pesan"
       },
       {
         "value": "38",
@@ -251,37 +250,47 @@
           }
         ]
       }
-    ]
+    ],
+    "context": "Tim layanan pelanggan yang menangani pesan dalam jumlah besar di beberapa kanal.",
+    "problem": "Pesan masuk di beberapa kanal sekaligus. Pertanyaan berulang menyita waktu staf, masalah mendesak mudah terlewat, dan tidak ada satu tampilan untuk waktu respons maupun tiket yang masih terbuka.",
+    "solution": "Asisten AI menjawab di WhatsApp, Telegram, dan Instagram/Facebook, lalu mengeskalasi ke staf sebagai tiket bila tidak semestinya menjawab. Staf mengelola tiket dari chat atau aplikasi web pemantau, lengkap dengan persetujuan resolve, laporan harian yang dianalisis AI, dan pemantau kesehatan untuk seluruh workflow."
   },
   "brand-intelligence": {
     "year": "2026",
-    "stack": [],
+    "stack": [
+      "n8n",
+      "Dashboard web",
+      "Akses berbasis peran"
+    ],
     "flow": [
       {
-        "label": "Brand yang dipantau ditentukan"
+        "label": "Tentukan brand, kompetitor, dan ambang peringatan"
       },
       {
-        "label": "Data diambil via API dari mesin pencari (SEO), media sosial, dan jejak digital"
+        "label": "Usulkan dan setujui kata kunci pencarian"
       },
       {
-        "label": "Data dirapikan dan disaring"
+        "label": "Kumpulkan post dan komentar dari platform sosial"
       },
       {
-        "label": "Persepsi brand dianalisis dari sudut pandang pelanggan"
+        "label": "Nilai sentimen dan bandingkan kompetitor"
       },
       {
-        "label": "Hasil disajikan dalam satu tampilan"
+        "label": "Tandai anomali, lalu terbitkan ringkasan dan laporan"
       }
     ],
     "metrics": [
       {
-        "value": "—"
+        "value": "3",
+        "label": "platform sosial dipantau"
       },
       {
-        "value": "—"
+        "value": "Per brand",
+        "label": "pemisahan data untuk tiap klien"
       },
       {
-        "value": "—"
+        "value": "Harian",
+        "label": "ringkasan plus laporan periode"
       }
     ],
     "system": [
@@ -297,37 +306,47 @@
         "value": "3",
         "label": "peran pengguna"
       }
-    ]
+    ],
+    "context": "Layanan pemantauan brand untuk klien yang ingin tahu bagaimana pelanggan membicarakan brand mereka dan bagaimana posisinya terhadap kompetitor.",
+    "problem": "Percakapan tentang brand tersebar di berbagai platform dan dibaca manual. Keluhan mendadak atau kompetitor yang naik terlambat disadari, dan setiap klien membutuhkan tampilan datanya sendiri.",
+    "solution": "Dashboard web yang mengumpulkan post dan komentar dari platform sosial untuk tiap brand, menilai sentimen, membandingkan kompetitor lewat share of voice, menandai anomali krisis dan peluang, serta menyusun ringkasan harian dan laporan periode. Usulan kata kunci melewati tahap persetujuan, dan tiga peran pengguna hanya melihat brand mereka sendiri."
   },
   "ai-video-agent": {
     "year": "2026",
-    "stack": [],
+    "stack": [
+      "n8n",
+      "Model AI",
+      "Antrean tugas"
+    ],
     "flow": [
       {
-        "label": "Brief konten dimasukkan"
+        "label": "Staf mendefinisikan karakter dan produk"
       },
       {
-        "label": "Agen merencanakan skrip dan adegan"
+        "label": "AI menganalisis produk dan merencanakan storyboard"
       },
       {
-        "label": "Otomasi menjalankan alur di platform pembuatan video"
+        "label": "Gambar dan klip dibuat, dengan percobaan ulang dan biaya tercatat"
       },
       {
-        "label": "Model AI dipanggil lewat API untuk membuat aset"
+        "label": "Suara, teks di layar, suasana, dan peningkatan resolusi ditambahkan"
       },
       {
-        "label": "Hasil dihimpun untuk ditinjau"
+        "label": "Video jadi dikumpulkan untuk ditinjau"
       }
     ],
     "metrics": [
       {
-        "value": "—"
+        "value": "5",
+        "label": "antrean tugas dengan percobaan ulang"
       },
       {
-        "value": "—"
+        "value": "Per run",
+        "label": "biaya tercatat untuk setiap pembuatan"
       },
       {
-        "value": "—"
+        "value": "Per job",
+        "label": "model AI dipilih untuk tiap pekerjaan"
       }
     ],
     "system": [
@@ -390,6 +409,9 @@
           }
         ]
       }
-    ]
+    ],
+    "context": "Tim konten yang memproduksi video produk pendek dalam jumlah besar.",
+    "problem": "Tiap video berarti rantai kerja manual: memilih karakter dan produk, menulis naskah, membuat gambar dan klip, menambah suara dan teks, lalu memeriksa hasilnya. Lambat, tidak konsisten antar video, dan sulit dihitung biayanya.",
+    "solution": "Aplikasi web tempat staf mendefinisikan karakter dan produk, dan agen produksi mengambil pekerjaan dari antrean. Model AI merencanakan storyboard, membuat gambar dan klip, menambah suara dan teks di layar, mencampur suasana, dan menaikkan resolusi. Setiap pekerjaan mencatat kejadian, percobaan ulang, dan biaya per proses, dan pilihan model bisa diatur."
   }
 }
