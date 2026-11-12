@@ -81,7 +81,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
             <h2 {...dust} className="t-h3">{ui.workflows}</h2>
             <ul className="mt-10 space-y-4">
               {data.workflows.map((w) => (
-                <li key={w.name}>
+                <li key={w.name} className="wf-li">
                   <details className="wf-item rounded-xl border border-border p-5 md:p-6">
                     <summary className="wf-summary">
                       <span className="t-h4 block">{w.name}</span>

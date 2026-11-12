@@ -211,6 +211,7 @@ Hanya animasikan `transform` dan `opacity`. **Dilarang `transition: all`**. Jang
 | Hero: CTA + nav | Fade-in | 400ms | ease-out | Mulai 1200ms, total ±1,6 detik |
 | Hover kartu proyek | Border → `--accent-dim`, panah geser 4px | 200ms | ease | **Hanya** `@media (hover: hover) and (pointer: fine)` |
 | Getar dan ledakan kartu (M19, disetujui Patrik) | Getar makin kuat 1,2 dtk, lalu kilat dan cincin emas (translate/rotate/scale dan opacity) | 1700ms | linear | Hanya pointer halus, tanpa reduced-motion; semua kartu |
+| Card workflow di case study (M23, disetujui Patrik) | Getar lalu ledakan seperti kartu beranda, hanya saat tertutup | 1700ms | linear | Hanya pointer halus, tanpa reduced-motion |
 | Tekan (CTA, kartu) | `scale(0.97)` pada `:active` | 160ms | ease-out | |
 | Morph: kartu → case study | Judul, nomor, visual bergerak (shared element) | 400ms masuk / 280ms keluar | ease-in-out | Keluar lebih cepat dari masuk, bisa diinterupsi |
 | Morph: isi lain | Fade-in setelah morph berjalan | 200ms, mulai 200ms | ease-out | Tidak menunggu morph selesai |

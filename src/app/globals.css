@@ -860,3 +860,29 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 /* About: "how I build" practices (M22). Static; fades in with the section's [data-reveal]. */
 .practice-grid { display: grid; gap: 2rem; list-style: none; padding: 0; }
 @media (min-width: 768px) { .practice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 4rem; } }
+
+/* Case study text panel (M23): a translucent panel behind the header and every section so moving background effects
+   never cross the text. Colour follows the theme tokens; no blur (a page-sized backdrop-filter is costly). */
+.light-page main > header, .light-page main > section, .light-page main > nav { position: relative; isolation: isolate; }
+.light-page main > header::before, .light-page main > section::before, .light-page main > nav::before {
+  content: "";
+  position: absolute;
+  inset: -20px -16px;
+  z-index: -1;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 45%, transparent);
+  pointer-events: none;
+}
+
+/* Workflow cards get the same charge-up and burst as the home cards (M19), only while closed. */
+.wf-li { --shake: 0.6; }
+.wf-item { position: relative; }
+.wf-item::before, .wf-item::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; }
+.wf-item::before { background: var(--accent); }
+.wf-item::after { border: 2px solid var(--accent); }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html:not(.motion-off):not(.cosmos-off) .wf-li:hover > .wf-item:not([open]) { animation: card-charge 1700ms linear both; }
+  html:not(.motion-off):not(.cosmos-off) .wf-li:hover > .wf-item:not([open])::before { animation: card-flash 1700ms linear both; }
+  html:not(.motion-off):not(.cosmos-off) .wf-li:hover > .wf-item:not([open])::after { animation: card-ring 1700ms linear both; }
+}
