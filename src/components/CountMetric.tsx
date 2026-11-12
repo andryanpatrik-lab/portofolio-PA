@@ -7,10 +7,19 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 const EASE = "easeOut";
 const ROW = 1; // em per strip row
 
-/** "10" -> ["", "10", ""], "3+" -> ["", "3", "+"], "<2%" -> ["<", "2", "%"]. Null when there is no digit run. */
-function parse(value: string) {
-  const m = /^(\D*)(\d+)(\D*)$/.exec(value);
-  return m ? { prefix: m[1], digits: m[2], suffix: m[3] } : null;
+type Token = { text: string } | { digits: string };
+
+/** Splits a value into text and digit runs: "23 sec" -> [23, " sec"], "4.54/5" -> [4, ".", 54, "/5"]. Null when there is no digit. */
+function parse(value: string): Token[] | null {
+  const parts = value.split(/(\d+)/).filter((t) => t !== "");
+  if (!parts.some((t) => /^\d+$/.test(t))) return null;
+  return parts.map((t) => (/^\d+$/.test(t) ? { digits: t } : { text: t }));
+}
+
+/** Motion is allowed: no reduced-motion request, the animations-off switch is not on, and the quality tier is not "off". */
+function motionOk() {
+  const cl = document.documentElement.classList;
+  return !window.matchMedia("(prefers-reduced-motion: reduce)").matches && !cl.contains("motion-off") && !cl.contains("cosmos-off");
 }
 
 /** Strip rows for one digit column. The ones place runs 0-9 and then 0 again (so 10 counts through 1-9 to 0);
@@ -37,12 +46,17 @@ export function CountMetric({
   label,
   order = 0,
   dust = false,
+  always = false,
+  numClass = "t-metric",
 }: {
   value: string;
   unit?: string;
   label?: string;
   order?: number;
   dust?: boolean;
+  /** Also count after client-side navigation (case study pages are reached that way, where `reveal-ready` is removed). */
+  always?: boolean;
+  numClass?: string;
 }) {
   const root = useRef<HTMLDivElement>(null);
   const parsed = parse(value);
@@ -51,7 +65,7 @@ export function CountMetric({
   useLayoutEffect(() => {
     const el = root.current;
     const cl = document.documentElement.classList;
-    if (!el || !parsed || !cl.contains("reveal-ready") || cl.contains("cosmos-off")) return;
+    if (!el || !parsed || !(cl.contains("reveal-ready") || (always && motionOk())) || cl.contains("cosmos-off")) return;
     el.querySelectorAll<HTMLElement>("[data-strip]").forEach((s) => (s.style.transform = tx(0)));
     el.dataset.counting = "";
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -98,45 +112,46 @@ export function CountMetric({
   if (!parsed) {
     return (
       <div>
-        <p className="t-metric">{value}</p>
+        <p className={numClass}>{value}</p>
         {caption}
       </div>
     );
   }
 
-  const digits = parsed.digits.split("");
-  const multi = digits.length > 1;
   return (
     <div ref={root}>
-      <p className="t-metric">
+      <p className={numClass}>
         <span className="sr-only">
           {value}
           {unit ? ` ${unit}` : ""}
         </span>
         <span aria-hidden="true" className="odo">
-          {parsed.prefix}
-          {digits.map((ch, i) => {
-            const isOnes = i === digits.length - 1;
-            const to = targetRow(Number(ch), isOnes, multi);
-            return (
-              <span key={i} className="odo-col">
-                <span
-                  data-strip=""
-                  data-to={to}
-                  {...(!isOnes ? { "data-high": "" } : {})}
-                  className="odo-strip"
-                  style={{ transform: tx(to) }}
-                >
-                  {rows(isOnes).map((r, j) => (
-                    <span key={j} className="odo-row">
-                      {r}
-                    </span>
-                  ))}
+          {parsed.map((tok, t) => {
+            if ("text" in tok) return <span key={t}>{tok.text}</span>;
+            const digits = tok.digits.split("");
+            const multi = digits.length > 1;
+            return digits.map((ch, i) => {
+              const isOnes = i === digits.length - 1;
+              const to = targetRow(Number(ch), isOnes, multi);
+              return (
+                <span key={`${t}-${i}`} className="odo-col">
+                  <span
+                    data-strip=""
+                    data-to={to}
+                    {...(!isOnes ? { "data-high": "" } : {})}
+                    className="odo-strip"
+                    style={{ transform: tx(to) }}
+                  >
+                    {rows(isOnes).map((r, j) => (
+                      <span key={j} className="odo-row">
+                        {r}
+                      </span>
+                    ))}
+                  </span>
                 </span>
-              </span>
-            );
+              );
+            });
           })}
-          {parsed.suffix}
           {unit ? <span className="t-metric-unit">{unit}</span> : null}
         </span>
       </p>

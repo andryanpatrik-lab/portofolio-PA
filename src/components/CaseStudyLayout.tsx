@@ -4,7 +4,7 @@ import { BlackHoleLink } from "./BlackHoleLink";
 import { FlowAnimOnScroll } from "./FlowAnimOnScroll";
 import { FlowDiagram } from "./FlowDiagram";
 import { FlowExplorer } from "./FlowExplorer";
-import { Metric } from "./Metric";
+import { CountMetric } from "./CountMetric";
 import { SystemSheet } from "./SystemSheet";
 import { getFlowLabels, getFlowSummaries } from "@/lib/flowSummaries";
 import type { CaseStudyData, Dictionary, Locale } from "@/lib/i18n";
@@ -130,7 +130,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
             <ul className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
               {shownMetrics.map((m, i) => (
                 <li key={i} className={m.value.length > 12 ? "sm:col-span-3" : undefined}>
-                  <Metric value={m.value} label={m.label} />
+                  <CountMetric value={m.value} label={m.label} order={i} always />
                   {m.estimate && <p className="t-label mt-2 text-text-muted">{ui.estimate}</p>}
                 </li>
               ))}
