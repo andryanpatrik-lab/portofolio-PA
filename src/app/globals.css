@@ -887,34 +887,86 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
   html:not(.motion-off):not(.cosmos-off) .wf-li:hover > .wf-item:not([open])::after { animation: card-ring 1700ms linear both; }
 }
 
-/* n8n canvas imitation (M26): static boxes and curves, scrolls sideways inside its own frame, no animation. */
+/* n8n canvas imitation (M26, M28): dotted grid, rounded square nodes with an icon and the name underneath, ports, curved
+   arrows. Static, scrolls sideways inside its own frame, no animation. Icons are drawn for this site, not n8n artwork. */
 .n8n-scroll {
   overflow-x: auto;
   max-width: 100%;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: color-mix(in srgb, var(--bg-deep, var(--bg)) 70%, transparent);
+  background: color-mix(in srgb, var(--bg-deep, var(--bg)) 80%, transparent);
 }
 .n8n-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.n8n-canvas { position: relative; }
+.n8n-canvas {
+  position: relative;
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--text) 22%, transparent) 1px, transparent 1.5px);
+  background-size: 16px 16px;
+}
 .n8n-edges { position: absolute; inset: 0; pointer-events: none; }
-.n8n-edges path { stroke: var(--text-muted); stroke-width: 1.5; opacity: 0.7; }
-.n8n-edges path.n8n-arrow { fill: var(--text-muted); stroke: none; opacity: 0.9; }
-.n8n-node {
+.n8n-edges path { stroke: var(--text-muted); stroke-width: 1.5; opacity: 0.8; }
+.n8n-edges path.n8n-arrow { fill: var(--text-muted); stroke: none; opacity: 0.95; }
+.n8n-tag {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  padding: 6px 10px 6px 12px;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--text-muted);
-  border-radius: 8px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.625rem;
+  line-height: 1;
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.n8n-node { position: absolute; --k: var(--text-muted); }
+.n8n-k-trigger { --k: var(--accent); }
+.n8n-k-code { --k: #bd5a43; }
+.n8n-k-http { --k: #7a5cc2; }
+.n8n-k-db { --k: #3f78b5; }
+.n8n-k-if { --k: #3f9a63; }
+.n8n-k-reply { --k: #2f8f93; }
+.n8n-box {
+  position: relative;
+  display: grid;
+  place-items: center;
+  color: var(--k);
   background: var(--bg);
+  border: 1.5px solid color-mix(in srgb, var(--k) 55%, var(--border));
+  border-radius: 14px;
+}
+.n8n-box-trigger { border-radius: 36px 14px 14px 36px; }
+.n8n-bolt { position: absolute; left: -19px; top: 50%; transform: translateY(-50%); fill: var(--accent); }
+.n8n-port {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--text-muted);
+}
+.n8n-port-l { left: -5px; }
+.n8n-port-r { right: -5px; }
+.n8n-name {
+  position: absolute;
+  top: 78px;
+  left: -34px;
+  width: 140px;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.n8n-node-trigger { border-left-color: var(--accent); }
-.n8n-kind { font-size: 0.625rem; color: var(--text-muted); }
-.n8n-name { font-size: 0.75rem; line-height: 1.2; color: var(--text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.n8n-kind {
+  position: absolute;
+  top: 78px;
+  left: -34px;
+  width: 140px;
+  margin-top: 33px;
+  text-align: center;
+  font-size: 0.625rem;
+  line-height: 1.2;
+  color: var(--text-muted);
+}
 .n8n-hint { margin-top: 0.5rem; }
 @media (min-width: 1200px) { .n8n-hint { display: none; } }
