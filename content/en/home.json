@@ -72,10 +72,10 @@
         "title": "AI agent for automated video production",
         "tagline": "From product and character to a finished video: planning, images, clips, voice, and finishing in one queued pipeline.",
         "metric": {
-          "value": "7 queues · 13 stages",
+          "value": "43 videos · 86% success",
           "estimate": false,
-          "scope": true,
-          "label": ""
+          "scope": false,
+          "label": "videos downloaded and jobs succeeded, 15 Oct to 12 Nov 2026"
         }
       }
     ],

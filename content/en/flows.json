@@ -1110,7 +1110,7 @@
   "vsystem": {
    "title": "From character to final video",
    "desc": "Staff prepare the character and products, the system builds the storyboard and the queue, an agent produces the clips, and the video is finished.",
-   "badge": "Built from the system's documentation and code, not an export of a workflow. Clip generation through the agent has not been fully tested in the real video editor.",
+   "badge": "Built from the system's documentation and code, not an export of a workflow. The system has produced 43 real videos (data up to 12 Nov 2026).",
    "steps": 30,
    "stageCount": 6,
    "names": [

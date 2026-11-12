@@ -193,29 +193,29 @@
     ],
     "metrics": [
       {
-        "value": "7 queues",
-        "label": "task queue types, each with its own claim"
+        "value": "43 videos",
+        "label": "videos downloaded from 58 jobs (15 Oct to 12 Nov 2026)"
       },
       {
-        "value": "13 stages",
-        "label": "production stages, character to finishing"
+        "value": "86%",
+        "label": "jobs succeeded among finished ones (43 of 50)"
       },
       {
-        "value": "2,300+",
-        "label": "automated tests passing (scope, run 12 Nov 2026)"
+        "value": "2.5 min",
+        "label": "median from job start to downloaded video (some jobs take far longer)"
       }
     ],
     "system": [
       {
-        "value": "40",
+        "value": "41",
         "label": "tables"
       },
       {
-        "value": "160",
+        "value": "162",
         "label": "functions"
       },
       {
-        "value": "79",
+        "value": "82",
         "label": "access policies"
       },
       {
@@ -234,6 +234,6 @@
     "context": "A production system for short, user-generated-content-style product videos for a team: staff prepare characters and products in a web app, and videos are produced by an agent on a production laptop or by a video model through an API.",
     "problem": "The first prototype called automation workflows straight from the browser, step by step, with no queue, no central approval, and no cost tracking. Producing videos at volume with a consistent character, safe product claims, and controlled spend was not possible that way.",
     "solution": "Work is stored as a queue in the database. Staff build a panel plan, storyboard, and video JSON, then approve; the database refuses to submit when safety conditions are missing. The agent claims tasks with row locking, stops and reports when a human is needed, and retries with backoff. Later stages (clip merging, voice, on-screen text, ambient sound, upscaling) run as their own task queues, and the cost of each process is recorded.",
-    "learning": "Safety rules that live only in the interface are not enough, so approval and submit conditions are enforced in the database. Third-party services have limits (activity flags, quotas, model version retirements), so the agent stops and reports rather than pushing through, with random pacing and bounded retries. Many recent changes were verified against test doubles, so proving them on the real services is the next piece of work."
+    "learning": "Safety rules that live only in the interface are not enough, so approval and submit conditions are enforced in the database. Third-party services have limits (activity flags, quotas, model version retirements), so the agent stops and reports rather than pushing through, with random pacing and bounded retries. The agent path has produced 43 videos, but many recent changes were verified against test doubles, so proving them on the real services is the next piece of work."
   }
 }

@@ -193,29 +193,29 @@
     ],
     "metrics": [
       {
-        "value": "7 antrean",
-        "label": "jenis antrean tugas, masing-masing dengan klaim sendiri"
+        "value": "43 video",
+        "label": "video terunduh dari 58 job (15 Okt sampai 12 Nov 2026)"
       },
       {
-        "value": "13 tahap",
-        "label": "tahap produksi dari karakter sampai penyelesaian"
+        "value": "86%",
+        "label": "job berhasil dari yang sudah berakhir (43 dari 50)"
       },
       {
-        "value": "2.300+",
-        "label": "tes otomatis yang lulus (cakupan, dijalankan 12 Nov 2026)"
+        "value": "2,5 mnt",
+        "label": "median dari job dimulai sampai video terunduh (sebagian job jauh lebih lama)"
       }
     ],
     "system": [
       {
-        "value": "40",
+        "value": "41",
         "label": "tabel"
       },
       {
-        "value": "160",
+        "value": "162",
         "label": "fungsi"
       },
       {
-        "value": "79",
+        "value": "82",
         "label": "kebijakan akses"
       },
       {
@@ -234,6 +234,6 @@
     "context": "Sistem produksi video produk pendek bergaya konten pengguna untuk sebuah tim: staf menyiapkan karakter dan produk di aplikasi web, lalu video dibuat oleh agen di laptop produksi atau oleh model video lewat API.",
     "problem": "Prototipe awal memanggil alur otomasi langsung dari browser, langkah demi langkah, tanpa antrean, tanpa persetujuan terpusat, dan tanpa catatan biaya. Membuat video dalam jumlah banyak dengan karakter yang konsisten, klaim produk yang aman, dan biaya yang terkendali tidak bisa diatur dengan cara itu.",
     "solution": "Pekerjaan disimpan sebagai antrean di database. Staf menyusun rencana panel, storyboard, dan JSON video, lalu menyetujui; database menolak pengiriman bila syarat keselamatan tidak lengkap. Agen mengambil tugas dengan penguncian baris, berhenti dan melapor saat butuh manusia, dan mencoba ulang dengan jeda. Tahap lanjutan (penggabungan klip, suara, teks di layar, suara latar, peningkatan resolusi) berjalan sebagai antrean tugas sendiri, dan biaya tiap proses dicatat.",
-    "learning": "Aturan keselamatan yang hanya ada di antarmuka tidak cukup, jadi persetujuan dan syarat kirim ditegakkan di database. Layanan pihak ketiga punya batas (penandaan aktivitas, kuota, penghentian versi model), sehingga agen berhenti dan melapor, bukan menembus, dengan jeda acak dan percobaan ulang terbatas. Banyak perubahan baru diuji dengan tiruan, jadi pembuktian pada layanan asli adalah pekerjaan berikutnya."
+    "learning": "Aturan keselamatan yang hanya ada di antarmuka tidak cukup, jadi persetujuan dan syarat kirim ditegakkan di database. Layanan pihak ketiga punya batas (penandaan aktivitas, kuota, penghentian versi model), sehingga agen berhenti dan melapor, bukan menembus, dengan jeda acak dan percobaan ulang terbatas. Jalur agen sudah menghasilkan 43 video, tetapi banyak perubahan terbaru diuji dengan tiruan, jadi pembuktiannya pada layanan asli adalah pekerjaan berikutnya."
   }
 }

@@ -1110,7 +1110,7 @@
   "vsystem": {
    "title": "Dari karakter sampai video final",
    "desc": "Staf menyiapkan karakter dan produk, sistem menyusun storyboard dan antrean, agen membuat klip, lalu video diselesaikan.",
-   "badge": "Disusun dari dokumentasi dan kode sistem, bukan ekspor workflow. Pembuatan klip lewat agen belum teruji penuh di editor video asli.",
+   "badge": "Disusun dari dokumentasi dan kode sistem, bukan ekspor workflow. Sistem ini sudah menghasilkan 43 video sungguhan (data hingga 12 Nov 2026).",
    "steps": 30,
    "stageCount": 6,
    "names": [

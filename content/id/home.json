@@ -72,10 +72,10 @@
         "title": "Agen AI untuk otomasi produksi video",
         "tagline": "Dari produk dan karakter ke video jadi: perencanaan, gambar, klip, suara, dan finishing dalam satu jalur antrean.",
         "metric": {
-          "value": "7 antrean · 13 tahap",
+          "value": "43 video · 86% berhasil",
           "estimate": false,
-          "scope": true,
-          "label": ""
+          "scope": false,
+          "label": "video terunduh dan job berhasil, 15 Okt sampai 12 Nov 2026"
         }
       }
     ],
