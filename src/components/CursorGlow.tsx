@@ -86,14 +86,19 @@ export function CursorGlow() {
     document.addEventListener("pointerup", onUp, { passive: true });
     document.documentElement.addEventListener("mouseleave", onLeave);
     window.addEventListener("blur", onLeave);
-    return () => {
+    const teardown = () => {
       cancelAnimationFrame(raf);
+      show(false);
       document.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerdown", onDown);
       document.removeEventListener("pointerup", onUp);
       document.documentElement.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("blur", onLeave);
+      window.removeEventListener("pref-motion-off", teardown);
     };
+    // "animations off" (src/lib/prefs.ts) removes the glow at once
+    window.addEventListener("pref-motion-off", teardown);
+    return teardown;
   }, []);
 
   return (

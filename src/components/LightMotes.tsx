@@ -93,20 +93,28 @@ export function LightMotes() {
       }
       ctx.globalAlpha = 1;
     };
+    const flat = () => /\btheme-(dark|grey|cream)\b/.test(document.documentElement.className);
     const onVisibility = () => {
       if (stopped) return;
-      if (document.hidden) cancelAnimationFrame(raf);
+      if (document.hidden || flat()) cancelAnimationFrame(raf);
       else {
         last = 0;
         raf = requestAnimationFrame(tick);
       }
     };
-    raf = requestAnimationFrame(tick);
+    // visitor preferences (src/lib/prefs.ts): a flat colour theme pauses the dust (it is hidden), "animations off" ends it
+    const onTheme = () => onVisibility();
+    const onMotionOff = () => stop();
+    window.addEventListener("pref-theme", onTheme);
+    window.addEventListener("pref-motion-off", onMotionOff);
+    if (!flat()) raf = requestAnimationFrame(tick);
     window.addEventListener("resize", resize, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      window.removeEventListener("pref-theme", onTheme);
+      window.removeEventListener("pref-motion-off", onMotionOff);
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);

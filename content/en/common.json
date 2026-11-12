@@ -16,6 +16,17 @@
     "label": "01 / BUSINESS & AUTOMATION",
     "sub": "Patrik Andryan · Business Systems & Automation Lead"
   },
+  "display": {
+    "label": "Display",
+    "motionOff": "Turn animations off",
+    "motionOn": "Turn animations on",
+    "motionSystem": "Animations are off through your system setting",
+    "colors": "Page colour",
+    "themeDefault": "Default",
+    "themeDark": "Dark",
+    "themeGrey": "Light grey",
+    "themeCream": "Cream"
+  },
   "intro": {
     "welcome": "WELCOME TO MY PORTFOLIO",
     "hint": "Scroll to enter",

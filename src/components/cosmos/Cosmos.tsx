@@ -7,6 +7,9 @@ import { palettes, type CosmosKey } from "./palettes";
 import type { Renderer } from "./webgl";
 
 const KEYS = Object.keys(palettes) as CosmosKey[];
+
+/** The shader has nothing to show on light pages and on the visitor's flat colour themes. */
+const shaderHidden = () => !!document.querySelector(".light-page") || /\btheme-(dark|grey|cream)\b/.test(document.documentElement.className);
 const TIER_KEY = "cosmos-tier";
 
 /**
@@ -32,7 +35,7 @@ export function Cosmos() {
     let ticking = false;
     let holeSize = 0;
     // Light pages (case studies) cover the background completely: the shader is paused there.
-    let light = false;
+    let light = shaderHidden();
 
     const setTier = (tier: "full" | "lite" | "off") => {
       html.classList.remove("cosmos-full", "cosmos-lite", "cosmos-off");
@@ -97,7 +100,7 @@ export function Cosmos() {
     let disposed = false;
     // The WebGL module is only fetched on the full tier (phones never download it).
     const startWebGL = async () => {
-      if (!html.classList.contains("cosmos-full") || !canvas.current) return;
+      if (!html.classList.contains("cosmos-full") || !canvas.current || html.classList.contains("motion-off")) return;
       const { createRenderer } = await import("./webgl");
       if (disposed || !canvas.current) return;
       renderer = createRenderer(canvas.current, {
@@ -124,7 +127,12 @@ export function Cosmos() {
     document.addEventListener("visibilitychange", onVisibility);
     // the black-hole page transition pauses the shader while it runs (see src/lib/blackHole.ts)
     const onBhStart = () => setLight.current(true);
-    const onBhEnd = () => setLight.current(!!document.querySelector(".light-page"));
+    const onBhEnd = () => setLight.current(shaderHidden());
+    // visitor preferences (src/lib/prefs.ts): a flat colour theme hides the shader; "animations off" removes it
+    const onTheme = () => setLight.current(shaderHidden());
+    const onMotionOff = () => downgrade("off");
+    window.addEventListener("pref-theme", onTheme);
+    window.addEventListener("pref-motion-off", onMotionOff);
     window.addEventListener("bh-start", onBhStart);
     window.addEventListener("bh-end", onBhEnd);
     update();
@@ -137,6 +145,8 @@ export function Cosmos() {
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("bh-start", onBhStart);
       window.removeEventListener("bh-end", onBhEnd);
+      window.removeEventListener("pref-theme", onTheme);
+      window.removeEventListener("pref-motion-off", onMotionOff);
       renderer?.destroy();
     };
   }, []);
@@ -144,7 +154,7 @@ export function Cosmos() {
   // A route change swaps the sections on the page: re-evaluate which mood applies.
   useEffect(() => {
     const id = requestAnimationFrame(() => {
-      setLight.current(!!document.querySelector(".light-page"));
+      setLight.current(shaderHidden());
       refresh.current();
     });
     return () => cancelAnimationFrame(id);

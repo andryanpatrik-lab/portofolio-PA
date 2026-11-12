@@ -237,6 +237,7 @@ Patrik meminta gerak yang lebih hidup dan bertema luar angkasa (nebula, ledakan,
 - **Transisi lubang hitam dan halaman terang (M12, disetujui Patrik)**: masuk ke studi kasus (klik kartu atau "Proyek berikutnya") menyedot halaman lama ke lubang hitam, lalu halaman studi kasus tampil berlatar terang; kembali ke beranda tetap gelap dengan morph kartu. Intro beranda tanpa navbar (muncul setelah intro) dan berisi sapaan "WELCOME TO MY PORTFOLIO" yang dirakit dari debu.
 - **Latar bergerak halaman terang (M13, disetujui Patrik)**: orb pastel yang melayang dan berganti warna per section, ditambah debu emas melayang di desktop; transisi masuk studi kasus dibangun ulang dengan tirai dan cakram (tanpa kilatan putih sebelum lubang hitam).
 - **Kembali dari studi kasus (M14, disetujui Patrik)**: animasi lubang putih (kebalikan lubang hitam): halaman terang menyusut, cahaya memancar sampai layar putih, lalu beranda gelap muncul dari cahaya; berlaku untuk tombol Kembali dan Back browser.
+- **Panel Tampilan (M16, disetujui Patrik)**: tombol matikan animasi (menghentikan semua efek langsung) dan pilihan warna satu situs (Bawaan, Gelap, Abu-abu muda, Krem) di navbar; disimpan di perangkat pengunjung.
 - **Berikutnya (M9)**: ledakan nebula saat ganti section, kartu 3D saat hover, audit.
 
 ## 10. Komponen

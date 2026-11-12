@@ -1,3 +1,4 @@
+import { DisplayControls } from "../DisplayControls";
 import type { Dictionary } from "@/lib/i18n";
 
 /**
@@ -13,6 +14,10 @@ export function Intro({ dict }: { dict: Dictionary }) {
         <div aria-hidden="true" className="intro-layer intro-dust intro-dust-a" data-intro="dust-a" />
         <div aria-hidden="true" className="intro-layer intro-dust intro-dust-b" data-intro="dust-b" />
         <div aria-hidden="true" className="intro-portal" data-intro="portal" />
+        {/* the header is hidden during the intro, so the display controls live here too */}
+        <div className="intro-controls" data-intro="controls">
+          <DisplayControls text={dict.display} />
+        </div>
         <a href="#hero" className="intro-skip t-label" data-intro="skip">
           {dict.intro.skip}
         </a>

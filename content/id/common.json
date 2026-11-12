@@ -16,6 +16,17 @@
     "label": "01 / BISNIS & OTOMASI",
     "sub": "Patrik Andryan · Business Systems & Automation Lead"
   },
+  "display": {
+    "label": "Tampilan",
+    "motionOff": "Matikan animasi",
+    "motionOn": "Hidupkan animasi",
+    "motionSystem": "Animasi dimatikan oleh pengaturan sistem Anda",
+    "colors": "Warna halaman",
+    "themeDefault": "Bawaan",
+    "themeDark": "Gelap",
+    "themeGrey": "Abu-abu muda",
+    "themeCream": "Krem"
+  },
   "intro": {
     "welcome": "SELAMAT DATANG DI PORTOFOLIO SAYA",
     "hint": "Gulir untuk masuk",

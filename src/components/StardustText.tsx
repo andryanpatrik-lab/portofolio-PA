@@ -252,7 +252,16 @@ export function DustController() {
       const inView = el.getBoundingClientRect().top < window.innerHeight * 1.12;
       return attach(el, tier, inView ? order++ : null);
     });
-    return () => cleanups.forEach((c) => c());
+    // "animations off": drop every effect now, the text is back to normal
+    const stopAll = () => {
+      cleanups.forEach((c) => c());
+      cleanups.length = 0;
+    };
+    window.addEventListener("pref-motion-off", stopAll);
+    return () => {
+      window.removeEventListener("pref-motion-off", stopAll);
+      stopAll();
+    };
   }, [pathname]);
   return null;
 }

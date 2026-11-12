@@ -58,7 +58,8 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - [ ] Uji latar ruang angkasa di HP nyata (bagus atau patah-patah?) lewat branch deploy, dan di Safari/Firefox desktop
 - [ ] Konfirmasi nama lengkap "Patrik Andryan" di header sudah sesuai
 
-- [ ] Konfirmasi teks intro baru (M10): `intro.hint` ("Gulir untuk masuk" / "Scroll to enter") dan `intro.skip` ("Lewati intro" / "Skip intro") di `content/{id,en}/common.json`. Teks sementara yang netral.
+- [x] Konfirmasi teks intro baru (M10) (disetujui Patrik): `intro.hint` ("Gulir untuk masuk" / "Scroll to enter") dan `intro.skip` ("Lewati intro" / "Skip intro") di `content/{id,en}/common.json`. Teks sementara yang netral.
 - [ ] Konfirmasi metrik 1 (M11): angka "10" dengan satuan di samping angka ("10 years" / "10 tahun") dan keterangan "across 4 industries" / "lintas 4 industri".
-- [ ] Konfirmasi teks sapaan intro (M12): `intro.welcome` EN "WELCOME TO MY PORTFOLIO", ID "SELAMAT DATANG DI PORTOFOLIO SAYA" (terjemahan sementara).
+- [x] Konfirmasi teks sapaan intro (M12) (disetujui Patrik): `intro.welcome` EN "WELCOME TO MY PORTFOLIO", ID "SELAMAT DATANG DI PORTOFOLIO SAYA" (terjemahan sementara).
 - [ ] Tinjau tampilan terang halaman studi kasus (M12) di perangkat sungguhan, termasuk kontras teks emas gelap.
+- [ ] Konfirmasi teks panel Tampilan (M16): `display.*` di `content/{id,en}/common.json` (Matikan/Hidupkan animasi, Warna halaman, Bawaan, Gelap, Abu-abu muda, Krem). Teks sementara yang netral.

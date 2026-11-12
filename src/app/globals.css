@@ -12,6 +12,9 @@
   --accent: #eab308;
   --accent-dim: #ca8a04;
   --accent-glow: rgba(234, 179, 8, 0.12);
+  --nav-bg: rgba(10, 10, 10, 0.9);
+  --nav-line: rgba(255, 255, 255, 0.06);
+  --bh-light: #e9e8e6;
 
   --success: #4ade80;
   --error: #f87171;
@@ -195,7 +198,9 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
 .intro-on .intro { display: block; position: relative; height: 260vh; margin-bottom: -45vh; }
 @media (max-width: 1023px), (pointer: coarse) { .intro-on .intro { height: 190vh; margin-bottom: -35vh; } }
 .intro-stick { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; place-items: center; pointer-events: none; }
-.intro-stick a { pointer-events: auto; }
+.intro-stick a, .intro-stick button, .intro-stick label, .intro-stick fieldset { pointer-events: auto; }
+.intro-controls { position: absolute; top: 1.25rem; right: var(--margin); z-index: 5; }
+.intro-controls .dc-panel { right: 0; }
 /* With the entry intro the home header is a fixed bar: it leaves during the flight and returns after it. */
 .intro-on header[data-nav] {
   position: fixed;
@@ -215,8 +220,8 @@ html:not(.motion-active).hero-pending [data-hero]:not([data-hero="title"]) { ani
   width: 100vw;
   transform: translateX(-50%);
   /* nearly opaque: page text scrolling underneath must not show through the menu (phones, tablets) */
-  background: rgba(10, 10, 10, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-line);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   pointer-events: none;
@@ -413,6 +418,75 @@ html:has(.light-page) .cosmos-lite-wrap { display: none !important; }
 html:has(.light-page) .cursor-core { background: #3d2a00; box-shadow: 0 0 6px rgba(138, 97, 0, 0.6); }
 html:has(.light-page) .cursor-glow { background: radial-gradient(circle, rgba(138, 97, 0, 0.3) 0%, rgba(138, 97, 0, 0.1) 38%, transparent 70%); }
 
+/* Visitor colour themes (M16, "Tampilan" panel): one flat colour for the whole site, no space background, no intro. The token sets
+   also override .light-page so case studies follow the chosen colour. Default = no class (dark home, light grey case studies). */
+html.theme-grey, html.theme-grey .light-page {
+  --bg-deep: #e9e8e6; --bg: #f3f2f0; --surface: #dedcda; --border: #c4c1bd;
+  --text: #1c1917; --text-2: #44403c; --text-muted: #57534e;
+  --accent: #7a5600; --accent-dim: #5e4200; --accent-glow: rgba(122, 86, 0, 0.1);
+  --nav-bg: rgba(233, 232, 230, 0.92); --nav-line: rgba(0, 0, 0, 0.08); --bh-light: #e9e8e6;
+  color-scheme: light;
+}
+html.theme-cream, html.theme-cream .light-page {
+  --bg-deep: #f1ebdd; --bg: #f8f4ea; --surface: #e6dfce; --border: #cfc6b0;
+  --text: #1f1b14; --text-2: #4a4337; --text-muted: #5d5546;
+  --accent: #7a5600; --accent-dim: #5e4200; --accent-glow: rgba(122, 86, 0, 0.1);
+  --nav-bg: rgba(241, 235, 221, 0.92); --nav-line: rgba(0, 0, 0, 0.08); --bh-light: #f1ebdd;
+  color-scheme: light;
+}
+html.theme-dark, html.theme-dark .light-page {
+  --bg-deep: #0c0a09; --bg: #1c1917; --surface: #292524; --border: #44403c;
+  --text: #fafaf9; --text-2: #d6d3d1; --text-muted: #a8a29e;
+  --accent: #eab308; --accent-dim: #ca8a04; --accent-glow: rgba(234, 179, 8, 0.12);
+  --nav-bg: rgba(10, 10, 10, 0.9); --nav-line: rgba(255, 255, 255, 0.06); --bh-light: #e9e8e6;
+  color-scheme: dark;
+}
+html.theme-dark, html.theme-dark:has(.light-page) { background: #0c0a09; }
+html.theme-grey, html.theme-grey:has(.light-page) { background: #e9e8e6; }
+html.theme-cream, html.theme-cream:has(.light-page) { background: #f1ebdd; }
+:is(html.theme-dark, html.theme-grey, html.theme-cream) :is(.cosmos-canvas, .cosmos-lite-wrap, .cosmos-light-wrap, .light-motes, .hero-glow) { display: none !important; }
+html.theme-grey .cursor-core, html.theme-cream .cursor-core { background: #3d2a00; box-shadow: 0 0 6px rgba(122, 86, 0, 0.6); }
+html.theme-grey .cursor-glow, html.theme-cream .cursor-glow { background: radial-gradient(circle, rgba(122, 86, 0, 0.3) 0%, rgba(122, 86, 0, 0.1) 38%, transparent 70%); }
+html.theme-dark:has(.light-page) .cursor-core { background: #fff6dc; box-shadow: 0 0 6px rgba(250, 204, 21, 0.9); }
+html.theme-dark:has(.light-page) .cursor-glow { background: radial-gradient(circle, rgba(250, 204, 21, 0.5) 0%, rgba(250, 204, 21, 0.16) 38%, transparent 70%); }
+
+/* "Tampilan" controls: animation switch and colour picker in the header */
+.dc { display: flex; align-items: center; gap: 4px; }
+.dc-btn { position: relative; display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: 9999px; color: var(--text-2); }
+.dc-btn::after { content: ""; position: absolute; inset: -8px; }
+.dc-btn[aria-pressed="true"] { color: var(--accent); }
+.dc-btn:disabled { opacity: 0.55; }
+@media (hover: hover) and (pointer: fine) { .dc-btn:hover { color: var(--text); background: color-mix(in srgb, var(--text) 10%, transparent); } }
+.dc-panel {
+  position: absolute;
+  right: var(--margin);
+  top: calc(100% + 8px);
+  z-index: 50;
+  width: min(17rem, calc(100vw - 2rem));
+  margin: 0;
+  padding: 1rem;
+  display: grid;
+  gap: 0.25rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  animation: dc-in 160ms var(--ease-out) both;
+}
+@keyframes dc-in { from { opacity: 0; transform: translateY(-4px); } }
+.dc-legend { padding: 0 0 0.5rem; color: var(--text-muted); }
+.dc-opt { position: relative; display: flex; min-height: 44px; align-items: center; gap: 0.75rem; padding: 0 0.5rem; border-radius: 0.75rem; cursor: pointer; }
+.dc-opt input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.dc-chip { width: 24px; height: 24px; flex: none; border-radius: 9999px; border: 1px solid var(--border); }
+.dc-opt:has(input:checked) { background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.dc-opt:has(input:checked) .dc-chip { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dc-opt:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* "Matikan animasi": nothing moves any more (the head script and prefs.ts also drop the effect classes) */
+html.motion-off *, html.motion-off *::before, html.motion-off *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+html.motion-off .cursor-glow, html.motion-off .cursor-core { display: none !important; }
+
 /* Light-page background (M13): pastel orbs in two groups that drift against each other; the section under the screen centre
    picks the mood (data-cosmos, same mechanism as the dark pages) and the layers crossfade by opacity. Pastels keep the
    background bright (text contrast stays well above 4.5:1). Fades in after the page transition. Only transform/opacity. */
@@ -472,8 +546,8 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .bh-nav .bh-curtain,
 .bh-nav .bh-portal { display: block; }
 /* leaving a case study: the same elements, in light */
-.bh-white .bh-curtain { background: #e9e8e6; }
-.bh-white .bh-portal { background: radial-gradient(circle closest-side, #e9e8e6 0 86%, rgba(234, 179, 8, 0.55) 93%, transparent 100%); }
+.bh-white .bh-curtain { background: var(--bh-light); }
+.bh-white .bh-portal { background: radial-gradient(circle closest-side, var(--bh-light) 0 86%, rgba(234, 179, 8, 0.55) 93%, transparent 100%); }
 /* while it runs: no second click, and the navigation's own View Transition stays invisible */
 .bh-nav body { pointer-events: none; }
 .bh-nav::view-transition { display: none; }

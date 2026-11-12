@@ -29,7 +29,8 @@ export function IntroFlight() {
     const portal = q("portal");
     const copy = q("copy");
     const skip = q("skip");
-    if (!stick || !stars || !dustA || !dustB || !portal || !copy || !skip) return;
+    const controls = q("controls");
+    if (!stick || !stars || !dustA || !dustB || !portal || !copy || !skip || !controls) return;
 
     const markSeen = () => {
       try {
@@ -56,14 +57,35 @@ export function IntroFlight() {
       // No header during the intro: it comes in (fade and slide, see globals.css) once the hero is reached.
       root.classList.toggle("intro-nav-hidden", p < 0.9);
       if (p >= 0.9) root.classList.add("intro-passed");
+      // the header (with its own display controls) takes over at the end of the intro: no second, hidden copy in the way
+      controls.style.visibility = p >= 0.9 ? "hidden" : "";
       const done = p >= 0.98;
       finished = done;
       skip.style.visibility = done ? "hidden" : "";
       if (done) markSeen();
     };
     apply(0);
+    // Visitor preferences (src/lib/prefs.ts): "animations off" or a flat colour theme drop the entry intro. The layout collapses,
+    // so the scroll position is corrected (inside the intro: back to the top, where the hero now is).
+    const dismiss = () => {
+      const before = document.documentElement.scrollHeight;
+      const sy = window.scrollY;
+      const inside = sy < section.offsetHeight * 0.85;
+      stop();
+      root.classList.remove("intro-on", "intro-nav-hidden");
+      root.classList.add("intro-passed");
+      markSeen();
+      window.scrollTo(0, inside ? 0 : Math.max(0, sy - (before - document.documentElement.scrollHeight)));
+    };
+    window.addEventListener("pref-motion-off", dismiss);
+    const onTheme = () => {
+      if (/\btheme-(dark|grey|cream)\b/.test(root.className)) dismiss();
+    };
+    window.addEventListener("pref-theme", onTheme);
     const stop = scroll((progress: number) => apply(clamp(progress)), { target: section, offset: ["start start", "end end"] });
     return () => {
+      window.removeEventListener("pref-motion-off", dismiss);
+      window.removeEventListener("pref-theme", onTheme);
       root.classList.remove("intro-nav-hidden");
       stop();
       skip.removeEventListener("click", markSeen);

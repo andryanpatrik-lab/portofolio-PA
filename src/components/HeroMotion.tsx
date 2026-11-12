@@ -31,7 +31,8 @@ export function HeroMotion() {
     if (introOn) q("nav")?.removeAttribute("data-hero");
     let io: IntersectionObserver | null = null;
     const run = () => {
-      if (cancelled) return;
+      // "animations off" (src/lib/prefs.ts) can arrive while the sequence is waiting for fonts or for the hero to come into view
+      if (cancelled || root.classList.contains("motion-off")) return;
       started = true;
       try {
         sessionStorage.setItem(HERO_PLAYED_KEY, "1");
@@ -66,6 +67,7 @@ export function HeroMotion() {
           ([e]) => {
             if (!e.isIntersecting) return;
             io?.disconnect();
+            if (root.classList.contains("motion-off")) return;
             finish(playHero());
           },
           { rootMargin: "0px 0px -30% 0px" },
