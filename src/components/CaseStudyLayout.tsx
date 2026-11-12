@@ -1,8 +1,11 @@
 import { ViewTransition } from "react";
 import { BackLink } from "./BackLink";
 import { BlackHoleLink } from "./BlackHoleLink";
+import { Button } from "./Button";
 import { FlowDiagram } from "./FlowDiagram";
+import { N8nCanvas } from "./N8nCanvas";
 import { Metric } from "./Metric";
+import { n8nSkeletons } from "@/lib/n8nSkeletons";
 import type { CaseStudyData, Dictionary, Locale } from "@/lib/i18n";
 
 type Props = {
@@ -91,6 +94,24 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
                     <div className="mt-8">
                       <FlowDiagram variant="full" steps={w.flow} />
                     </div>
+                    {w.canvases?.map((c) => {
+                      const skeleton = n8nSkeletons[c.file];
+                      if (!skeleton) return null;
+                      return (
+                        <div key={c.file} className="mt-10">
+                          <p className="t-label text-text-muted">{ui.canvas}: {c.caption}</p>
+                          <div className="mt-4">
+                            <N8nCanvas data={skeleton} label={`${ui.canvas}: ${c.caption}`} hint={ui.scrollHint} />
+                          </div>
+                          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+                            <Button variant="ghost" href={`/n8n/${c.file}.json`} download>
+                              {ui.downloadSkeleton}
+                            </Button>
+                            <span className="t-caption">{ui.skeletonNote}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </details>
                 </li>
               ))}

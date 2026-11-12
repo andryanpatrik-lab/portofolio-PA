@@ -177,6 +177,12 @@
           {
             "label": "Kirim ke penerima"
           }
+        ],
+        "canvases": [
+          {
+            "file": "daily-report",
+            "caption": "laporan harian, 13 node"
+          }
         ]
       },
       {
@@ -201,6 +207,16 @@
           },
           {
             "label": "Simpan dan kirim peringatan"
+          }
+        ],
+        "canvases": [
+          {
+            "file": "health-monitor",
+            "caption": "pemantau tiap 15 menit, 25 node"
+          },
+          {
+            "file": "error-notifier",
+            "caption": "pemberi tahu error, 5 node"
           }
         ]
       },
@@ -245,6 +261,12 @@
           },
           {
             "label": "Kontak yang dibebaskan menerima sambutan"
+          }
+        ],
+        "canvases": [
+          {
+            "file": "spam-notification",
+            "caption": "webhook notifikasi peninjauan, 7 node"
           }
         ]
       }

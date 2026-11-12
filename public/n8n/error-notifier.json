@@ -1,0 +1,126 @@
+{
+  "name": "Error notification (skeleton)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a61b2a50-559d-5206-9258-091210d600d9",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        816,
+        192
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "bc6930b7-3dc0-5fbc-937d-d6e0b429440e",
+      "name": "Build error message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1040,
+        192
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a45b2eff-7fc8-5c0d-9b09-44a71ea7f4cc",
+      "name": "Send error notification",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1712,
+        192
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "4207601b-0389-54a0-9649-41676f98aac2",
+      "name": "Read recipient settings",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1264,
+        192
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "24676365-6f69-586c-a09e-fd8f0f95ffce",
+      "name": "Choose recipients",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1488,
+        192
+      ]
+    },
+    {
+      "parameters": {
+        "content": "Structure only. Parameters, credentials, and code were removed.",
+        "width": 360,
+        "height": 80
+      },
+      "id": "4e15ce16-bcc2-5db4-baad-ce44653ea2fe",
+      "name": "Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        816,
+        -8
+      ]
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Build error message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build error message": {
+      "main": [
+        [
+          {
+            "node": "Read recipient settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read recipient settings": {
+      "main": [
+        [
+          {
+            "node": "Choose recipients",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Choose recipients": {
+      "main": [
+        [
+          {
+            "node": "Send error notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
+}

@@ -1,0 +1,311 @@
+{
+  "name": "Daily AI report (skeleton)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "id": "909aa40d-da54-5520-92e5-bef3e0f17dc1",
+      "name": "Schedule: every morning 09:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "485115e8-9557-5df8-920a-3de4d58f70e2",
+      "name": "Set report dates",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "df60b323-5575-50fe-a93f-7faa3c4a112a",
+      "name": "Count metrics: yesterday",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        448,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "656e898d-71d3-513e-b556-89abdb6af3e6",
+      "name": "Count metrics: day before",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        672,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "d83c40c7-de54-5e2f-a776-6141ce1dcdb9",
+      "name": "Fetch transcripts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a58f4394-1e06-5b45-b6d9-14ae41461e08",
+      "name": "Build AI prompt",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "09221c2c-028a-5d6a-bf44-9cbbdfad2219",
+      "name": "AI chat analysis",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1568,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "74b15e20-3389-5c8b-8043-d8586fc5435b",
+      "name": "Read recipient settings",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        1792,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "25a57581-cd6e-5846-a39a-a4c73731f75e",
+      "name": "Compose report",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2016,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "6294478b-b142-58f4-9972-0f69665d36a8",
+      "name": "Store report",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2240,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "8cc2a72c-6651-524d-b635-e9c3ea20a999",
+      "name": "Choose recipients",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2464,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "148b7777-7fbb-58e3-8df6-7e40655ee343",
+      "name": "Send report",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2688,
+        304
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "12e23b36-5ee5-5ee0-9761-9a15aed39255",
+      "name": "Count customer intents",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        896,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "content": "Structure only. Parameters, credentials, and code were removed.",
+        "width": 360,
+        "height": 80
+      },
+      "id": "078ecb34-18de-534d-b831-58ffc48457a7",
+      "name": "Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        104
+      ]
+    }
+  ],
+  "connections": {
+    "Set report dates": {
+      "main": [
+        [
+          {
+            "node": "Count metrics: yesterday",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count metrics: yesterday": {
+      "main": [
+        [
+          {
+            "node": "Count metrics: day before",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch transcripts": {
+      "main": [
+        [
+          {
+            "node": "Build AI prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build AI prompt": {
+      "main": [
+        [
+          {
+            "node": "AI chat analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI chat analysis": {
+      "main": [
+        [
+          {
+            "node": "Read recipient settings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read recipient settings": {
+      "main": [
+        [
+          {
+            "node": "Compose report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compose report": {
+      "main": [
+        [
+          {
+            "node": "Store report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Store report": {
+      "main": [
+        [
+          {
+            "node": "Choose recipients",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Choose recipients": {
+      "main": [
+        [
+          {
+            "node": "Send report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule: every morning 09:00": {
+      "main": [
+        [
+          {
+            "node": "Set report dates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count metrics: day before": {
+      "main": [
+        [
+          {
+            "node": "Count customer intents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Count customer intents": {
+      "main": [
+        [
+          {
+            "node": "Fetch transcripts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
+}

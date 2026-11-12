@@ -297,6 +297,10 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 
 6 workflow generik (penerimaan dan jawaban pesan, perintah staf dan resolve, laporan harian AI, pemantau kesehatan, kendali hidup/mati dari chat, pengisian basis pengetahuan) ditulis dari urutan node file ekspor workflow Patrik; angka sistem kartu 02: 15 workflow aktif, ±2.000 node, 3 kanal pesan, 38 tabel, 39 fungsi, 48 kebijakan akses. Alur ditulis dari struktur, bukan dari menjalankan workflow.
 
+### 5.z Kanvas n8n dan kerangka unduhan (M26, draf `[KONFIRMASI]`)
+
+Empat workflow kartu 02 (laporan harian 13 node, pemantau kesehatan 25 node, pemberi tahu error 5 node, notifikasi peninjauan webhook 7 node) tampil sebagai kanvas n8n tiruan dan bisa diunduh sebagai kerangka `.json` di `public/n8n/`. Kerangka hanya memuat jenis node, posisi, koneksi, dan nama generik; tanpa parameter, kode, kredensial, atau alamat. Patrik menyatakan berhak menampilkan struktur ini.
+
 ## 6. Tentang
 
 | Field | ID | EN |

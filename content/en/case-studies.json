@@ -177,6 +177,12 @@
           {
             "label": "Send to recipients"
           }
+        ],
+        "canvases": [
+          {
+            "file": "daily-report",
+            "caption": "daily report, 13 nodes"
+          }
         ]
       },
       {
@@ -201,6 +207,16 @@
           },
           {
             "label": "Store and send the alert"
+          }
+        ],
+        "canvases": [
+          {
+            "file": "health-monitor",
+            "caption": "15-minute health monitor, 25 nodes"
+          },
+          {
+            "file": "error-notifier",
+            "caption": "error notification, 5 nodes"
           }
         ]
       },
@@ -245,6 +261,12 @@
           },
           {
             "label": "Cleared contacts receive a welcome"
+          }
+        ],
+        "canvases": [
+          {
+            "file": "spam-notification",
+            "caption": "review notification webhook, 7 nodes"
           }
         ]
       }

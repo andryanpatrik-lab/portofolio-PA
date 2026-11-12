@@ -48,7 +48,11 @@
     "estimate": "estimate",
     "workflows": "Workflows built",
     "trigger": "Trigger",
-    "system": "System structure"
+    "system": "System structure",
+    "canvas": "n8n canvas",
+    "downloadSkeleton": "Download skeleton (.json)",
+    "skeletonNote": "Structure only: no parameters, credentials, or code.",
+    "scrollHint": "Scroll sideways to see the whole canvas."
   },
   "skipLink": "Skip to content",
   "navLabel": "Primary navigation",

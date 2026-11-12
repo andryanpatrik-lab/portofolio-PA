@@ -48,7 +48,11 @@
     "estimate": "perkiraan",
     "workflows": "Workflow yang dibangun",
     "trigger": "Pemicu",
-    "system": "Struktur sistem"
+    "system": "Struktur sistem",
+    "canvas": "Kanvas n8n",
+    "downloadSkeleton": "Unduh kerangka (.json)",
+    "skeletonNote": "Hanya struktur: tanpa parameter, kredensial, atau kode.",
+    "scrollHint": "Geser ke samping untuk melihat seluruh kanvas."
   },
   "skipLink": "Lewati ke konten",
   "navLabel": "Navigasi utama",

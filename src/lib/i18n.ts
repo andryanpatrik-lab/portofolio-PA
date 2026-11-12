@@ -42,7 +42,7 @@ export type CaseStudyData = {
   flow: { label: string; note?: string }[];
   metrics: { value: string; label?: string; estimate?: boolean }[];
   learning?: string;
-  workflows?: { name: string; trigger: string; summary: string; flow: { label: string; note?: string }[] }[];
+  workflows?: { name: string; trigger: string; summary: string; flow: { label: string; note?: string }[]; canvases?: { file: string; caption: string }[] }[];
   system?: { value: string; label: string }[];
 };
 
