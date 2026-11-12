@@ -357,3 +357,6 @@ Tautan:
 - [ ] Kontak dan tautan
 - [ ] Berkas CV PDF baru "Business Systems & Automation Lead", tanpa nomor telepon
 - [ ] Cek akhir: pencarian teks untuk memastikan tidak ada nama perusahaan/klien/kreator
+
+### 5.zy Penampil alur (M29, draf `[KONFIRMASI]`)
+Teks ada di `content/{id,en}/flows.json` (`ui`, judul alur, nama langkah, tahap, skenario) dan `common.json` (`case.explore*`). Struktur (posisi, sambungan, jalur) di `content/flows/*.json`. Nama layanan pihak ketiga diganti istilah umum (API pesan, database, cache); nama kanal umum boleh. Terjemahan Inggris adalah hasil saya dan perlu dicek Patrik.

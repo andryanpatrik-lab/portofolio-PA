@@ -277,7 +277,8 @@
     "overview": {
       "file": "message-assistant-overview",
       "caption": "asisten pesan dari awal sampai akhir (12 node)"
-    }
+    },
+    "explorer": true
   },
   "brand-intelligence": {
     "year": "2026",

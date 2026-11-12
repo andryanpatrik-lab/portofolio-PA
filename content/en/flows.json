@@ -1,0 +1,500 @@
+{
+ "ui": {
+  "diagram": "Workflow diagram",
+  "yes": "yes",
+  "no": "no",
+  "scenarios": "Choose a scenario",
+  "step": "Step",
+  "stepOf": "Step {n} of {total}",
+  "zoomOut": "Zoom out",
+  "zoomIn": "Zoom in",
+  "fit": "All",
+  "fitLabel": "Show the whole flow",
+  "play": "Play",
+  "pause": "Pause",
+  "replay": "Replay",
+  "follow": "Follow path",
+  "speed": "Speed",
+  "motionOff": "Animation is off. Use the slider or arrow keys to step.",
+  "hint": "Drag to pan, Ctrl or Cmd + wheel to zoom.",
+  "pickFlow": "Choose a flow",
+  "openFull": "Open full screen",
+  "loading": "Loading the flow diagram…",
+  "noScript": "The interactive diagram needs JavaScript. Flow summary:",
+  "steps": "{n} steps in {s} stages",
+  "kinds": {
+   "trigger": "Trigger",
+   "code": "Process data",
+   "decision": "Branch",
+   "data": "Read / write data",
+   "http": "Call another service",
+   "merge": "Merge",
+   "wait": "Wait",
+   "stop": "Stop point",
+   "message": "Send message / reply",
+   "subflow": "Call another flow"
+  }
+ },
+ "order": [
+  "whatsapp",
+  "staff",
+  "health",
+  "daily",
+  "error"
+ ],
+ "flows": {
+  "whatsapp": {
+   "title": "Journey of one WhatsApp message",
+   "desc": "From an incoming customer message to the reply being sent: duplicate check, spam check, conversation state, complaints, and escalation to staff.",
+   "steps": 127,
+   "stageCount": 10,
+   "names": [
+    "Incoming WhatsApp message",
+    "Extract the message",
+    "Read the holiday list",
+    "Check if the message was already logged",
+    "Make sure holiday data is ready",
+    "Already processed?",
+    "Stop: duplicate message",
+    "Mark message as processed",
+    "Restore the message",
+    "Record latest message time",
+    "Wait for the customer to finish typing",
+    "Fetch latest message time",
+    "Is this the latest message?",
+    "Restore the message",
+    "Stop: a newer message exists",
+    "Read staff number list",
+    "Check staff number",
+    "Recognise block command from staff",
+    "Block command?",
+    "Read block list (review)",
+    "Is the sender staff?",
+    "Pick the number under review",
+    "Stop: staff message ignored",
+    "Read block list",
+    "Can the decision be applied?",
+    "Check if the number is blocked",
+    "Update block status",
+    "Number blocked?",
+    "Compose reply for the reviewer",
+    "Stop: number blocked",
+    "Read customer history",
+    "Read bot settings",
+    "Read ticket list",
+    "Mark message as read",
+    "Show “typing” early",
+    "Reply to the reviewer",
+    "Merge data before the checks",
+    "Notify the customer?",
+    "Check new or returning customer",
+    "Send a welcome to a number cleared as not spam",
+    "New customer?",
+    "Done: block command",
+    "AI assesses the message",
+    "Read the AI assessment",
+    "Spam?",
+    "Add to block list",
+    "Merge check results",
+    "Compose notice for a block candidate",
+    "Restore the message",
+    "Notify the reviewer",
+    "Build conversation state",
+    "Fetch notification message ID",
+    "Check whether the bot is paused",
+    "Store notification message ID",
+    "Conversation handled by staff?",
+    "Stop: spam detected",
+    "Stop: staff is handling it",
+    "Read bot settings",
+    "Check for requests outside the menu",
+    "Outside the menu?",
+    "Route by category",
+    "Route: general menu",
+    "Collect customer feedback",
+    "Receive the customer rating",
+    "Read staff list",
+    "Store the rating",
+    "Check numbers claiming to be staff",
+    "Receive the complaint",
+    "Restore data",
+    "Complaint ready to send?",
+    "Create complaint ticket",
+    "Compose complaint reply",
+    "New ticket?",
+    "Compose ticket email",
+    "Send ticket email",
+    "Log email status",
+    "Compose notice for the owner",
+    "Confirm customer name",
+    "Is there an owner?",
+    "Need AI to read the name?",
+    "Notify the owner",
+    "Route: seller",
+    "Show main menu",
+    "Show platform menu",
+    "AI extracts the name",
+    "Back to menu",
+    "Show complaint menu",
+    "Show seller service menu",
+    "Pick the recipient staff from the database",
+    "Read the name extraction result",
+    "Wait for the customer to type START",
+    "Ask how the customer found us",
+    "Needs staff handling?",
+    "Restore data",
+    "Compose notice for staff",
+    "Compute delay before notifying staff",
+    "Delay before notifying staff",
+    "Show “typing”",
+    "Typing effect",
+    "Send WhatsApp to staff",
+    "Restore data",
+    "Restore ticket data",
+    "Store ticket",
+    "Mark conversation as stuck",
+    "Merge data for storing",
+    "Restore conversation state",
+    "Customer history exists?",
+    "Update customer history",
+    "Store new customer",
+    "Restore data for logging",
+    "Log the bot's decision",
+    "Compose the final reply",
+    "Compute typing delay",
+    "Conversation stuck?",
+    "Delay before replying",
+    "Log stuck conversation",
+    "Handed over to staff?",
+    "Typing effect",
+    "Compose stuck-conversation notice",
+    "Re-check latest message time",
+    "Notify the manager: stuck conversation",
+    "Still the latest message?",
+    "Send reply to the customer",
+    "Prepare the bot log",
+    "Store conversation in the database",
+    "Stop: message expired",
+    "Done"
+   ],
+   "stages": [
+    {
+     "short": "Incoming message",
+     "title": "Incoming message and duplicate check",
+     "desc": "The bot receives the WhatsApp message, reads its content, and makes sure the same message is not processed twice."
+    },
+    {
+     "short": "Wait for typing",
+     "title": "Waiting for the customer to finish typing",
+     "desc": "The bot merges rapid-fire messages and only processes the latest one."
+    },
+    {
+     "short": "Check sender",
+     "title": "Who is the sender?",
+     "desc": "The bot checks whether the sender is staff (including block commands) or a blocked number."
+    },
+    {
+     "short": "Spam check",
+     "title": "Spam check and new customers",
+     "desc": "AI assesses the content of a new customer's message. Spam is stopped and the number is proposed for the block list."
+    },
+    {
+     "short": "Conversation state",
+     "title": "Conversation state",
+     "desc": "The bot builds the conversation state and checks whether staff is already handling it."
+    },
+    {
+     "short": "Compose answer",
+     "title": "Deciding the answer",
+     "desc": "The bot routes the message to the right menu and prepares the reply."
+    },
+    {
+     "short": "Complaints",
+     "title": "Complaints and other requests",
+     "desc": "Messages outside the menu are logged as tickets, the email is sent, and the owner is notified."
+    },
+    {
+     "short": "Notify staff",
+     "title": "Notify staff when needed",
+     "desc": "If human help is needed, the bot composes a notice and sends a WhatsApp notification to staff."
+    },
+    {
+     "short": "Store and log",
+     "title": "Store and log",
+     "desc": "Conversation history and decision logs are stored in the database."
+    },
+    {
+     "short": "Reply to customer",
+     "title": "Reply to the customer",
+     "desc": "The bot waits a moment to feel natural, re-checks, then sends the reply."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "A normal message is answered by the bot",
+     "desc": "Main path: the message passes every check and is answered automatically."
+    },
+    {
+     "title": "Duplicate message",
+     "desc": "WhatsApp sometimes delivers the same notification twice. The bot recognises it and stops right away."
+    },
+    {
+     "title": "Spam message",
+     "desc": "AI judges the message as spam, the number is proposed for the block list, and the bot stays silent."
+    },
+    {
+     "title": "Number already blocked",
+     "desc": "A number already on the block list is not answered at all."
+    },
+    {
+     "title": "Message from staff",
+     "desc": "If the sender is staff, the bot ignores the message (except block commands)."
+    },
+    {
+     "title": "Staff is handling it",
+     "desc": "While staff hold the conversation, the bot stops and does not answer."
+    },
+    {
+     "title": "Handed over to staff",
+     "desc": "The bot prepares a notice, staff are notified over WhatsApp, and the customer receives a reply."
+    },
+    {
+     "title": "Complaint or other request",
+     "desc": "A message outside the menu becomes a complaint ticket, the email is sent, and the owner is notified."
+    }
+   ]
+  },
+  "staff": {
+   "title": "Staff commands and tickets",
+   "desc": "Staff manage tickets over WhatsApp: view the list, mark tickets resolved, or request and approve “resolve all”.",
+   "steps": 49,
+   "stageCount": 6,
+   "names": [
+    "Incoming WhatsApp message",
+    "Extract the staff message",
+    "Read staff list",
+    "Check whether the sender is staff",
+    "Is the sender staff?",
+    "Recognise the command",
+    "Stop: not staff",
+    "Route by command",
+    "Read open tickets",
+    "Request “resolve all”",
+    "Read pending requests",
+    "Summarise data",
+    "Compose request reply",
+    "Compose notice for the approver",
+    "Pick a request",
+    "Read conversation history",
+    "Notify the approver",
+    "Request found?",
+    "Process ticket resolution",
+    "Log the approver's decision",
+    "Any ticket resolved?",
+    "Compose decision reply",
+    "Compose notice for the requester",
+    "Prepare ticket updates",
+    "Notify the requester",
+    "Mark ticket resolved",
+    "Merge results",
+    "Any conversation to restore?",
+    "Prepare conversation updates",
+    "Return the conversation to the menu",
+    "Merge results",
+    "Restore data",
+    "Ticket held by two staff?",
+    "Compose notice for the colleague",
+    "Read ticket list",
+    "Notify the staff colleague",
+    "Build the ticket menu",
+    "Handle the menu choice",
+    "Restore data",
+    "Compose reply: unknown command",
+    "Merge before replying",
+    "Compute typing delay",
+    "Delay before replying",
+    "Show “typing”",
+    "Typing effect",
+    "Restore data",
+    "Log the staff conversation",
+    "Send WhatsApp to staff",
+    "Done"
+   ],
+   "stages": [
+    {
+     "short": "Staff message",
+     "title": "Staff message arrives; role check",
+     "desc": "The bot receives the message, reads the staff list, and confirms the sender really is staff."
+    },
+    {
+     "short": "Recognise command",
+     "title": "Recognising the command",
+     "desc": "The bot works out whether staff asked for the menu, marked a ticket resolved, requested “resolve all”, or gave a decision."
+    },
+    {
+     "short": "Resolve ticket",
+     "title": "Marking a ticket resolved",
+     "desc": "The chosen ticket is marked resolved and the customer's conversation returns to the menu."
+    },
+    {
+     "short": "Approval",
+     "title": "Resolve all and approval",
+     "desc": "Staff request to resolve all tickets; the approver is notified and approves or rejects."
+    },
+    {
+     "short": "Ticket menu",
+     "title": "Menu and ticket list",
+     "desc": "Staff see the ticket count, the list of open tickets, or a guide to resolving many tickets."
+    },
+    {
+     "short": "Reply to staff",
+     "title": "Delay and reply",
+     "desc": "The bot waits a moment, shows “typing”, then sends the reply and logs it."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Staff opens the ticket menu",
+     "desc": "Staff type MENU and receive options: total tickets, the open ticket list, or bulk resolution."
+    },
+    {
+     "title": "Marking a ticket resolved",
+     "desc": "The ticket is marked resolved and the customer's conversation returns to the main menu."
+    },
+    {
+     "title": "Requesting “resolve all”",
+     "desc": "Staff request resolution of all their tickets; the approver is notified to decide."
+    },
+    {
+     "title": "The approver decides",
+     "desc": "The approver approves or rejects; the requester is told the result right away."
+    },
+    {
+     "title": "Sender is not staff",
+     "desc": "Messages from numbers that are not staff are ignored."
+    }
+   ]
+  },
+  "health": {
+   "title": "System health monitor",
+   "desc": "Every 15 minutes it checks for errors, scheduled workflows, and the WhatsApp session, then notifies recipients.",
+   "steps": 25,
+   "stageCount": 2,
+   "names": [
+    "Schedule runs",
+    "Choose the run mode",
+    "List failed executions",
+    "Pick executions",
+    "Execution details",
+    "List workflows",
+    "Last watcher run",
+    "Check the WhatsApp session",
+    "Read earlier alerts",
+    "Read recipient settings",
+    "Decide on an alert",
+    "Failed ticket emails",
+    "List extra heartbeats",
+    "Store the alert",
+    "Build the ticket alert",
+    "Last run (heartbeat)",
+    "Latest daily report",
+    "Choose alert recipients",
+    "Send the ticket alert",
+    "Decide on the heartbeat",
+    "Send the alert",
+    "Mark ticket as notified",
+    "Store the heartbeat alert",
+    "Choose heartbeat recipients",
+    "Send the heartbeat"
+   ],
+   "stages": [
+    {
+     "short": "Checks",
+     "title": "Collecting checks",
+     "desc": "13 steps from the schedule: list failed executions, check workflows and the messaging session, and read earlier alerts."
+    },
+    {
+     "short": "Alerts",
+     "title": "Deciding and sending alerts",
+     "desc": "12 steps: decide on alerts, store them, choose recipients, and send notifications."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Up to the heartbeat message",
+     "desc": "Runs from the schedule to sending the heartbeat message."
+    },
+    {
+     "title": "Up to the alert message",
+     "desc": "Runs from the schedule to sending an alert."
+    }
+   ]
+  },
+  "daily": {
+   "title": "Daily conversation report",
+   "desc": "Every morning: yesterday's numbers from the database, an AI analysis of the conversations, then the report goes to recipients.",
+   "steps": 14,
+   "stageCount": 2,
+   "names": [
+    "Schedule runs",
+    "Set the dates",
+    "Count yesterday's metrics",
+    "Count the day-before metrics",
+    "Count customer intents",
+    "Count extra metrics",
+    "Fetch transcripts",
+    "Build the AI prompt",
+    "AI chat analysis",
+    "Read recipient settings",
+    "Compose the report",
+    "Store the report",
+    "Choose recipients",
+    "Send the report"
+   ],
+   "stages": [
+    {
+     "short": "Numbers",
+     "title": "Counting the numbers",
+     "desc": "7 steps from the schedule: set the dates, count yesterday's and the day-before metrics, count intents, and fetch transcripts."
+    },
+    {
+     "short": "Report",
+     "title": "Analysis and delivery",
+     "desc": "7 steps: build the AI prompt, analyse the chat, compose and store the report, choose recipients, and send it."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "From schedule to report",
+     "desc": "Runs from the schedule to delivering the report."
+    }
+   ]
+  },
+  "error": {
+   "title": "Error notifier",
+   "desc": "Called when another workflow fails, then sends an alert.",
+   "steps": 5,
+   "stageCount": 1,
+   "names": [
+    "Another workflow failed",
+    "Build the error message",
+    "Read recipient settings",
+    "Choose error recipients",
+    "Send the error notification"
+   ],
+   "stages": [
+    {
+     "short": "Whole flow",
+     "title": "Notify when another workflow fails",
+     "desc": "5 steps: build the error message, read recipient settings, choose recipients, and send the notification."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "From error to notification",
+     "desc": "Runs from the failed workflow to sending the notification."
+    }
+   ]
+  }
+ }
+}

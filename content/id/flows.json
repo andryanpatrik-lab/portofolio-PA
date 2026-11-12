@@ -1,0 +1,500 @@
+{
+ "ui": {
+  "diagram": "Diagram alur kerja",
+  "yes": "ya",
+  "no": "tidak",
+  "scenarios": "Pilih skenario",
+  "step": "Langkah",
+  "stepOf": "Langkah {n} dari {total}",
+  "zoomOut": "Perkecil",
+  "zoomIn": "Perbesar",
+  "fit": "Semua",
+  "fitLabel": "Tampilkan seluruh alur",
+  "play": "Putar",
+  "pause": "Jeda",
+  "replay": "Ulangi",
+  "follow": "Ikuti jalur",
+  "speed": "Kecepatan",
+  "motionOff": "Animasi dimatikan. Gunakan penggeser atau panah untuk melangkah.",
+  "hint": "Seret untuk menggeser, Ctrl atau Cmd + roda untuk zoom.",
+  "pickFlow": "Pilih alur",
+  "openFull": "Buka layar penuh",
+  "loading": "Memuat diagram alur…",
+  "noScript": "Diagram interaktif butuh JavaScript. Ringkasan alur:",
+  "steps": "{n} langkah dalam {s} tahap",
+  "kinds": {
+   "trigger": "Pemicu",
+   "code": "Olah data",
+   "decision": "Percabangan",
+   "data": "Baca / tulis data",
+   "http": "Panggil layanan lain",
+   "merge": "Penggabung",
+   "wait": "Jeda",
+   "stop": "Titik berhenti",
+   "message": "Kirim pesan / balasan",
+   "subflow": "Panggil alur lain"
+  }
+ },
+ "order": [
+  "whatsapp",
+  "staff",
+  "health",
+  "daily",
+  "error"
+ ],
+ "flows": {
+  "whatsapp": {
+   "title": "Perjalanan satu pesan WhatsApp",
+   "desc": "Dari pesan pelanggan masuk sampai balasan terkirim: cek ganda, cek spam, status percakapan, aduan, dan eskalasi ke staf.",
+   "steps": 127,
+   "stageCount": 10,
+   "names": [
+    "Pesan WhatsApp masuk",
+    "Ambil isi pesan",
+    "Baca daftar hari libur",
+    "Cek apakah pesan sudah dicatat",
+    "Pastikan data libur siap",
+    "Pesan sudah diproses?",
+    "Berhenti: pesan ganda",
+    "Tandai pesan sudah diproses",
+    "Pulihkan isi pesan",
+    "Catat waktu pesan terbaru",
+    "Tunggu pelanggan selesai mengetik",
+    "Ambil waktu pesan terbaru",
+    "Ini pesan terbaru?",
+    "Pulihkan isi pesan",
+    "Berhenti: ada pesan yang lebih baru",
+    "Baca daftar nomor staf",
+    "Cek nomor staf",
+    "Kenali perintah blokir dari staf",
+    "Perintah blokir?",
+    "Baca daftar blokir (tinjauan)",
+    "Pengirim adalah staf?",
+    "Tentukan nomor yang ditinjau",
+    "Berhenti: pesan staf diabaikan",
+    "Baca daftar blokir",
+    "Keputusan bisa diterapkan?",
+    "Cek apakah nomor diblokir",
+    "Perbarui status blokir",
+    "Nomor diblokir?",
+    "Susun balasan untuk peninjau",
+    "Berhenti: nomor diblokir",
+    "Baca riwayat pelanggan",
+    "Baca pengaturan bot",
+    "Baca daftar tiket",
+    "Tandai pesan sudah dibaca",
+    "Tampilkan “sedang mengetik” lebih awal",
+    "Balas peninjau",
+    "Gabungkan data sebelum pemeriksaan",
+    "Kabari pelanggan?",
+    "Cek pelanggan lama atau baru",
+    "Kirim sambutan ke nomor yang dinyatakan bukan spam",
+    "Pelanggan baru?",
+    "Selesai: perintah blokir",
+    "AI menilai isi pesan",
+    "Baca hasil penilaian AI",
+    "Pesan spam?",
+    "Masukkan ke daftar blokir",
+    "Gabungkan hasil pemeriksaan",
+    "Susun kabar kandidat blokir",
+    "Pulihkan isi pesan",
+    "Kabari peninjau",
+    "Susun status percakapan",
+    "Ambil nomor pesan notifikasi",
+    "Cek apakah bot sedang dijeda",
+    "Simpan nomor pesan notifikasi",
+    "Percakapan dipegang staf?",
+    "Berhenti: spam terdeteksi",
+    "Berhenti: staf sedang menangani",
+    "Baca pengaturan bot",
+    "Cek permintaan di luar menu",
+    "Di luar menu?",
+    "Arahkan menurut kategori",
+    "Arahkan: menu umum",
+    "Kumpulkan masukan pelanggan",
+    "Terima penilaian pelanggan",
+    "Baca daftar staf",
+    "Simpan penilaian",
+    "Periksa nomor yang mengaku staf",
+    "Terima isi aduan",
+    "Pulihkan data",
+    "Aduan siap dikirim?",
+    "Buat tiket aduan",
+    "Susun balasan aduan",
+    "Tiket baru?",
+    "Susun email tiket",
+    "Kirim email tiket",
+    "Catat status email",
+    "Susun kabar untuk penanggung jawab",
+    "Konfirmasi nama pelanggan",
+    "Ada penanggung jawab?",
+    "Perlu AI untuk membaca nama?",
+    "Kabari penanggung jawab",
+    "Arahkan: Seller",
+    "Tampilkan menu utama",
+    "Tampilkan menu platform",
+    "AI mengambil nama dari pesan",
+    "Kembali ke menu",
+    "Tampilkan menu aduan",
+    "Tampilkan menu layanan seller",
+    "Tentukan staf penerima dari database",
+    "Baca hasil pengambilan nama",
+    "Tunggu pelanggan mengetik MULAI",
+    "Tanya dari mana pelanggan tahu",
+    "Perlu ditangani staf?",
+    "Pulihkan data",
+    "Susun kabar untuk staf",
+    "Hitung jeda sebelum mengabari staf",
+    "Jeda sebelum mengabari staf",
+    "Tampilkan “sedang mengetik”",
+    "Efek mengetik",
+    "Kirim WhatsApp ke staf",
+    "Pulihkan data",
+    "Pulihkan data tiket",
+    "Simpan tiket",
+    "Tandai percakapan buntu",
+    "Gabungkan data untuk disimpan",
+    "Pulihkan status percakapan",
+    "Riwayat pelanggan sudah ada?",
+    "Perbarui riwayat pelanggan",
+    "Simpan pelanggan baru",
+    "Pulihkan data untuk dicatat",
+    "Catat keputusan bot",
+    "Susun balasan akhir",
+    "Hitung jeda mengetik",
+    "Percakapan buntu?",
+    "Jeda sebelum membalas",
+    "Catat percakapan buntu",
+    "Dialihkan ke staf?",
+    "Efek mengetik",
+    "Susun kabar percakapan buntu",
+    "Cek ulang waktu pesan terbaru",
+    "Kabari atasan: percakapan buntu",
+    "Masih pesan terbaru?",
+    "Kirim balasan ke pelanggan",
+    "Siapkan catatan bot",
+    "Catat percakapan ke database",
+    "Berhenti: pesan kedaluwarsa",
+    "Selesai"
+   ],
+   "stages": [
+    {
+     "short": "Pesan masuk",
+     "title": "Pesan masuk dan cek ganda",
+     "desc": "Bot menerima pesan WhatsApp, mengambil isinya, dan memastikan pesan yang sama tidak diproses dua kali."
+    },
+    {
+     "short": "Tunggu mengetik",
+     "title": "Menunggu pelanggan selesai mengetik",
+     "desc": "Bot menggabungkan pesan beruntun dan hanya memproses pesan yang paling baru."
+    },
+    {
+     "short": "Cek pengirim",
+     "title": "Siapa yang mengirim?",
+     "desc": "Bot memeriksa apakah pengirimnya staf (termasuk perintah blokir) atau nomor yang diblokir."
+    },
+    {
+     "short": "Cek spam",
+     "title": "Cek spam dan pelanggan baru",
+     "desc": "AI menilai isi pesan pelanggan baru. Pesan spam dihentikan dan nomornya diajukan ke daftar blokir."
+    },
+    {
+     "short": "Status percakapan",
+     "title": "Status percakapan",
+     "desc": "Bot menyusun status percakapan dan mengecek apakah staf sedang menangani."
+    },
+    {
+     "short": "Menyusun jawaban",
+     "title": "Menentukan jawaban",
+     "desc": "Bot mengarahkan pesan ke menu yang tepat dan menyiapkan balasannya."
+    },
+    {
+     "short": "Aduan",
+     "title": "Aduan dan keperluan lain",
+     "desc": "Pesan di luar menu dicatat sebagai tiket, emailnya dikirim, dan penanggung jawab dikabari."
+    },
+    {
+     "short": "Kabari staf",
+     "title": "Kabari staf bila perlu",
+     "desc": "Jika butuh bantuan manusia, bot menyusun kabar dan mengirim notifikasi WhatsApp ke staf."
+    },
+    {
+     "short": "Simpan dan catat",
+     "title": "Simpan dan catat",
+     "desc": "Riwayat percakapan dan log keputusan disimpan ke database."
+    },
+    {
+     "short": "Balas pelanggan",
+     "title": "Balas pelanggan",
+     "desc": "Bot menunggu sejenak agar terasa natural, mengecek ulang, lalu mengirim balasan."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Pesan biasa dijawab bot",
+     "desc": "Jalur utama: pesan lolos semua pemeriksaan lalu dijawab otomatis."
+    },
+    {
+     "title": "Pesan ganda",
+     "desc": "WhatsApp kadang mengirim notifikasi yang sama dua kali. Bot mengenalinya dan langsung berhenti."
+    },
+    {
+     "title": "Pesan spam",
+     "desc": "AI menilai pesan sebagai spam, nomornya diajukan ke daftar blokir, dan bot diam tanpa membalas."
+    },
+    {
+     "title": "Nomor sudah diblokir",
+     "desc": "Nomor yang sudah masuk daftar blokir tidak dijawab sama sekali."
+    },
+    {
+     "title": "Pesan dari staf",
+     "desc": "Jika pengirimnya staf, bot mengabaikan pesan itu (kecuali perintah blokir)."
+    },
+    {
+     "title": "Staf sedang menangani",
+     "desc": "Saat staf memegang percakapan, bot berhenti dan tidak ikut menjawab."
+    },
+    {
+     "title": "Diteruskan ke staf",
+     "desc": "Bot menyiapkan kabar, staf dikabari lewat WhatsApp, lalu pelanggan menerima balasan."
+    },
+    {
+     "title": "Aduan atau keperluan lain",
+     "desc": "Pesan di luar menu menjadi tiket aduan, emailnya dikirim, dan penanggung jawab dikabari."
+    }
+   ]
+  },
+  "staff": {
+   "title": "Perintah staf dan tiket",
+   "desc": "Staf mengelola tiket lewat WhatsApp: lihat daftar, tandai selesai, atau ajukan dan setujui “resolve semua”.",
+   "steps": 49,
+   "stageCount": 6,
+   "names": [
+    "Pesan WhatsApp masuk",
+    "Ambil isi pesan staf",
+    "Baca daftar staf",
+    "Cek apakah pengirim staf",
+    "Pengirim adalah staf?",
+    "Kenali perintah",
+    "Berhenti: bukan staf",
+    "Arahkan menurut perintah",
+    "Baca tiket yang terbuka",
+    "Ajukan “resolve semua”",
+    "Baca pengajuan yang menunggu",
+    "Ringkas data",
+    "Susun balasan pengajuan",
+    "Susun kabar untuk penyetuju",
+    "Pilih pengajuan",
+    "Baca riwayat percakapan",
+    "Kabari penyetuju",
+    "Pengajuan ditemukan?",
+    "Proses penyelesaian tiket",
+    "Catat keputusan penyetuju",
+    "Ada tiket yang berhasil diselesaikan?",
+    "Susun balasan keputusan",
+    "Susun kabar untuk pemohon",
+    "Siapkan pembaruan tiket",
+    "Kabari pemohon",
+    "Tandai tiket selesai",
+    "Gabungkan hasil",
+    "Ada percakapan yang perlu dipulihkan?",
+    "Siapkan pembaruan percakapan",
+    "Kembalikan percakapan ke menu",
+    "Gabungkan hasil",
+    "Pulihkan data",
+    "Tiket dipegang dua staf?",
+    "Susun kabar untuk rekan",
+    "Baca daftar tiket",
+    "Kabari rekan staf",
+    "Susun menu tiket",
+    "Tangani pilihan menu",
+    "Pulihkan data",
+    "Susun balasan: perintah tidak dikenal",
+    "Gabungkan sebelum membalas",
+    "Hitung jeda mengetik",
+    "Jeda sebelum membalas",
+    "Tampilkan “sedang mengetik”",
+    "Efek mengetik",
+    "Pulihkan data",
+    "Catat percakapan staf",
+    "Kirim WhatsApp ke staf",
+    "Selesai"
+   ],
+   "stages": [
+    {
+     "short": "Pesan staf",
+     "title": "Pesan staf masuk dan cek peran",
+     "desc": "Bot menerima pesan, membaca daftar staf, dan memastikan pengirimnya memang staf."
+    },
+    {
+     "short": "Kenali perintah",
+     "title": "Mengenali perintah",
+     "desc": "Bot menentukan apakah staf meminta menu, menandai tiket selesai, mengajukan “resolve semua”, atau memberi keputusan."
+    },
+    {
+     "short": "Resolve tiket",
+     "title": "Menandai tiket selesai",
+     "desc": "Tiket yang dipilih ditandai selesai dan percakapan pelanggan dikembalikan ke menu."
+    },
+    {
+     "short": "Persetujuan",
+     "title": "Resolve semua dan persetujuan",
+     "desc": "Staf mengajukan penyelesaian semua tiket, penyetuju diberi tahu lalu menyetujui atau menolak."
+    },
+    {
+     "short": "Menu tiket",
+     "title": "Menu dan daftar tiket",
+     "desc": "Staf melihat jumlah tiket, daftar tiket terbuka, atau panduan menyelesaikan banyak tiket."
+    },
+    {
+     "short": "Balas staf",
+     "title": "Jeda dan balas",
+     "desc": "Bot menunggu sejenak, menampilkan “sedang mengetik”, lalu mengirim balasan dan mencatatnya."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Staf membuka menu tiket",
+     "desc": "Staf mengetik MENU dan menerima pilihan: total tiket, daftar tiket terbuka, atau penyelesaian massal."
+    },
+    {
+     "title": "Menandai tiket selesai",
+     "desc": "Tiket ditandai selesai dan percakapan pelanggan dikembalikan ke menu utama."
+    },
+    {
+     "title": "Mengajukan “resolve semua”",
+     "desc": "Staf mengajukan penyelesaian semua tiketnya; penyetuju menerima kabar untuk memutuskan."
+    },
+    {
+     "title": "Penyetuju memutuskan",
+     "desc": "Penyetuju menyetujui atau menolak; pemohon langsung dikabari hasilnya."
+    },
+    {
+     "title": "Pengirim bukan staf",
+     "desc": "Pesan dari nomor yang bukan staf diabaikan."
+    }
+   ]
+  },
+  "health": {
+   "title": "Pemantau kesehatan sistem",
+   "desc": "Tiap 15 menit memeriksa error, workflow terjadwal, dan sesi WhatsApp, lalu mengabari penerima.",
+   "steps": 25,
+   "stageCount": 2,
+   "names": [
+    "Jadwal berjalan",
+    "Tentukan Mode",
+    "Daftar Eksekusi Error",
+    "Pilih Eksekusi",
+    "Detail Eksekusi",
+    "Daftar Workflow",
+    "Eksekusi Terakhir Watcher",
+    "Cek Sesi WhatsApp",
+    "Baca Alert Terdahulu",
+    "Baca pengaturan penerima",
+    "Putuskan Peringatan",
+    "Aduan Email Bermasalah",
+    "Daftar Detak Tambahan",
+    "Simpan Alert",
+    "Susun Alert Aduan",
+    "Eksekusi Terakhir (Detak)",
+    "Laporan Harian Terakhir",
+    "Pilih Penerima Alert",
+    "Kirim peringatan aduan",
+    "Putuskan Detak",
+    "Kirim peringatan",
+    "Tandai Tiket Dikabari",
+    "Simpan Alert Detak",
+    "Pilih Penerima Detak",
+    "Kirim detak"
+   ],
+   "stages": [
+    {
+     "short": "Pemeriksaan",
+     "title": "Mengumpulkan pemeriksaan",
+     "desc": "13 langkah dari jadwal: daftar eksekusi gagal, cek workflow dan sesi pesan, serta baca peringatan terdahulu."
+    },
+    {
+     "short": "Peringatan",
+     "title": "Memutuskan dan mengirim peringatan",
+     "desc": "12 langkah: putuskan peringatan, simpan, pilih penerima, dan kirim notifikasi."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Sampai pengiriman detak",
+     "desc": "Berjalan dari jadwal sampai pesan detak terkirim."
+    },
+    {
+     "title": "Sampai pengiriman peringatan",
+     "desc": "Berjalan dari jadwal sampai peringatan terkirim."
+    }
+   ]
+  },
+  "daily": {
+   "title": "Laporan harian percakapan",
+   "desc": "Tiap pagi: angka kemarin dari database, analisis AI atas percakapan, lalu laporan dikirim ke penerima.",
+   "steps": 14,
+   "stageCount": 2,
+   "names": [
+    "Jadwal berjalan",
+    "Tentukan Tanggal",
+    "Hitung Metrik Kemarin",
+    "Hitung Metrik Hari Sebelumnya",
+    "Hitung Intensi",
+    "Hitung Tambahan",
+    "Ambil Transkrip",
+    "Susun Prompt AI",
+    "AI Analisa Chat",
+    "Baca pengaturan penerima",
+    "Susun Laporan",
+    "Simpan Laporan",
+    "Pilih Penerima",
+    "Kirim laporan"
+   ],
+   "stages": [
+    {
+     "short": "Angka",
+     "title": "Menghitung angka",
+     "desc": "7 langkah dari jadwal: tentukan tanggal, hitung metrik kemarin dan hari sebelumnya, hitung maksud pelanggan, dan ambil transkrip."
+    },
+    {
+     "short": "Laporan",
+     "title": "Analisis dan pengiriman",
+     "desc": "7 langkah: susun prompt AI, analisis chat, susun dan simpan laporan, pilih penerima, lalu kirim."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Dari jadwal sampai laporan",
+     "desc": "Berjalan dari jadwal sampai laporan terkirim."
+    }
+   ]
+  },
+  "error": {
+   "title": "Pemberi tahu error",
+   "desc": "Dipanggil saat alur lain gagal, lalu mengirim peringatan.",
+   "steps": 5,
+   "stageCount": 1,
+   "names": [
+    "Ada error di alur lain",
+    "Susun pesan error",
+    "Baca pengaturan penerima",
+    "Pilih penerima error",
+    "Kirim notifikasi error"
+   ],
+   "stages": [
+    {
+     "short": "Seluruh alur",
+     "title": "Mengabari saat alur lain gagal",
+     "desc": "5 langkah: susun pesan error, baca pengaturan penerima, pilih penerima, dan kirim notifikasi."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Dari error sampai notifikasi",
+     "desc": "Berjalan dari alur yang gagal sampai notifikasi terkirim."
+    }
+   ]
+  }
+ }
+}

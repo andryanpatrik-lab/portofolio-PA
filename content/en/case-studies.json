@@ -277,7 +277,8 @@
     "overview": {
       "file": "message-assistant-overview",
       "caption": "messaging assistant, end to end (12 nodes)"
-    }
+    },
+    "explorer": true
   },
   "brand-intelligence": {
     "year": "2026",

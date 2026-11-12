@@ -4,7 +4,9 @@ import { BlackHoleLink } from "./BlackHoleLink";
 import { Button } from "./Button";
 import { FlowDiagram } from "./FlowDiagram";
 import { N8nCanvas } from "./N8nCanvas";
+import { FlowExplorer } from "./FlowExplorer";
 import { Metric } from "./Metric";
+import { getFlowLabels, getFlowSummaries } from "@/lib/flowSummaries";
 import { n8nSkeletons } from "@/lib/n8nSkeletons";
 import type { CaseStudyData, Dictionary, Locale } from "@/lib/i18n";
 
@@ -72,6 +74,16 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
                 {ui.downloadSkeleton}
               </Button>
               <span className="t-caption">{ui.overviewNote}</span>
+            </div>
+          </section>
+        )}
+
+        {data.explorer && (
+          <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
+            <h2 {...dust} className="t-h3">{ui.explore}</h2>
+            <p {...dust} className="t-lead mt-6 max-w-[60ch] text-text-2">{ui.exploreNote}</p>
+            <div className="mt-10">
+              <FlowExplorer locale={locale} summaries={getFlowSummaries(locale)} labels={getFlowLabels(locale)} fullHref={`/${locale}/flows/`} />
             </div>
           </section>
         )}

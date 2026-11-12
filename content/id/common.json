@@ -53,6 +53,10 @@
     "downloadSkeleton": "Unduh kerangka (.json)",
     "skeletonNote": "Hanya struktur: tanpa parameter, kredensial, atau kode.",
     "scrollHint": "Geser ke samping untuk melihat seluruh kanvas.",
+    "explore": "Jelajahi alur nyata",
+    "exploreNote": "Alur kerja sungguhan dari asisten pesan, disederhanakan: pilih alur dan skenario, lalu tekan Putar untuk melihat satu pesan berjalan dari awal sampai akhir. Nama layanan diganti istilah umum.",
+    "exploreTitle": "Penjelajah alur",
+    "exploreDesc": "Alur kerja yang dibangun, bisa digeser dan diputar.",
     "overview": "Ringkasan workflow",
     "overviewNote": "Contoh ilustrasi: disederhanakan, bukan ekspor workflow produksi."
   },

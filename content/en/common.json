@@ -53,6 +53,10 @@
     "downloadSkeleton": "Download skeleton (.json)",
     "skeletonNote": "Structure only: no parameters, credentials, or code.",
     "scrollHint": "Scroll sideways to see the whole canvas.",
+    "explore": "Explore the real flows",
+    "exploreNote": "The real workflows behind the message assistant, simplified: pick a flow and a scenario, then press Play to follow one message from start to finish. Service names are replaced with generic terms.",
+    "exploreTitle": "Flow explorer",
+    "exploreDesc": "The workflows I built, pannable and playable.",
     "overview": "Workflow overview",
     "overviewNote": "Illustrative example: simplified, not an export of a production workflow."
   },
