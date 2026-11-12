@@ -369,6 +369,28 @@ html:not(.motion-active).reveal-ready [data-reveal] { animation: motion-failsafe
   .flow-full-line { left: 18px; right: -16px; top: 4.5px; bottom: auto; width: auto; height: 1px; }
 }
 
+/* "Solusi" step diagram animation: draw-in once when visible, then a ring travels node to node (transform and opacity only).
+   The hidden state exists only after FlowAnimOnScroll mounted (.fa-ready) and only when motion is allowed. */
+@keyframes fa-node { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+@keyframes fa-line-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes fa-line-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes fa-text { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes fa-ring { 0% { opacity: 0.55; transform: scale(1); } 14% { opacity: 0; transform: scale(3.2); } 100% { opacity: 0; transform: scale(3.2); } }
+.flow-full-node::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--accent); opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.motion-off) .flow-full.fa-ready:not(.is-in) .flow-full-node { opacity: 0; transform: scale(0.4); }
+  html:not(.motion-off) .flow-full.fa-ready:not(.is-in) .flow-full-line { transform: scaleY(0); }
+  html:not(.motion-off) .flow-full.fa-ready:not(.is-in) :is(.flow-full-num, .flow-full-label, .flow-full-step > p) { opacity: 0; }
+  html:not(.motion-off) .flow-full.fa-ready.is-in .flow-full-node { animation: fa-node 420ms var(--ease-out) both; animation-delay: calc(var(--i) * 260ms); }
+  html:not(.motion-off) .flow-full.fa-ready.is-in .flow-full-line { transform-origin: top; animation: fa-line-y 420ms var(--ease-out) both; animation-delay: calc(var(--i) * 260ms + 180ms); }
+  html:not(.motion-off) .flow-full.fa-ready.is-in :is(.flow-full-num, .flow-full-label, .flow-full-step > p) { animation: fa-text 420ms var(--ease-out) both; animation-delay: calc(var(--i) * 260ms + 120ms); }
+  html:not(.motion-off) .flow-full.fa-ready.is-in .flow-full-node::after { animation: fa-ring 7s ease-out infinite; animation-delay: calc(var(--i) * 900ms + 2.4s); }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  html:not(.motion-off) .flow-full.fa-ready:not(.is-in) .flow-full-line { transform: scaleX(0); }
+  html:not(.motion-off) .flow-full.fa-ready.is-in .flow-full-line { transform-origin: left; animation-name: fa-line-x; }
+}
+
 /* Page transitions (M3). The shared elements morph; everything else fades. See README for the choice of API. */
 @keyframes vt-fade-in { from { opacity: 0; } }
 @keyframes vt-fade-out { to { opacity: 0; } }

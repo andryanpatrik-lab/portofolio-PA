@@ -1,6 +1,7 @@
 import { ViewTransition } from "react";
 import { BackLink } from "./BackLink";
 import { BlackHoleLink } from "./BlackHoleLink";
+import { FlowAnimOnScroll } from "./FlowAnimOnScroll";
 import { FlowDiagram } from "./FlowDiagram";
 import { FlowExplorer } from "./FlowExplorer";
 import { Metric } from "./Metric";
@@ -38,6 +39,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
   return (
     <ViewTransition enter="page-in" exit="page-out" default="none">
+      <FlowAnimOnScroll />
       <main id="main" data-cosmos={cosmos} className="page-enter container-page pb-[var(--section-gap)] pt-8">
         <div className="flex items-center justify-between">
           <BackLink href={`/${locale}/#work`} className="t-label tap text-text-2 link-underline">
