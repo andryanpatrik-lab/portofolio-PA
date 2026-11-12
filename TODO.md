@@ -43,7 +43,7 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 
 **Keputusan `[PILIH]` yang saya ambil sementara**
 - Baris paroki di Tentang: dihilangkan
-- Visual Tentang: foto profil (M18); teks alt `about.photoAlt` perlu dikonfirmasi. Foto sumber memuat tanda bintang kecil (watermark alat) di pojok kanan bawah: Patrik memutuskan dipotong atau diganti foto asli
+- Visual Tentang: foto profil (M18); teks alt `about.photoAlt` perlu dikonfirmasi. Tanda bintang kecil (watermark alat) di pojok kanan bawah foto sumber sudah dihapus dengan menutup area itu dengan warna latar sekitarnya; ukuran foto tidak berubah
 - Kartu L5 dan L6: keduanya tampil (total 5 kartu)
 - Halaman 404 dwibahasa: ditunda ke M6
 
