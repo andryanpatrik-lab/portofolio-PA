@@ -76,6 +76,41 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           </ViewTransition>
         </section>
 
+        {data.workflows && data.workflows.length > 0 && (
+          <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
+            <h2 {...dust} className="t-h3">{ui.workflows}</h2>
+            <ul className="mt-10 space-y-4">
+              {data.workflows.map((w) => (
+                <li key={w.name}>
+                  <details className="wf-item rounded-xl border border-border p-5 md:p-6">
+                    <summary className="wf-summary">
+                      <span className="t-h4 block">{w.name}</span>
+                      <span className="t-label mt-2 block text-text-muted">{ui.trigger}: {w.trigger}</span>
+                    </summary>
+                    <p className="mt-6 text-text-2">{w.summary}</p>
+                    <div className="mt-8">
+                      <FlowDiagram variant="full" steps={w.flow} />
+                    </div>
+                  </details>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {data.system && data.system.length > 0 && (
+          <section data-cosmos="nebula" className="mt-[var(--section-gap)]">
+            <h2 {...dust} className="t-h3">{ui.system}</h2>
+            <ul className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+              {data.system.map((m) => (
+                <li key={m.label}>
+                  <Metric value={m.value} label={m.label} size="sm" />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <section data-cosmos="supernova" className="mt-[var(--section-gap)]">
           <h2 {...dust} className="t-h3">{ui.results}</h2>
           <ul className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">

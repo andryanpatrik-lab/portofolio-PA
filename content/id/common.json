@@ -45,7 +45,10 @@
     "results": "Hasil",
     "learning": "Pembelajaran",
     "pending": "Isi case study ini sedang disiapkan.",
-    "estimate": "perkiraan"
+    "estimate": "perkiraan",
+    "workflows": "Workflow yang dibangun",
+    "trigger": "Pemicu",
+    "system": "Struktur sistem"
   },
   "skipLink": "Lewati ke konten",
   "navLabel": "Navigasi utama",

@@ -76,6 +76,20 @@
       {
         "value": "—"
       }
+    ],
+    "system": [
+      {
+        "value": "38",
+        "label": "tabel"
+      },
+      {
+        "value": "39",
+        "label": "fungsi"
+      },
+      {
+        "value": "48",
+        "label": "kebijakan akses"
+      }
     ]
   },
   "brand-intelligence": {
@@ -108,6 +122,20 @@
       {
         "value": "—"
       }
+    ],
+    "system": [
+      {
+        "value": "14",
+        "label": "tabel"
+      },
+      {
+        "value": "27",
+        "label": "kebijakan akses"
+      },
+      {
+        "value": "3",
+        "label": "peran pengguna"
+      }
     ]
   },
   "ai-video-agent": {
@@ -139,6 +167,67 @@
       },
       {
         "value": "—"
+      }
+    ],
+    "system": [
+      {
+        "value": "40",
+        "label": "tabel"
+      },
+      {
+        "value": "160",
+        "label": "fungsi"
+      },
+      {
+        "value": "79",
+        "label": "kebijakan akses"
+      }
+    ],
+    "workflows": [
+      {
+        "name": "Pengambilan gambar produk otomatis",
+        "trigger": "Webhook saat produk baru ditambahkan",
+        "summary": "Mengambil gambar utama dari tautan produk, menyimpannya, dan memperbarui data produk tanpa input manual.",
+        "flow": [
+          {
+            "label": "Terima produk baru"
+          },
+          {
+            "label": "Buka tautan dan ambil gambar utama"
+          },
+          {
+            "label": "Periksa gambar valid",
+            "note": "Jika tidak valid: ditandai untuk ditangani manual"
+          },
+          {
+            "label": "Unduh gambar"
+          },
+          {
+            "label": "Simpan ke penyimpanan file"
+          },
+          {
+            "label": "Perbarui data produk"
+          }
+        ]
+      },
+      {
+        "name": "Pengingat harian",
+        "trigger": "Jadwal tiap hari pukul 08.00",
+        "summary": "Mengirim pengingat otomatis tentang agenda hari ini kepada penerima yang berhak.",
+        "flow": [
+          {
+            "label": "Jadwal harian pukul 08.00"
+          },
+          {
+            "label": "Ambil agenda hari ini"
+          },
+          {
+            "label": "Ambil penerima yang berhak"
+          },
+          {
+            "label": "Kirim pengingat"
+          }
+        ]
       }
     ]
   }

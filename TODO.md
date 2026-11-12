@@ -23,6 +23,7 @@ Tempat teks: `content/{id,en}/home.json` dan `content/site.json`.
 - Status 4 kartu Proyek lainnya (L1, L2, L5, L6) tampil "Segera diperbarui" / "Being updated"
 - Tag stack `[ISI]` pada kartu L1 dibuang (tersisa 2 tag)
 - Email, LinkedIn, GitHub, WhatsApp kosong: tautan tidak tampil, tombol "Hubungi saya" disembunyikan dan diganti teks "Informasi kontak segera tersedia"
+- Blok baru case study (M20, draf `[KONFIRMASI]`): "Struktur sistem" (angka dari dokumentasi database Patrik per 10 Nov 2026: kartu 02 = 38 tabel/39 fungsi/48 kebijakan akses; kartu 03 = 14/27/3 peran; kartu 04 = 40/160/79) dan "Workflow yang dibangun" di kartu 04 (2 workflow n8n ditulis ulang generik). Perlu dikonfirmasi Patrik sebelum tayang
 - Tombol "Unduh CV" disembunyikan sampai `cvFile` di `content/site.json` terisi (PDF baru tanpa nomor telepon)
 
 **Draf `[KONFIRMASI]` yang tampil apa adanya (perlu disetujui)**

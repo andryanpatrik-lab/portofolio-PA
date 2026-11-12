@@ -45,7 +45,10 @@
     "results": "Results",
     "learning": "Learning",
     "pending": "This case study is being prepared.",
-    "estimate": "estimate"
+    "estimate": "estimate",
+    "workflows": "Workflows built",
+    "trigger": "Trigger",
+    "system": "System structure"
   },
   "skipLink": "Skip to content",
   "navLabel": "Primary navigation",

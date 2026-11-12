@@ -76,6 +76,20 @@
       {
         "value": "—"
       }
+    ],
+    "system": [
+      {
+        "value": "38",
+        "label": "tables"
+      },
+      {
+        "value": "39",
+        "label": "functions"
+      },
+      {
+        "value": "48",
+        "label": "access policies"
+      }
     ]
   },
   "brand-intelligence": {
@@ -108,6 +122,20 @@
       {
         "value": "—"
       }
+    ],
+    "system": [
+      {
+        "value": "14",
+        "label": "tables"
+      },
+      {
+        "value": "27",
+        "label": "access policies"
+      },
+      {
+        "value": "3",
+        "label": "user roles"
+      }
     ]
   },
   "ai-video-agent": {
@@ -139,6 +167,67 @@
       },
       {
         "value": "—"
+      }
+    ],
+    "system": [
+      {
+        "value": "40",
+        "label": "tables"
+      },
+      {
+        "value": "160",
+        "label": "functions"
+      },
+      {
+        "value": "79",
+        "label": "access policies"
+      }
+    ],
+    "workflows": [
+      {
+        "name": "Automatic product image fetch",
+        "trigger": "Webhook when a new product is added",
+        "summary": "Pulls the main image from a product link, stores it, and updates the product record without manual input.",
+        "flow": [
+          {
+            "label": "Receive new product"
+          },
+          {
+            "label": "Open the link and extract the main image"
+          },
+          {
+            "label": "Check the image is valid",
+            "note": "If not valid: flagged for manual handling"
+          },
+          {
+            "label": "Download the image"
+          },
+          {
+            "label": "Store in file storage"
+          },
+          {
+            "label": "Update the product record"
+          }
+        ]
+      },
+      {
+        "name": "Daily reminder",
+        "trigger": "Schedule, every day at 08:00",
+        "summary": "Sends an automatic reminder about today's agenda to eligible recipients.",
+        "flow": [
+          {
+            "label": "Daily schedule at 08:00"
+          },
+          {
+            "label": "Fetch today's agenda"
+          },
+          {
+            "label": "Fetch eligible recipients"
+          },
+          {
+            "label": "Send the reminder"
+          }
+        ]
       }
     ]
   }

@@ -849,3 +849,10 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
   72% { opacity: 0.5; scale: 0.97; }
   100% { opacity: 0; scale: 1.05; }
 }
+
+/* Case study workflow list (M20): native <details>, no animation. */
+.wf-summary { cursor: pointer; list-style: none; position: relative; padding-right: 2rem; }
+.wf-summary::-webkit-details-marker { display: none; }
+.wf-summary::after { content: "+"; position: absolute; right: 0; top: 0; color: var(--accent); font-size: 1.5rem; line-height: 1; }
+.wf-item[open] > .wf-summary::after { content: "\2212"; }
+.wf-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 6px; }

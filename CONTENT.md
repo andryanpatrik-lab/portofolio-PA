@@ -284,6 +284,11 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 
 ---
 
+### 5.x Blok opsional (M20, draf `[KONFIRMASI]`)
+
+- **Struktur sistem** (kartu 02, 03, 04): hanya jumlah dari dokumentasi database Patrik (tabel, fungsi, kebijakan akses, peran). Tanpa nama tabel, data, atau volume.
+- **Workflow yang dibangun** (kartu 04): 2 workflow n8n generik (pengambilan gambar produk otomatis, 6 langkah; pengingat harian, 4 langkah). Tanpa nama workflow asli, perusahaan, atau platform.
+
 ## 6. Tentang
 
 | Field | ID | EN |
