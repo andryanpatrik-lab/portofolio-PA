@@ -738,192 +738,6 @@
     }
    ]
   },
-  "vbackend": {
-   "title": "Backend pembuat video AI (versi awal)",
-   "desc": "Beberapa pintu masuk untuk membuat staf, karakter, rencana adegan, klip, dan video.",
-   "steps": 68,
-   "stageCount": 2,
-   "names": [
-    "Permintaan masuk dari aplikasi lain",
-    "Permintaan masuk dari aplikasi lain",
-    "Permintaan masuk dari aplikasi lain",
-    "Permintaan masuk dari aplikasi lain",
-    "Permintaan masuk dari aplikasi lain",
-    "Permintaan masuk dari aplikasi lain",
-    "Permintaan masuk dari aplikasi lain",
-    "Cek kunci akses: buat staf",
-    "Cek kunci akses: buat gambar gabungan",
-    "Cek kunci akses: buat rencana frame",
-    "Cek kunci akses: buat klip frame",
-    "Cek kunci akses: produksi video",
-    "Cek kunci akses: buat karakter",
-    "Cek kunci akses: pratinjau suara",
-    "Buat akun pengguna",
-    "Tolak: tidak berwenang",
-    "Ambil tugas video",
-    "Tolak: tidak berwenang",
-    "Ambil tugas (rencana frame)",
-    "Tolak: tidak berwenang",
-    "Ambil frame",
-    "Tolak: tidak berwenang",
-    "Ambil semua frame yang disetujui",
-    "Tolak: tidak berwenang",
-    "Ambil karakter",
-    "Tolak: tidak berwenang",
-    "Buat pratinjau suara",
-    "Tolak: tidak berwenang",
-    "Buat profil pengguna",
-    "Ambil foto karakter",
-    "Buat rencana frame (AI)",
-    "Ambil tugas (klip frame)",
-    "Susun daftar tautan klip",
-    "Susun prompt karakter",
-    "Beri jawaban ke pemanggil",
-    "Beri jawaban ke pemanggil",
-    "Buat tautan sementara foto karakter",
-    "Baca JSON rencana frame",
-    "Buat suara dari teks",
-    "Jalankan penggabung video",
-    "Buat gambar karakter",
-    "Ambil produk",
-    "Simpan rencana frame",
-    "Urai data audio",
-    "Ambil ID proses",
-    "Unduh foto karakter",
-    "Buat gambar gabungan",
-    "Beri jawaban ke pemanggil",
-    "Unggah audio ke penyimpanan",
-    "Tunggu 20 detik",
-    "Unggah foto ke penyimpanan",
-    "Simpan tautan gambar gabungan",
-    "Simpan tautan audio",
-    "Cek status penggabungan",
-    "Simpan data foto karakter",
-    "Perbarui karakter",
-    "Beri jawaban ke pemanggil",
-    "Buat video",
-    "Penggabungan selesai?",
-    "Beri jawaban ke pemanggil",
-    "Ambil ID tugas",
-    "Simpan video akhir",
-    "Tunggu 15 detik",
-    "Beri jawaban ke pemanggil",
-    "Cek status video",
-    "Sudah selesai?",
-    "Simpan tautan klip",
-    "Beri jawaban ke pemanggil"
-   ],
-   "stages": [
-    {
-     "short": "Bagian 1",
-     "title": "Bagian 1",
-     "desc": "35 langkah, dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil”."
-    },
-    {
-     "short": "Bagian 2",
-     "title": "Bagian 2",
-     "desc": "33 langkah, dari “Beri jawaban ke pemanggil” sampai “Beri jawaban ke pemanggil”."
-    }
-   ],
-   "scenarios": [
-    {
-     "title": "Jalur 1: Beri jawaban ke pemanggil (lewat Cek kunci akses: buat staf)",
-     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil” dalam 5 langkah."
-    },
-    {
-     "title": "Jalur 2: Tolak: tidak berwenang (lewat Cek kunci akses: buat staf)",
-     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Tolak: tidak berwenang” dalam 3 langkah."
-    },
-    {
-     "title": "Jalur 3: Beri jawaban ke pemanggil (lewat Cek kunci akses: buat gambar gabungan)",
-     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil” dalam 9 langkah."
-    },
-    {
-     "title": "Jalur 4: Tolak: tidak berwenang (lewat Cek kunci akses: buat gambar gabungan)",
-     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Tolak: tidak berwenang” dalam 3 langkah."
-    },
-    {
-     "title": "Jalur 5: Beri jawaban ke pemanggil (lewat Cek kunci akses: buat rencana frame)",
-     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Beri jawaban ke pemanggil” dalam 7 langkah."
-    },
-    {
-     "title": "Jalur 6: Tolak: tidak berwenang (lewat Cek kunci akses: buat rencana frame)",
-     "desc": "Dari “Permintaan masuk dari aplikasi lain” sampai “Tolak: tidak berwenang” dalam 3 langkah."
-    }
-   ],
-   "badge": "Versi awal, sebelum antrean tugas v2. Fungsi diduga dari nama langkah."
-  },
-  "vbot": {
-   "title": "Bot pembuat video karakter (versi awal)",
-   "desc": "Bot Telegram yang mengenali maksud pesan lalu membuat video karakter.",
-   "steps": 39,
-   "stageCount": 3,
-   "names": [
-    "Pesan Telegram masuk",
-    "Pengaturan bot",
-    "Ambil isi pesan",
-    "Arahkan menurut maksud",
-    "Baca perintah video",
-    "Ambil karakter terbaru",
-    "Cek karakter aktif",
-    "Ambil foto karakter",
-    "Ditemukan?",
-    "Buat tautan sementara foto",
-    "Karakter ditemukan?",
-    "Siapkan tautan foto",
-    "Buat karakter baru (otomatis)",
-    "Buat suara dari teks (TTS)",
-    "Gabungkan karakter",
-    "Ambil tautan audio",
-    "Unduh foto",
-    "Buat video sinkron bibir",
-    "Ambil ID tugas video",
-    "Unggah ke penyimpanan",
-    "Simpan catatan foto",
-    "Tunggu 20 detik",
-    "Hitung foto baru",
-    "Tutup karakter lama",
-    "Simpan jenis bidikan tertunda",
-    "Simpan ekspresi tertunda",
-    "Cek status pembuatan video",
-    "Perbarui jumlah foto",
-    "Buat karakter baru (manual)",
-    "Jawab tombol (bidikan)",
-    "Jawab tombol (ekspresi)",
-    "Sudah selesai?",
-    "Susun balasan: foto",
-    "Susun balasan: karakter baru",
-    "Susun balasan: label foto",
-    "Susun balasan: tombol ekspresi",
-    "Susun balasan: konfirmasi label",
-    "Susun balasan: video selesai",
-    "Kirim balasan"
-   ],
-   "stages": [
-    {
-     "short": "Bagian 1",
-     "title": "Bagian 1",
-     "desc": "12 langkah, dari “Pesan Telegram masuk” sampai “Siapkan tautan foto”."
-    },
-    {
-     "short": "Bagian 2",
-     "title": "Bagian 2",
-     "desc": "15 langkah, dari “Buat karakter baru (otomatis)” sampai “Cek status pembuatan video”."
-    },
-    {
-     "short": "Bagian 3",
-     "title": "Bagian 3",
-     "desc": "12 langkah, dari “Perbarui jumlah foto” sampai “Kirim balasan”."
-    }
-   ],
-   "scenarios": [
-    {
-     "title": "Jalur 1: Kirim balasan",
-     "desc": "Dari “Pesan Telegram masuk” sampai “Kirim balasan” dalam 6 langkah."
-    }
-   ],
-   "badge": "Versi awal, sebelum antrean tugas v2. Fungsi diduga dari nama langkah."
-  },
   "youtube": {
    "title": "Pengumpul YouTube",
    "desc": "Mencari video berdasarkan kata kunci, mengambil detail dan komentar, lalu menyimpannya.",
@@ -1292,6 +1106,107 @@
     }
    ],
    "badge": "Ilustrasi proses, bukan ekspor sistem. Disusun dari uraian studi kasus ini."
+  },
+  "vsystem": {
+   "title": "Dari karakter sampai video final",
+   "desc": "Staf menyiapkan karakter dan produk, sistem menyusun storyboard dan antrean, agen membuat klip, lalu video diselesaikan.",
+   "badge": "Disusun dari dokumentasi dan kode sistem, bukan ekspor workflow. Pembuatan klip lewat agen belum teruji penuh di editor video asli.",
+   "steps": 30,
+   "stageCount": 6,
+   "names": [
+    "Staf membuat karakter",
+    "Karakter berstatus “Siap”",
+    "Staf menambah produk (1 sampai 10 per batch)",
+    "AI menganalisis foto produk",
+    "Produk berstatus “Terkonfirmasi”",
+    "Batch draf dibuat (10 atau 20 detik)",
+    "Susun rencana panel (bisa disunting dan dikunci)",
+    "Buat storyboard bersih",
+    "AI menulis naskah (bila ada narasi)",
+    "Susun JSON video di browser",
+    "Produk berisiko tinggi?",
+    "Admin menyetujui risiko",
+    "Syarat lengkap?",
+    "Kirim ke antrean",
+    "Ditolak: syarat belum lengkap",
+    "Browser dan tab editor siap?",
+    "Agen mengklaim job (kunci baris)",
+    "Tunggu browser dibuka",
+    "Isi bahan dan prompt, lalu generate",
+    "Klip jadi?",
+    "Butuh manusia?",
+    "Berhenti dan lapor (captcha atau sesi habis)",
+    "Jeda, lalu coba ulang (maks 3)",
+    "Video 20 detik?",
+    "Gabung klip A dan B",
+    "Staf menonton dan menyetujui video",
+    "Teks layar (setujui atau lewati)",
+    "Ganti suara (setujui atau lewati)",
+    "Suara latar (setujui atau lewati)",
+    "Video final siap diunduh"
+   ],
+   "stages": [
+    {
+     "short": "Persiapan",
+     "title": "Persiapan",
+     "desc": "Karakter berstatus Siap; produk dianalisis AI lalu Terkonfirmasi."
+    },
+    {
+     "short": "Rencana",
+     "title": "Rencana",
+     "desc": "Batch dibuat, rencana panel dan storyboard disusun, naskah ditulis AI bila ada narasi, lalu JSON video disusun di browser."
+    },
+    {
+     "short": "Persetujuan",
+     "title": "Persetujuan",
+     "desc": "Produk berisiko tinggi butuh persetujuan admin; database menolak pengiriman ke antrean bila syarat belum lengkap."
+    },
+    {
+     "short": "Produksi",
+     "title": "Produksi oleh agen",
+     "desc": "Agen di laptop produksi mengendalikan editor video lewat browser: klaim job, generate, coba ulang bila gagal, berhenti dan lapor bila butuh manusia."
+    },
+    {
+     "short": "Hasil",
+     "title": "Hasil video",
+     "desc": "Video 20 detik digabung dari dua klip; staf menonton dan menyetujui."
+    },
+    {
+     "short": "Penyelesaian",
+     "title": "Penyelesaian",
+     "desc": "Teks layar, ganti suara, dan suara latar; tiap tahap disetujui atau dilewati, lalu video final siap."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "Video 10 detik, lancar",
+     "desc": "Satu klip dibuat tanpa kendala, disetujui, lalu diselesaikan."
+    },
+    {
+     "title": "Video 20 detik",
+     "desc": "Dua klip (A dan B) dibuat lalu digabung sebelum disetujui."
+    },
+    {
+     "title": "Produk berisiko tinggi",
+     "desc": "Admin harus menyetujui risiko sebelum job masuk antrean."
+    },
+    {
+     "title": "Syarat belum lengkap",
+     "desc": "Database menolak pengiriman ke antrean."
+    },
+    {
+     "title": "Gagal sekali, lalu coba ulang",
+     "desc": "Klip gagal, agen jeda, lalu mencoba lagi (maks 3 kali)."
+    },
+    {
+     "title": "Butuh manusia",
+     "desc": "Captcha atau sesi habis: agen berhenti, melapor, dan menunggu."
+    },
+    {
+     "title": "Browser belum siap",
+     "desc": "Agen tidak mengambil job sampai browser dan tab editor siap."
+    }
+   ]
   }
  },
  "groups": {
@@ -1318,8 +1233,7 @@
    "youtube"
   ],
   "ai-video-agent": [
-   "vbackend",
-   "vbot"
+   "vsystem"
   ]
  }
 }

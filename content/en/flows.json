@@ -738,192 +738,6 @@
     }
    ]
   },
-  "vbackend": {
-   "title": "AI video backend (early version)",
-   "desc": "Several entry points to create staff, characters, scene plans, clips, and videos.",
-   "steps": 68,
-   "stageCount": 2,
-   "names": [
-    "Request from another app",
-    "Request from another app",
-    "Request from another app",
-    "Request from another app",
-    "Request from another app",
-    "Request from another app",
-    "Request from another app",
-    "Check access key: create staff",
-    "Check access key: generate composite image",
-    "Check access key: generate frame plan",
-    "Check access key: generate frame clip",
-    "Check access key: produce video",
-    "Check access key: generate character",
-    "Check access key: preview voice",
-    "Create the user account",
-    "Reject: not authorised",
-    "Fetch the video job",
-    "Reject: not authorised",
-    "Fetch the job (frame plan)",
-    "Reject: not authorised",
-    "Fetch the frames",
-    "Reject: not authorised",
-    "Fetch all approved frames",
-    "Reject: not authorised",
-    "Fetch the character",
-    "Reject: not authorised",
-    "Generate a voice preview",
-    "Reject: not authorised",
-    "Create the user profile",
-    "Fetch character photos",
-    "Generate the frame plan (AI)",
-    "Fetch the job (frame clip)",
-    "Build the clip link list",
-    "Build the character prompt",
-    "Respond to the caller",
-    "Respond to the caller",
-    "Create a temporary link to the character photo",
-    "Parse the frame-plan JSON",
-    "Generate audio from text",
-    "Run the video combiner",
-    "Generate the character image",
-    "Fetch the product",
-    "Save the frame plan",
-    "Decode the audio",
-    "Get the run ID",
-    "Download the character photo",
-    "Generate the composite image",
-    "Respond to the caller",
-    "Upload the audio to storage",
-    "Wait 20 seconds",
-    "Upload the photo to storage",
-    "Save the composite link",
-    "Save the audio link",
-    "Check merge status",
-    "Save the character photo record",
-    "Update the character",
-    "Respond to the caller",
-    "Generate the video",
-    "Merge finished?",
-    "Respond to the caller",
-    "Get the task ID",
-    "Save the final video",
-    "Wait 15 seconds",
-    "Respond to the caller",
-    "Check video status",
-    "Finished?",
-    "Save the clip link",
-    "Respond to the caller"
-   ],
-   "stages": [
-    {
-     "short": "Part 1",
-     "title": "Part 1",
-     "desc": "35 steps, from “Request from another app” to “Respond to the caller”."
-    },
-    {
-     "short": "Part 2",
-     "title": "Part 2",
-     "desc": "33 steps, from “Respond to the caller” to “Respond to the caller”."
-    }
-   ],
-   "scenarios": [
-    {
-     "title": "Path 1: Respond to the caller (via Check access key: create staff)",
-     "desc": "From “Request from another app” to “Respond to the caller”, 5 steps."
-    },
-    {
-     "title": "Path 2: Reject: not authorised (via Check access key: create staff)",
-     "desc": "From “Request from another app” to “Reject: not authorised”, 3 steps."
-    },
-    {
-     "title": "Path 3: Respond to the caller (via Check access key: generate composite image)",
-     "desc": "From “Request from another app” to “Respond to the caller”, 9 steps."
-    },
-    {
-     "title": "Path 4: Reject: not authorised (via Check access key: generate composite image)",
-     "desc": "From “Request from another app” to “Reject: not authorised”, 3 steps."
-    },
-    {
-     "title": "Path 5: Respond to the caller (via Check access key: generate frame plan)",
-     "desc": "From “Request from another app” to “Respond to the caller”, 7 steps."
-    },
-    {
-     "title": "Path 6: Reject: not authorised (via Check access key: generate frame plan)",
-     "desc": "From “Request from another app” to “Reject: not authorised”, 3 steps."
-    }
-   ],
-   "badge": "Early version, before the v2 task queue. Function inferred from step names."
-  },
-  "vbot": {
-   "title": "Character video bot (early version)",
-   "desc": "A Telegram bot that recognises the intent of a message and then creates a character video.",
-   "steps": 39,
-   "stageCount": 3,
-   "names": [
-    "Incoming Telegram message",
-    "Bot settings",
-    "Get the message content",
-    "Route by intent",
-    "Parse the video command",
-    "Fetch the latest character",
-    "Check the active character",
-    "Fetch character photos",
-    "Found?",
-    "Create a temporary photo link",
-    "Character found?",
-    "Prepare the photo link",
-    "Create a new character (auto)",
-    "Generate speech from text",
-    "Merge the character",
-    "Get the audio link",
-    "Download the photo",
-    "Create the lip-sync video",
-    "Get the video job ID",
-    "Upload to storage",
-    "Save the photo log",
-    "Wait 20 seconds",
-    "Count new photos",
-    "Close the old character",
-    "Save the pending shot type",
-    "Save the pending expression",
-    "Check video creation status",
-    "Update the photo count",
-    "Create a new character (manual)",
-    "Answer the button (shot)",
-    "Answer the button (expression)",
-    "Finished?",
-    "Compose reply: photo",
-    "Compose reply: new character",
-    "Compose reply: photo tag",
-    "Compose reply: expression buttons",
-    "Compose reply: confirm tag",
-    "Compose reply: video finished",
-    "Send the reply"
-   ],
-   "stages": [
-    {
-     "short": "Part 1",
-     "title": "Part 1",
-     "desc": "12 steps, from “Incoming Telegram message” to “Prepare the photo link”."
-    },
-    {
-     "short": "Part 2",
-     "title": "Part 2",
-     "desc": "15 steps, from “Create a new character (auto)” to “Check video creation status”."
-    },
-    {
-     "short": "Part 3",
-     "title": "Part 3",
-     "desc": "12 steps, from “Update the photo count” to “Send the reply”."
-    }
-   ],
-   "scenarios": [
-    {
-     "title": "Path 1: Send the reply",
-     "desc": "From “Incoming Telegram message” to “Send the reply”, 6 steps."
-    }
-   ],
-   "badge": "Early version, before the v2 task queue. Function inferred from step names."
-  },
   "youtube": {
    "title": "YouTube collector",
    "desc": "Searches videos by keyword, fetches details and comments, then stores them.",
@@ -1292,6 +1106,107 @@
     }
    ],
    "badge": "Process illustration, not an export of the system. Built from this case study's description."
+  },
+  "vsystem": {
+   "title": "From character to final video",
+   "desc": "Staff prepare the character and products, the system builds the storyboard and the queue, an agent produces the clips, and the video is finished.",
+   "badge": "Built from the system's documentation and code, not an export of a workflow. Clip generation through the agent has not been fully tested in the real video editor.",
+   "steps": 30,
+   "stageCount": 6,
+   "names": [
+    "Staff create a character",
+    "Character reaches “Ready”",
+    "Staff add products (1 to 10 per batch)",
+    "AI analyses the product photos",
+    "Product reaches “Confirmed”",
+    "Draft batch created (10 or 20 seconds)",
+    "Build the panel plan (editable and lockable)",
+    "Generate the clean storyboard",
+    "AI writes the script (when there is narration)",
+    "Build the video JSON in the browser",
+    "High-risk product?",
+    "Admin approves the risk",
+    "Requirements complete?",
+    "Send to the queue",
+    "Rejected: requirements incomplete",
+    "Browser and editor tab ready?",
+    "Agent claims the job (row lock)",
+    "Wait for the browser to open",
+    "Attach inputs and prompt, then generate",
+    "Clip finished?",
+    "Needs a human?",
+    "Stop and report (captcha or expired session)",
+    "Pause, then retry (max 3)",
+    "20-second video?",
+    "Merge clips A and B",
+    "Staff watch and approve the video",
+    "On-screen text (approve or skip)",
+    "Voice change (approve or skip)",
+    "Background sound (approve or skip)",
+    "Final video ready to download"
+   ],
+   "stages": [
+    {
+     "short": "Preparation",
+     "title": "Preparation",
+     "desc": "The character reaches Ready; products are analysed by AI and then Confirmed."
+    },
+    {
+     "short": "Plan",
+     "title": "Plan",
+     "desc": "A batch is created, the panel plan and storyboard are built, AI writes the script when there is narration, and the video JSON is built in the browser."
+    },
+    {
+     "short": "Approval",
+     "title": "Approval",
+     "desc": "High-risk products need admin approval; the database refuses to queue a batch when requirements are incomplete."
+    },
+    {
+     "short": "Production",
+     "title": "Production by the agent",
+     "desc": "An agent on the production laptop drives the video editor through a browser: claim a job, generate, retry on failure, and stop and report when a human is needed."
+    },
+    {
+     "short": "Result",
+     "title": "Video result",
+     "desc": "A 20-second video is merged from two clips; staff watch and approve it."
+    },
+    {
+     "short": "Finishing",
+     "title": "Finishing",
+     "desc": "On-screen text, voice change, and background sound; each stage is approved or skipped, then the final video is ready."
+    }
+   ],
+   "scenarios": [
+    {
+     "title": "10-second video, smooth run",
+     "desc": "One clip is produced without trouble, approved, and finished."
+    },
+    {
+     "title": "20-second video",
+     "desc": "Two clips (A and B) are produced and merged before approval."
+    },
+    {
+     "title": "High-risk product",
+     "desc": "An admin must approve the risk before the job enters the queue."
+    },
+    {
+     "title": "Requirements incomplete",
+     "desc": "The database refuses to queue the batch."
+    },
+    {
+     "title": "Fails once, then retries",
+     "desc": "The clip fails, the agent pauses, then tries again (max 3 times)."
+    },
+    {
+     "title": "Needs a human",
+     "desc": "Captcha or expired session: the agent stops, reports, and waits."
+    },
+    {
+     "title": "Browser not ready",
+     "desc": "The agent does not claim a job until the browser and editor tab are ready."
+    }
+   ]
   }
  },
  "groups": {
@@ -1318,8 +1233,7 @@
    "youtube"
   ],
   "ai-video-agent": [
-   "vbackend",
-   "vbot"
+   "vsystem"
   ]
  }
 }

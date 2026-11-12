@@ -299,4 +299,4 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 
 ### 5.zy Penampil alur (M29-M30, draf `[KONFIRMASI]`)
 Teks ada di `content/{id,en}/flows.json` (`ui`, judul alur, nama langkah, tahap, skenario) dan `common.json` (`case.explore*`). Struktur (posisi, sambungan, jalur) di `content/flows/*.json`. Nama layanan pihak ketiga diganti istilah umum (API pesan, database, cache); nama kanal umum boleh. Terjemahan Inggris adalah hasil saya dan perlu dicek Patrik.
-Setiap kartu punya penampil: 01 (1 alur ilustratif berlabel), 02 (8 alur), 03 (7 alur prototipe arsip), 04 (2 alur versi awal). Label per alur ada di `flows.json` `badge`. Kanvas n8n dan unduhan kerangka (M26-M28) dihapus.
+Setiap kartu punya penampil: 01 (1 alur ilustratif berlabel), 02 (8 alur), 03 (7 alur prototipe arsip), 04 (1 alur sistem, disusun dari dokumentasi dan kode). Label per alur ada di `flows.json` `badge`. Kanvas n8n dan unduhan kerangka (M26-M28) dihapus.
