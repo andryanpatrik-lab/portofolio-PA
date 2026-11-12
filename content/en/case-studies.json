@@ -251,8 +251,7 @@
     ],
     "context": "A messaging assistant serving prospective partners and sellers on WhatsApp, Instagram, and Facebook, with escalation tickets routed to a customer-service team.",
     "problem": "Messages arrive from several channels in free form, while the team only needs structured data from qualified prospects. The team also needs to see which tickets pile up and who owns them, and the bot needs guard rails so it does not answer spam or loop with other automated services.",
-    "solution": "A per-customer state machine stored in the database: entry gate, numbered menu, data collection, then a ticket whose recipients come from database configuration. AI is used in a limited way (fallback intent classification, spam screening, a daily report). A web app shows chats, tickets, and workflow controls with per-owner access.",
-    "learning": "Guard rails against other automated services must exist from day one: one non-human contact once triggered about 640 replies before it was blocked. Metrics also need to be recorded from the start, because the SLA column was never filled, so SLA compliance can only be approximated from the age of open tickets. Keeping recipient and routing configuration in the database means operational changes do not require editing workflows."
+    "solution": "A per-customer state machine stored in the database: entry gate, numbered menu, data collection, then a ticket whose recipients come from database configuration. AI is used in a limited way (fallback intent classification, spam screening, a daily report). A web app shows chats, tickets, and workflow controls with per-owner access."
   },
   "brand-intelligence": {
     "year": "2026",

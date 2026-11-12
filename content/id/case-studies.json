@@ -251,8 +251,7 @@
     ],
     "context": "Asisten pesan yang melayani calon mitra dan penjual di WhatsApp, Instagram, dan Facebook, dengan tiket eskalasi yang diarahkan ke tim layanan pelanggan.",
     "problem": "Pesan masuk dari beberapa kanal dengan format bebas, sementara tim hanya membutuhkan data terstruktur dari calon yang memenuhi syarat. Tim juga perlu tahu tiket mana yang menumpuk dan siapa penanggung jawabnya, dan bot membutuhkan pagar pengaman agar tidak menjawab spam atau berputar dengan layanan otomatis lain.",
-    "solution": "Mesin status per pelanggan yang disimpan di database: gerbang masuk, menu angka, pengumpulan data, lalu tiket dengan penerima dari konfigurasi database. AI dipakai terbatas (cadangan klasifikasi niat, penyaring spam, laporan harian). Aplikasi web menampilkan chat, tiket, dan kendali workflow dengan akses per pemilik.",
-    "learning": "Pagar pengaman terhadap layanan otomatis lain harus ada sejak awal: satu kontak non-manusia sempat memicu sekitar 640 balasan sebelum diblokir. Metrik juga perlu dicatat sejak awal, karena kolom SLA tidak pernah terisi sehingga kepatuhan SLA hanya bisa didekati lewat umur tiket terbuka. Menaruh konfigurasi penerima dan routing di database membuat perubahan operasional tidak perlu menyentuh workflow."
+    "solution": "Mesin status per pelanggan yang disimpan di database: gerbang masuk, menu angka, pengumpulan data, lalu tiket dengan penerima dari konfigurasi database. AI dipakai terbatas (cadangan klasifikasi niat, penyaring spam, laporan harian). Aplikasi web menampilkan chat, tiket, dan kendali workflow dengan akses per pemilik."
   },
   "brand-intelligence": {
     "year": "2026",
