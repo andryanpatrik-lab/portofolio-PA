@@ -25,7 +25,7 @@ export function ProjectCard({
   isEstimate: boolean;
 }) {
   return (
-    <BlackHoleLink href={href} className="block rounded-2xl">
+    <BlackHoleLink href={href} className="card-link block rounded-2xl">
       <article data-reveal className="project-card rounded-2xl border border-border bg-bg p-6 md:p-12">
         <ViewTransition name={`card-num-${slug}`} share="morph" default="none">
           <p className="t-label inline-block text-accent">{number}</p>

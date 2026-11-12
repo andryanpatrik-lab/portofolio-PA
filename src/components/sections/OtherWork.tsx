@@ -13,7 +13,7 @@ export function OtherWork({ home }: { home: Home }) {
       </div>
       <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {other.items.map((item) => (
-          <li key={item.id} data-reveal>
+          <li key={item.id} data-reveal className="other-item">
             <OtherProjectCard
               name={item.name}
               summary={item.summary}
