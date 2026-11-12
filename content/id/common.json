@@ -52,7 +52,9 @@
     "canvas": "Kanvas n8n",
     "downloadSkeleton": "Unduh kerangka (.json)",
     "skeletonNote": "Hanya struktur: tanpa parameter, kredensial, atau kode.",
-    "scrollHint": "Geser ke samping untuk melihat seluruh kanvas."
+    "scrollHint": "Geser ke samping untuk melihat seluruh kanvas.",
+    "overview": "Ringkasan workflow",
+    "overviewNote": "Contoh ilustrasi: disederhanakan, bukan ekspor workflow produksi."
   },
   "skipLink": "Lewati ke konten",
   "navLabel": "Navigasi utama",

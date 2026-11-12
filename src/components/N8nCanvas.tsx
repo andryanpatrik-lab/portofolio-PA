@@ -1,3 +1,4 @@
+import { useId } from "react";
 import type { Skeleton } from "@/lib/n8nSkeletons";
 
 // Layout constants: positions come from the real workflow, scaled down a little so boxes stay readable.
@@ -22,6 +23,7 @@ const KIND: Record<string, { label: string; trigger?: boolean }> = {
  * No animation. The wrapper scrolls sideways and is focusable so keyboard users can move through wide workflows.
  */
 export function N8nCanvas({ data, label, hint }: { data: Skeleton; label: string; hint: string }) {
+  const arrowId = `n8n-arrow-${useId().replace(/:/g, "")}`;
   const nodes = data.nodes.filter((n) => n.type !== "n8n-nodes-base.stickyNote");
   const minX = Math.min(...nodes.map((n) => n.position[0]));
   const minY = Math.min(...nodes.map((n) => n.position[1]));
@@ -38,17 +40,39 @@ export function N8nCanvas({ data, label, hint }: { data: Skeleton; label: string
     const a = place.get(from);
     if (!a) continue;
     v.main.forEach((outs, outIndex) => {
-      // a node with two outputs (IF) leaves from slightly above and below the middle
-      const dy = v.main.length > 1 ? (outIndex === 0 ? -8 : 8) : 0;
+      // a node with two outputs (IF) leaves from slightly apart: above/below the middle, or left/right of the centre
+      const spread = v.main.length > 1 ? (outIndex === 0 ? -8 : 8) : 0;
       for (const c of outs) {
         const b = place.get(c.node);
         if (!b) continue;
-        const x1 = a.x + W;
-        const y1 = a.y + H / 2 + dy;
-        const x2 = b.x;
-        const y2 = b.y + H / 2;
-        const dx = Math.max(36, Math.abs(x2 - x1) / 2);
-        edges.push({ key: `${from}>${c.node}>${outIndex}`, d: `M${x1} ${y1} C${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}` });
+        let d: string;
+        if (b.x >= a.x + W) {
+          // target to the right: leave the right side, enter the left side
+          const x1 = a.x + W;
+          const y1 = a.y + H / 2 + spread;
+          const x2 = b.x;
+          const y2 = b.y + H / 2;
+          const dx = Math.max(8, Math.abs(x2 - x1) / 2);
+          d = `M${x1} ${y1} C${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+        } else if (b.x + W <= a.x) {
+          // target to the left (the line turns back, e.g. a snake layout): leave the left side, enter the right side
+          const x1 = a.x;
+          const y1 = a.y + H / 2 + spread;
+          const x2 = b.x + W;
+          const y2 = b.y + H / 2;
+          const dx = Math.max(8, Math.abs(x1 - x2) / 2);
+          d = `M${x1} ${y1} C${x1 - dx} ${y1}, ${x2 + dx} ${y2}, ${x2} ${y2}`;
+        } else {
+          // same column: leave the bottom (or top) and enter the opposite side
+          const down = b.y >= a.y;
+          const x1 = a.x + W / 2;
+          const y1 = down ? a.y + H : a.y;
+          const x2 = b.x + W / 2;
+          const y2 = down ? b.y : b.y + H;
+          const dy = Math.max(24, Math.abs(y2 - y1) / 2);
+          d = `M${x1} ${y1} C${x1} ${y1 + (down ? dy : -dy)}, ${x2} ${y2 + (down ? -dy : dy)}, ${x2} ${y2}`;
+        }
+        edges.push({ key: `${from}>${c.node}>${outIndex}`, d });
       }
     });
   }
@@ -60,8 +84,13 @@ export function N8nCanvas({ data, label, hint }: { data: Skeleton; label: string
       <div className="n8n-scroll" role="group" aria-label={label} tabIndex={0}>
         <div className="n8n-canvas" style={{ width, height }} aria-hidden="true">
           <svg width={width} height={height} className="n8n-edges" focusable="false">
+            <defs>
+              <marker id={arrowId} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 z" className="n8n-arrow" />
+              </marker>
+            </defs>
             {edges.map((e) => (
-              <path key={e.key} d={e.d} fill="none" />
+              <path key={e.key} d={e.d} fill="none" markerEnd={`url(#${arrowId})`} />
             ))}
           </svg>
           {nodes.map((n) => {

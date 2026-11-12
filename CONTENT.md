@@ -301,6 +301,10 @@ Catatan bahasa: tiket memantau **layanan dan respons**, bukan "mengawasi karyawa
 
 Empat workflow kartu 02 (laporan harian 13 node, pemantau kesehatan 25 node, pemberi tahu error 5 node, notifikasi peninjauan webhook 7 node) tampil sebagai kanvas n8n tiruan dan bisa diunduh sebagai kerangka `.json` di `public/n8n/`. Kerangka hanya memuat jenis node, posisi, koneksi, dan nama generik; tanpa parameter, kode, kredensial, atau alamat. Patrik menyatakan berhak menampilkan struktur ini.
 
+### 5.zz Workflow contoh di bawah judul (M27, draf `[KONFIRMASI]`)
+
+Halaman kartu 02 menampilkan "Ringkasan workflow": kerangka ilustratif asisten pesan dari awal sampai akhir (12 node, dirancang ulang secara generik, bukan ekspor workflow produksi) tepat di bawah panel judul, dengan unduhan `.json` dan label "Contoh ilustrasi: disederhanakan, bukan ekspor workflow produksi". Empat kerangka turunan ekspor (M26) tetap ada di dalam card workflow.
+
 ## 6. Tentang
 
 | Field | ID | EN |

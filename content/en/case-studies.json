@@ -273,7 +273,11 @@
     ],
     "context": "A messaging assistant serving customers on WhatsApp, Instagram, and Facebook, with escalation tickets routed to a team.",
     "problem": "Messages arrive from several channels in free form, while the team only needs structured data from each customer. The team also needs to see which tickets pile up and who owns them, and the bot needs guard rails so it does not answer spam or loop with other automated services.",
-    "solution": "A per-customer state machine stored in the database: entry gate, numbered menu, data collection, then a ticket whose recipients come from database configuration. AI is used in a limited way (fallback intent classification, spam screening, a daily report). A web app shows chats, tickets, and workflow controls with per-owner access."
+    "solution": "A per-customer state machine stored in the database: entry gate, numbered menu, data collection, then a ticket whose recipients come from database configuration. AI is used in a limited way (fallback intent classification, spam screening, a daily report). A web app shows chats, tickets, and workflow controls with per-owner access.",
+    "overview": {
+      "file": "message-assistant-overview",
+      "caption": "messaging assistant, end to end (12 nodes)"
+    }
   },
   "brand-intelligence": {
     "year": "2026",

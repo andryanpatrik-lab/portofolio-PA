@@ -52,7 +52,9 @@
     "canvas": "n8n canvas",
     "downloadSkeleton": "Download skeleton (.json)",
     "skeletonNote": "Structure only: no parameters, credentials, or code.",
-    "scrollHint": "Scroll sideways to see the whole canvas."
+    "scrollHint": "Scroll sideways to see the whole canvas.",
+    "overview": "Workflow overview",
+    "overviewNote": "Illustrative example: simplified, not an export of a production workflow."
   },
   "skipLink": "Skip to content",
   "navLabel": "Primary navigation",

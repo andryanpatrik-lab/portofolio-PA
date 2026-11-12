@@ -273,7 +273,11 @@
     ],
     "context": "Asisten pesan yang melayani pelanggan di WhatsApp, Instagram, dan Facebook, dengan tiket eskalasi yang diarahkan ke sebuah tim.",
     "problem": "Pesan masuk dari beberapa kanal dengan format bebas, sementara tim hanya membutuhkan data terstruktur dari tiap pelanggan. Tim juga perlu tahu tiket mana yang menumpuk dan siapa penanggung jawabnya, dan bot membutuhkan pagar pengaman agar tidak menjawab spam atau berputar dengan layanan otomatis lain.",
-    "solution": "Mesin status per pelanggan yang disimpan di database: gerbang masuk, menu angka, pengumpulan data, lalu tiket dengan penerima dari konfigurasi database. AI dipakai terbatas (cadangan klasifikasi niat, penyaring spam, laporan harian). Aplikasi web menampilkan chat, tiket, dan kendali workflow dengan akses per pemilik."
+    "solution": "Mesin status per pelanggan yang disimpan di database: gerbang masuk, menu angka, pengumpulan data, lalu tiket dengan penerima dari konfigurasi database. AI dipakai terbatas (cadangan klasifikasi niat, penyaring spam, laporan harian). Aplikasi web menampilkan chat, tiket, dan kendali workflow dengan akses per pemilik.",
+    "overview": {
+      "file": "message-assistant-overview",
+      "caption": "asisten pesan dari awal sampai akhir (12 node)"
+    }
   },
   "brand-intelligence": {
     "year": "2026",

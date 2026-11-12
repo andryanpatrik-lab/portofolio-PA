@@ -1,6 +1,7 @@
 import dailyReport from "../../public/n8n/daily-report.json";
 import healthMonitor from "../../public/n8n/health-monitor.json";
 import errorNotifier from "../../public/n8n/error-notifier.json";
+import overview from "../../public/n8n/message-assistant-overview.json";
 import spamNotification from "../../public/n8n/spam-notification.json";
 
 /** Sanitised n8n workflow skeleton: node types, positions, and connections only (no parameters, credentials, or code). */
@@ -15,4 +16,5 @@ export const n8nSkeletons: Record<string, Skeleton> = {
   "health-monitor": healthMonitor as unknown as Skeleton,
   "error-notifier": errorNotifier as unknown as Skeleton,
   "spam-notification": spamNotification as unknown as Skeleton,
+  "message-assistant-overview": overview as unknown as Skeleton,
 };

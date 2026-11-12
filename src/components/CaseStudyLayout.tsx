@@ -60,6 +60,22 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           {meta.length > 0 && <p className="t-label mt-6 text-text-muted">{meta.join(" · ")}</p>}
         </header>
 
+        {data.overview && n8nSkeletons[data.overview.file] && (
+          <section data-cosmos="nebula" className="mt-12 md:mt-16">
+            <h2 {...dust} className="t-h3">{ui.overview}</h2>
+            <p className="t-label mt-4 text-text-muted">{ui.canvas}: {data.overview.caption}</p>
+            <div className="mt-6">
+              <N8nCanvas data={n8nSkeletons[data.overview.file]} label={`${ui.canvas}: ${data.overview.caption}`} hint={ui.scrollHint} />
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <Button variant="ghost" href={`/n8n/${data.overview.file}.json`} download>
+                {ui.downloadSkeleton}
+              </Button>
+              <span className="t-caption">{ui.overviewNote}</span>
+            </div>
+          </section>
+        )}
+
         {data.context && (
           <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
             <h2 {...dust} className="t-h3">{ui.context}</h2>
