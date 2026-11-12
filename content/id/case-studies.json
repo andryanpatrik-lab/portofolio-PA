@@ -249,8 +249,8 @@
         ]
       }
     ],
-    "context": "Asisten pesan yang melayani calon mitra dan penjual di WhatsApp, Instagram, dan Facebook, dengan tiket eskalasi yang diarahkan ke tim layanan pelanggan.",
-    "problem": "Pesan masuk dari beberapa kanal dengan format bebas, sementara tim hanya membutuhkan data terstruktur dari calon yang memenuhi syarat. Tim juga perlu tahu tiket mana yang menumpuk dan siapa penanggung jawabnya, dan bot membutuhkan pagar pengaman agar tidak menjawab spam atau berputar dengan layanan otomatis lain.",
+    "context": "Asisten pesan yang melayani pelanggan di WhatsApp, Instagram, dan Facebook, dengan tiket eskalasi yang diarahkan ke sebuah tim.",
+    "problem": "Pesan masuk dari beberapa kanal dengan format bebas, sementara tim hanya membutuhkan data terstruktur dari tiap pelanggan. Tim juga perlu tahu tiket mana yang menumpuk dan siapa penanggung jawabnya, dan bot membutuhkan pagar pengaman agar tidak menjawab spam atau berputar dengan layanan otomatis lain.",
     "solution": "Mesin status per pelanggan yang disimpan di database: gerbang masuk, menu angka, pengumpulan data, lalu tiket dengan penerima dari konfigurasi database. AI dipakai terbatas (cadangan klasifikasi niat, penyaring spam, laporan harian). Aplikasi web menampilkan chat, tiket, dan kendali workflow dengan akses per pemilik."
   },
   "brand-intelligence": {
@@ -374,7 +374,7 @@
         "label": "berkas migrasi"
       }
     ],
-    "context": "Sistem produksi video produk pendek bergaya konten pengguna untuk sebuah tim kerja: staf menyiapkan karakter dan produk di aplikasi web, lalu video dibuat oleh agen di laptop produksi atau oleh model video lewat API.",
+    "context": "Sistem produksi video produk pendek bergaya konten pengguna untuk sebuah tim: staf menyiapkan karakter dan produk di aplikasi web, lalu video dibuat oleh agen di laptop produksi atau oleh model video lewat API.",
     "problem": "Prototipe awal memanggil alur otomasi langsung dari browser, langkah demi langkah, tanpa antrean, tanpa persetujuan terpusat, dan tanpa catatan biaya. Membuat video dalam jumlah banyak dengan karakter yang konsisten, klaim produk yang aman, dan biaya yang terkendali tidak bisa diatur dengan cara itu.",
     "solution": "Pekerjaan disimpan sebagai antrean di database. Staf menyusun rencana panel, storyboard, dan JSON video, lalu menyetujui; database menolak pengiriman bila syarat keselamatan tidak lengkap. Agen mengambil tugas dengan penguncian baris, berhenti dan melapor saat butuh manusia, dan mencoba ulang dengan jeda. Tahap lanjutan (penggabungan klip, suara, teks di layar, suara latar, peningkatan resolusi) berjalan sebagai antrean tugas sendiri, dan biaya tiap proses dicatat.",
     "learning": "Aturan keselamatan yang hanya ada di antarmuka tidak cukup, jadi persetujuan dan syarat kirim ditegakkan di database. Layanan pihak ketiga punya batas (penandaan aktivitas, kuota, penghentian versi model), sehingga agen berhenti dan melapor, bukan menembus, dengan jeda acak dan percobaan ulang terbatas. Banyak perubahan baru diuji dengan tiruan, jadi pembuktian pada layanan asli adalah pekerjaan berikutnya."

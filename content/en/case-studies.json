@@ -249,8 +249,8 @@
         ]
       }
     ],
-    "context": "A messaging assistant serving prospective partners and sellers on WhatsApp, Instagram, and Facebook, with escalation tickets routed to a customer-service team.",
-    "problem": "Messages arrive from several channels in free form, while the team only needs structured data from qualified prospects. The team also needs to see which tickets pile up and who owns them, and the bot needs guard rails so it does not answer spam or loop with other automated services.",
+    "context": "A messaging assistant serving customers on WhatsApp, Instagram, and Facebook, with escalation tickets routed to a team.",
+    "problem": "Messages arrive from several channels in free form, while the team only needs structured data from each customer. The team also needs to see which tickets pile up and who owns them, and the bot needs guard rails so it does not answer spam or loop with other automated services.",
     "solution": "A per-customer state machine stored in the database: entry gate, numbered menu, data collection, then a ticket whose recipients come from database configuration. AI is used in a limited way (fallback intent classification, spam screening, a daily report). A web app shows chats, tickets, and workflow controls with per-owner access."
   },
   "brand-intelligence": {
@@ -374,7 +374,7 @@
         "label": "migration files"
       }
     ],
-    "context": "A production system for short, user-generated-content-style product videos for a working team: staff prepare characters and products in a web app, and videos are produced by an agent on a production laptop or by a video model through an API.",
+    "context": "A production system for short, user-generated-content-style product videos for a team: staff prepare characters and products in a web app, and videos are produced by an agent on a production laptop or by a video model through an API.",
     "problem": "The first prototype called automation workflows straight from the browser, step by step, with no queue, no central approval, and no cost tracking. Producing videos at volume with a consistent character, safe product claims, and controlled spend was not possible that way.",
     "solution": "Work is stored as a queue in the database. Staff build a panel plan, storyboard, and video JSON, then approve; the database refuses to submit when safety conditions are missing. The agent claims tasks with row locking, stops and reports when a human is needed, and retries with backoff. Later stages (clip merging, voice, on-screen text, ambient sound, upscaling) run as their own task queues, and the cost of each process is recorded.",
     "learning": "Safety rules that live only in the interface are not enough, so approval and submit conditions are enforced in the database. Third-party services have limits (activity flags, quotas, model version retirements), so the agent stops and reports rather than pushing through, with random pacing and bounded retries. Many recent changes were verified against test doubles, so proving them on the real services is the next piece of work."
