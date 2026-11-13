@@ -309,6 +309,52 @@
           {
             "label": "Revisions",
             "value": "About 5"
+          },
+          {
+            "label": "Building size",
+            "value": "About 6 × 12 m per floor"
+          },
+          {
+            "label": "Spaces",
+            "value": "Garage, family room, 3 bedrooms, 2 toilets, and a roof deck with a small garden and water tank"
+          }
+        ],
+        "gallery": [
+          {
+            "src": "/img/design/design-1.webp",
+            "w": 914,
+            "h": 1000,
+            "caption": "Front elevation"
+          },
+          {
+            "src": "/img/design/design-2.webp",
+            "w": 1000,
+            "h": 662,
+            "caption": "Right-side section showing the interior of both floors"
+          },
+          {
+            "src": "/img/design/design-3.webp",
+            "w": 679,
+            "h": 1000,
+            "caption": "Floor 1 plan with dimensions"
+          },
+          {
+            "src": "/img/design/design-4.webp",
+            "w": 666,
+            "h": 1000,
+            "caption": "Floor 1 top view with furniture"
+          },
+          {
+            "src": "/img/design/design-5.webp",
+            "w": 539,
+            "h": 1000,
+            "caption": "Floor 2 plan with dimensions"
+          },
+          {
+            "src": "/img/design/design-6.webp",
+            "w": 632,
+            "h": 1000,
+            "caption": "Floor 2 top view with furniture"
           }
         ]
       },

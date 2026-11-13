@@ -309,6 +309,52 @@
           {
             "label": "Revisi",
             "value": "Sekitar 5 kali"
+          },
+          {
+            "label": "Ukuran bangunan",
+            "value": "Sekitar 6 × 12 m per lantai"
+          },
+          {
+            "label": "Ruang",
+            "value": "Garasi, ruang keluarga, 3 kamar tidur, 2 toilet, dan dak dengan taman kecil serta tandon air"
+          }
+        ],
+        "gallery": [
+          {
+            "src": "/img/design/design-1.webp",
+            "w": 914,
+            "h": 1000,
+            "caption": "Tampak depan"
+          },
+          {
+            "src": "/img/design/design-2.webp",
+            "w": 1000,
+            "h": 662,
+            "caption": "Potongan samping kanan, memperlihatkan interior kedua lantai"
+          },
+          {
+            "src": "/img/design/design-3.webp",
+            "w": 679,
+            "h": 1000,
+            "caption": "Denah lantai 1 dengan ukuran"
+          },
+          {
+            "src": "/img/design/design-4.webp",
+            "w": 666,
+            "h": 1000,
+            "caption": "Tampak atas lantai 1 dengan perabot"
+          },
+          {
+            "src": "/img/design/design-5.webp",
+            "w": 539,
+            "h": 1000,
+            "caption": "Denah lantai 2 dengan ukuran"
+          },
+          {
+            "src": "/img/design/design-6.webp",
+            "w": 632,
+            "h": 1000,
+            "caption": "Tampak atas lantai 2 dengan perabot"
           }
         ]
       },

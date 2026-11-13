@@ -63,6 +63,7 @@ export type CaseStudyData = {
     facts: { label: string; value: string }[];
     challenge?: string;
     lesson?: string;
+    gallery?: { src: string; w: number; h: number; caption: string }[];
   }[];
   /** Adds the Ollama test specification section (offline AI project page). */
   ollama?: boolean;

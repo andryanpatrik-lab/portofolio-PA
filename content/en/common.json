@@ -94,7 +94,8 @@
     "venturesUi": {
       "tasks": "My tasks",
       "challenge": "Challenge",
-      "lesson": "Lesson"
+      "lesson": "Lesson",
+      "gallery": "Design results"
     }
   },
   "skipLink": "Skip to content",

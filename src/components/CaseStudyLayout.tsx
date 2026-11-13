@@ -181,6 +181,22 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
                           </div>
                         ))}
                       </dl>
+                      {v.gallery && (
+                        <div>
+                          <h4 className="t-label">{ui.venturesUi.gallery}</h4>
+                          <ul className="venture-gallery">
+                            {v.gallery.map((g) => (
+                              <li key={g.src}>
+                                <figure>
+                                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                                  <img src={g.src} width={g.w} height={g.h} alt={g.caption} loading="lazy" decoding="async" />
+                                  <figcaption>{g.caption}</figcaption>
+                                </figure>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                       {v.challenge && (
                         <div>
                           <h4 className="t-label">{ui.venturesUi.challenge}</h4>

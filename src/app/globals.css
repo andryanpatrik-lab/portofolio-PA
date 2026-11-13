@@ -1168,9 +1168,10 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .ollama-chips li { border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-family: var(--font-mono); font-size: 0.8125rem; }
 
 /* Side-business page (M45, accordion M46): native <details>, no JS. Only opacity and rotate move; the height is never animated. */
-.venture-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
-@media (min-width: 800px) { .venture-grid { grid-template-columns: 1fr 1fr; } }
+.venture-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 800px) { .venture-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
 @media (min-width: 800px) { .venture-grid > li:has(.venture-card[open]) { grid-column: 1 / -1; } }
+.venture-grid > li, .venture-body { min-width: 0; }
 .venture-card { border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
 .venture-summary { list-style: none; cursor: pointer; display: grid; gap: 10px; padding: 22px 56px 22px 24px; position: relative; min-height: 44px; border-radius: 12px; }
 .venture-summary::-webkit-details-marker { display: none; }
@@ -1191,6 +1192,12 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .venture-facts dt { color: var(--text-muted); }
 .venture-facts dd { margin: 0; color: var(--text-2); }
 @media (max-width: 420px) { .venture-facts > div { grid-template-columns: 1fr; gap: 2px; } }
+.venture-gallery { list-style: none; margin: 12px 0 0; padding: 0 0 8px; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.venture-gallery li { flex: none; scroll-snap-align: start; }
+.venture-gallery figure { margin: 0; display: grid; gap: 8px; }
+.venture-gallery img { display: block; height: 300px; width: auto; max-width: none; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+.venture-gallery figcaption { font-size: 0.8125rem; color: var(--text-muted); max-width: 26ch; }
+@media (min-width: 800px) { .venture-gallery img { height: 360px; } }
 @media (hover: hover) and (pointer: fine) { .venture-summary:hover .venture-name { color: var(--accent); } }
 @media (prefers-reduced-motion: no-preference) {
   html:not(.motion-off) .venture-card[open] .venture-body { animation: venture-in 180ms ease-out both; }
