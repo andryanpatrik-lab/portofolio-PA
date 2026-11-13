@@ -135,7 +135,10 @@ body {
 /* Section rhythm and anchors */
 .section-gap { padding-top: var(--section-gap); }
 .anchor { scroll-margin-top: 24px; }
-.odo { display: inline-flex; align-items: baseline; }
+.odo { display: inline-flex; flex-wrap: wrap; align-items: flex-end; }
+.odo-run { display: inline-flex; align-items: flex-end; }
+/* text parts of a value sit in flex items: keep their leading and trailing spaces ("±2 hari", not "±2hari") */
+.odo > span:not(.odo-col) { white-space: pre; }
 .odo-col { display: inline-block; height: 1em; width: calc(1ch - 0.02em); overflow: hidden; vertical-align: bottom; }
 .odo-strip { display: block; will-change: transform; }
 .odo-row { display: block; height: 1em; line-height: 1; }

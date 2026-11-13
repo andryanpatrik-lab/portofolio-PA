@@ -137,7 +137,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
             <ul className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-6">
               {shownMetrics.map((m, i) => (
                 <li key={i} className={m.value.length > 12 ? "sm:col-span-3" : undefined}>
-                  <CountMetric value={m.value} label={m.label} order={i} always />
+                  <CountMetric value={m.value} label={m.label} order={i} always numClass={m.value.length > 12 ? "t-metric t-metric-sm" : undefined} />
                   {m.estimate && <p className="t-label mt-2 text-text-muted">{ui.estimate}</p>}
                 </li>
               ))}

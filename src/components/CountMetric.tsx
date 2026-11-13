@@ -130,7 +130,7 @@ export function CountMetric({
             if ("text" in tok) return <span key={t}>{tok.text}</span>;
             const digits = tok.digits.split("");
             const multi = digits.length > 1;
-            return digits.map((ch, i) => {
+            const cols = digits.map((ch, i) => {
               const isOnes = i === digits.length - 1;
               const to = targetRow(Number(ch), isOnes, multi);
               return (
@@ -151,6 +151,11 @@ export function CountMetric({
                 </span>
               );
             });
+            return (
+              <span key={t} className="odo-run">
+                {cols}
+              </span>
+            );
           })}
           {unit ? <span className="t-metric-unit">{unit}</span> : null}
         </span>

@@ -29,7 +29,7 @@
     ],
     "metrics": [
       {
-        "value": "±2 hari → ±30 menit",
+        "value": "Dari ±2 hari → Ke ±30 menit",
         "label": "waktu proses permintaan ke pesanan"
       },
       {

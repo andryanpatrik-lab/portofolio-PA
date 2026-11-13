@@ -29,7 +29,7 @@
     ],
     "metrics": [
       {
-        "value": "~2 days → ~30 minutes",
+        "value": "From ~2 days → To ~30 minutes",
         "label": "request-to-order processing time"
       },
       {
