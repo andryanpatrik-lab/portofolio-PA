@@ -236,53 +236,141 @@
         "name": "Usaha kanopi dan konstruksi baja ringan",
         "year": "2024 – sekarang",
         "role": "Co-owner",
-        "summary": "Kanopi dan struktur baja ringan di Bandung, berjalan sampai sekarang.",
-        "text": "Usaha pembuatan kanopi dan struktur baja ringan di Bandung. Pesanan dikerjakan dengan rangka hollow galvanis dan dicatat lewat nota per pelanggan.",
+        "status": "Berjalan",
+        "summary": "Kanopi dan pagar baja ringan di Bandung; saya memegang desain, penawaran, pengawasan, dan keuangan.",
+        "text": "Usaha pembuatan kanopi dan pagar dari baja ringan di Bandung, saya jalankan sebagai co-owner.",
+        "tasks": [
+          "Desain",
+          "Penawaran",
+          "Pengawasan pekerjaan",
+          "Keuangan"
+        ],
         "facts": [
-          "Kanopi dan struktur baja ringan",
-          "Rangka hollow galvanis",
-          "Berjalan sampai sekarang"
-        ]
+          {
+            "label": "Status",
+            "value": "Berjalan, sedang berubah menjadi CV"
+          },
+          {
+            "label": "Jenis pesanan",
+            "value": "Kanopi dan pagar"
+          },
+          {
+            "label": "Bahan utama",
+            "value": "Baja ringan dengan atap UPVC double layer"
+          },
+          {
+            "label": "Waktu pengerjaan",
+            "value": "1–2 minggu, tergantung kerumitan"
+          },
+          {
+            "label": "Proyek terbesar",
+            "value": "Rp 65 juta"
+          }
+        ],
+        "challenge": "Pelanggan sering ragu pada kepercayaan terhadap vendor dan transparansi harga.",
+        "lesson": "Kami menjawab keduanya lewat pelayanan: harga yang jelas dan pekerjaan yang bisa dipercaya."
       },
       {
         "name": "Desain interior dan eksterior",
         "year": "2025",
         "role": "Freelance",
-        "summary": "Desain satu rumah dua lantai: denah, tampak, dan model 3D.",
-        "text": "Jasa desain bangunan yang saya kerjakan sendiri. Satu proyek rumah dua lantai dengan dak: denah tiap lantai, tampak dari empat sisi, model 3D, dan gambar tata letak.",
+        "status": "Berhenti",
+        "summary": "Denah dan model 3D untuk klien pribadi.",
+        "text": "Jasa desain bangunan yang saya kerjakan sendiri untuk klien pribadi, fokus pada denah dan model 3D.",
+        "tasks": [
+          "Denah",
+          "Model 3D"
+        ],
         "facts": [
-          "2 lantai + dak",
-          "Denah dan 4 tampak",
-          "Model 3D dan tata letak"
+          {
+            "label": "Status",
+            "value": "Berhenti sementara karena belum ada waktu"
+          },
+          {
+            "label": "Klien",
+            "value": "Pribadi"
+          },
+          {
+            "label": "Perangkat lunak",
+            "value": "SketchUp"
+          },
+          {
+            "label": "Waktu pengerjaan",
+            "value": "1–3 hari"
+          },
+          {
+            "label": "Revisi",
+            "value": "Sekitar 5 kali"
+          }
         ]
       },
       {
         "name": "Usaha kuliner",
         "year": "2025",
         "role": "Owner",
-        "summary": "Ketan fusion dan roti bakar dengan merek sendiri.",
-        "text": "Usaha makanan milik saya: ketan fusion dan roti bakar, lengkap dengan merek, logo, foto produk, dan materi promosi sendiri.",
+        "status": "Tidak berjalan",
+        "summary": "Tiga menu jajanan dengan merek sendiri, dijual langsung (offline).",
+        "text": "Usaha jajanan milik saya dengan merek, logo, foto produk, dan materi promosi sendiri.",
+        "tasks": [
+          "Pemasaran",
+          "Kasir",
+          "Pemasok"
+        ],
         "facts": [
-          "2 menu utama",
-          "Merek dan logo",
-          "Foto produk dan spanduk promo"
+          {
+            "label": "Menu",
+            "value": "3: biskuit keju krim, jagung susu keju creamy, dan ketan fusion gurih atau asin"
+          },
+          {
+            "label": "Penjualan harian",
+            "value": "10–20 pcs"
+          },
+          {
+            "label": "Harga rata-rata",
+            "value": "Rp 15 ribu"
+          },
+          {
+            "label": "Saluran",
+            "value": "Hanya offline"
+          }
         ]
       },
       {
         "name": "Usaha ekspor teh dan kopi",
         "year": "2021 – 2023",
         "role": "Co-founder",
-        "summary": "Ekspor teh dan kopi sampai penawaran FOB; belum ada pengiriman.",
-        "text": "Usaha ekspor teh dan kopi Indonesia yang saya dirikan bersama tiga rekan. Saya merancang prosesnya dari pemasok sampai penawaran FOB. Belum pernah ada pengiriman; yang jadi adalah katalog, penawaran, dan syarat dagang.",
+        "status": "Berhenti",
+        "summary": "Ekspor teh dan kopi sampai penawaran FOB; belum pernah ada pengiriman.",
+        "text": "Usaha ekspor teh dan kopi Indonesia yang saya dirikan bersama tiga rekan. Belum pernah ada pengiriman; yang jadi adalah katalog, penawaran, dan syarat dagang.",
+        "tasks": [
+          "Seluruh tahap, dari riset pasar sampai penawaran",
+          "Terbanyak: desain materi dan database harga pemasok"
+        ],
         "facts": [
-          "Teh dan kopi",
-          "3 profil pengolahan kopi",
-          "18 / 25 ton per kontainer"
-        ]
+          {
+            "label": "Komoditas",
+            "value": "Teh dan kopi"
+          },
+          {
+            "label": "Profil kopi",
+            "value": "3 profil pengolahan"
+          },
+          {
+            "label": "Pesanan minimum",
+            "value": "18 / 25 ton per kontainer"
+          },
+          {
+            "label": "Pengiriman",
+            "value": "Belum pernah"
+          }
+        ],
+        "challenge": "Prosedur birokrasi negara kurang transparan, sehingga sulit menembus pasar luar negeri.",
+        "lesson": "Dibutuhkan koordinasi, tim yang solid, serta kontinuitas dan konsistensi yang tinggi."
       }
     ],
     "metrics": [],
-    "flow": []
+    "flow": [],
+    "learning": "Berganti peran, dari desain dan keuangan sampai kasir, pemasok, dan penawaran ekspor, membuat saya cepat memahami cara kerja tiap jenis usaha. Dua pola berulang: pelanggan butuh kepercayaan dan transparansi harga, dan usaha bertahan karena koordinasi, tim yang solid, serta konsistensi."
   },
   "survey-dashboard": {
     "year": "",

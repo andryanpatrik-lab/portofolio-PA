@@ -52,7 +52,18 @@ export type CaseStudyData = {
   /** "When local, when cloud" lists (offline AI project page). */
   guide?: { local: string[]; cloud: string[] };
   /** Cards for the side-business page: one per venture. */
-  ventures?: { name: string; year: string; role: string; summary: string; text: string; facts: string[] }[];
+  ventures?: {
+    name: string;
+    year: string;
+    role: string;
+    status: string;
+    summary: string;
+    text: string;
+    tasks: string[];
+    facts: { label: string; value: string }[];
+    challenge?: string;
+    lesson?: string;
+  }[];
   /** Adds the Ollama test specification section (offline AI project page). */
   ollama?: boolean;
 };

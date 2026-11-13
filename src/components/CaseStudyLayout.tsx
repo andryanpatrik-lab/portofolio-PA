@@ -157,7 +157,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
                   <details className="venture-card">
                     <summary className="venture-summary">
                       <span className="t-label">
-                        <strong className="font-bold text-text">{v.year}</strong> · {v.role}
+                        <strong className="font-bold text-text">{v.year}</strong> · {v.role} · {v.status}
                       </span>
                       <span className="venture-name">{v.name}</span>
                       <span className="venture-brief">{v.summary}</span>
@@ -165,11 +165,34 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
                     </summary>
                     <div className="venture-body">
                       <p className="venture-text">{v.text}</p>
-                      <ul className="venture-facts">
+                      <div>
+                        <h4 className="t-label">{ui.venturesUi.tasks}</h4>
+                        <ul className="venture-list">
+                          {v.tasks.map((t) => (
+                            <li key={t}>{t}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <dl className="venture-facts">
                         {v.facts.map((f) => (
-                          <li key={f}>{f}</li>
+                          <div key={f.label}>
+                            <dt>{f.label}</dt>
+                            <dd>{f.value}</dd>
+                          </div>
                         ))}
-                      </ul>
+                      </dl>
+                      {v.challenge && (
+                        <div>
+                          <h4 className="t-label">{ui.venturesUi.challenge}</h4>
+                          <p className="venture-text mt-2">{v.challenge}</p>
+                        </div>
+                      )}
+                      {v.lesson && (
+                        <div>
+                          <h4 className="t-label">{ui.venturesUi.lesson}</h4>
+                          <p className="venture-text mt-2">{v.lesson}</p>
+                        </div>
+                      )}
                     </div>
                   </details>
                 </li>

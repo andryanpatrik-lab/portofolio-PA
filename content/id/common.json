@@ -90,7 +90,12 @@
       "pickerResult": "Batas model sekitar {p} miliar parameter. {n} varian muat. Delapan teratas menurut unduhan:",
       "pickerNone": "Belum ada model yang muat pada RAM ini."
     },
-    "ventures": "Usaha yang saya jalankan"
+    "ventures": "Usaha yang saya jalankan",
+    "venturesUi": {
+      "tasks": "Tugas saya",
+      "challenge": "Kendala",
+      "lesson": "Pelajaran"
+    }
   },
   "skipLink": "Lewati ke konten",
   "navLabel": "Navigasi utama",

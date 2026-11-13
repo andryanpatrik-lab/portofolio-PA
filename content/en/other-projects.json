@@ -236,53 +236,141 @@
         "name": "Canopy and light steel construction venture",
         "year": "2024 – present",
         "role": "Co-owner",
-        "summary": "Canopies and light steel structures in Bandung, running to this day.",
-        "text": "A venture that builds canopies and light steel structures in Bandung. Orders are built on galvanised hollow frames and tracked with one order note per customer.",
+        "status": "Running",
+        "summary": "Light steel canopies and fences in Bandung; I handle design, quotations, supervision, and finance.",
+        "text": "A venture that builds canopies and fences from light steel in Bandung, which I run as a co-owner.",
+        "tasks": [
+          "Design",
+          "Quotations",
+          "Supervising the work",
+          "Finance"
+        ],
         "facts": [
-          "Canopies and light steel structures",
-          "Galvanised hollow frames",
-          "Running to this day"
-        ]
+          {
+            "label": "Status",
+            "value": "Running, becoming a CV"
+          },
+          {
+            "label": "Order types",
+            "value": "Canopies and fences"
+          },
+          {
+            "label": "Main material",
+            "value": "Light steel with a double-layer UPVC roof"
+          },
+          {
+            "label": "Build time",
+            "value": "1–2 weeks, depending on complexity"
+          },
+          {
+            "label": "Largest project",
+            "value": "IDR 65 million"
+          }
+        ],
+        "challenge": "Customers often hesitate over trust in the vendor and price transparency.",
+        "lesson": "We answer both through our service: clear prices and work they can trust."
       },
       {
         "name": "Interior and exterior design",
         "year": "2025",
         "role": "Freelance",
-        "summary": "Design of a two-storey house: plans, elevations, and a 3D model.",
-        "text": "Building design work I do on my own. One two-storey house with a roof deck: a plan for each floor, elevations from four sides, a 3D model, and layout drawings.",
+        "status": "Stopped",
+        "summary": "Floor plans and 3D models for private clients.",
+        "text": "Building design work I do on my own for private clients, focused on floor plans and 3D models.",
+        "tasks": [
+          "Floor plans",
+          "3D models"
+        ],
         "facts": [
-          "2 floors + roof deck",
-          "Plans and 4 elevations",
-          "3D model and layout"
+          {
+            "label": "Status",
+            "value": "Paused for lack of time"
+          },
+          {
+            "label": "Clients",
+            "value": "Private"
+          },
+          {
+            "label": "Software",
+            "value": "SketchUp"
+          },
+          {
+            "label": "Build time",
+            "value": "1–3 days"
+          },
+          {
+            "label": "Revisions",
+            "value": "About 5"
+          }
         ]
       },
       {
         "name": "Food venture",
         "year": "2025",
         "role": "Owner",
-        "summary": "Fusion sticky rice and grilled bread under its own brand.",
-        "text": "A food business I own: fusion sticky rice and grilled bread, with its own brand, logo, product photos, and promotional material.",
+        "status": "Not running",
+        "summary": "Three snack menu items under its own brand, sold in person (offline).",
+        "text": "A snack business I own, with its own brand, logo, product photos, and promotional material.",
+        "tasks": [
+          "Marketing",
+          "Cashier",
+          "Supplier"
+        ],
         "facts": [
-          "2 main menu items",
-          "Brand and logo",
-          "Product photos and promo banner"
+          {
+            "label": "Menu",
+            "value": "3: cheese biscuit cream, creamy corn-milk-cheese, and fusion sticky rice, savoury or salty"
+          },
+          {
+            "label": "Daily sales",
+            "value": "10–20 pcs"
+          },
+          {
+            "label": "Average price",
+            "value": "IDR 15 thousand"
+          },
+          {
+            "label": "Channel",
+            "value": "Offline only"
+          }
         ]
       },
       {
         "name": "Tea and coffee export venture",
         "year": "2021 – 2023",
         "role": "Co-founder",
-        "summary": "Tea and coffee export up to FOB quotations; no shipment yet.",
-        "text": "A tea and coffee export venture I started with three fellow founders. I designed the process from suppliers to FOB quotations. There has been no shipment; what exists is a catalogue, quotations, and trade terms.",
+        "status": "Stopped",
+        "summary": "Tea and coffee export up to FOB quotations; no shipment ever.",
+        "text": "A tea and coffee export venture I started with three fellow founders. There has been no shipment; what exists is a catalogue, quotations, and trade terms.",
+        "tasks": [
+          "Every stage, from market research to quotations",
+          "Most of all: designing materials and the supplier price database"
+        ],
         "facts": [
-          "Tea and coffee",
-          "3 coffee processing profiles",
-          "18 / 25 tons per container"
-        ]
+          {
+            "label": "Commodities",
+            "value": "Tea and coffee"
+          },
+          {
+            "label": "Coffee profiles",
+            "value": "3 processing profiles"
+          },
+          {
+            "label": "Minimum order",
+            "value": "18 / 25 tons per container"
+          },
+          {
+            "label": "Shipments",
+            "value": "None so far"
+          }
+        ],
+        "challenge": "State bureaucratic procedures were not transparent, which made it hard to enter overseas markets.",
+        "lesson": "It takes coordination, a solid team, and high continuity and consistency."
       }
     ],
     "metrics": [],
-    "flow": []
+    "flow": [],
+    "learning": "Switching roles, from design and finance to cashier, supplier, and export quotations, taught me to grasp how each kind of business works quickly. Two patterns repeat: customers need trust and price transparency, and a venture lasts because of coordination, a solid team, and consistency."
   },
   "survey-dashboard": {
     "year": "",
