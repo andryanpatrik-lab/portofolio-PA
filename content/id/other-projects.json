@@ -9,7 +9,7 @@
       "Impor CSV/Excel"
     ],
     "context": "Tim penjualan online dengan beberapa packer dan CS memproses order harian dari dua marketplace.",
-    "problem": "Order, stok, dan packing dikelola di banyak spreadsheet: tab terpisah per packer, rekap packing, dan catatan stok yang disusun manual. Sulit melihat barang apa yang harus disiapkan hari itu, SKU mana yang menipis, dan siapa mengerjakan order apa.",
+    "problem": "Order, stok, dan packing dikelola di banyak spreadsheet: tab terpisah per packer, rekap packing, dan catatan stok yang disusun manual. Sulit melihat barang apa yang harus disiapkan hari itu, SKU mana yang menipis, dan siapa mengerjakan order apa. Contoh satu hari kerja sebelum aplikasi: 70 paket dan 11 admin diproses lewat satu berkas 20 sheet, dengan rekap barang yang disusun manual lewat rumus antar sheet.",
     "solution": "Platform inventori multi-tenant. Order masuk lewat API marketplace atau impor CSV/Excel, sistem menyusun rekap kebutuhan barang dan membagi order ke packer, lalu packer menerima kertas packing digital di HP. Stok berkurang otomatis saat packing dikonfirmasi lewat log mutasi yang tidak pernah diedit, status stok (aman, hati-hati, habiskan, kosong) dihitung otomatis, dan data tiap penjual terisolasi dengan row-level security.",
     "flow": [
       {
@@ -50,7 +50,20 @@
         "note": "cara stok berkurang: barang siap kirim, atau produk dengan kemasan terpisah"
       }
     ],
-    "metrics": []
+    "metrics": [
+      {
+        "value": "70",
+        "label": "paket diproses dalam satu hari kerja (kondisi awal)"
+      },
+      {
+        "value": "11",
+        "label": "admin menginput ke berkas yang sama (kondisi awal)"
+      },
+      {
+        "value": "20",
+        "label": "sheet dalam satu berkas manual (kondisi awal)"
+      }
+    ]
   },
   "internal-automation": {
     "role": "Perancang dan pembangun",

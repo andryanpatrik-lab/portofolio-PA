@@ -9,7 +9,7 @@
       "CSV/Excel import"
     ],
     "context": "An online sales team with several packers and customer-service staff processes daily orders from two marketplaces.",
-    "problem": "Orders, stock, and packing were managed in many spreadsheets: separate tabs per packer, packing recaps, and stock notes built by hand. It was hard to see which goods to prepare that day, which SKUs were running low, and who was working on which order.",
+    "problem": "Orders, stock, and packing were managed in many spreadsheets: separate tabs per packer, packing recaps, and stock notes built by hand. It was hard to see which goods to prepare that day, which SKUs were running low, and who was working on which order. Example of one working day before the app: 70 parcels and 11 admins processed through a single 20-sheet file, with item totals compiled by hand through formulas across sheets.",
     "solution": "A multi-tenant inventory platform. Orders arrive through a marketplace API or a CSV/Excel import, the system builds the day's goods requirement and splits orders across packers, and each packer receives a digital packing sheet on their phone. Stock drops automatically when packing is confirmed through a mutation log that is never edited, stock status (safe, careful, use up, empty) is calculated automatically, and each seller's data is isolated with row-level security.",
     "flow": [
       {
@@ -50,7 +50,20 @@
         "note": "how stock drops: ready-to-ship, or product with separate packaging"
       }
     ],
-    "metrics": []
+    "metrics": [
+      {
+        "value": "70",
+        "label": "parcels processed in one working day (baseline)"
+      },
+      {
+        "value": "11",
+        "label": "admins entering data into the same file (baseline)"
+      },
+      {
+        "value": "20",
+        "label": "sheets in one manual file (baseline)"
+      }
+    ]
   },
   "internal-automation": {
     "role": "Designer and builder",
