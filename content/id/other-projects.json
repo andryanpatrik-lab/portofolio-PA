@@ -387,6 +387,33 @@
             "label": "Saluran",
             "value": "Hanya offline"
           }
+        ],
+        "galleryTitle": "Foto produk",
+        "gallery": [
+          {
+            "src": "/img/food/food-1.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Camilan biskuit krim dengan topping keju parut"
+          },
+          {
+            "src": "/img/food/food-2.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Camilan biskuit krim dengan topping remah merah"
+          },
+          {
+            "src": "/img/food/food-3.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Camilan biskuit krim dengan topping pistachio"
+          },
+          {
+            "src": "/img/food/food-4.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Camilan biskuit krim dengan topping cokelat"
+          }
         ]
       },
       {

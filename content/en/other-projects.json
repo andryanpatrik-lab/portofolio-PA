@@ -387,6 +387,33 @@
             "label": "Channel",
             "value": "Offline only"
           }
+        ],
+        "galleryTitle": "Product photos",
+        "gallery": [
+          {
+            "src": "/img/food/food-1.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Cream biscuit snack with grated cheese topping"
+          },
+          {
+            "src": "/img/food/food-2.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Cream biscuit snack with red crumble topping"
+          },
+          {
+            "src": "/img/food/food-3.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Cream biscuit snack with pistachio topping"
+          },
+          {
+            "src": "/img/food/food-4.webp",
+            "w": 1000,
+            "h": 760,
+            "caption": "Cream biscuit snack with chocolate topping"
+          }
         ]
       },
       {

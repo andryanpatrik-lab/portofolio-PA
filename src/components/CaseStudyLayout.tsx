@@ -183,7 +183,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
                       </dl>
                       {v.gallery && (
                         <div>
-                          <h4 className="t-label">{ui.venturesUi.gallery}</h4>
+                          <h4 className="t-label">{v.galleryTitle ?? ui.venturesUi.gallery}</h4>
                           <ul className="venture-gallery">
                             {v.gallery.map((g) => (
                               <li key={g.src}>
