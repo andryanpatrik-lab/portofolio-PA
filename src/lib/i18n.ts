@@ -51,6 +51,8 @@ export type CaseStudyData = {
   maintenance?: boolean;
   /** "When local, when cloud" lists (offline AI project page). */
   guide?: { local: string[]; cloud: string[] };
+  /** Overrides the "System structure" heading for projects that are not software. */
+  systemTitle?: string;
   /** Adds the Ollama test specification section (offline AI project page). */
   ollama?: boolean;
 };

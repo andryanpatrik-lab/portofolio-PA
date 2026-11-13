@@ -132,15 +132,15 @@
         "status": "Eksperimen (2025)"
       },
       {
-        "id": "watch-party",
-        "name": "Situs nonton bareng untuk komunitas",
-        "summary": "Situs satu file berisi jadwal pertandingan, filter, estimasi biaya, dan papan hasil untuk acara nonton bareng.",
+        "id": "export-trade",
+        "name": "Usaha ekspor teh dan kopi",
+        "summary": "Merancang proses ekspor teh dan kopi dari pemasok sampai penawaran FOB, bersama tiga rekan pendiri.",
         "tags": [
-          "HTML",
-          "JavaScript",
-          "Komunitas"
+          "Ekspor",
+          "Rantai pasok",
+          "Komoditas"
         ],
-        "status": null
+        "status": "Berjalan (sejak 2021)"
       },
       {
         "id": "survey-dashboard",

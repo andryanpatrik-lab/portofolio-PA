@@ -171,7 +171,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
         {data.system && data.system.length > 0 && (
           <section data-cosmos="nebula" className="mt-[var(--section-gap)]">
-            <h2 {...dust} className="t-h3">{ui.system}</h2>
+            <h2 {...dust} className="t-h3">{data.systemTitle ?? ui.system}</h2>
             <SystemSheet items={data.system} />
           </section>
         )}

@@ -224,15 +224,58 @@
     "ollama": true,
     "metrics": []
   },
-  "watch-party": {
-    "year": "",
+  "export-trade": {
+    "year": "2021 – sekarang",
+    "role": "Co-founder",
+    "status": "Berjalan",
     "stack": [
-      "HTML",
-      "JavaScript",
-      "Komunitas"
+      "Ekspor",
+      "Rantai pasok",
+      "Komoditas"
     ],
-    "solution": "Situs satu file berisi jadwal pertandingan, filter, estimasi biaya, dan papan hasil untuk acara nonton bareng.",
-    "flow": [],
+    "context": "Usaha ekspor teh dan kopi Indonesia yang saya dirikan bersama tiga rekan pada 2021, dengan sasaran pembeli di luar negeri.",
+    "problem": "Mengekspor komoditas menuntut banyak hal berjalan sekaligus: spesifikasi yang konsisten, pemasok yang terpercaya, harga yang mengikuti kurs, dan dokumen yang rapi sebelum barang berangkat.",
+    "solution": "Saya merancang prosesnya dari hulu ke hilir: memilih komoditas, mencari pemasok yang bersertifikat, menetapkan spesifikasi dan kontrol mutu, menyusun penawaran berbasis FOB, dan menyiapkan kebutuhan pengiriman. Sampai sekarang belum ada pengiriman; yang sudah jadi adalah katalog, penawaran, dan syarat dagang yang siap dipakai.",
+    "flow": [
+      {
+        "label": "Riset pasar dan pilih komoditas"
+      },
+      {
+        "label": "Cari pemasok yang bersertifikat"
+      },
+      {
+        "label": "Tetapkan spesifikasi dan kontrol mutu"
+      },
+      {
+        "label": "Susun penawaran FOB: harga, kurs, minimum pesanan, lead time"
+      },
+      {
+        "label": "Siapkan pengiriman dan dokumen"
+      }
+    ],
+    "systemTitle": "Ringkasan usaha",
+    "system": [
+      {
+        "value": "2",
+        "label": "komoditas",
+        "note": "teh dan kopi"
+      },
+      {
+        "value": "3",
+        "label": "profil pengolahan kopi",
+        "note": "semi-washed, full-washed, dan natural"
+      },
+      {
+        "value": "18 / 25",
+        "label": "ton per kontainer",
+        "note": "minimum pesanan untuk kontainer 20 kaki dan 40 kaki"
+      },
+      {
+        "value": "20",
+        "label": "hari kerja",
+        "note": "lead time setelah pesanan dan perjanjian ditandatangani"
+      }
+    ],
     "metrics": []
   },
   "survey-dashboard": {

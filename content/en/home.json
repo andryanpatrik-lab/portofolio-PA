@@ -132,15 +132,15 @@
         "status": "Experiment (2025)"
       },
       {
-        "id": "watch-party",
-        "name": "Community watch-party website",
-        "summary": "A single-file site with match schedule, filters, cost estimator, and results board for a watch-party event.",
+        "id": "export-trade",
+        "name": "Tea and coffee export venture",
+        "summary": "Designing the export process for tea and coffee, from suppliers to FOB quotations, with three fellow founders.",
         "tags": [
-          "HTML",
-          "JavaScript",
-          "Community"
+          "Export",
+          "Supply chain",
+          "Commodities"
         ],
-        "status": null
+        "status": "Ongoing (since 2021)"
       },
       {
         "id": "survey-dashboard",

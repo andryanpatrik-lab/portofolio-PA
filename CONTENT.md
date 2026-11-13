@@ -309,7 +309,8 @@ Data di `content/{id,en}/other-projects.json` (per `id`), alur proyek 1 di `cont
 | L2 Alat otomasi internal | dokumentasi teknis (HTML v2.0) dan repo dashboard analitik video creator (M40) | Dashboard analitik performa video creator: tempel tautan, workflow n8n mengambil metrik dan komentar, tabel yang bisa difilter dan diekspor CSV, 5 templat prompt AI, akses dua tingkat berlapis. Konteks, masalah (inferensi), solusi, alur 5 langkah, struktur (6 tabel, 4 view, 2 workflow n8n, 13 endpoint API, 2 peran), Pembelajaran (celah berkas halaman tertinggal, dari dokumentasi), alur interaktif metrik (dari ekspor workflow). Menggantikan deskripsi lama "scouting kreator berbasis skor prioritas dan bot riset tren". |
 | L3 Platform mitra konten | zip repo (README, migrasi, 2 workflow n8n) | Konteks, solusi, alur 5 langkah, struktur: 9 tabel, 22 kebijakan akses, 3 peran, 13 halaman, 2 workflow n8n. |
 | L4 AI offline lokal | catatan 4b, tab Ollama sheet katalog | M43: konteks umum, alur 5 langkah, panduan lokal vs cloud (berlabel panduan umum), spesifikasi uji (perangkat uji + daftar model Ollama yang muat, otomatis) dan pemilih model menurut RAM. Tanpa klaim hasil uji. Nama model tampil apa adanya (pengecualian Patrik). |
-| L5 Nonton bareng, L6 Dashboard survei | hanya kartu | Satu bagian "Yang dibuat". `[ISI]` bahan. |
+| L5 (kini usaha ekspor, M44) | folder Drive "Ekspor" (katalog, penawaran, profil perusahaan, dokumen legalitas, gambar sertifikat pemasok) | Co-founder, 2021 sampai sekarang, berjalan. Fakta umum saja; belum pernah ada pengiriman, jadi tanpa hasil. Nama badan usaha, pembeli, pemasok, harga, dan nomor tidak ditulis. |
+| L6 Dashboard survei | hanya kartu | Satu bagian "Yang dibuat". `[ISI]` bahan; direncanakan diganti CRM dan dashboard kinerja (A). |
 Bagian tanpa data tidak dirender (tidak ada teks "sedang disiapkan").
 
 ### 4d. Katalog model AI (M41, draf `[KONFIRMASI]`)

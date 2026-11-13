@@ -224,15 +224,58 @@
     "ollama": true,
     "metrics": []
   },
-  "watch-party": {
-    "year": "",
+  "export-trade": {
+    "year": "2021 – present",
+    "role": "Co-founder",
+    "status": "Ongoing",
     "stack": [
-      "HTML",
-      "JavaScript",
-      "Community"
+      "Export",
+      "Supply chain",
+      "Commodities"
     ],
-    "solution": "A single-file site with match schedule, filters, cost estimator, and results board for a watch-party event.",
-    "flow": [],
+    "context": "An Indonesian tea and coffee export venture I started with three fellow founders in 2021, aimed at overseas buyers.",
+    "problem": "Exporting commodities needs many things to line up at once: consistent specifications, reliable suppliers, prices that follow the exchange rate, and tidy documents before anything ships.",
+    "solution": "I designed the process end to end: choosing commodities, finding certified suppliers, setting specifications and quality control, building FOB-based quotations, and preparing what shipping needs. There has been no shipment so far; what exists is a catalogue, quotations, and trade terms that are ready to use.",
+    "flow": [
+      {
+        "label": "Research the market and pick commodities"
+      },
+      {
+        "label": "Find certified suppliers"
+      },
+      {
+        "label": "Set specifications and quality control"
+      },
+      {
+        "label": "Build the FOB quotation: price, exchange rate, minimum order, lead time"
+      },
+      {
+        "label": "Prepare shipping and documents"
+      }
+    ],
+    "systemTitle": "The venture at a glance",
+    "system": [
+      {
+        "value": "2",
+        "label": "commodities",
+        "note": "tea and coffee"
+      },
+      {
+        "value": "3",
+        "label": "coffee processing profiles",
+        "note": "semi-washed, full-washed, and natural"
+      },
+      {
+        "value": "18 / 25",
+        "label": "tons per container",
+        "note": "minimum order for 20 ft and 40 ft containers"
+      },
+      {
+        "value": "20",
+        "label": "business days",
+        "note": "lead time after the order and agreement are signed"
+      }
+    ],
     "metrics": []
   },
   "survey-dashboard": {
