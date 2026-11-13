@@ -1167,12 +1167,27 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .ollama-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .ollama-chips li { border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-family: var(--font-mono); font-size: 0.8125rem; }
 
-/* Side-business page (M45): one card per venture. Static, no animation. */
-.venture-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: 1fr; }
+/* Side-business page (M45, accordion M46): native <details>, no JS. Only opacity and rotate move; the height is never animated. */
+.venture-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 800px) { .venture-grid { grid-template-columns: 1fr 1fr; } }
-.venture-card { border: 1px solid var(--border); border-radius: 12px; padding: 24px; background: var(--bg); display: flex; flex-direction: column; gap: 14px; }
+.venture-card { border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
+.venture-summary { list-style: none; cursor: pointer; display: grid; gap: 10px; padding: 22px 56px 22px 24px; position: relative; min-height: 44px; border-radius: 12px; }
+.venture-summary::-webkit-details-marker { display: none; }
+.venture-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .venture-name { font-size: 1.375rem; line-height: 1.25; font-weight: 400; color: var(--text); }
+.venture-brief { color: var(--text-2); line-height: 1.5; }
+.venture-mark { position: absolute; right: 22px; top: 22px; width: 18px; height: 18px; }
+.venture-mark::before, .venture-mark::after { content: ""; position: absolute; left: 0; right: 0; top: 8px; height: 2px; background: var(--text-2); border-radius: 1px; }
+.venture-mark::after { transform: rotate(90deg); }
+.venture-card[open] .venture-mark { rotate: 45deg; }
+.venture-body { display: flex; flex-direction: column; gap: 14px; padding: 0 24px 24px; }
 .venture-text { color: var(--text-2); line-height: 1.6; }
-.venture-facts { list-style: none; margin: auto 0 0; padding: 14px 0 0; border-top: 1px solid var(--border); display: grid; gap: 6px; font-size: 0.875rem; color: var(--text-2); }
+.venture-facts { list-style: none; margin: 0; padding: 14px 0 0; border-top: 1px solid var(--border); display: grid; gap: 6px; font-size: 0.875rem; color: var(--text-2); }
 .venture-facts li { padding-left: 1.1em; position: relative; }
 .venture-facts li::before { content: "•"; position: absolute; left: 0; color: var(--text-muted); }
+@media (hover: hover) and (pointer: fine) { .venture-summary:hover .venture-name { color: var(--accent); } }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.motion-off) .venture-card[open] .venture-body { animation: venture-in 180ms ease-out both; }
+  html:not(.motion-off) .venture-mark { transition: rotate 180ms ease-out; }
+}
+@keyframes venture-in { from { opacity: 0; } to { opacity: 1; } }

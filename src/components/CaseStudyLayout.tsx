@@ -153,17 +153,25 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
             <h2 {...dust} className="t-h3">{ui.ventures}</h2>
             <ul className="venture-grid mt-10">
               {data.ventures.map((v) => (
-                <li key={v.name} className="venture-card">
-                  <p className="t-label">
-                    <strong className="font-bold text-text">{v.year}</strong> · {v.role}
-                  </p>
-                  <h3 className="venture-name">{v.name}</h3>
-                  <p className="venture-text">{v.text}</p>
-                  <ul className="venture-facts">
-                    {v.facts.map((f) => (
-                      <li key={f}>{f}</li>
-                    ))}
-                  </ul>
+                <li key={v.name}>
+                  <details className="venture-card">
+                    <summary className="venture-summary">
+                      <span className="t-label">
+                        <strong className="font-bold text-text">{v.year}</strong> · {v.role}
+                      </span>
+                      <span className="venture-name">{v.name}</span>
+                      <span className="venture-brief">{v.summary}</span>
+                      <span className="venture-mark" aria-hidden="true" />
+                    </summary>
+                    <div className="venture-body">
+                      <p className="venture-text">{v.text}</p>
+                      <ul className="venture-facts">
+                        {v.facts.map((f) => (
+                          <li key={f}>{f}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </details>
                 </li>
               ))}
             </ul>
