@@ -132,15 +132,15 @@
         "status": "Experiment (2025)"
       },
       {
-        "id": "export-trade",
-        "name": "Tea and coffee export venture",
-        "summary": "Designing the export process for tea and coffee, from suppliers to FOB quotations, with three fellow founders.",
+        "id": "side-business",
+        "name": "Side businesses",
+        "summary": "Four ventures outside my main job: commodity export, building design, light steel construction, and food.",
         "tags": [
-          "Export",
-          "Supply chain",
-          "Commodities"
+          "Entrepreneurship",
+          "Operations",
+          "Design"
         ],
-        "status": "Ongoing (since 2021)"
+        "status": null
       },
       {
         "id": "survey-dashboard",

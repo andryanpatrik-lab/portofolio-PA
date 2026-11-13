@@ -132,15 +132,15 @@
         "status": "Eksperimen (2025)"
       },
       {
-        "id": "export-trade",
-        "name": "Usaha ekspor teh dan kopi",
-        "summary": "Merancang proses ekspor teh dan kopi dari pemasok sampai penawaran FOB, bersama tiga rekan pendiri.",
+        "id": "side-business",
+        "name": "Usaha sampingan",
+        "summary": "Empat usaha di luar pekerjaan utama: ekspor komoditas, desain bangunan, konstruksi baja ringan, dan kuliner.",
         "tags": [
-          "Ekspor",
-          "Rantai pasok",
-          "Komoditas"
+          "Kewirausahaan",
+          "Operasi",
+          "Desain"
         ],
-        "status": "Berjalan (sejak 2021)"
+        "status": null
       },
       {
         "id": "survey-dashboard",

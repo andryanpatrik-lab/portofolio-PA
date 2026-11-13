@@ -89,7 +89,8 @@
       "pickerGb": "GB",
       "pickerResult": "The model limit is about {p} billion parameters. {n} variants fit. Top eight by downloads:",
       "pickerNone": "No model fits in this much RAM yet."
-    }
+    },
+    "ventures": "Ventures I run"
   },
   "skipLink": "Skip to content",
   "navLabel": "Primary navigation",

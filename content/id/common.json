@@ -89,7 +89,8 @@
       "pickerGb": "GB",
       "pickerResult": "Batas model sekitar {p} miliar parameter. {n} varian muat. Delapan teratas menurut unduhan:",
       "pickerNone": "Belum ada model yang muat pada RAM ini."
-    }
+    },
+    "ventures": "Usaha yang saya jalankan"
   },
   "skipLink": "Lewati ke konten",
   "navLabel": "Navigasi utama",

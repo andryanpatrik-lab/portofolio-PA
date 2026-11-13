@@ -224,59 +224,61 @@
     "ollama": true,
     "metrics": []
   },
-  "export-trade": {
+  "side-business": {
     "year": "2021 – present",
-    "role": "Co-founder",
-    "status": "Ongoing",
     "stack": [
-      "Export",
-      "Supply chain",
-      "Commodities"
+      "Entrepreneurship",
+      "Operations",
+      "Design"
     ],
-    "context": "An Indonesian tea and coffee export venture I started with three fellow founders in 2021, aimed at overseas buyers.",
-    "problem": "Exporting commodities needs many things to line up at once: consistent specifications, reliable suppliers, prices that follow the exchange rate, and tidy documents before anything ships.",
-    "solution": "I designed the process end to end: choosing commodities, finding certified suppliers, setting specifications and quality control, building FOB-based quotations, and preparing what shipping needs. There has been no shipment so far; what exists is a catalogue, quotations, and trade terms that are ready to use.",
-    "flow": [
+    "ventures": [
       {
-        "label": "Research the market and pick commodities"
+        "name": "Canopy and light steel construction venture",
+        "year": "2024 – present",
+        "role": "Co-owner",
+        "text": "A venture that builds canopies and light steel structures in Bandung. Orders are built on galvanised hollow frames and tracked with one order note per customer.",
+        "facts": [
+          "Canopies and light steel structures",
+          "Galvanised hollow frames",
+          "Running to this day"
+        ]
       },
       {
-        "label": "Find certified suppliers"
+        "name": "Interior and exterior design",
+        "year": "2025",
+        "role": "Freelance",
+        "text": "Building design work I do on my own. One two-storey house with a roof deck: a plan for each floor, elevations from four sides, a 3D model, and layout drawings.",
+        "facts": [
+          "2 floors + roof deck",
+          "Plans and 4 elevations",
+          "3D model and layout"
+        ]
       },
       {
-        "label": "Set specifications and quality control"
+        "name": "Food venture",
+        "year": "2025",
+        "role": "Owner",
+        "text": "A food business I own: fusion sticky rice and grilled bread, with its own brand, logo, product photos, and promotional material.",
+        "facts": [
+          "2 main menu items",
+          "Brand and logo",
+          "Product photos and promo banner"
+        ]
       },
       {
-        "label": "Build the FOB quotation: price, exchange rate, minimum order, lead time"
-      },
-      {
-        "label": "Prepare shipping and documents"
+        "name": "Tea and coffee export venture",
+        "year": "2021 – 2023",
+        "role": "Co-founder",
+        "text": "A tea and coffee export venture I started with three fellow founders. I designed the process from suppliers to FOB quotations. There has been no shipment; what exists is a catalogue, quotations, and trade terms.",
+        "facts": [
+          "Tea and coffee",
+          "3 coffee processing profiles",
+          "18 / 25 tons per container"
+        ]
       }
     ],
-    "systemTitle": "The venture at a glance",
-    "system": [
-      {
-        "value": "2",
-        "label": "commodities",
-        "note": "tea and coffee"
-      },
-      {
-        "value": "3",
-        "label": "coffee processing profiles",
-        "note": "semi-washed, full-washed, and natural"
-      },
-      {
-        "value": "18 / 25",
-        "label": "tons per container",
-        "note": "minimum order for 20 ft and 40 ft containers"
-      },
-      {
-        "value": "20",
-        "label": "business days",
-        "note": "lead time after the order and agreement are signed"
-      }
-    ],
-    "metrics": []
+    "metrics": [],
+    "flow": []
   },
   "survey-dashboard": {
     "year": "",

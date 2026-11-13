@@ -1166,3 +1166,13 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .ollama-range input[type="range"] { width: 100%; min-height: 44px; accent-color: var(--accent); }
 .ollama-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .ollama-chips li { border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-family: var(--font-mono); font-size: 0.8125rem; }
+
+/* Side-business page (M45): one card per venture. Static, no animation. */
+.venture-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 800px) { .venture-grid { grid-template-columns: 1fr 1fr; } }
+.venture-card { border: 1px solid var(--border); border-radius: 12px; padding: 24px; background: var(--bg); display: flex; flex-direction: column; gap: 14px; }
+.venture-name { font-size: 1.375rem; line-height: 1.25; font-weight: 400; color: var(--text); }
+.venture-text { color: var(--text-2); line-height: 1.6; }
+.venture-facts { list-style: none; margin: auto 0 0; padding: 14px 0 0; border-top: 1px solid var(--border); display: grid; gap: 6px; font-size: 0.875rem; color: var(--text-2); }
+.venture-facts li { padding-left: 1.1em; position: relative; }
+.venture-facts li::before { content: "•"; position: absolute; left: 0; color: var(--text-muted); }

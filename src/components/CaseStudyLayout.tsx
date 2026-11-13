@@ -148,6 +148,28 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
           </section>
         )}
 
+        {data.ventures && (
+          <section data-cosmos="aurora" className="mt-12 md:mt-16">
+            <h2 {...dust} className="t-h3">{ui.ventures}</h2>
+            <ul className="venture-grid mt-10">
+              {data.ventures.map((v) => (
+                <li key={v.name} className="venture-card">
+                  <p className="t-label">
+                    <strong className="font-bold text-text">{v.year}</strong> · {v.role}
+                  </p>
+                  <h3 className="venture-name">{v.name}</h3>
+                  <p className="venture-text">{v.text}</p>
+                  <ul className="venture-facts">
+                    {v.facts.map((f) => (
+                      <li key={f}>{f}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {data.guide && (
           <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
             <h2 {...dust} className="t-h3">{ui.ollama.guideTitle}</h2>
@@ -171,7 +193,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
         {data.system && data.system.length > 0 && (
           <section data-cosmos="nebula" className="mt-[var(--section-gap)]">
-            <h2 {...dust} className="t-h3">{data.systemTitle ?? ui.system}</h2>
+            <h2 {...dust} className="t-h3">{ui.system}</h2>
             <SystemSheet items={data.system} />
           </section>
         )}
