@@ -47,6 +47,8 @@ export type CaseStudyData = {
   system?: { value: string; label: string; note?: string }[];
   /** Optional link under the "what was built" text (project pages). `path` is relative to the locale. */
   link?: { label: string; path: string };
+  /** Replaces the page body with an "under repair" notice (project pages). */
+  maintenance?: boolean;
 };
 
 const caseStudies: Record<Locale, Record<string, CaseStudyData>> = { id: caseId, en: caseEn };

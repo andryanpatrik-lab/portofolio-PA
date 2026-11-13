@@ -111,6 +111,7 @@
     "learning": "Perlindungan akses sebaiknya berlapis: pernah ada berkas halaman lama yang tertinggal dan menjadi celah melewati pemeriksaan peran di lapisan aplikasi. Karena itu pembatasan juga dipasang di database (row-level security) dan di hak akses per kolom, bukan hanya di aplikasi."
   },
   "content-partner-platform": {
+    "maintenance": true,
     "role": "Perancang dan pembangun",
     "year": "2026",
     "stack": [

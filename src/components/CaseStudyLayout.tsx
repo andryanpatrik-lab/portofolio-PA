@@ -78,10 +78,27 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
         <header className="mt-16 md:mt-24">
           {morph("card-title", <h1 className="t-h1 max-w-[18ch]">{title}</h1>)}
-          <p {...dust} className="t-lead mt-6 text-text-2">{tagline}</p>
-          {meta.length > 0 && <p className="t-label mt-6 text-text-muted">{meta.join(" · ")}</p>}
+          {!data.maintenance && <p {...dust} className="t-lead mt-6 text-text-2">{tagline}</p>}
+          {!data.maintenance && meta.length > 0 && <p className="t-label mt-6 text-text-muted">{meta.join(" · ")}</p>}
         </header>
 
+        {data.maintenance ? (
+          <section data-cosmos="ember" className="mt-12 md:mt-16">
+            <div className="maint" role="img" aria-label={ui.maintenanceTape}>
+              {(["a", "b"] as const).map((k) => (
+                <div key={k} aria-hidden="true" className={`maint-tape maint-tape-${k}`}>
+                  <div className="maint-track">
+                    {Array.from({ length: 12 }, (_, i) => (
+                      <span key={i}>{ui.maintenanceTape} <b>✕</b> </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <h2 {...dust} className="t-h3 mt-10">{ui.maintenanceTitle}</h2>
+            <p {...dust} className="t-lead mt-6 max-w-[60ch] text-text-2">{ui.maintenanceText}</p>
+          </section>
+        ) : (<>
         {flows.length > 0 && (
           <section data-cosmos="nebula" className="mt-12 md:mt-16">
             <h2 {...dust} className="t-h3">{ui.explore}</h2>
@@ -146,6 +163,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
         )}
 
         {data.learning && section(ui.learning, "void", data.learning)}
+        </>)}
 
         <nav aria-label={ui.next} className="mt-[var(--section-gap)] border-t border-border pt-10">
           <BlackHoleLink href={nextHref ?? `/${locale}/work/${next.slug}/`} className="block">

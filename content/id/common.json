@@ -51,7 +51,10 @@
     "exploreNote": "Pilih alur dan skenario, lalu tekan Putar untuk menelusuri langkahnya satu per satu. Nama layanan diganti istilah umum. Label di bawah judul menjelaskan asal tiap alur.",
     "exploreTitle": "Penjelajah alur",
     "exploreDesc": "Alur kerja yang dibangun, bisa digeser dan diputar.",
-    "built": "Yang dibuat"
+    "built": "Yang dibuat",
+    "maintenanceTape": "Sedang diperbaiki",
+    "maintenanceTitle": "Halaman ini sedang diperbaiki",
+    "maintenanceText": "Isinya sedang disusun ulang dan akan tampil kembali setelah perbaikan selesai."
   },
   "skipLink": "Lewati ke konten",
   "navLabel": "Navigasi utama",

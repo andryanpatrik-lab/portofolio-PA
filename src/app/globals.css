@@ -1117,3 +1117,30 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
   .mdl-th:hover { color: var(--accent); }
   .other-tool:hover { border-color: var(--accent-dim); }
 }
+
+/* Under-repair notice (project pages): two crossed barricade tapes. Only transform and opacity are animated. */
+.maint { position: relative; height: 15rem; overflow: hidden; }
+.maint-tape {
+  position: absolute; left: -6%; width: 112%; top: 50%; margin-top: -1.6rem;
+  background: #b3121f; color: #fff; overflow: hidden; white-space: nowrap;
+  border-block: 0.4rem solid transparent;
+  border-image: repeating-linear-gradient(-45deg, #b3121f 0 0.7rem, #f4efe9 0.7rem 1.4rem) 8;
+  box-shadow: 0 0.5rem 1.2rem rgba(60, 0, 0, 0.22);
+  font-family: var(--font-mono); font-weight: 500; font-size: 0.95rem; letter-spacing: 0.16em; text-transform: uppercase;
+  line-height: 2.4rem;
+}
+.maint-tape-a { rotate: -4deg; }
+.maint-tape-b { rotate: 3deg; margin-top: 1.1rem; background: #8f0e19; }
+.maint-track { display: inline-block; will-change: transform; }
+.maint-track b { margin-inline: 0.9em; font-weight: 500; opacity: 0.7; }
+.maint-tape-b .maint-track { transform: translateX(-50%); }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.motion-off) .maint-tape-a { animation: maint-in-a 700ms var(--ease-out) both; }
+  html:not(.motion-off) .maint-tape-b { animation: maint-in-b 700ms var(--ease-out) 160ms both; }
+  html:not(.motion-off) .maint-tape-a .maint-track { animation: maint-run-a 26s linear infinite; }
+  html:not(.motion-off) .maint-tape-b .maint-track { animation: maint-run-b 32s linear infinite; }
+}
+@keyframes maint-in-a { from { transform: translateX(-110%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes maint-in-b { from { transform: translateX(110%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes maint-run-a { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes maint-run-b { from { transform: translateX(-50%); } to { transform: translateX(0); } }

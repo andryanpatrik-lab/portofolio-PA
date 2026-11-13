@@ -111,6 +111,7 @@
     "learning": "Access protection should be layered: a leftover page file once became a way around the role check at the application layer. So the restriction is also set in the database (row-level security) and in column-level grants, not only in the app."
   },
   "content-partner-platform": {
+    "maintenance": true,
     "role": "Designer and builder",
     "year": "2026",
     "stack": [
