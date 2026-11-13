@@ -1168,7 +1168,7 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 .ollama-chips li { border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-family: var(--font-mono); font-size: 0.8125rem; }
 
 /* Side-business page (M45, accordion M46): native <details>, no JS. Only opacity and rotate move; the height is never animated. */
-.venture-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
+.venture-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; gap: 16px; grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 800px) { .venture-grid { grid-template-columns: 1fr 1fr; } }
 .venture-card { border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
 .venture-summary { list-style: none; cursor: pointer; display: grid; gap: 10px; padding: 22px 56px 22px 24px; position: relative; min-height: 44px; border-radius: 12px; }
@@ -1190,4 +1190,5 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
   html:not(.motion-off) .venture-card[open] .venture-body { animation: venture-in 180ms ease-out both; }
   html:not(.motion-off) .venture-mark { transition: rotate 180ms ease-out; }
 }
+@media (min-width: 800px) { .venture-summary { min-height: 10.5rem; align-content: start; } }
 @keyframes venture-in { from { opacity: 0; } to { opacity: 1; } }
