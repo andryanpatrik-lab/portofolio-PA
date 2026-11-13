@@ -35,7 +35,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
   const ui = dict.case;
   const number = String(index + 1).padStart(2, "0");
   const cosmos = (["aurora", "nebula", "ember", "supernova"] as const)[index % 4];
-  const meta = [data.role, data.year, data.status, data.stack.join(", ")].filter(Boolean);
+  const meta = [data.year, data.role, data.status, data.stack.join(", ")].filter(Boolean);
 
   const flows = getFlowSummaries(locale, slug);
   const shownMetrics = data.metrics.filter((m) => m.value !== "—");
