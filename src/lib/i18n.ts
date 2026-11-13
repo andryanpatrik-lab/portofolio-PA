@@ -45,6 +45,8 @@ export type CaseStudyData = {
   metrics: { value: string; label?: string; estimate?: boolean }[];
   learning?: string;
   system?: { value: string; label: string; note?: string }[];
+  /** Optional link under the "what was built" text (project pages). `path` is relative to the locale. */
+  link?: { label: string; path: string };
 };
 
 const caseStudies: Record<Locale, Record<string, CaseStudyData>> = { id: caseId, en: caseEn };

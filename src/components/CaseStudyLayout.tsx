@@ -101,11 +101,18 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
         {section(ui.problem, "ember", data.problem)}
 
-        {(!project || data.solution || data.flow.length > 0) && (
+        {(!project || data.solution || data.flow.length > 0 || data.link) && (
           <section data-cosmos="nebula" className="mt-[var(--section-gap)]">
             <h2 {...dust} className="t-h3">{project && !data.problem ? ui.built : ui.solution}</h2>
             {(!project || data.solution) && (
               <p {...dust} className={`t-lead mt-6 ${data.solution ? "text-text-2" : "text-text-muted"}`}>{data.solution ?? ui.pending}</p>
+            )}
+            {data.link && (
+              <p className="mt-8">
+                <BlackHoleLink href={`/${locale}/${data.link.path}`} className="t-label tap link-underline">
+                  {data.link.label} <span aria-hidden="true">→</span>
+                </BlackHoleLink>
+              </p>
             )}
             {data.flow.length > 0 &&
               morph(

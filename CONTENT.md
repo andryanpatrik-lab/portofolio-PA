@@ -312,3 +312,6 @@ Data di `content/{id,en}/other-projects.json` (per `id`), alur proyek 1 di `cont
 | L5 Nonton bareng, L6 Dashboard survei | hanya kartu | Satu bagian "Yang dibuat". `[ISI]` bahan. |
 Bagian tanpa data tidak dirender (tidak ada teks "sedang disiapkan").
 
+### 4d. Katalog model AI (M41, draf `[KONFIRMASI]`)
+Halaman `/models/` (ID dan EN): judul "Katalog model AI", paragraf pengantar, filter dan kolom di `content/{id,en}/models.json`. Datanya tab "Full Model" dari sheet katalog Patrik (harga USD per 1 juta token dari tiga sumber, campuran 3:1, termurah), salinan harian. Nama vendor dan sumber harga tampil apa adanya (pengecualian eksplisit). Tautan dari bawah "Proyek lainnya" dan dari halaman proyek AI offline.
+

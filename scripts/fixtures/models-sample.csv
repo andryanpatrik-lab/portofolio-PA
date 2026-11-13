@@ -1,0 +1,13 @@
+Kunci,ID model,Vendor,Jenis,Konteks,OpenRouter input,OpenRouter output,Sumopod input,Sumopod output,Sumopod cache,TokenKu input,TokenKu output,TokenKu cache read,Satuan TokenKu,Campuran 3:1 OpenRouter,Campuran 3:1 Sumopod,Campuran 3:1 TokenKu,Termurah,TokenKu vs OpenRouter,TokenKu vs Sumopod,Jumlah sumber,Tersedia di,Catatan TokenKu,Tanggal data TokenKu
+aion20,aion-labs/aion-2.0,aion-labs,LLM,"131.072","0,80","1,60",,,,,,,,"1,000",,,,,,1,OR,,
+aion30,aion-labs/aion-3.0,aion-labs,LLM,"131.072","3,00","6,00",,,,,,,,"3,750",,,,,,1,OR,,
+aion35mini,aion-labs/aion-3.5-mini,aion-labs,LLM,"262.144","0,70","1,40",,,,,,,,"0,875",,,,,,1,OR,,
+aleph2,runway/aleph-2,runway,Video,,,,,,,,,,,,,,,,,1,OR,,
+allminilml12v2,sentence-transformers/all-minilm-l12-v2,sentence-transformers,Embedding,512,"0,005","0,00",,,,,,,,,,,,,,1,OR,,
+claudehaiku55,anthropic/claude-haiku-5.5,anthropic,LLM,"1.000.000","0,10","0,50","0,10","0,50","0,010","0,08","0,40","0,008",USD / 1M token,"0,200","0,200","0,160",TokenKu,"-20,0%","-20,0%",3,OR SP TK,,2026-11-13
+deepseekv41flash1017,deepseek/deepseek-v4.1-flash-1017,deepseek,LLM,"1.048.576","0,098","0,294","0,150","0,600","0,003","0,0225","0,90","0,0045",USD / 1M token,"0,147","0,263","0,242",OpenRouter,"64,5%","-7,9%",3,OR SP TK,,2026-11-13
+gpt6luna,openai/gpt-6-luna,openai,LLM,"1.050.000","0,10","0,50","0,10","0,50","0,010","0,08","0,40","0,008",USD / 1M token,"0,200","0,200","0,160",TokenKu,"-20,0%","-20,0%",3,OR SP TK,,2026-11-13
+qwen38flash,qwen/qwen3.8-flash,qwen,LLM,"1.000.000","0,15","0,47","0,15","0,47","0,016",,,,,"0,230","0,230",,OpenRouter,,,2,OR SP,,
+ernie55flashfree,baidu/ernie-5.5-flash-preview:free,baidu,LLM,"1.024.000","0,00","0,00",,,,,,,,"0,000",,,,,,1,OR,,
+simba35,speechify/simba-3.5,speechify,Audio,,15,"0,00",,,,,,,,,,,,,,1,OR,,
+minimaxh3image,minimax/minimax-h3-image,minimax,Image,"4.096","2,3","0,00",,,,,,,,,,,,,,1,OR,,

@@ -1,0 +1,23 @@
+name: Daily deploy (refresh model catalog)
+
+# The model catalog page reads data that is fetched from the sheet at build time (scripts/fetch-models.mjs).
+# This workflow triggers a Vercel deploy every morning so the page follows the sheet, which refreshes at 09:00 WIB.
+# 02:45 UTC = 09:45 WIB: GitHub may start scheduled runs 5 to 30 minutes late, so the new data is live around 10:00 WIB.
+# Needs the repository secret VERCEL_DEPLOY_HOOK_URL (a Deploy Hook for the production branch).
+# Scheduled workflows only run from the default branch.
+
+on:
+  schedule:
+    - cron: "45 2 * * *"
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger the Vercel deploy hook
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "VERCEL_DEPLOY_HOOK_URL is not set"; exit 1; fi
+          curl -fsS -X POST "$HOOK"

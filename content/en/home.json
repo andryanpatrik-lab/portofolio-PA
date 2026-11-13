@@ -153,7 +153,12 @@
         ],
         "status": null
       }
-    ]
+    ],
+    "tool": {
+      "label": "Tool",
+      "title": "AI model catalog",
+      "desc": "AI models and prices from three sources, searchable, filterable, and sortable. Refreshed every morning."
+    }
   },
   "about": {
     "label": "05 / ABOUT",

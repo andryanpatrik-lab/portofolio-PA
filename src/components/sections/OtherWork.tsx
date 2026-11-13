@@ -26,6 +26,15 @@ export function OtherWork({ home, locale }: { home: Home; locale: Locale }) {
           </li>
         ))}
       </ul>
+      <div data-reveal className="mt-8">
+        <BlackHoleLink href={`/${locale}/models/`} className="other-tool block rounded-xl border border-border p-6">
+          <span className="t-label text-text-muted">{other.tool.label}</span>
+          <span className="t-h4 mt-2 block">
+            {other.tool.title} <span aria-hidden="true" className="text-accent">→</span>
+          </span>
+          <span className="mt-2 block max-w-[62ch] text-text-2">{other.tool.desc}</span>
+        </BlackHoleLink>
+      </div>
     </section>
   );
 }

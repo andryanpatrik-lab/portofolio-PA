@@ -176,7 +176,11 @@
     ],
     "solution": "Running a small language model locally with Ollama and Open WebUI, without relying on cloud services.",
     "flow": [],
-    "metrics": []
+    "metrics": [],
+    "link": {
+      "label": "Open the AI model catalog",
+      "path": "models/"
+    }
   },
   "watch-party": {
     "year": "",

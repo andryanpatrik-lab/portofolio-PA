@@ -12,3 +12,6 @@ dist/
 .DS_Store
 *.log
 .claude/settings.local.json
+
+# generated at build time by scripts/fetch-models.mjs
+public/data/models.json

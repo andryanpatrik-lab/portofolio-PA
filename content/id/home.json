@@ -153,7 +153,12 @@
         ],
         "status": null
       }
-    ]
+    ],
+    "tool": {
+      "label": "Alat",
+      "title": "Katalog model AI",
+      "desc": "Daftar model AI dan harga dari tiga sumber, bisa dicari, difilter, dan diurutkan. Diperbarui tiap pagi."
+    }
   },
   "about": {
     "label": "05 / TENTANG",

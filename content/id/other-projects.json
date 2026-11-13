@@ -176,7 +176,11 @@
     ],
     "solution": "Menjalankan model bahasa kecil secara lokal dengan Ollama dan Open WebUI, tanpa bergantung pada layanan cloud.",
     "flow": [],
-    "metrics": []
+    "metrics": [],
+    "link": {
+      "label": "Buka katalog model AI",
+      "path": "models/"
+    }
   },
   "watch-party": {
     "year": "",
