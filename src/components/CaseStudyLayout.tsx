@@ -35,7 +35,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
   const ui = dict.case;
   const number = String(index + 1).padStart(2, "0");
   const cosmos = (["aurora", "nebula", "ember", "supernova"] as const)[index % 4];
-  const meta = [data.year, data.role, data.status, data.stack.join(", ")].filter(Boolean);
+  const meta = [data.role, data.status, data.stack.join(", ")].filter(Boolean);
 
   const flows = getFlowSummaries(locale, slug);
   const shownMetrics = data.metrics.filter((m) => m.value !== "—");
@@ -79,7 +79,13 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
         <header className="mt-16 md:mt-24">
           {morph("card-title", <h1 className="t-h1 max-w-[18ch]">{title}</h1>)}
           {!data.maintenance && <p {...dust} className="t-lead mt-6 text-text-2">{tagline}</p>}
-          {!data.maintenance && meta.length > 0 && <p className="t-label mt-6 text-text-muted">{meta.join(" · ")}</p>}
+          {!data.maintenance && (data.year || meta.length > 0) && (
+            <p className="t-label mt-6 text-text-muted">
+              {data.year && <strong className="font-bold text-text">{data.year}</strong>}
+              {data.year && meta.length > 0 && " · "}
+              {meta.join(" · ")}
+            </p>
+          )}
         </header>
 
         {data.maintenance ? (
