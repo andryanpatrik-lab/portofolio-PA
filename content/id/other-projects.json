@@ -188,13 +188,41 @@
       "Open WebUI",
       "Model lokal"
     ],
-    "solution": "Menjalankan model bahasa kecil secara lokal dengan Ollama dan Open WebUI, tanpa bergantung pada layanan cloud.",
-    "flow": [],
-    "metrics": [],
-    "link": {
-      "label": "Buka katalog model AI",
-      "path": "models/"
-    }
+    "context": "Model bahasa biasanya dipakai lewat layanan cloud yang menagih per token dan butuh internet. Eksperimen ini mencoba menjalankan model kecil langsung di perangkat sendiri: data tidak keluar dari perangkat, tidak ada biaya per token, tetap jalan tanpa koneksi, dan pengaturannya sepenuhnya di tangan sendiri. Harganya adalah batas RAM, jadi pertanyaan utamanya: model mana yang muat?",
+    "flow": [
+      {
+        "label": "Pilih model yang muat di RAM perangkat"
+      },
+      {
+        "label": "Unduh model lewat Ollama"
+      },
+      {
+        "label": "Jalankan model secara lokal"
+      },
+      {
+        "label": "Ngobrol lewat Open WebUI di browser"
+      },
+      {
+        "label": "Pakai untuk tugas ringan tanpa internet"
+      }
+    ],
+    "guide": {
+      "local": [
+        "Meringkas teks pendek",
+        "Mengekstrak data dari pesan atau dokumen",
+        "Mengklasifikasi dan melabeli teks",
+        "Menulis ulang dan merapikan kalimat",
+        "Mengolah data sensitif yang tidak boleh keluar perangkat"
+      ],
+      "cloud": [
+        "Penalaran panjang dengan banyak langkah",
+        "Pertanyaan tentang kejadian terbaru, karena model lokal tidak tahu hal setelah datanya dibuat",
+        "Konteks yang sangat panjang",
+        "Pemanggilan alat yang menuntut ketepatan tinggi"
+      ]
+    },
+    "ollama": true,
+    "metrics": []
   },
   "watch-party": {
     "year": "",

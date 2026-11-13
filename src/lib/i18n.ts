@@ -49,6 +49,10 @@ export type CaseStudyData = {
   link?: { label: string; path: string };
   /** Replaces the page body with an "under repair" notice (project pages). */
   maintenance?: boolean;
+  /** "When local, when cloud" lists (offline AI project page). */
+  guide?: { local: string[]; cloud: string[] };
+  /** Adds the Ollama test specification section (offline AI project page). */
+  ollama?: boolean;
 };
 
 const caseStudies: Record<Locale, Record<string, CaseStudyData>> = { id: caseId, en: caseEn };

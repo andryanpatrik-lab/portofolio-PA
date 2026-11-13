@@ -5,6 +5,7 @@ import { FlowAnimOnScroll } from "./FlowAnimOnScroll";
 import { FlowDiagram } from "./FlowDiagram";
 import { FlowExplorer } from "./FlowExplorer";
 import { CountMetric } from "./CountMetric";
+import { OllamaSpec } from "./OllamaSpec";
 import { SystemSheet } from "./SystemSheet";
 import { getFlowLabels, getFlowSummaries } from "@/lib/flowSummaries";
 import type { CaseStudyData, Dictionary, Locale } from "@/lib/i18n";
@@ -126,7 +127,7 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
 
         {(!project || data.solution || data.flow.length > 0 || data.link) && (
           <section data-cosmos="nebula" className="mt-[var(--section-gap)]">
-            <h2 {...dust} className="t-h3">{project && !data.problem ? ui.built : ui.solution}</h2>
+            <h2 {...dust} className="t-h3">{project && !data.problem ? (data.solution ? ui.built : ui.howItWorks) : ui.solution}</h2>
             {(!project || data.solution) && (
               <p {...dust} className={`t-lead mt-6 ${data.solution ? "text-text-2" : "text-text-muted"}`}>{data.solution ?? ui.pending}</p>
             )}
@@ -146,6 +147,27 @@ export function CaseStudyLayout({ locale, dict, slug, index, total, title, tagli
               )}
           </section>
         )}
+
+        {data.guide && (
+          <section data-cosmos="aurora" className="mt-[var(--section-gap)]">
+            <h2 {...dust} className="t-h3">{ui.ollama.guideTitle}</h2>
+            <p {...dust} className="t-lead mt-6 max-w-[60ch] text-text-2">{ui.ollama.guideNote}</p>
+            <div className="guide-grid mt-10">
+              {(["local", "cloud"] as const).map((k) => (
+                <div key={k} className="guide-col">
+                  <h3 className="t-label">{k === "local" ? ui.ollama.guideLocal : ui.ollama.guideCloud}</h3>
+                  <ul>
+                    {data.guide![k].map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {data.ollama && <OllamaSpec locale={locale} ui={ui.ollama} />}
 
         {data.system && data.system.length > 0 && (
           <section data-cosmos="nebula" className="mt-[var(--section-gap)]">

@@ -188,13 +188,41 @@
       "Open WebUI",
       "Local model"
     ],
-    "solution": "Running a small language model locally with Ollama and Open WebUI, without relying on cloud services.",
-    "flow": [],
-    "metrics": [],
-    "link": {
-      "label": "Open the AI model catalog",
-      "path": "models/"
-    }
+    "context": "Language models are usually used through cloud services that bill per token and need the internet. This experiment tries to run a small model directly on a personal device: the data never leaves the device, there is no per-token cost, it keeps working offline, and the setup is entirely under my control. The price is the RAM limit, so the main question is: which models fit?",
+    "flow": [
+      {
+        "label": "Pick a model that fits the device RAM"
+      },
+      {
+        "label": "Download the model with Ollama"
+      },
+      {
+        "label": "Run the model locally"
+      },
+      {
+        "label": "Chat through Open WebUI in the browser"
+      },
+      {
+        "label": "Use it for light tasks without internet"
+      }
+    ],
+    "guide": {
+      "local": [
+        "Summarising short text",
+        "Extracting data from messages or documents",
+        "Classifying and labelling text",
+        "Rewriting and tidying sentences",
+        "Handling sensitive data that must not leave the device"
+      ],
+      "cloud": [
+        "Long, multi-step reasoning",
+        "Questions about recent events, because a local model knows nothing after its training data",
+        "Very long context",
+        "Tool calls that need high accuracy"
+      ]
+    },
+    "ollama": true,
+    "metrics": []
   },
   "watch-party": {
     "year": "",

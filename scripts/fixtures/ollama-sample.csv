@@ -1,0 +1,8 @@
+Model,Ukuran,Parameter (miliar),Perkiraan RAM (GB),Muat di tablet?,Kemampuan,Pull,Pull (angka),Diperbarui,URL
+llama3.1,8b,8,"6,3",Tidak,tools,121M,"121.000.000",1 year ago,https://ollama.com/library/llama3.1
+llama3.1,70b,70,"43,5",Tidak,tools,121M,"121.000.000",1 year ago,https://ollama.com/library/llama3.1
+llama3.1,405b,405,"244,5",Tidak,tools,121M,"121.000.000",1 year ago,https://ollama.com/library/llama3.1
+nomic-embed-text,,,,?,embedding,97.3M,"97.300.000",2 years ago,https://ollama.com/library/nomic-embed-text
+sample-small,1b,1,"2,1",Ya,tools,5M,"5.000.000",1 month ago,https://example.test/a
+sample-small,3b,3,"3,3",Ya,"tools, thinking",5M,"5.000.000",1 month ago,https://example.test/a
+sample-tiny,0.5b,"0,5","1,8",Ya,,1.2M,"1.200.000",2 weeks ago,https://example.test/b

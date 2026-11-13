@@ -15,3 +15,4 @@ dist/
 
 # generated at build time by scripts/fetch-models.mjs
 public/data/models.json
+public/data/ollama.json

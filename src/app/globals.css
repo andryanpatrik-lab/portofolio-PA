@@ -1144,3 +1144,25 @@ html:has(.light-page) .cosmos-light-wrap { display: block; animation: ls-in 1.6s
 @keyframes maint-in-b { from { transform: translateX(110%); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes maint-run-a { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes maint-run-b { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+/* Offline AI page (M43): guide lists, Ollama table, RAM picker. Static: no animation. */
+.guide-grid { display: grid; gap: 1px; grid-template-columns: 1fr; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--border); }
+@media (min-width: 700px) { .guide-grid { grid-template-columns: 1fr 1fr; } }
+.guide-col { background: var(--bg); padding: 22px; }
+.guide-col h3 { color: var(--text-2); }
+.guide-col ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.guide-col li { color: var(--text); line-height: 1.5; padding-left: 1.1em; position: relative; }
+.guide-col li::before { content: "•"; position: absolute; left: 0; color: var(--text-muted); }
+.ollama-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+.ollama-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.ollama-table th, .ollama-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; font-weight: 400; }
+.ollama-table thead th { color: var(--text-2); font-weight: 500; }
+.ollama-table tbody th { font-family: var(--font-mono); font-weight: 500; }
+.ollama-table tbody tr:last-child > * { border-bottom: 0; }
+.ollama-more summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; }
+.ollama-more summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ollama-picker { display: grid; gap: 16px; max-width: 60ch; }
+.ollama-range { display: grid; gap: 10px; }
+.ollama-range input[type="range"] { width: 100%; min-height: 44px; accent-color: var(--accent); }
+.ollama-chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.ollama-chips li { border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-family: var(--font-mono); font-size: 0.8125rem; }
